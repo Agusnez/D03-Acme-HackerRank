@@ -10,3 +10,4 @@ target/Acme-HandyWorker-1.0
 !messages_es.properties
 !messages.properties
 ._*
+.classpath
