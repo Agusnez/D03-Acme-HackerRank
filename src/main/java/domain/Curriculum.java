@@ -14,7 +14,7 @@ import javax.validation.Valid;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Curricula extends DomainEntity {
+public class Curriculum extends DomainEntity {
 
 	private PersonalData					personalData;
 	private Collection<PositionData>		positionDatas;
