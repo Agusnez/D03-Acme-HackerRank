@@ -8,19 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import domain.Curricula;
+import domain.Curriculum;
 
 @Component
 @Transactional
-public class StringToCurriculaConverter implements Converter<String, Curricula> {
+public class StringToCurriculumConverter implements Converter<String, Curriculum> {
 
 	@Autowired
-	private CurriculaRepository	curriculaRepository;
+	private CurriculumRepository	curriculumRepository;
 
 
 	@Override
-	public Curricula convert(final String text) {
-		Curricula result;
+	public Curriculum convert(final String text) {
+		Curriculum result;
 		final int id;
 
 		try {
@@ -28,7 +28,7 @@ public class StringToCurriculaConverter implements Converter<String, Curricula> 
 				result = null;
 			else {
 				id = Integer.valueOf(text);
-				result = this.curriculaRepository.findOne(id);
+				result = this.curriculumRepository.findOne(id);
 			}
 		} catch (final Throwable oops) {
 			throw new IllegalArgumentException(oops);

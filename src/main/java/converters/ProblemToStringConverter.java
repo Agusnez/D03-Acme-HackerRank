@@ -3,9 +3,10 @@ package converters;
 
 import javax.transaction.Transactional;
 
-import org.springframework.beans.factory.parsing.Problem;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
+
+import domain.Problem;
 
 @Component
 @Transactional
