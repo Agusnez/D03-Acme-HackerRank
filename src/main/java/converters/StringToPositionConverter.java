@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
+import domain.Position;
+
 @Component
 @Transactional
 public class StringToPositionConverter implements Converter<String, Position> {

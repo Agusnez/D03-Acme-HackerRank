@@ -12,7 +12,7 @@ import domain.Hacker;
 
 @Component
 @Transactional
-public class StringToAdministratorConverter implements Converter<String, Hacker> {
+public class StringToHackerConverter implements Converter<String, Hacker> {
 
 	@Autowired
 	private HackerRepository	hackerRepository;
