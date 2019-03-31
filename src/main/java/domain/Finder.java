@@ -49,23 +49,25 @@ public class Finder extends DomainEntity {
 	public void setMinimumSalary(final Double minimumSalary) {
 		this.minimumSalary = minimumSalary;
 	}
+	
+	@Pattern(regexp = "((?:19|20)\\d\\d)/(0?[1-9]|1[012])/([12][0-9]|3[01]|0?[1-9])|| ")
+	@SafeHtml
+	public String getMaximumDeadline() {
+		return maximumDeadline;
+	}
+
+	public void setMaximumDeadline(String maximumDeadline) {
+		this.maximumDeadline = maximumDeadline;
+	}
 
 	@Pattern(regexp = "((?:19|20)\\d\\d)/(0?[1-9]|1[012])/([12][0-9]|3[01]|0?[1-9])|| ")
 	@SafeHtml
 	public String getMinimumDeadline() {
-		return this.minimumDeadline;
-	}
-	public void setMinDate(final String minimumDeadline) {
-		this.minimumDeadline = minimumDeadline;
+		return minimumDeadline;
 	}
 
-	@Pattern(regexp = "((?:19|20)\\d\\d)/(0?[1-9]|1[012])/([12][0-9]|3[01]|0?[1-9])|| ")
-	@SafeHtml
-	public String getMaximumDeadline() {
-		return this.maximumDeadline;
-	}
-	public void setMaxDate(final String maximumDeadline) {
-		this.maximumDeadline = maximumDeadline;
+	public void setMinimumDeadline(String minimumDeadline) {
+		this.minimumDeadline = minimumDeadline;
 	}
 
 	@Past
@@ -75,6 +77,7 @@ public class Finder extends DomainEntity {
 	public Date getLastUpdate() {
 		return this.lastUpdate;
 	}
+
 	public void setLastUpdate(final Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
@@ -88,11 +91,11 @@ public class Finder extends DomainEntity {
 
 	@ManyToMany
 	@Valid
-	public Collection<Positions> getPositions() {
-		return this.positions;
+	public Collection<Position> getPositions() {
+		return positions;
 	}
 
-	public void setParades(final Collection<Positions> positions) {
+	public void setPositions(Collection<Position> positions) {
 		this.positions = positions;
 	}
 
@@ -101,6 +104,7 @@ public class Finder extends DomainEntity {
 	public Hacker getHacker() {
 		return this.hacker;
 	}
+
 	public void setHacker(final Hacker hacker) {
 		this.hacker = hacker;
 	}
