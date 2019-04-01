@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.HackerRepository;
 import security.Authority;
@@ -17,6 +19,7 @@ import security.UserAccount;
 import security.UserAccountService;
 import domain.Actor;
 import domain.Hacker;
+import forms.RegisterHackerForm;
 
 @Service
 @Transactional
@@ -32,6 +35,9 @@ public class HackerService {
 
 	@Autowired
 	private UserAccountService	userAccountService;
+
+	@Autowired
+	private Validator			validator;
 
 
 	// Simple CRUD methods
@@ -134,6 +140,28 @@ public class HackerService {
 		result = this.hackerRepository.findByUserAccountId(userAccount.getId());
 
 		return result;
+	}
+
+	//Recontruct para registrar Hacker
+	public Hacker reconstruct(final RegisterHackerForm form, final BindingResult binding) {
+
+		this.validator.validate(form, binding);
+
+		final Hacker hacker = this.create();
+
+		hacker.setName(form.getName());
+		hacker.setSurnames(form.getSurnames());
+		hacker.setVat(form.getVat());
+		hacker.setPhoto(form.getPhoto());
+		hacker.setEmail(form.getEmail());
+		hacker.setPhone(form.getPhone());
+		hacker.setAddress(form.getAddress());
+		hacker.setCreditCard(form.getCreditCard());
+		hacker.getUserAccount().setUsername(form.getUsername());
+		hacker.getUserAccount().setPassword(form.getPassword());
+
+		return hacker;
+
 	}
 
 }

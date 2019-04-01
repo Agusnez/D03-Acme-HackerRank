@@ -8,6 +8,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import repositories.AdministratorRepository;
 import domain.Administrator;
 
 @Component
@@ -38,4 +39,3 @@ public class StringToAdministratorConverter implements Converter<String, Adminis
 	}
 
 }
-

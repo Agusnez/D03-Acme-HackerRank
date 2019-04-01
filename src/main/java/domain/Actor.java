@@ -50,6 +50,7 @@ public abstract class Actor extends DomainEntity {
 		this.vat = vat;
 	}
 
+	@NotNull
 	public CreditCard getCreditCard() {
 		return this.creditCard;
 	}
