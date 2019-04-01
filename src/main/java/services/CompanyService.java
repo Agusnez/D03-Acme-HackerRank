@@ -165,4 +165,25 @@ public class CompanyService {
 
 	}
 
+	//reconstruct para editar company
+
+	public Company reconstruct(final Company company, final BindingResult binding) {
+
+		final Company result;
+
+		final Company companyBBDD = this.findOne(company.getId());
+
+		if (companyBBDD != null) {
+
+			company.setUserAccount(companyBBDD.getUserAccount());
+			company.setSpammer(companyBBDD.getSpammer());
+
+			this.validator.validate(company, binding);
+
+		}
+		result = company;
+		return result;
+
+	}
+
 }

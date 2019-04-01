@@ -52,8 +52,13 @@
 		<security:intercept-url pattern="/register/createCompany.do" access="isAnonymous()" /> 
 		<security:intercept-url pattern="/register/saveCompany.do" access="isAnonymous()" /> 
 		<security:intercept-url pattern="/register/createHacker.do" access="isAnonymous()" /> 
-		<security:intercept-url pattern="/register/saveHacker.do" access="isAnonymous()" /> 
+		<security:intercept-url pattern="/register/saveHacker.do" access="isAnonymous()" />
 		
+		<!-- Perfil de Usuario --> 
+		<security:intercept-url pattern="/profile/displayPrincipal.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/profile/edit.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/profile/editCompany.do" access="hasRole('COMPANY')" /> 
+		<security:intercept-url pattern="/profile/editHacker.do" access="hasRole('HACKER')" /> 
 		
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />

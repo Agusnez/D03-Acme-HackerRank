@@ -164,4 +164,25 @@ public class HackerService {
 
 	}
 
+	//Reconstruct para editar Hacker
+
+	public Hacker reconstruct(final Hacker hacker, final BindingResult binding) {
+
+		final Hacker result;
+
+		final Hacker hackerBBDD = this.findOne(hacker.getId());
+
+		if (hackerBBDD != null) {
+
+			hacker.setUserAccount(hackerBBDD.getUserAccount());
+			hacker.setSpammer(hackerBBDD.getSpammer());
+
+			this.validator.validate(hacker, binding);
+
+		}
+		result = hacker;
+		return result;
+
+	}
+
 }

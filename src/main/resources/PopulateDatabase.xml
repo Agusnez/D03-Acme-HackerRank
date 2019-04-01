@@ -57,6 +57,19 @@
 		<property name="isNotBanned" value="true" />
 	</bean>
 	
+	<bean id="userAccount4" class="security.UserAccount">
+		<property name="username" value="company1" />
+		<property name="password" value="df655f976f7c9d3263815bd981225cd9" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="COMPANY" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotBanned" value="true" />
+	</bean>
+	
 	<!-- Other domain beans come here -->	
 	
 	<!-- CreditCards -->
@@ -140,7 +153,36 @@
 		<property name="address" value="admin2 street" />
 		<property name="userAccount" ref="userAccount2" />
 		<property name="creditCard" ref="creditCard2" />
+	</bean>
 	
+	<!-- Hackers -->
+	
+	<bean id="Hacker1" class="domain.Hacker">
+		<property name="name" value="Hacker1" />
+		<property name="surnames" value="hacker1surname" />
+		<property name="vat" value="1.0" />
+		<property name="photo" value="http://www.dropbox.com/hacker1/" />
+		<property name="email" value="hacker1@mail.com" />
+		<property name="phone" value="+34 676925236" />
+		<property name="address" value="hacker1 street" />
+		<property name="userAccount" ref="userAccount3" />
+		<property name="creditCard" ref="creditCard3" />
+	
+	</bean>
+	
+	<!-- Companies -->
+	
+	<bean id="Company1" class="domain.Company">
+		<property name="name" value="Company1" />
+		<property name="surnames" value="company1surname" />
+		<property name="commercialName" value="commercialNameCompany1" />
+		<property name="vat" value="1.0" />
+		<property name="photo" value="http://www.dropbox.com/company1/" />
+		<property name="email" value="Company1@mail.com" />
+		<property name="phone" value="+34 676925236" />
+		<property name="address" value="Company1 street" />
+		<property name="userAccount" ref="userAccount4" />
+		<property name="creditCard" ref="creditCard6" />
 	
 	</bean>
 	
