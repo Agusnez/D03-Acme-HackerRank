@@ -14,6 +14,7 @@ import repositories.CompanyRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
+import security.UserAccountService;
 import domain.Actor;
 import domain.Company;
 
@@ -28,6 +29,9 @@ public class CompanyService {
 	// Suporting services
 	@Autowired
 	private ActorService		actorService;
+
+	@Autowired
+	private UserAccountService	userAccountService;
 
 
 	// Simple CRUD methods
