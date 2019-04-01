@@ -20,8 +20,5 @@
 
 <p><spring:message code="welcome.greeting.current.time" /> ${moment}</p> 
 
-<script type="text/javascript">
-	alert("I going to read Terms and Conditions in the footer. If I don't accept I won't continue using this website.");
-</script>
 
 
