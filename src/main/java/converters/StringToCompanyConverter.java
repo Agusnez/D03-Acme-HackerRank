@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
+import repositories.CompanyRepository;
 import domain.Company;
 
 @Component
@@ -15,7 +16,7 @@ import domain.Company;
 public class StringToCompanyConverter implements Converter<String, Company> {
 
 	@Autowired
-	private AdministratorRepository	companyRepository;
+	private CompanyRepository	companyRepository;
 
 
 	@Override
