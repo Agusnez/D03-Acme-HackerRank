@@ -30,19 +30,11 @@
 			</li>
 		</security:authorize>
 		
-		<security:authorize access="hasRole('CUSTOMER')">
-			<li><a class="fNiv"><spring:message	code="master.page.customer" /></a>
-				<ul>
-					<li class="arrow"></li>
-					<li><a href="customer/action-1.do"><spring:message code="master.page.customer.action.1" /></a></li>
-					<li><a href="customer/action-2.do"><spring:message code="master.page.customer.action.2" /></a></li>
-					<li><a href="data/customer/get.do"><spring:message code="master.page.customer.exportdata" /></a></li>				
-				</ul>
-			</li>
-		</security:authorize>
 		
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
+			<li><a href="register/createCompany.do"><spring:message code="master.page.company.signup" /></a></li>
+			<li><a href="register/createHacker.do"><spring:message code="master.page.hacker.signup" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">

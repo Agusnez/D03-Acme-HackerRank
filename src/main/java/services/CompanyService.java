@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.CompanyRepository;
 import security.Authority;
@@ -17,6 +19,7 @@ import security.UserAccount;
 import security.UserAccountService;
 import domain.Actor;
 import domain.Company;
+import forms.RegisterCompanyForm;
 
 @Service
 @Transactional
@@ -32,6 +35,9 @@ public class CompanyService {
 
 	@Autowired
 	private UserAccountService	userAccountService;
+
+	@Autowired
+	private Validator			validator;
 
 
 	// Simple CRUD methods
@@ -134,6 +140,29 @@ public class CompanyService {
 		result = this.companyRepository.findByUserAccountId(userAccount.getId());
 
 		return result;
+	}
+
+	//Recontruct para registrar Company
+	public Company reconstruct(final RegisterCompanyForm form, final BindingResult binding) {
+
+		this.validator.validate(form, binding);
+
+		final Company company = this.create();
+
+		company.setCommercialName(form.getCommercialName());
+		company.setName(form.getName());
+		company.setSurnames(form.getSurnames());
+		company.setVat(form.getVat());
+		company.setPhoto(form.getPhoto());
+		company.setEmail(form.getEmail());
+		company.setPhone(form.getPhone());
+		company.setAddress(form.getAddress());
+		company.setCreditCard(form.getCreditCard());
+		company.getUserAccount().setUsername(form.getUsername());
+		company.getUserAccount().setPassword(form.getPassword());
+
+		return company;
+
 	}
 
 }

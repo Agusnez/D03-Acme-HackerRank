@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import security.Credentials;
 import services.CompanyService;
+import services.ConfigurationService;
 import services.HackerService;
 import domain.Company;
 import domain.Hacker;
@@ -25,14 +26,14 @@ public class RegisterController extends AbstractController {
 	// Services
 
 	@Autowired
-	private CompanyService	companyService;
+	private CompanyService			companyService;
 
 	@Autowired
-	private HackerService	hackerService;
+	private HackerService			hackerService;
 
+	@Autowired
+	private ConfigurationService	configurationService;
 
-	//	@Autowired
-	//	private ConfigurationService	configurationService;
 
 	//Registrar Company
 	@RequestMapping(value = "/createCompany", method = RequestMethod.GET)
@@ -131,7 +132,7 @@ public class RegisterController extends AbstractController {
 	protected ModelAndView createEditModelAndViewHacker(final RegisterHackerForm hacker) {
 		ModelAndView result;
 
-		result = this.createEditModelAndViewCompany(hacker, null);
+		result = this.createEditModelAndViewHacker(hacker, null);
 
 		return result;
 	}
