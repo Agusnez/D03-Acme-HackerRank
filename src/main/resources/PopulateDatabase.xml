@@ -28,35 +28,117 @@
 				</bean>
 			</list>
 		</property>
+		<property name="isNotBanned" value="true" />
 	</bean>
 
 	<bean id="userAccount2" class="security.UserAccount">
-		<property name="username" value="customer" />
-		<property name="password" value="91ec1f9324753048c0096d036a694f86" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="CUSTOMER" />
-				</bean>
-			</list>
-		</property>
-	</bean>
-
-	<bean id="userAccount3" class="security.UserAccount">
-		<property name="username" value="super" />
-		<property name="password" value="1b3231655cebb7a1f783eddf27d254ca" />
+		<property name="username" value="admin2" />
+		<property name="password" value="c84258e9c39059a89ab77d846ddab909" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
 					<property name="authority" value="ADMIN" />
 				</bean>
+			</list>
+		</property>
+		<property name="isNotBanned" value="true" />
+	</bean>
+
+	<bean id="userAccount3" class="security.UserAccount">
+		<property name="username" value="hacker1" />
+		<property name="password" value="2ba2a8ac968a7a2b0a7baa7f2fef18d2" />
+		<property name="authorities">
+			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="CUSTOMER" />
+					<property name="authority" value="HACKER" />
 				</bean>
 			</list>
 		</property>
+		<property name="isNotBanned" value="true" />
 	</bean>
 	
 	<!-- Other domain beans come here -->	
+	
+	<!-- CreditCards -->
+	
+	<bean id="creditCard1" class="domain.CreditCard">
+		<property name="holderName" value="admin1"/>
+		<property name="make" value="VISA"/>
+		<property name="number" value="1111222233334444"/>
+		<property name="expMonth" value="12"/>
+		<property name="expYear" value="2020"/>
+		<property name="cvv" value="123"/>
+	</bean>
+	
+	<bean id="creditCard2" class="domain.CreditCard">
+		<property name="holderName" value="admin2"/>
+		<property name="make" value="VISA"/>
+		<property name="number" value="1111222233334444"/>
+		<property name="expMonth" value="12"/>
+		<property name="expYear" value="2020"/>
+		<property name="cvv" value="123"/>
+	</bean>
+	
+	<bean id="creditCard3" class="domain.CreditCard">
+		<property name="holderName" value="hacker1"/>
+		<property name="make" value="MCARD"/>
+		<property name="number" value="1111222233334444"/>
+		<property name="expMonth" value="12"/>
+		<property name="expYear" value="2020"/>
+		<property name="cvv" value="123"/>
+	</bean>
+	
+	<bean id="creditCard4" class="domain.CreditCard">
+		<property name="holderName" value="hacker2"/>
+		<property name="make" value="VISA"/>
+		<property name="number" value="1111222233334444"/>
+		<property name="expMonth" value="12"/>
+		<property name="expYear" value="2020"/>
+		<property name="cvv" value="123"/>
+	</bean>
+	
+	<bean id="creditCard5" class="domain.CreditCard">
+		<property name="holderName" value="hacker3"/>
+		<property name="make" value="MCARD"/>
+		<property name="number" value="1111222233334444"/>
+		<property name="expMonth" value="12"/>
+		<property name="expYear" value="2020"/>
+		<property name="cvv" value="123"/>
+	</bean>
+	
+	<bean id="creditCard6" class="domain.CreditCard">
+		<property name="holderName" value="company1"/>
+		<property name="make" value="VISA"/>
+		<property name="number" value="1111222233334444"/>
+		<property name="expMonth" value="12"/>
+		<property name="expYear" value="2020"/>
+		<property name="cvv" value="123"/>
+	</bean>
+	
+	<!-- Administrators -->
+	
+	<bean id="Administrator1" class="domain.Administrator">
+		<property name="name" value="Administrator1" />
+		<property name="surnames" value="admin1surname" />
+		<property name="vat" value="1.0" />
+		<property name="photo" value="http://www.dropbox.com/admin1/" />
+		<property name="email" value="adminitrator1@mail.com" />
+		<property name="phone" value="+34 676925236" />
+		<property name="address" value="admin1 street" />
+		<property name="userAccount" ref="userAccount1" />
+	
+	</bean>
+	
+	<bean id="Administrator2" class="domain.Administrator">
+		<property name="name" value="Administrator2" />
+		<property name="surnames" value="admin2surname" />
+		<property name="vat" value="1.1" />
+		<property name="photo" value="http://www.dropbox.com/admin2/" />
+		<property name="email" value="adminitrator2@mail.com" />
+		<property name="phone" value="+34 676925236" />
+		<property name="address" value="admin2 street" />
+		<property name="userAccount" ref="userAccount2" />
+	
+	</bean>
 	
 </beans>
