@@ -126,6 +126,7 @@
 		<property name="phone" value="+34 676925236" />
 		<property name="address" value="admin1 street" />
 		<property name="userAccount" ref="userAccount1" />
+		<property name="creditCard" ref="creditCard1" />
 	
 	</bean>
 	
@@ -138,6 +139,8 @@
 		<property name="phone" value="+34 676925236" />
 		<property name="address" value="admin2 street" />
 		<property name="userAccount" ref="userAccount2" />
+		<property name="creditCard" ref="creditCard2" />
+	
 	
 	</bean>
 	

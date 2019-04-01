@@ -23,7 +23,7 @@
 		<bean class="converters.StringToActorConverter"/>
 		
 		<bean class="converters.AdministratorToStringConverter"/>
-		<bean class="converters.StringToAdministartorConverter"/>
+		<bean class="converters.StringToAdministratorConverter"/>
 		
 		<bean class="converters.ApplicationToStringConverter"/>
 		<bean class="converters.StringToApplicationConverter"/>
