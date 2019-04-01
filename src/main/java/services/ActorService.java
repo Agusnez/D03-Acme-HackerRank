@@ -1,13 +1,9 @@
-package services;
-
-
 
 package services;
 
 import java.util.Collection;
 
 import org.apache.commons.lang.StringUtils;
-import org.hibernate.engine.config.spi.ConfigurationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,26 +28,21 @@ public class ActorService {
 	private ActorRepository			actorRepository;
 
 	//Supporting services --------------------------------------------------
-	
-	@Autowired
-	private ConfigurationService	configurationService;
-	
+
+	//	@Autowired
+	//	private ConfigurationService	configurationService;
+
 	@Autowired
 	private UserAccountService		userAccountService;
-	
+
 	@Autowired
 	private AdministratorService	administratorService;
-	
-	@Autowired
-	private CompanyService	companyService;
-	
-	@Autowired
-	private HackerService	hackerService;
-	
-	
-	
 
-	
+	@Autowired
+	private CompanyService			companyService;
+
+	@Autowired
+	private HackerService			hackerService;
 
 
 	//Simple CRUD methods --------------------------------------------------
@@ -226,7 +217,6 @@ public class ActorService {
 		final Authority authCompany = new Authority();
 		authCompany.setAuthority(Authority.COMPANY);
 
-
 		if (authorities.contains(authAdmin)) {
 			final Administrator administrator = this.administratorService.findOne(actor.getId());
 			final UserAccount userAccount = administrator.getUserAccount();
@@ -276,61 +266,58 @@ public class ActorService {
 		return result;
 	}
 
-	
-	
 	//ESTE MASTER DELETE HAY QUE MODIFICARLO PARA ESTE PROYECTO
-	
-	
-//	public void masterDelete(final int actorId) {
-//
-//		final Authority company = new Authority();
-//		company.setAuthority(Authority.COMPANY);
-//
-//		final Authority hacker = new Authority();
-//		hacker.setAuthority(Authority.HACKER);
-//
-//
-//		final Actor actor = this.actorRepository.findOne(actorId);
-//
-//		this.messageService.deleteAll(actorId);
-//
-//		this.boxService.deleteAll(actorId);
-//
-//		this.socialProfileService.deleteAll(actorId);
-//
-//		if (actor.getUserAccount().getAuthorities().contains(member)) {
-//
-//			this.requestService.deleteAll(actorId);
-//
-//			this.finderService.deleteFinderActor(actorId);
-//
-//			this.enrolmentService.deleteAllMember(actorId);
-//
-//			this.memberService.deleteRelantionshipBrotherhoodMember(actorId);
-//
-//		} else if (actor.getUserAccount().getAuthorities().contains(brotherhood)) {
-//
-//			this.enrolmentService.deleteAllBrotherhood(actorId);
-//
-//			this.areaService.deleteRelationshipAreaBrotherhood(actorId);
-//
-//			this.paradeService.deleteAll(actorId);
-//
-//			this.floatService.deleteAll(actorId);
-//
-//			this.historyService.deleteAll(actorId);
-//
-//		} else if (actor.getUserAccount().getAuthorities().contains(chapter))
-//
-//			this.proclaimService.deleteAll(actorId);
-//
-//		else if (actor.getUserAccount().getAuthorities().contains(sponsor))
-//
-//			this.sponsorshipService.deleteAll(actorId);
-//
-//		this.actorRepository.delete(actor);
-//
-//	}
+
+	//	public void masterDelete(final int actorId) {
+	//
+	//		final Authority company = new Authority();
+	//		company.setAuthority(Authority.COMPANY);
+	//
+	//		final Authority hacker = new Authority();
+	//		hacker.setAuthority(Authority.HACKER);
+	//
+	//
+	//		final Actor actor = this.actorRepository.findOne(actorId);
+	//
+	//		this.messageService.deleteAll(actorId);
+	//
+	//		this.boxService.deleteAll(actorId);
+	//
+	//		this.socialProfileService.deleteAll(actorId);
+	//
+	//		if (actor.getUserAccount().getAuthorities().contains(member)) {
+	//
+	//			this.requestService.deleteAll(actorId);
+	//
+	//			this.finderService.deleteFinderActor(actorId);
+	//
+	//			this.enrolmentService.deleteAllMember(actorId);
+	//
+	//			this.memberService.deleteRelantionshipBrotherhoodMember(actorId);
+	//
+	//		} else if (actor.getUserAccount().getAuthorities().contains(brotherhood)) {
+	//
+	//			this.enrolmentService.deleteAllBrotherhood(actorId);
+	//
+	//			this.areaService.deleteRelationshipAreaBrotherhood(actorId);
+	//
+	//			this.paradeService.deleteAll(actorId);
+	//
+	//			this.floatService.deleteAll(actorId);
+	//
+	//			this.historyService.deleteAll(actorId);
+	//
+	//		} else if (actor.getUserAccount().getAuthorities().contains(chapter))
+	//
+	//			this.proclaimService.deleteAll(actorId);
+	//
+	//		else if (actor.getUserAccount().getAuthorities().contains(sponsor))
+	//
+	//			this.sponsorshipService.deleteAll(actorId);
+	//
+	//		this.actorRepository.delete(actor);
+	//
+	//	}
 
 	public void flush() {
 		this.actorRepository.flush();
