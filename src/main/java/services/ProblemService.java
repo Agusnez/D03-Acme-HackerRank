@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
 import repositories.ProblemRepository;
@@ -121,6 +122,32 @@ public class ProblemService {
 		final Collection<Problem> problems = this.problemRepository.findProblemsByPositionId(positionId);
 
 		return problems;
+	}
+
+	public Problem reconstruct(final Problem problem, final BindingResult binding) {
+
+		Problem result = problem;
+		final Problem problemNew = this.create();
+
+		if (problem.getId() == 0 || problem == null) {
+
+			problem.setCompany(problemNew.getCompany());
+
+			this.validator.validate(problem, binding);
+
+			result = problem;
+		} else {
+
+			final Problem problemBBDD = this.findOne(problem.getId());
+
+			problem.setCompany(problemBBDD.getCompany());
+
+			this.validator.validate(problem, binding);
+
+		}
+
+		return result;
+
 	}
 
 	public Boolean problemCompanySecurity(final int problemId) {
