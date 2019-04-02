@@ -8,6 +8,8 @@ import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.AdministratorRepository;
 import security.Authority;
@@ -16,6 +18,7 @@ import security.UserAccount;
 import security.UserAccountService;
 import domain.Actor;
 import domain.Administrator;
+import forms.RegisterAdministratorForm;
 
 @Service
 @Transactional
@@ -32,6 +35,9 @@ public class AdministratorService {
 
 	@Autowired
 	private UserAccountService		userAccountService;
+
+	@Autowired
+	private Validator				validator;
 
 
 	// Simple CRUD methods -----------------------
@@ -110,12 +116,47 @@ public class AdministratorService {
 		return result;
 	}
 
-	//	public Administrator findAdministrator() {
-	//		Administrator admin;
-	//		admin = this.administratorRepository.findAll().get(0);
-	//		Assert.notNull(admin);
-	//		return admin;
-	//	}
+	public Administrator reconstruct(final RegisterAdministratorForm form, final BindingResult binding) {
+
+		final Administrator admin = this.create();
+
+		this.validator.validate(form, binding);
+
+		admin.setId(form.getId());
+		admin.setVersion(form.getVersion());
+		admin.setName(form.getName());
+		admin.setSurnames(form.getSurnames());
+		admin.setPhoto(form.getPhoto());
+		admin.setEmail(form.getEmail());
+		admin.setPhone(form.getPhone());
+		admin.setAddress(form.getAddress());
+		admin.setSpammer(null);
+		admin.getUserAccount().setUsername(form.getUsername());
+		admin.getUserAccount().setPassword(form.getPassword());
+
+		return admin;
+
+	}
+
+	public Administrator reconstruct(final Administrator admin, final BindingResult binding) {
+
+		final Administrator result;
+
+		final Administrator adminBBDD = this.findOne(admin.getId());
+
+		if (adminBBDD != null) {
+
+			admin.setUserAccount(adminBBDD.getUserAccount());
+			admin.setSpammer(adminBBDD.getSpammer());
+
+			this.validator.validate(admin, binding);
+
+		}
+		result = admin;
+
+		return result;
+
+	}
 
 	// Other business methods -----------------------
 
