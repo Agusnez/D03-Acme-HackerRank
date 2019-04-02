@@ -13,11 +13,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import security.Authority;
+import services.ActorService;
 import services.CompanyService;
 import services.ConfigurationService;
 import services.PositionService;
 import services.ProblemService;
 import controllers.AbstractController;
+import domain.Actor;
 import domain.Company;
 import domain.Position;
 import domain.Problem;
@@ -34,6 +37,9 @@ public class ProblemCompanyController extends AbstractController {
 
 	@Autowired
 	private PositionService			positionService;
+
+	@Autowired
+	private ActorService			actorService;
 
 	@Autowired
 	private ConfigurationService	configurationService;
@@ -61,6 +67,25 @@ public class ProblemCompanyController extends AbstractController {
 		result.addObject("language", LocaleContextHolder.getLocale().getLanguage());
 		result.addObject("autoridad", "company");
 
+		return result;
+
+	}
+	//Create-----------------------------------------------------------------------------------------
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public ModelAndView create() {
+		final ModelAndView result;
+		final String banner = this.configurationService.findConfiguration().getBanner();
+
+		final Actor actor = this.actorService.findByPrincipal();
+		final Authority authority = new Authority();
+		authority.setAuthority("COMPANY");
+		if (actor.getUserAccount().getAuthorities().contains(authority)) {
+			final Problem problem = this.problemService.create();
+			result = this.createEditModelAndView(problem, null);
+		} else {
+			result = new ModelAndView("redirect:/welcome/index.do");
+			result.addObject("banner", banner);
+		}
 		return result;
 
 	}
@@ -92,29 +117,19 @@ public class ProblemCompanyController extends AbstractController {
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@ModelAttribute(value = "problem") Problem problem, final BindingResult binding) {
 		ModelAndView result;
-		Boolean security;
 
-		final String banner = this.configurationService.findConfiguration().getBanner();
-		security = this.problemService.problemCompanySecurity(problem.getId());
+		problem = this.problemService.reconstruct(problem, binding);
 
-		if (problem.getFinalMode() == true || security == false) {
-			result = new ModelAndView("redirect:/welcome/index.do");
-			result.addObject("banner", banner);
-		} else {
+		if (binding.hasErrors())
+			result = this.createEditModelAndView(problem, null);
+		else
+			try {
+				this.problemService.save(problem);
+				result = new ModelAndView("redirect:list.do");
+			} catch (final Throwable oops) {
+				result = this.createEditModelAndView(problem, "problem.commit.error");
 
-			problem = this.problemService.reconstruct(problem, binding);
-
-			if (binding.hasErrors())
-				result = this.createEditModelAndView(problem, null);
-			else
-				try {
-					this.problemService.save(problem);
-					result = new ModelAndView("redirect:list.do");
-				} catch (final Throwable oops) {
-					result = this.createEditModelAndView(problem, "problem.commit.error");
-
-				}
-		}
+			}
 
 		return result;
 	}

@@ -25,7 +25,10 @@
 
 <acme:display code="problem.position" property="${problem.position.title}" />
 
-<acme:button name="edit" code="problem.edit" onclick="javascript: relativeRedir('problem/company/edit.do?problemId=${problem.id }');" />
+
+<jstl:if test="${!problem.finalMode }">
+	<acme:button name="edit" code="problem.edit" onclick="javascript: relativeRedir('problem/company/edit.do?problemId=${problem.id }');" />
+</jstl:if>
 
 <acme:button name="back" code="problem.back" onclick="javascript: relativeRedir('problem/company/list.do');" />
 

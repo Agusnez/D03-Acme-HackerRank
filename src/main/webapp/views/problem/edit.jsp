@@ -10,7 +10,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="problem/company/edit.do" modelAttribute="parade">
+<form:form action="problem/company/edit.do" modelAttribute="problem">
 	
 	
 	<form:hidden path="id" />
@@ -21,20 +21,18 @@
 	
 	<acme:textbox path="statement" code="problem.statement" obligatory="true"/>
 	
-	<acme:textbox path="hint" code="problem.hint" obligatory="true"/>
+	<acme:textbox path="hint" code="problem.hint" obligatory="false"/>
 	
 	<acme:textbox path="attachments" code="problem.attachments" obligatory="true"/>
 	  	
   	<acme:choose path="finalMode" code="problem.finalMode" value1="true" value2="false" label1="Final" label2="No Final" />
 	
-	<acme:choose path="position" code="problem.position" value1="true" value2="false" label1="Final" label2="No Final" />
-	
-	
-	<form:label path="position">
+	<form:label path="position.title">
 		<spring:message code="problem.position" />:
 	</form:label>
 	<form:select path="position" >	
-		<form:options items="${positions}" itemValue="id" itemLabel="position" />
+		<form:option value="" label="--- Select ---"/>
+		<form:options items="${positions}" />
 	</form:select>
 	<form:errors cssClass="error" path="position" />
 	<br />
@@ -42,7 +40,7 @@
 	
 	<acme:submit name="save" code="problem.save" />	
 
-	<acme:cancel code="parade.cancel" url="problem/company/list.do" />
+	<acme:cancel code="problem.cancel" url="problem/company/list.do" />
 	
 	<jstl:if test="${problem.id != 0}">
 		<acme:button name="delete" code="problem.delete" onclick="javascript: relativeRedir('problem/company/delete.do?problemId=${problem.id }');" />
