@@ -31,6 +31,9 @@ public class PositionService {
 	@Autowired
 	private CompanyService		companyService;
 
+	@Autowired
+	private ProblemService		problemService;
+
 
 	//Simple CRUD methods --------------------------------------------------
 
@@ -68,15 +71,34 @@ public class PositionService {
 
 	}
 
-	//	public Position save(final Position position) {
-	//
-	//		Assert.notNull(position);
-	//		
-	//		if(position.getFinalMode()){
-	//			
-	//		}
-	//
-	//	}
+	public Position save(final Position position) {
+
+		Assert.notNull(position);
+		Position result;
+
+		if (position.getFinalMode())
+			//COMPROBAR QUE TENGA AL MENOS 2 PROBLEMS ASIGNADOS, A LA ESPERA METODO SANTI
+			if (position.getId() != 0) {
+				final Position positionBBDD = this.findOne(position.getId());
+				Assert.isTrue(!positionBBDD.getFinalMode());
+			}
+
+		result = this.positionRepository.save(position);
+		return result;
+
+	}
+
+	public void delete(final Position position) {
+
+		Assert.notNull(position);
+		Assert.isTrue(position.getId() != 0);
+		Assert.isTrue(!position.getFinalMode());
+
+		//COMPROBAR QUE TENGA AL MENOS 2 PROBLEMS ASIGNADOS, A LA ESPERA METODO SANTI
+
+		this.delete(position);
+
+	}
 
 	//Other bussines methods--------------------------------
 

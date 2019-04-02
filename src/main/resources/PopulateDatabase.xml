@@ -220,6 +220,21 @@
 	<property name="position" ref="Position1" />
 	</bean>
 	
+	<bean id="Problem2" class="domain.Problem">
+	<property name="title" value="problem2" />
+	<property name="statement" value="statement problem 2" />
+	<property name="hint" value="Consult 3mcSchools" />
+	<property name="attachments">
+			<list>
+				<value>http://www.dropbox.com/problem 3/</value>
+				<value>http://www.stackOverFlow.com/</value>
+			</list>
+		</property>
+	<property name="finalMode" value="true" />
+	<property name="company" ref="Company1" />
+	<property name="position" ref="Position1" />
+	</bean>
+	
 	<!-- Configuration -->
 	<bean id="configuration" class="domain.Configuration">
 		<property name="spamWords">
