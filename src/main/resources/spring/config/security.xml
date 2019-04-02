@@ -48,6 +48,9 @@
 		<security:intercept-url pattern="/termsAndConditions/show.do" access="permitAll" /> 
 		
 		
+		<!-- Actor no autenticado -->
+		<security:intercept-url pattern="/position/display.do" access="permitAll" />
+		
 		<!-- Registro -->
 		<security:intercept-url pattern="/register/createCompany.do" access="isAnonymous()" /> 
 		<security:intercept-url pattern="/register/saveCompany.do" access="isAnonymous()" /> 
@@ -62,6 +65,7 @@
 		
 		<!-- Company: Position -->
 		<security:intercept-url pattern="/position/company/list.do" access="hasRole('COMPANY')" />
+		<security:intercept-url pattern="/position/company/create.do" access="hasRole('COMPANY')" />
 		<security:intercept-url pattern="/position/company/edit.do" access="hasRole('COMPANY')" />
 		<security:intercept-url pattern="/position/company/display.do" access="hasRole('COMPANY')" />
 		

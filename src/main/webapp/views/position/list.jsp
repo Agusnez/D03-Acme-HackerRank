@@ -34,12 +34,14 @@
 	<security:authorize access="hasRole('COMPANY')">
 		<acme:column property="finalMode" titleKey="position.finalMode" value="${row.finalMode }" />
 	</security:authorize> 
+	
+	<acme:url href="position/display.do?positionId=${row.id }" code="position.display"/>
 
 </display:table>
 
 	<security:authorize access="hasRole('COMPANY')">
-	<a href="postion/company/create.do"><spring:message code="position.create"/></a>
+	<a href="position/company/create.do"><spring:message code="position.create"/></a>
 	</security:authorize>
 	
-	<acme:button name="back" code="parade.back" onclick="javascript: relativeRedir('welcome/index.do');" />
+	<acme:button name="back" code="position.back" onclick="javascript: relativeRedir('welcome/index.do');" />
 	
