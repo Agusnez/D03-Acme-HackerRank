@@ -15,9 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.CompanyService;
 import services.ConfigurationService;
+import services.PositionService;
 import services.ProblemService;
 import controllers.AbstractController;
 import domain.Company;
+import domain.Position;
 import domain.Problem;
 
 @Controller
@@ -29,6 +31,9 @@ public class ProblemCompanyController extends AbstractController {
 
 	@Autowired
 	private CompanyService			companyService;
+
+	@Autowired
+	private PositionService			positionService;
 
 	@Autowired
 	private ConfigurationService	configurationService;
@@ -164,14 +169,14 @@ public class ProblemCompanyController extends AbstractController {
 		final ModelAndView result;
 
 		final String banner = this.configurationService.findConfiguration().getBanner();
+		final Collection<Position> positions = this.positionService.findPositionsByCompanyId(this.companyService.findByPrincipal().getId());
 
 		result = new ModelAndView("problem/edit");
 		result.addObject("problem", problem);
 		result.addObject("messageError", messageCode);
 		result.addObject("banner", banner);
 		result.addObject("language", LocaleContextHolder.getLocale().getLanguage());
-
+		result.addObject("positions", positions);
 		return result;
 	}
-
 }

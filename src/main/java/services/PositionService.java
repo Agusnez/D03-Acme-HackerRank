@@ -102,6 +102,12 @@ public class PositionService {
 
 	//Other bussines methods--------------------------------
 
+	public Collection<Position> findPositionsByCompanyId(final int companyId) {
+		final Collection<Position> positions = this.positionRepository.findPositionsByCompanyId(companyId);
+
+		return positions;
+	}
+
 	private String generateTicker() {
 
 		final String companyName = this.companyService.findByPrincipal().getCommercialName();
@@ -124,7 +130,7 @@ public class PositionService {
 
 		final String ticker = firstLetters + "-" + randomAlphaNumeric;
 
-		final int positionSameTicker = this.positionRepository.countParadeWithTicker(ticker);
+		final int positionSameTicker = this.positionRepository.countPositionWithTicker(ticker);
 
 		//nos aseguramos que que sea �nico
 		while (positionSameTicker > 0)
