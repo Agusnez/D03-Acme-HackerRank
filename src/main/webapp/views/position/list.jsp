@@ -15,13 +15,13 @@
 	
 	<acme:column property="ticker" titleKey="position.ticker" value= "${row.ticker}: "/>
 	
-	<acme:column property="company" titleKey="position.company" value= "${row.company}: "/>
+	<acme:column property="company.commercialName" titleKey="position.company" value= "${row.company.commercialName}: "/>
 	
 	<acme:column property="title" titleKey="position.title" value= "${row.title} "/>
 	
 	<acme:column property="description" titleKey="position.description" value="${row.description }" />
 	
-	<acme:dateFormat titleKey="deadline" value="${row.deadline }" pattern="yyyy/MM/dd" />
+	<acme:dateFormat titleKey="position.deadline" value="${row.deadline }" pattern="yyyy/MM/dd" />
 	
 	<acme:column property="profile" titleKey="position.profile" value= "${row.profile}: "/>
 	
@@ -43,17 +43,3 @@
 	
 	<acme:button name="back" code="parade.back" onclick="javascript: relativeRedir('welcome/index.do');" />
 	
-	
-<script type="text/javascript">
-	var trTags = document.getElementsByTagName("tr");
-	for (var i = 1; i < trTags.length; i++) {
-	  var tdStatus = trTags[i].children[5];
-	  if (tdStatus.innerText == "REJECTED") {
-		  trTags[i].style.backgroundColor = "red";
-	  } else if (tdStatus.innerText == "ACCEPTED") {
-		  trTags[i].style.backgroundColor = "green";
-	  } else{
-		  trTags[i].style.backgroundColor = "grey";
-	  }
-	}
-</script>
