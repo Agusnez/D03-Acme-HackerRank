@@ -6,8 +6,11 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.CompanyService;
@@ -55,6 +58,111 @@ public class ProblemCompanyController extends AbstractController {
 
 		return result;
 
+	}
+	//Editar-------------------------------------------------------------------------------
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView edit(@RequestParam final int problemId) {
+		ModelAndView result;
+		Boolean security;
+
+		final Company comp;
+		comp = this.companyService.findByPrincipal();
+		final Problem problemFind = this.problemService.findOne(problemId);
+		final String banner = this.configurationService.findConfiguration().getBanner();
+
+		if (problemFind == null) {
+			result = new ModelAndView("misc/notExist");
+			result.addObject("banner", banner);
+		} else if (problemFind.getFinalMode() == true) {
+			result = new ModelAndView("redirect:/welcome/index.do");
+			result.addObject("banner", banner);
+		} else {
+			security = this.problemService.problemCompanySecurity(problemId);
+
+			if (security)
+				result = this.createEditModelAndView(problemFind, null);
+			else
+				result = new ModelAndView("redirect:/welcome/index.do");
+		}
+		return result;
+	}
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
+	public ModelAndView save(@ModelAttribute(value = "problem") Problem problem, final BindingResult binding) {
+		ModelAndView result;
+
+		final Company comp;
+		comp = this.companyService.findByPrincipal();
+
+		final String banner = this.configurationService.findConfiguration().getBanner();
+
+		if (problem.getFinalMode() == true) {
+			result = new ModelAndView("redirect:/welcome/index.do");
+			result.addObject("banner", banner);
+		} else {
+
+			problem = this.problemService.reconstruct(problem, binding);
+
+			if (binding.hasErrors())
+				result = this.createEditModelAndView(problem, null);
+			else
+				try {
+					this.problemService.save(problem);
+					result = new ModelAndView("redirect:list.do");
+				} catch (final Throwable oops) {
+					result = this.createEditModelAndView(problem, "problem.commit.error");
+
+				}
+		}
+
+		return result;
+	}
+
+	//Delete--------------------------------------------------------------------------------
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
+	public ModelAndView delete(Problem problem, final BindingResult binding) {
+		ModelAndView result;
+
+		problem = this.problemService.findOne(problem.getId());
+		final Company company = this.companyService.findByPrincipal();
+
+		if (problem.getCompany().getId() == company.getId() && problem.getFinalMode() == false)
+			try {
+				this.problemService.delete(problem);
+				result = new ModelAndView("redirect:list.do");
+			} catch (final Throwable oops) {
+				result = this.createEditModelAndView(problem, "problem.commit.error");
+			}
+		else
+			result = new ModelAndView("redirect:/welcome/index.do");
+		return result;
+	}
+
+	//Display------------------------------------------------------------------------------
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam final int problemId) {
+		ModelAndView result;
+		final Problem problem;
+		Boolean security;
+
+		final Company comp;
+		comp = this.companyService.findByPrincipal();
+		final Problem problemFind = this.problemService.findOne(problemId);
+		final String banner = this.configurationService.findConfiguration().getBanner();
+
+		if (problemFind == null) {
+			result = new ModelAndView("misc/notExist");
+			result.addObject("banner", banner);
+		} else {
+			security = this.problemService.problemCompanySecurity(problemId);
+
+			if (security) {
+				result = new ModelAndView("problem/display");
+				result.addObject("problem", problemFind);
+				result.addObject("banner", banner);
+			} else
+				result = new ModelAndView("redirect:/welcome/index.do");
+		}
+		return result;
 	}
 
 }

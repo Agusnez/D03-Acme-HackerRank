@@ -14,6 +14,7 @@ import org.springframework.validation.Validator;
 import repositories.ProblemRepository;
 import security.Authority;
 import domain.Actor;
+import domain.Company;
 import domain.Problem;
 
 @Service
@@ -114,6 +115,26 @@ public class ProblemService {
 		final Collection<Problem> problems = this.problemRepository.findProblemsByCompanyId(companyId);
 
 		return problems;
+	}
+
+	public Collection<Problem> findProblemsByPositionId(final int positionId) {
+		final Collection<Problem> problems = this.problemRepository.findProblemsByPositionId(positionId);
+
+		return problems;
+	}
+
+	public Boolean problemCompanySecurity(final int problemId) {
+		Boolean res = false;
+		final Problem problem = this.findOne(problemId);
+
+		final Company owner = problem.getCompany();
+
+		final Company login = this.companyService.findByPrincipal();
+
+		if (login.equals(owner))
+			res = true;
+
+		return res;
 	}
 
 	public void flush() {
