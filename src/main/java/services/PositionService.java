@@ -14,6 +14,7 @@ import repositories.PositionRepository;
 import security.Authority;
 import domain.Actor;
 import domain.Position;
+import domain.Problem;
 
 @Service
 @Transactional
@@ -76,25 +77,29 @@ public class PositionService {
 		Assert.notNull(position);
 		Position result;
 
-		if (position.getFinalMode())
-			//COMPROBAR QUE TENGA AL MENOS 2 PROBLEMS ASIGNADOS, A LA ESPERA METODO SANTI
+		if (position.getFinalMode()) {
+			final Collection<Problem> problemsByPosition = this.problemService.findProblemsByPositionId(position.getId());
+			Assert.isTrue(problemsByPosition.size() >= 2);
 			if (position.getId() != 0) {
 				final Position positionBBDD = this.findOne(position.getId());
 				Assert.isTrue(!positionBBDD.getFinalMode());
 			}
-
+		}
 		result = this.positionRepository.save(position);
 		return result;
 
 	}
-
 	public void delete(final Position position) {
 
 		Assert.notNull(position);
 		Assert.isTrue(position.getId() != 0);
 		Assert.isTrue(!position.getFinalMode());
 
-		//COMPROBAR QUE TENGA AL MENOS 2 PROBLEMS ASIGNADOS, A LA ESPERA METODO SANTI
+		//Eliminamos dependencias con problems
+		final Collection<Problem> problemsByPosition = this.problemService.findProblemsByPositionId(position.getId());
+		if (problemsByPosition.size() > 0)
+			for (final Problem p : problemsByPosition)
+				p.setPosition(null);
 
 		this.delete(position);
 
@@ -132,6 +137,13 @@ public class PositionService {
 
 		return ticker;
 
+	}
+
+	public Collection<Position> findPositionsByCompanyId(final int companyId) {
+
+		final Collection<Position> positions = this.positionRepository.findPositionsByCompanyId(companyId);
+
+		return positions;
 	}
 
 }
