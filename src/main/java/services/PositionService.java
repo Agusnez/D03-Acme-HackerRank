@@ -1,7 +1,7 @@
 
 package services;
 
-import java.util.Date;
+import java.util.Collection;
 import java.util.Random;
 
 import javax.transaction.Transactional;
@@ -45,12 +45,42 @@ public class PositionService {
 		final Position result = new Position();
 
 		result.setCompany(this.companyService.findByPrincipal());
+		result.setTicker(this.generateTicker());
 
 		return result;
 
 	}
 
-	private String generateTicker(final Date moment) {
+	public Collection<Position> findAll() {
+
+		final Collection<Position> positions = this.positionRepository.findAll();
+
+		Assert.notNull(positions);
+
+		return positions;
+	}
+
+	public Position findOne(final int positionId) {
+
+		final Position position = this.positionRepository.findOne(positionId);
+
+		return position;
+
+	}
+
+	//	public Position save(final Position position) {
+	//
+	//		Assert.notNull(position);
+	//		
+	//		if(position.getFinalMode()){
+	//			
+	//		}
+	//
+	//	}
+
+	//Other bussines methods--------------------------------
+
+	private String generateTicker() {
 
 		final String companyName = this.companyService.findByPrincipal().getCommercialName();
 
@@ -76,11 +106,10 @@ public class PositionService {
 
 		//nos aseguramos que que sea �nico
 		while (positionSameTicker > 0)
-			this.generateTicker(moment);
+			this.generateTicker();
 
 		return ticker;
 
 	}
-	//Other bussines methods--------------------------------
 
 }

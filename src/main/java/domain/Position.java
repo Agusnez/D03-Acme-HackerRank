@@ -1,3 +1,4 @@
+
 package domain;
 
 import java.util.Date;
@@ -10,116 +11,114 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
 public class Position extends DomainEntity {
-	
-	private String ticker;
-	private String title;
-	private String description;
-	private Date deadline;
-	private String profile;
-	private String skills;
-	private String technologies;
-	private Double offeredSalary;
-	private Boolean finalMode;
-	
-	private Company company;
-	
-	
+
+	private String	ticker;
+	private String	title;
+	private String	description;
+	private Date	deadline;
+	private String	profile;
+	private String	skills;
+	private String	technologies;
+	private Double	offeredSalary;
+	private Boolean	finalMode;
+
+	private Company	company;
+
+
 	public String getTicker() {
-		return ticker;
+		return this.ticker;
 	}
-	
-	public void setTicker(String ticker) {
+
+	public void setTicker(final String ticker) {
 		this.ticker = ticker;
 	}
-	
+
 	@NotBlank
 	public String getTitle() {
-		return title;
+		return this.title;
 	}
-	
-	public void setTitle(String title) {
+
+	public void setTitle(final String title) {
 		this.title = title;
 	}
-	
+
 	@NotBlank
 	public String getDescription() {
-		return description;
+		return this.description;
 	}
-	
-	public void setDescription(String description) {
+
+	public void setDescription(final String description) {
 		this.description = description;
 	}
-	
+
 	@NotNull
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	public Date getDeadline() {
-		return deadline;
+		return this.deadline;
 	}
-	
-	public void setDeadline(Date deadline) {
+
+	public void setDeadline(final Date deadline) {
 		this.deadline = deadline;
 	}
-	
+
 	@NotBlank
 	public String getProfile() {
-		return profile;
+		return this.profile;
 	}
-	
-	public void setProfile(String profile) {
+
+	public void setProfile(final String profile) {
 		this.profile = profile;
 	}
-	
+
 	@NotBlank
 	public String getSkills() {
-		return skills;
+		return this.skills;
 	}
-	
-	public void setSkills(String skills) {
+
+	public void setSkills(final String skills) {
 		this.skills = skills;
 	}
-	
+
 	@NotBlank
 	public String getTechnologies() {
-		return technologies;
+		return this.technologies;
 	}
-	
-	public void setTechnologies(String technologies) {
+
+	public void setTechnologies(final String technologies) {
 		this.technologies = technologies;
 	}
-	
+
 	@NotNull
 	public Double getOfferedSalary() {
-		return offeredSalary;
+		return this.offeredSalary;
 	}
-	
-	public void setOfferedSalary(Double offeredSalary) {
+
+	public void setOfferedSalary(final Double offeredSalary) {
 		this.offeredSalary = offeredSalary;
 	}
-	
+
 	@NotNull
 	public Boolean getFinalMode() {
-		return finalMode;
+		return this.finalMode;
 	}
-	
-	public void setFinalMode(Boolean finalMode) {
+
+	public void setFinalMode(final Boolean finalMode) {
 		this.finalMode = finalMode;
 	}
 
 	@ManyToOne(optional = false)
 	@Valid
 	public Company getCompany() {
-		return company;
+		return this.company;
 	}
 
-	public void setCompany(Company company) {
+	public void setCompany(final Company company) {
 		this.company = company;
 	}
-	
-	
-	
-	
 
 }

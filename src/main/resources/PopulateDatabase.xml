@@ -175,7 +175,7 @@
 	<bean id="Company1" class="domain.Company">
 		<property name="name" value="Company1" />
 		<property name="surnames" value="company1surname" />
-		<property name="commercialName" value="commercialNameCompany1" />
+		<property name="commercialName" value="firstCompanyCommercialName" />
 		<property name="vat" value="1.0" />
 		<property name="photo" value="http://www.dropbox.com/company1/" />
 		<property name="email" value="Company1@mail.com" />
@@ -184,6 +184,40 @@
 		<property name="userAccount" ref="userAccount4" />
 		<property name="creditCard" ref="creditCard6" />
 	
+	</bean>
+	
+	<!-- Positions -->
+	
+	<bean id="Position1" class="domain.Position">
+	<property name="ticker" value="firs-1234" />
+	<property name="title" value="position1" />
+	<property name="description" value="description position 1" />
+	<property name="deadline" value="2019/08/12" />
+	<property name="profile" value="Java developer" />
+	<property name="skills" value="javascript,django" />
+	<property name="technologies" value="PC" />
+	<property name="offeredSalary" value="500.0" />
+	<property name="finalMode" value="true" />
+	<property name="company" ref="Company1" />
+	</bean>
+	
+	<!-- Problems -->
+	
+	<bean id="Problem1" class="domain.Problem">
+	<property name="title" value="problem1" />
+	<property name="statement" value="statement problem 1" />
+	<property name="hint" value="Consult stackOverFlow" />
+	<property name="attachments">
+			<list>
+				<value>http://www.dropbox.com/problem 1/</value>
+				<value>http://www.stackOverFlow.com/</value>
+				<value>http://www.programadoresenapuros.com/</value>
+				<value>http://www.wuolah.com/</value>
+			</list>
+		</property>
+	<property name="finalMode" value="true" />
+	<property name="company" ref="Company1" />
+	<property name="position" ref="Position1" />
 	</bean>
 	
 	<!-- Configuration -->
