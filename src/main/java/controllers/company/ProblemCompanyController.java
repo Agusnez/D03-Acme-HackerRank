@@ -65,8 +65,6 @@ public class ProblemCompanyController extends AbstractController {
 		ModelAndView result;
 		Boolean security;
 
-		final Company comp;
-		comp = this.companyService.findByPrincipal();
 		final Problem problemFind = this.problemService.findOne(problemId);
 		final String banner = this.configurationService.findConfiguration().getBanner();
 
@@ -89,13 +87,12 @@ public class ProblemCompanyController extends AbstractController {
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@ModelAttribute(value = "problem") Problem problem, final BindingResult binding) {
 		ModelAndView result;
-
-		final Company comp;
-		comp = this.companyService.findByPrincipal();
+		Boolean security;
 
 		final String banner = this.configurationService.findConfiguration().getBanner();
+		security = this.problemService.problemCompanySecurity(problem.getId());
 
-		if (problem.getFinalMode() == true) {
+		if (problem.getFinalMode() == true || security == false) {
 			result = new ModelAndView("redirect:/welcome/index.do");
 			result.addObject("banner", banner);
 		} else {
@@ -141,11 +138,8 @@ public class ProblemCompanyController extends AbstractController {
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
 	public ModelAndView display(@RequestParam final int problemId) {
 		ModelAndView result;
-		final Problem problem;
 		Boolean security;
 
-		final Company comp;
-		comp = this.companyService.findByPrincipal();
 		final Problem problemFind = this.problemService.findOne(problemId);
 		final String banner = this.configurationService.findConfiguration().getBanner();
 
@@ -162,6 +156,21 @@ public class ProblemCompanyController extends AbstractController {
 			} else
 				result = new ModelAndView("redirect:/welcome/index.do");
 		}
+		return result;
+	}
+
+	//Ancillary methods---------------------------------------------------------------------------------
+	protected ModelAndView createEditModelAndView(final Problem problem, final String messageCode) {
+		final ModelAndView result;
+
+		final String banner = this.configurationService.findConfiguration().getBanner();
+
+		result = new ModelAndView("problem/edit");
+		result.addObject("problem", problem);
+		result.addObject("messageError", messageCode);
+		result.addObject("banner", banner);
+		result.addObject("language", LocaleContextHolder.getLocale().getLanguage());
+
 		return result;
 	}
 
