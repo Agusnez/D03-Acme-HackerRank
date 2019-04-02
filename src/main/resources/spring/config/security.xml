@@ -60,6 +60,11 @@
 		<security:intercept-url pattern="/profile/editCompany.do" access="hasRole('COMPANY')" /> 
 		<security:intercept-url pattern="/profile/editHacker.do" access="hasRole('HACKER')" /> 
 		
+		<!-- Company: Position -->
+		<security:intercept-url pattern="/position/company/list.do" access="hasRole('COMPANY')" />
+		<security:intercept-url pattern="/position/company/edit.do" access="hasRole('COMPANY')" />
+		<security:intercept-url pattern="/position/company/display.do" access="hasRole('COMPANY')" />
+		
 		<!-- Company: Problem -->
 		<security:intercept-url pattern="/problem/company/list.do" access="hasRole('COMPANY')" />
 		<security:intercept-url pattern="/problem/company/edit.do" access="hasRole('COMPANY')" />
