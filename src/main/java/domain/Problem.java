@@ -20,7 +20,7 @@ public class Problem extends DomainEntity {
 	private String				title;
 	private String				statement;
 	private String				hint;
-	private Collection<String>	atachments;
+	private Collection<String>	attachments;
 	private Boolean				finalMode;
 
 	private Company				company;
@@ -54,12 +54,12 @@ public class Problem extends DomainEntity {
 	}
 
 	@ElementCollection
-	public Collection<String> getAtachments() {
-		return this.atachments;
+	public Collection<String> getAttachments() {
+		return this.attachments;
 	}
 
-	public void setAtachments(final Collection<String> atachments) {
-		this.atachments = atachments;
+	public void setAttachments(final Collection<String> attachments) {
+		this.attachments = attachments;
 	}
 
 	@NotNull
