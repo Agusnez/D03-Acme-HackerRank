@@ -56,6 +56,8 @@ public class ProblemService {
 		result.setCompany(this.companyService.findByPrincipal());
 
 		result.setFinalMode(false);
+		//prueba
+		result.setPosition(null);
 
 		return result;
 
@@ -90,8 +92,9 @@ public class ProblemService {
 
 		Problem result = problem;
 
-		if (problem.getFinalMode() == false || problem.getId() == 0)
-			result = this.save(problem);
+		Assert.isTrue(problem.getFinalMode() == false || problem.getId() == 0);
+
+		result = this.problemRepository.save(problem);
 
 		return result;
 	}

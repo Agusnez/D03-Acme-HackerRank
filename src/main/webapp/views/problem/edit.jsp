@@ -26,12 +26,12 @@
 	<acme:textbox path="attachments" code="problem.attachments" obligatory="true"/>
 	  	
   	<acme:choose path="finalMode" code="problem.finalMode" value1="true" value2="false" label1="Final" label2="No Final" />
+	<br />
 	
 	<form:label path="position.title">
 		<spring:message code="problem.position" />:
 	</form:label>
-	<form:select path="position" >	
-		<form:option value="" label="--- Select ---"/>
+	<form:select path="position" >
 		<form:options items="${positions}" />
 	</form:select>
 	<form:errors cssClass="error" path="position" />
@@ -43,7 +43,7 @@
 	<acme:cancel code="problem.cancel" url="problem/company/list.do" />
 	
 	<jstl:if test="${problem.id != 0}">
-		<acme:button name="delete" code="problem.delete" onclick="javascript: relativeRedir('problem/company/delete.do?problemId=${problem.id }');" />
+		<acme:delete code="problem.delete" />
 	</jstl:if>	
 	
 

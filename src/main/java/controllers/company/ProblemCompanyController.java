@@ -2,6 +2,8 @@
 package controllers.company;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -186,12 +188,18 @@ public class ProblemCompanyController extends AbstractController {
 		final String banner = this.configurationService.findConfiguration().getBanner();
 		final Collection<Position> positions = this.positionService.findPositionsByCompanyId(this.companyService.findByPrincipal().getId());
 
+		final Map<Position, String> positionsMap = new HashMap<>();
+		positionsMap.put(null, "NONE");
+
+		for (final Position p : positions)
+			positionsMap.put(p, p.getTitle());
+
 		result = new ModelAndView("problem/edit");
 		result.addObject("problem", problem);
 		result.addObject("messageError", messageCode);
 		result.addObject("banner", banner);
 		result.addObject("language", LocaleContextHolder.getLocale().getLanguage());
-		result.addObject("positions", positions);
+		result.addObject("positions", positionsMap);
 		return result;
 	}
 }
