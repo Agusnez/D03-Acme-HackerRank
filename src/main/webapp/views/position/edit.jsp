@@ -31,7 +31,7 @@
 	
 	<acme:textbox path="offeredSalary" code="position.offeredSalary" obligatory="true"/>
 	  	
-  	<acme:choose path="finalMode" code="problem.finalMode" value1="true" value2="false" label1="Final" label2="No Final" />
+  	<acme:choose path="finalMode" code="problem.finalMode" value1="false" value2="true" label1="No Final" label2="Final" />
 	
 	<br>
 	
@@ -44,4 +44,8 @@
 	</jstl:if>	
 	
 
-</form:form>    
+</form:form>   
+
+<jstl:if test="${messageError!=null }">
+	<div class="error"><spring:message code="${messageError }" /></div>
+	</jstl:if> 

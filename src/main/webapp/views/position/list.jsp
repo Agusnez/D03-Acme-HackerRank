@@ -35,7 +35,7 @@
 		<acme:column property="finalMode" titleKey="position.finalMode" value="${row.finalMode }" />
 	</security:authorize> 
 	
-	<acme:url href="position/display.do?positionId=${row.id }" code="position.display"/>
+	<acme:url href="position/company/display.do?positionId=${row.id }" code="position.display"/>
 
 </display:table>
 
