@@ -49,7 +49,6 @@
 		
 		
 		<!-- Actor no autenticado -->
-		<security:intercept-url pattern="/position/display.do" access="permitAll" />
 		
 		<!-- Registro -->
 		<security:intercept-url pattern="/register/createCompany.do" access="isAnonymous()" /> 

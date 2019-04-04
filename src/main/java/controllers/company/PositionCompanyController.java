@@ -140,6 +140,31 @@ public class PositionCompanyController extends AbstractController {
 		return result;
 	}
 
+	//Display------------------------------------------------------------------------------
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam final int positionId) {
+		ModelAndView result;
+		Boolean security;
+
+		final Position position = this.positionService.findOne(positionId);
+		final String banner = this.configurationService.findConfiguration().getBanner();
+
+		if (position == null) {
+			result = new ModelAndView("misc/notExist");
+			result.addObject("banner", banner);
+		} else {
+			security = this.positionService.positionCompanySecurity(positionId);
+
+			if (security) {
+				result = new ModelAndView("position/display");
+				result.addObject("position", position);
+				result.addObject("banner", banner);
+			} else
+				result = new ModelAndView("redirect:/welcome/index.do");
+		}
+		return result;
+	}
+
 	//Other business methods------------------------------------------------------------------------------------------
 	protected ModelAndView createEditModelAndView(final Position position, final String messageCode) {
 		final ModelAndView result;

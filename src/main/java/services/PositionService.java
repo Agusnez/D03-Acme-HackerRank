@@ -82,15 +82,25 @@ public class PositionService {
 	public Position save(final Position position) {
 
 		Assert.notNull(position);
+
+		final Actor actor = this.actorService.findByPrincipal();
+		Assert.notNull(actor);
+		final Authority authority = new Authority();
+		authority.setAuthority(Authority.COMPANY);
+		Assert.isTrue(actor.getUserAccount().getAuthorities().contains(authority));
+
 		Position result;
+
+		if (position.getId() != 0) {
+			//Seguridad position con su propietario
+			Assert.isTrue(this.positionCompanySecurity(position.getId()));
+			final Position positionBBDD = this.findOne(position.getId());
+			Assert.isTrue(!positionBBDD.getFinalMode());
+		}
 
 		if (position.getFinalMode()) {
 			final Collection<Problem> problemsByPosition = this.problemService.findProblemsByPositionId(position.getId());
 			Assert.isTrue(problemsByPosition.size() >= 2);
-			if (position.getId() != 0) {
-				final Position positionBBDD = this.findOne(position.getId());
-				Assert.isTrue(!positionBBDD.getFinalMode());
-			}
 		}
 		final Date currentMoment = new Date(System.currentTimeMillis() - 1000);
 		Assert.isTrue(position.getDeadline().after(currentMoment));
@@ -101,7 +111,18 @@ public class PositionService {
 	public void delete(final Position position) {
 
 		Assert.notNull(position);
+
+		final Actor actor = this.actorService.findByPrincipal();
+		Assert.notNull(actor);
+		final Authority authority = new Authority();
+		authority.setAuthority(Authority.COMPANY);
+		Assert.isTrue(actor.getUserAccount().getAuthorities().contains(authority));
+
 		Assert.isTrue(position.getId() != 0);
+
+		//Seguridad position con su propietario
+		Assert.isTrue(this.positionCompanySecurity(position.getId()));
+
 		Assert.isTrue(!position.getFinalMode());
 
 		//Eliminamos dependencias con problems
