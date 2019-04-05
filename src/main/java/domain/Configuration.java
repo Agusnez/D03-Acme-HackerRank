@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 
@@ -28,6 +29,7 @@ public class Configuration extends DomainEntity {
 	private int					finderResult;
 	private String				welcomeMessage;
 	private String				welcomeMessageEs;
+	private Collection<String>	priorities;
 
 
 	//Getters y Setters-----------------------------------------------------
@@ -58,6 +60,16 @@ public class Configuration extends DomainEntity {
 
 	public void setWelcomeMessageEs(final String welcomeMessageEs) {
 		this.welcomeMessageEs = welcomeMessageEs;
+	}
+
+	@ElementCollection
+	@NotEmpty
+	public Collection<String> getPriorities() {
+		return this.priorities;
+	}
+
+	public void setPriorities(final Collection<String> priorities) {
+		this.priorities = priorities;
 	}
 
 	@URL
