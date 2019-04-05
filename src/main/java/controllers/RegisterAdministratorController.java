@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ActorService;
 import services.AdministratorService;
 import services.ConfigurationService;
 import domain.Administrator;
@@ -22,6 +23,9 @@ public class RegisterAdministratorController extends AbstractController {
 
 	@Autowired
 	private AdministratorService	administratorService;
+
+	@Autowired
+	private ActorService			actorService;
 
 	@Autowired
 	private ConfigurationService	configurationService;
@@ -50,16 +54,17 @@ public class RegisterAdministratorController extends AbstractController {
 			result = this.createEditModelAndView(form);
 		else if (!form.checkPassword() || !form.getCheckbox())
 			result = this.createEditModelAndView(form, "administrator.commit.error");
+		else if (!form.checkPassword() || !form.getCheckbox())
+			result = this.createEditModelAndView(form, "administrator.commit.error.username");
 		else
 			try {
 				this.administratorService.save(adminReconstruct);
 				result = new ModelAndView("redirect:/welcome/index.do");
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(form, "administrator.commit.error");
+				result = this.createEditModelAndView(form, "actor.commit.error");
 			}
 		return result;
 	}
-
 	// Ancillary methods
 
 	protected ModelAndView createEditModelAndView(final RegisterAdministratorForm administrator) {
