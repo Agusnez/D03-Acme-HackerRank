@@ -26,13 +26,13 @@
 	<acme:column property="position.title" titleKey="problem.position" value= "${row.position.title}: "/>
 	
 	<security:authorize access="hasRole('COMPANY')">
-	<acme:url href="problem/company/display.do?problemId=${row.id }" code="problem.display" />
+		<acme:url href="problem/company/display.do?problemId=${row.id }" code="problem.display" />
 	</security:authorize>
 
 	</display:table>
 	
 	<security:authorize access="hasRole('COMPANY')">
-	<a href="problem/company/create.do"><spring:message code="problem.create"/></a>
+		<a href="problem/company/create.do"><spring:message code="problem.create"/></a>
 	</security:authorize>
 		
 	<acme:button name="back" code="problem.back" onclick="javascript: relativeRedir('welcome/index.do');" />

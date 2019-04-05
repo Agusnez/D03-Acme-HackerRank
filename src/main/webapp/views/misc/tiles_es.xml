@@ -25,5 +25,9 @@
 		<put-attribute name="title" value="Términos y condiciones" />
 		<put-attribute name="body" value="/views/misc/termsAndConditions.jsp" />
 	</definition>
+	<definition name="misc/notExist" extends="master.page">
+		<put-attribute name="title" value="URL inválida" />
+		<put-attribute name="body" value="/views/misc/notExist.jsp" />
+	</definition>
 
 </tiles-definitions>

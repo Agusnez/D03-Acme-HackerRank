@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
@@ -18,6 +19,9 @@ import security.UserAccount;
 import security.UserAccountService;
 import domain.Actor;
 import domain.Administrator;
+import domain.Company;
+import domain.Hacker;
+import domain.Position;
 import forms.RegisterAdministratorForm;
 
 @Service
@@ -35,6 +39,9 @@ public class AdministratorService {
 
 	@Autowired
 	private UserAccountService		userAccountService;
+	
+	@Autowired
+	private PositionService			positionService;
 
 	@Autowired
 	private Validator				validator;
@@ -181,5 +188,38 @@ public class AdministratorService {
 
 		return result;
 	}
-
+	
+	// Dashboard 
+	
+	public Double avgOfPositionsPerCompany() {
+		return this.administratorRepository.avgOfPositionsPerCompany();
+	}
+	
+	public List<String> topCompaniesWithMorePositions() {
+		List<String> result = this.administratorRepository.topCompaniesWithMorePositions();
+		
+		return result;
+	}
+	
+	/*public Collection<Hacker> topHackerWithMoreApplications() {
+		return this.administratorRepository.topHackerWithMoreApplications();
+	}*/
+	
+	public Collection<Double> statsSalaries() {
+		return this.administratorRepository.statsSalaries();
+	}
+	
+	public Position findBestPosition() {
+		
+		int id = this.administratorRepository.findBestPosition();
+		
+		return this.positionService.findOne(id);
+	}
+	
+	public Position findWorstPosition() {
+		int id = this.administratorRepository.findWorstPosition();
+		
+		return this.positionService.findOne(id);
+	}
+ 
 }

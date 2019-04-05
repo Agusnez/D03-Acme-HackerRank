@@ -12,6 +12,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -54,6 +55,7 @@ public class Problem extends DomainEntity {
 	}
 
 	@ElementCollection
+	@NotEmpty
 	public Collection<String> getAttachments() {
 		return this.attachments;
 	}
@@ -81,7 +83,7 @@ public class Problem extends DomainEntity {
 		this.company = company;
 	}
 
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	@Valid
 	public Position getPosition() {
 		return this.position;
