@@ -1,12 +1,15 @@
 
 package controllers;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ConfigurationService;
@@ -14,6 +17,7 @@ import services.CurriculumService;
 import services.HackerService;
 import services.PersonalDataService;
 import domain.Curriculum;
+import domain.Hacker;
 import domain.PersonalData;
 import forms.CreateCurriculumForm;
 
@@ -35,6 +39,41 @@ public class CurriculumHackerController extends AbstractController {
 	@Autowired
 	private ConfigurationService	configurationService;
 
+
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam final int curriculumId) {
+		final ModelAndView result;
+		final Curriculum curriculum;
+
+		curriculum = this.curriculumService.findOne(curriculumId);
+
+		final String banner = this.configurationService.findConfiguration().getBanner();
+
+		result = new ModelAndView("curriculum/displayCurriculum");
+		result.addObject("curriculum", curriculum);
+		result.addObject("banner", banner);
+
+		return result;
+	}
+
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list() {
+		final ModelAndView result;
+		Collection<Curriculum> curriculums;
+
+		final Hacker hacker = this.hackerService.findByPrincipal();
+
+		curriculums = this.curriculumService.findByHackerId(hacker.getId());
+
+		final String banner = this.configurationService.findConfiguration().getBanner();
+
+		result = new ModelAndView("curriculum/listCurriculum");
+		result.addObject("curriculums", curriculums);
+		result.addObject("banner", banner);
+		result.addObject("requestURI", "curriculum/hacker/list.do");
+
+		return result;
+	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView create() {
@@ -59,13 +98,12 @@ public class CurriculumHackerController extends AbstractController {
 			result = this.createEditModelAndView(form);
 		else
 			try {
-				final Curriculum c = this.curriculumService.save(curriculumReconstruct);
 				final PersonalData p = this.personalDataService.save(personalReconstruct);
-				c.setPersonalData(p);
-				this.curriculumService.save(c);
+				curriculumReconstruct.setPersonalData(p);
+				this.curriculumService.save(curriculumReconstruct);
 				result = new ModelAndView("redirect:/welcome/index.do");
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(form, "actor.commit.error");
+				result = this.createEditModelAndView(form, "curriculums.commit.error");
 			}
 		return result;
 	}
@@ -85,7 +123,7 @@ public class CurriculumHackerController extends AbstractController {
 
 		final String banner = this.configurationService.findConfiguration().getBanner();
 
-		result = new ModelAndView("administrator/signUpAdministrator");
+		result = new ModelAndView("curriculum/createCurriculum");
 		result.addObject("curriculum", createCurriculumForm);
 		result.addObject("banner", banner);
 		result.addObject("messageError", messageCode);

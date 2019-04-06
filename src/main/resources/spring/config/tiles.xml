@@ -27,6 +27,7 @@
 		<value>/views/actor/tiles.xml</value>
 		<value>/views/problem/tiles.xml</value>
 		<value>/views/position/tiles.xml</value>
+		<value>/views/curriculum/tiles.xml</value>
 	</util:list>
 
 </beans>
