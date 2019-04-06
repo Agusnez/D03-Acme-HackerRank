@@ -46,7 +46,7 @@ public class PositionController extends AbstractController {
 
 			final Collection<Position> positions;
 
-			positions = this.positionService.findPositionsByCompanyId(companyId);
+			positions = this.positionService.findPositionsByCompanyIdAndFinalModeTrue(companyId);
 
 			result = new ModelAndView("position/list");
 			result.addObject("positions", positions);
@@ -54,6 +54,7 @@ public class PositionController extends AbstractController {
 			result.addObject("pagesize", 5);
 			result.addObject("banner", banner);
 			result.addObject("language", LocaleContextHolder.getLocale().getLanguage());
+			result.addObject("autoridad", "");
 
 		}
 		return result;
@@ -66,7 +67,7 @@ public class PositionController extends AbstractController {
 		final String banner = this.configurationService.findConfiguration().getBanner();
 		final Collection<Position> positions;
 
-		positions = this.positionService.findAll();
+		positions = this.positionService.findPositionsFinalModeTrue();
 
 		result = new ModelAndView("position/list");
 		result.addObject("positions", positions);
@@ -74,6 +75,7 @@ public class PositionController extends AbstractController {
 		result.addObject("pagesize", 5);
 		result.addObject("banner", banner);
 		result.addObject("language", LocaleContextHolder.getLocale().getLanguage());
+		result.addObject("autoridad", "");
 
 		return result;
 

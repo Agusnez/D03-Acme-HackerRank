@@ -174,6 +174,20 @@ public class PositionService {
 		return positions;
 	}
 
+	public Collection<Position> findPositionsByCompanyIdAndFinalModeTrue(final int companyId) {
+
+		final Collection<Position> positions = this.positionRepository.findPositionsByCompanyIdAndFinalModeTrue(companyId);
+
+		return positions;
+	}
+
+	public Collection<Position> findPositionsFinalModeTrue() {
+
+		final Collection<Position> positions = this.positionRepository.findPositionsFinalModeTrue();
+
+		return positions;
+	}
+
 	public Boolean positionCompanySecurity(final int positionId) {
 		Boolean res = false;
 		Assert.notNull(positionId);

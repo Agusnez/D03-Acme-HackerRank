@@ -55,11 +55,10 @@ public class CompanyController extends AbstractController {
 
 	}
 
-	//Display------------------------------------------------------------------------------
+	//Display para todo el mundo ------------------------------------------------------------------------------
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
 	public ModelAndView display(@RequestParam final int positionId) {
 		ModelAndView result;
-		Boolean security;
 
 		final Position position = this.positionService.findOne(positionId);
 		final String banner = this.configurationService.findConfiguration().getBanner();
@@ -68,15 +67,12 @@ public class CompanyController extends AbstractController {
 			result = new ModelAndView("misc/notExist");
 			result.addObject("banner", banner);
 		} else {
-			security = this.positionService.positionCompanySecurity(positionId);
 
-			if (security) {
-				result = new ModelAndView("company/display");
-				result.addObject("company", position.getCompany());
-				result.addObject("banner", banner);
-				result.addObject("backUri", "position/list.do");
-			} else
-				result = new ModelAndView("redirect:/welcome/index.do");
+			result = new ModelAndView("company/display");
+			result.addObject("company", position.getCompany());
+			result.addObject("banner", banner);
+			result.addObject("backUri", "position/list.do");
+
 		}
 		return result;
 	}

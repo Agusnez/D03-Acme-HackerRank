@@ -51,6 +51,11 @@
 		
 		<!-- Todo el mundo -->
 		<security:intercept-url pattern="/company/list.do" access="permitAll" /> 
+		<security:intercept-url pattern="/position/list.do" access="permitAll" /> 
+		<security:intercept-url pattern="/company/display.do" access="permitAll" /> 
+		<security:intercept-url pattern="/position/listByCompany.do" access="permitAll" /> 
+		
+		
 		
 		
 		<!-- Actor no autenticado -->
