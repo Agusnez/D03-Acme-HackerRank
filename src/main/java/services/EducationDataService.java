@@ -7,11 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.EducationDataRepository;
 import security.Authority;
 import domain.Actor;
+import domain.Curriculum;
 import domain.EducationData;
+import forms.EducationDataForm;
 
 @Service
 @Transactional
@@ -25,6 +29,15 @@ public class EducationDataService {
 
 	@Autowired
 	private ActorService			actorService;
+
+	@Autowired
+	private EducationDataService	educationDataService;
+
+	@Autowired
+	private CurriculumService		curriculumService;
+
+	@Autowired
+	private Validator				validator;
 
 
 	// Simple CRUD methods -----------------------
@@ -78,5 +91,55 @@ public class EducationDataService {
 
 		this.educationDataRepository.delete(education);
 
+	}
+
+	public EducationData reconstruct(final EducationDataForm form, final BindingResult binding) {
+
+		final EducationData result = this.create();
+
+		this.validator.validate(form, binding);
+
+		result.setId(form.getId());
+		result.setVersion(form.getVersion());
+		result.setDegree(form.getDegree());
+		result.setInstitution(form.getInstitution());
+		result.setMark(form.getMark());
+		result.setStartDate(form.getStartDate());
+		result.setEndDate(form.getEndDate());
+
+		return result;
+
+	}
+
+	public Boolean exist(final int positionId) {
+
+		Boolean res = false;
+
+		if (positionId != 0) {
+			final EducationData education = this.educationDataRepository.findOne(positionId);
+
+			if (education != null)
+				res = true;
+		} else
+			res = true;
+
+		return res;
+	}
+
+	public Boolean security(final int educationId, final int curriculumId) {
+
+		Boolean res = false;
+
+		if (educationId != 0) {
+			final Curriculum curriculum = this.curriculumService.findOne(curriculumId);
+
+			final EducationData education = this.findOne(educationId);
+
+			if (curriculum.getPositionDatas().contains(education))
+				res = true;
+		} else
+			res = true;
+
+		return res;
 	}
 }
