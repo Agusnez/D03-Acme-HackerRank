@@ -57,6 +57,7 @@ public class PositionService {
 
 		result.setCompany(this.companyService.findByPrincipal());
 		result.setTicker(this.generateTicker());
+		result.setFinalMode(false);
 
 		return result;
 
@@ -231,6 +232,11 @@ public class PositionService {
 
 		return result;
 
+	}
+
+	public void flush() {
+
+		this.positionRepository.flush();
 	}
 
 }
