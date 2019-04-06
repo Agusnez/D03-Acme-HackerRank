@@ -36,6 +36,10 @@
 	</security:authorize> 
 	
 	<acme:url href="position/company/display.do?positionId=${row.id }" code="position.display"/>
+	
+	<jstl:if test="${requestURI == 'position/list.do'}">
+		<acme:url href="company/display.do?positionId=${row.id }" code="position.company.display"/>
+	</jstl:if>
 
 </display:table>
 

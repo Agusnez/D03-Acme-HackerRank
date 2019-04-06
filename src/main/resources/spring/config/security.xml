@@ -48,7 +48,13 @@
 		<security:intercept-url pattern="/termsAndConditions/show.do" access="permitAll" /> 
 		
 		
+		
+		<!-- Todo el mundo -->
+		<security:intercept-url pattern="/company/list.do" access="permitAll" /> 
+		
+		
 		<!-- Actor no autenticado -->
+		
 		
 		<!-- Registro -->
 		<security:intercept-url pattern="/register/createCompany.do" access="isAnonymous()" /> 

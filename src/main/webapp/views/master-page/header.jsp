@@ -51,6 +51,11 @@
 			<li><a href="register/createHacker.do"><spring:message code="master.page.hacker.signup" /></a></li>
 		</security:authorize>
 		
+		<security:authorize access="permitAll()">
+			<li><a href="company/list.do"><spring:message code="master.page.company.list" /></a></li>
+			<li><a href="position/list.do"><spring:message code="master.page.position.list" /></a></li>
+		</security:authorize>
+		
 		<security:authorize access="isAuthenticated()">
 			<li>
 				<a class="fNiv"> 
