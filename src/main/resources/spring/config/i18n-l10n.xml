@@ -22,12 +22,13 @@
 		<value>/views/misc/messages</value>
 		<value>/views/security/messages</value>		
 		<value>/views/welcome/messages</value>
-		
+
 		<value>/views/administrator/messages</value>
 		<value>/views/actor/messages</value>
 		<value>/views/problem/messages</value>
 		<value>/views/position/messages</value>
 		<value>/views/company/messages</value>
+		<value>/views/curriculum/messages</value>
 		
 	</util:list>
 

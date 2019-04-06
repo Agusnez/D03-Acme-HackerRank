@@ -97,4 +97,13 @@ public class CurriculumService {
 		return result;
 
 	}
+
+	//Other methods
+
+	public Collection<Curriculum> findByHackerId(final int hackerId) {
+
+		final Collection<Curriculum> result = this.curriculumRepository.findByHackerId(hackerId);
+
+		return result;
+	}
 }
