@@ -32,7 +32,7 @@ public class ConfigurationServiceTest extends AbstractTest {
 				"admin", "http://example.com", "+34", "2", "40", "example", "example", null
 			},//1. All fine
 			{
-				"admin", "http://example.com", "+34", "2", "40", "example", "example", ConstraintViolationException.class
+				"admin", "http://example.com", "+34", "-1", "40", "example", "example", ConstraintViolationException.class
 			},//2. Finder time < 1
 
 		};
@@ -47,6 +47,9 @@ public class ConfigurationServiceTest extends AbstractTest {
 
 		caught = null;
 		try {
+
+			this.startTransaction();
+
 			super.authenticate(username);
 
 			final Configuration config = this.configurationService.findConfiguration();
@@ -58,16 +61,14 @@ public class ConfigurationServiceTest extends AbstractTest {
 			config.setWelcomeMessage(welcomeMessage);
 			config.setWelcomeMessageEs(welcomeMessageEs);
 
-			this.startTransaction();
-
 			this.configurationService.save(config);
 			this.configurationService.flush();
-
-			this.unauthenticate();
 
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 		}
+
+		this.unauthenticate();
 
 		this.rollbackTransaction();
 
