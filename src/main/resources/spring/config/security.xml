@@ -92,6 +92,10 @@
 		<security:intercept-url pattern="/curriculum/hacker/create.do" access="hasRole('HACKER')" /> 
 		<security:intercept-url pattern="/curriculum/hacker/edit.do" access="hasRole('HACKER')" /> 
 		<security:intercept-url pattern="/curriculum/hacker/display.do" access="hasRole('HACKER')" /> 
+		<security:intercept-url pattern="/positionData/hacker/create.do" access="hasRole('HACKER')" /> 
+		<security:intercept-url pattern="/positionData/hacker/edit.do" access="hasRole('HACKER')" /> 
+		<security:intercept-url pattern="/educationData/hacker/create.do" access="hasRole('HACKER')" /> 
+		<security:intercept-url pattern="/educationData/hacker/edit.do" access="hasRole('HACKER')" /> 
 		
 		<!-- Administrator -->
 		<security:intercept-url pattern="/administrator/dashboard.do" access="hasRole('ADMIN')" />	

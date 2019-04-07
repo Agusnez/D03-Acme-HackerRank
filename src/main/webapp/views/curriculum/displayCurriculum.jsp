@@ -27,15 +27,40 @@
 <br/>
 
 <h3><spring:message code="curriculum.positionData" /></h3>
+
 <display:table name="curriculum.positionDatas" pagesize="5" id="row1">
 
-	<acme:column property="title" titleKey="curriculum.title" value= "${row1.title}: "/>
+	<acme:column property="title" titleKey="curriculum.title" value= "${row1.title} "/>
 	
-	<acme:column property="description" titleKey="curriculum.description" value= "${row1.description}: "/>
+	<acme:column property="description" titleKey="curriculum.description" value= "${row1.description} "/>
 	
-	<acme:column property="startDate" titleKey="curriculum.startDate" value= "${row1.startDate}: "/>
+	<acme:column property="startDate" titleKey="curriculum.startDate" value= "${row1.startDate} "/>
 	
-	<acme:column property="endDate" titleKey="curriculum.endDate" value= "${row1.endDatew}: "/>
+	<acme:column property="endDate" titleKey="curriculum.endDate" value= "${row1.endDate} "/>
+	
+	
+</display:table>
+
+<br/>
+
+<a href="positionData/hacker/create.do?curriculumId=${curriculum.id }"><spring:message code="curriculum.create"/></a>
+
+<br/>
+<br/>
+
+<h3><spring:message code="curriculum.educationData" /></h3>
+
+<display:table name="curriculum.educationDatas" pagesize="5" id="row2">
+
+	<acme:column property="degree" titleKey="curriculum.degree" value= "${row2.degree} "/>
+	
+	<acme:column property="institution" titleKey="curriculum.institution" value= "${row2.institution} "/>
+	
+	<acme:column property="mark" titleKey="curriculum.mark" value= "${row2.mark} "/>
+	
+	<acme:column property="startDate" titleKey="curriculum.startDate" value= "${row2.startDate} "/>
+	
+	<acme:column property="endDate" titleKey="curriculum.endDate" value= "${row2.endDate} "/>
 	
 	
 </display:table>
@@ -43,9 +68,10 @@
 <br/>
 <br/>
 
-<h3><spring:message code="curriculum.educationData" /></h3>
+<h3><spring:message code="curriculum.miscellaneousData" /></h3>
 
-<br/>
-<br/>
+<display:table name="curriculum.miscellaneousDatas" pagesize="5" id="row3">
 
-<h3><spring:message code="curriculum.miscellaneousDatas" /></h3>
+	<acme:column property="attachments" titleKey="curriculum.attachments" value= "${row3.attachments} "/>
+	
+</display:table>
