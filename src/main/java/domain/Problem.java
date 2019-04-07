@@ -7,6 +7,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -18,14 +19,14 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Access(AccessType.PROPERTY)
 public class Problem extends DomainEntity {
 
-	private String				title;
-	private String				statement;
-	private String				hint;
-	private Collection<String>	attachments;
-	private Boolean				finalMode;
+	private String					title;
+	private String					statement;
+	private String					hint;
+	private Collection<String>		attachments;
+	private Boolean					finalMode;
 
-	private Company				company;
-	private Position			position;
+	private Company					company;
+	private Collection<Position>	positions;
 
 
 	@NotBlank
@@ -83,14 +84,14 @@ public class Problem extends DomainEntity {
 		this.company = company;
 	}
 
-	@ManyToOne(optional = true)
+	@ManyToMany
 	@Valid
-	public Position getPosition() {
-		return this.position;
+	public Collection<Position> getPositions() {
+		return this.positions;
 	}
 
-	public void setPosition(final Position position) {
-		this.position = position;
+	public void setPositions(final Collection<Position> positions) {
+		this.positions = positions;
 	}
 
 }

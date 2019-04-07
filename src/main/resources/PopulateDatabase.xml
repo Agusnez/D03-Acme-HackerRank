@@ -531,7 +531,11 @@
 		</property>
 	<property name="finalMode" value="true" />
 	<property name="company" ref="Company1" />
-	<property name="position" ref="Position1" />
+	<property name="positions"  >
+		<list>
+			<ref bean="Position1"/>	
+		</list>
+	</property>
 	</bean>
 	
 	<bean id="Problem2" class="domain.Problem">
@@ -546,7 +550,11 @@
 		</property>
 	<property name="finalMode" value="true" />
 	<property name="company" ref="Company1" />
-	<property name="position" ref="Position1" />
+	<property name="positions"  >
+		<list>
+			<ref bean="Position1"/>	
+		</list>
+	</property>
 	</bean>
 	
 	<bean id="Problem3" class="domain.Problem">

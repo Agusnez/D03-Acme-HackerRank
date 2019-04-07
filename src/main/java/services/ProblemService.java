@@ -16,6 +16,7 @@ import repositories.ProblemRepository;
 import security.Authority;
 import domain.Actor;
 import domain.Company;
+import domain.Position;
 import domain.Problem;
 
 @Service
@@ -57,7 +58,7 @@ public class ProblemService {
 
 		result.setFinalMode(false);
 		//prueba
-		result.setPosition(null);
+		result.setPositions(null);
 
 		return result;
 
@@ -90,9 +91,11 @@ public class ProblemService {
 		Assert.isTrue(actor.getUserAccount().getAuthorities().contains(comp));
 		Assert.isTrue(actor.getId() == problem.getCompany().getId());
 
-		Problem result = problem;
+		Problem result;
 
-		Assert.isTrue(problem.getFinalMode() == false || problem.getId() == 0);
+		final Problem problemBBDD = this.findOne(problem.getId());
+
+		Assert.isTrue(problemBBDD.getFinalMode() == false || problem.getId() == 0);
 
 		result = this.problemRepository.save(problem);
 
@@ -114,6 +117,31 @@ public class ProblemService {
 
 	}
 
+	//Añadir una position a un problem
+	public void addPositionToProblem(final Position position, final Problem problem) {
+
+		Assert.notNull(problem);
+		Assert.notNull(position);
+		final Actor actor = this.actorService.findByPrincipal();
+		Assert.notNull(actor);
+
+		final Authority comp = new Authority();
+		comp.setAuthority(Authority.COMPANY);
+		Assert.isTrue(actor.getUserAccount().getAuthorities().contains(comp));
+		Assert.isTrue(actor.getId() == problem.getCompany().getId());
+		Assert.isTrue(actor.getId() == position.getCompany().getId());
+
+		final Collection<Position> positions = problem.getPositions();
+		Assert.isTrue(!positions.contains(position));
+		positions.add(position);
+
+		problem.setPositions(positions);
+
+		final Problem saved = this.problemRepository.save(problem);
+
+		Assert.isTrue(saved.getPositions().contains(position));
+
+	}
 	//Other Business methods----------------------------------------------------
 	public Collection<Problem> findProblemByCompanyId(final int companyId) {
 		final Collection<Problem> problems = this.problemRepository.findProblemsByCompanyId(companyId);

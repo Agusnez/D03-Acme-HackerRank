@@ -128,8 +128,10 @@ public class PositionService {
 		//Eliminamos dependencias con problems
 		final Collection<Problem> problemsByPosition = this.problemService.findProblemsByPositionId(position.getId());
 		if (problemsByPosition != null && problemsByPosition.size() > 0)
-			for (final Problem p : problemsByPosition)
-				p.setPosition(null);
+			for (final Problem p : problemsByPosition) {
+				p.getPositions().remove(position);
+				this.problemService.save(p);
+			}
 
 		this.positionRepository.delete(position);
 

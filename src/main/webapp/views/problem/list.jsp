@@ -23,10 +23,12 @@
 	
 	<acme:column property="finalMode" titleKey="problem.finalMode" value= "${row.finalMode}: "/>
 	
-	<acme:column property="position.title" titleKey="problem.position" value= "${row.position.title}: "/>
+	<acme:column property="positions" titleKey="problem.positions" value= "${row.positions}: "/>
 	
 	<security:authorize access="hasRole('COMPANY')">
 		<acme:url href="problem/company/display.do?problemId=${row.id }" code="problem.display" />
+		
+		<acme:url href="problem/company/addPosition.do?problemId=${row.id }" code="problem.add" />
 	</security:authorize>
 
 	</display:table>
