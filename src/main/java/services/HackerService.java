@@ -185,4 +185,8 @@ public class HackerService {
 
 	}
 
+	public void flush() {
+		this.hackerRepository.flush();
+	}
+
 }

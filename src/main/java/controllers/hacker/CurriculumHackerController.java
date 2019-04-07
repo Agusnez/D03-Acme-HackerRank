@@ -1,5 +1,5 @@
 
-package controllers;
+package controllers.hacker;
 
 import java.util.Collection;
 
@@ -16,6 +16,7 @@ import services.ConfigurationService;
 import services.CurriculumService;
 import services.HackerService;
 import services.PersonalDataService;
+import controllers.AbstractController;
 import domain.Curriculum;
 import domain.Hacker;
 import domain.PersonalData;
@@ -45,13 +46,28 @@ public class CurriculumHackerController extends AbstractController {
 		final ModelAndView result;
 		final Curriculum curriculum;
 
-		curriculum = this.curriculumService.findOne(curriculumId);
-
 		final String banner = this.configurationService.findConfiguration().getBanner();
 
-		result = new ModelAndView("curriculum/displayCurriculum");
-		result.addObject("curriculum", curriculum);
-		result.addObject("banner", banner);
+		final Boolean exist = this.curriculumService.exist(curriculumId);
+
+		if (exist) {
+
+			final Boolean security = this.curriculumService.security(curriculumId);
+
+			if (security) {
+
+				curriculum = this.curriculumService.findOne(curriculumId);
+
+				result = new ModelAndView("curriculum/displayCurriculum");
+				result.addObject("curriculum", curriculum);
+				result.addObject("banner", banner);
+
+			} else
+				result = new ModelAndView("redirect:/list.do");
+		} else {
+			result = new ModelAndView("misc/notExist");
+			result.addObject("banner", banner);
+		}
 
 		return result;
 	}
