@@ -2,8 +2,6 @@
 package controllers.company;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -181,25 +179,82 @@ public class ProblemCompanyController extends AbstractController {
 		return result;
 	}
 
+	//Add Position to Problem------------------------------------------------------------
+	@RequestMapping(value = "/addPosition", method = RequestMethod.GET)
+	public ModelAndView addPosition(@RequestParam final int problemId) {
+		final ModelAndView result;
+
+		final String banner = this.configurationService.findConfiguration().getBanner();
+		final Problem problem = this.problemService.findOne(problemId);
+
+		if (problem == null) {
+			result = new ModelAndView("misc/notExist");
+			result.addObject("banner", banner);
+		} else {
+			final Boolean security = this.problemService.problemCompanySecurity(problemId);
+			if (security) {
+				final Collection<Position> positionsResult = this.positionService.findPositionsByCompanyId(problem.getCompany().getId());
+				positionsResult.removeAll(problem.getPositions());
+
+				result = new ModelAndView("position/listAdd");
+				result.addObject("positions", positionsResult);
+				result.addObject("requestURI", "problem/company/addPosition.do");
+				result.addObject("pagesize", 5);
+				result.addObject("banner", banner);
+				result.addObject("problemId", problemId);
+			} else
+				result = new ModelAndView("redirect:/welcome/index.do");
+		}
+		return result;
+
+	}
+
+	@RequestMapping(value = "/addPositionPost", method = RequestMethod.GET)
+	public ModelAndView addPositionPost(@RequestParam final int positionId, @RequestParam final int problemId) {
+		ModelAndView result;
+		final Position position = this.positionService.findOne(positionId);
+		final Problem problem = this.problemService.findOne(problemId);
+		final String banner = this.configurationService.findConfiguration().getBanner();
+		Boolean security1;
+		Boolean security2;
+
+		if (position == null || problem == null) {
+			result = new ModelAndView("misc/notExist");
+			result.addObject("banner", banner);
+		} else {
+			security1 = this.positionService.positionCompanySecurity(positionId);
+			security2 = this.problemService.problemCompanySecurity(problemId);
+
+			if (security1 && security2) {
+				this.problemService.addPositionToProblem(position, problem);
+
+				final Collection<Position> positionsResult = this.positionService.findPositionsByCompanyId(problem.getCompany().getId());
+				final Problem problemNew = this.problemService.findOne(problemId);
+				positionsResult.removeAll(problemNew.getPositions());
+
+				result = new ModelAndView("position/listAdd");
+				result.addObject("positions", positionsResult);
+				result.addObject("requestURI", "problem/company/addPosition.do");
+				result.addObject("pagesize", 5);
+				result.addObject("banner", banner);
+				result.addObject("problemId", problemId);
+
+			} else
+				result = new ModelAndView("redirect:/welcome/index.do");
+		}
+		return result;
+	}
 	//Ancillary methods---------------------------------------------------------------------------------
 	protected ModelAndView createEditModelAndView(final Problem problem, final String messageCode) {
 		final ModelAndView result;
 
 		final String banner = this.configurationService.findConfiguration().getBanner();
-		final Collection<Position> positions = this.positionService.findPositionsByCompanyId(this.companyService.findByPrincipal().getId());
-
-		final Map<Position, String> positionsMap = new HashMap<>();
-		positionsMap.put(null, "NONE");
-
-		for (final Position p : positions)
-			positionsMap.put(p, p.getTitle());
 
 		result = new ModelAndView("problem/edit");
 		result.addObject("problem", problem);
 		result.addObject("messageError", messageCode);
 		result.addObject("banner", banner);
 		result.addObject("language", LocaleContextHolder.getLocale().getLanguage());
-		result.addObject("positions", positionsMap);
 		return result;
 	}
 }

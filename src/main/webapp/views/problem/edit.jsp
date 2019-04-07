@@ -26,17 +26,6 @@
 	<acme:textbox path="attachments" code="problem.attachments" obligatory="true"/>
 	  	
   	<acme:choose path="finalMode" code="problem.finalMode" value1="true" value2="false" label1="Final" label2="No Final" />
-	<br />
-	
-	<form:label path="position.title">
-		<spring:message code="problem.position" />:
-	</form:label>
-	<form:select path="position" >
-		<form:options items="${positions}" />
-	</form:select>
-	<form:errors cssClass="error" path="position" />
-	<br />
-	
 	
 	<acme:submit name="save" code="problem.save" />	
 
