@@ -13,8 +13,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-	">
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- User accounts -->
 
@@ -575,6 +574,37 @@
 	<property name="company" ref="Company1" />
 	</bean>
 	
+	 <!--  Social profiles --> 
+  <bean id="socialProfile1" class="domain.SocialProfile">
+  <property name="nick" value="Company1" /> 
+  <property name="socialName" value="Compañia number 1" /> 
+  <property name="link" value="http://www.facebook.com/link1/" /> 
+  <property name="actor" ref="Company1" /> 
+  </bean>
+  <bean id="socialProfile2" class="domain.SocialProfile">
+  <property name="nick" value="Company1.1" /> 
+  <property name="socialName" value="Compañia number 1.1" /> 
+  <property name="link" value="http://www.facebook.com/link2/" /> 
+  <property name="actor" ref="Company1" /> 
+  </bean>
+  <bean id="socialProfile3" class="domain.SocialProfile">
+  <property name="nick" value="Company2" /> 
+  <property name="socialName" value="Compañia number 2" /> 
+  <property name="link" value="http://www.facebook.com/link3/" /> 
+  <property name="actor" ref="Company2" /> 
+  </bean>
+  <bean id="socialProfile4" class="domain.SocialProfile">
+  <property name="nick" value="Company2.1" /> 
+  <property name="socialName" value="Compañia number 2.1" /> 
+  <property name="link" value="http://www.facebook.com/link4/" /> 
+  <property name="actor" ref="Company2" /> 
+  </bean>
+  <bean id="socialProfile5" class="domain.SocialProfile">
+  <property name="nick" value="Company3" /> 
+  <property name="socialName" value="Compañia number 3" /> 
+  <property name="link" value="http://www.facebook.com/link4/" /> 
+  <property name="actor" ref="Company3" /> 
+  </bean>
 	
 	<!-- Configuration -->
 	<bean id="configuration" class="domain.Configuration">

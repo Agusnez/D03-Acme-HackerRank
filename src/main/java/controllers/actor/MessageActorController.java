@@ -39,44 +39,34 @@ public class MessageActorController extends AbstractController {
 	public ModelAndView list() {
 		ModelAndView result;
 		final Collection<Message> messages, messagesDELETE, messagesSYSTEM;
-		final Boolean security = true;
 
 		final Actor actor = this.actorService.findByPrincipal();
 
 		final String banner = this.configurationService.findConfiguration().getBanner();
 
-		//security = this.boxService.boxSecurity(boxId);
+		messages = this.messageService.AllmessagePerActor(actor.getId());
+		messagesDELETE = this.messageService.AllmessageDELETEPerActor(actor.getId());
+		messagesSYSTEM = this.messageService.AllmessageSYSTEM();
 
-		if (security) {
+		messages.removeAll(messagesDELETE);
+		messages.removeAll(messagesSYSTEM);
 
-			messages = this.messageService.AllmessagePerActor(actor.getId());
-			messagesDELETE = this.messageService.AllmessageDELETEPerActor(actor.getId());
-			messagesSYSTEM = this.messageService.AllmessageSYSTEM();
+		result = new ModelAndView("message/list");
+		result.addObject("messages", messages);
+		result.addObject("messagesDELETE", messagesDELETE);
+		result.addObject("messagesSYSTEM", messagesSYSTEM);
+		result.addObject("banner", banner);
 
-			messages.removeAll(messagesDELETE);
-			messages.removeAll(messagesSYSTEM);
-
-			result = new ModelAndView("message/list");
-			result.addObject("messages", messages);
-			result.addObject("messagesDELETE", messagesDELETE);
-			result.addObject("messagesSYSTEM", messagesSYSTEM);
-			result.addObject("banner", banner);
-
-			result.addObject("requestURI", "message/actor/list.do");
-
-		} else {
-			result = new ModelAndView("redirect:/welcome/index.do");
-			result.addObject("banner", banner);
-		}
+		result.addObject("requestURI", "message/actor/list.do");
 
 		return result;
 	}
 
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
-	public ModelAndView display(@RequestParam final int messageId, @RequestParam final int boxId) {
+	public ModelAndView display(@RequestParam final int messageId) {
 		ModelAndView result;
 		final Message message1;
-		final Boolean security = true;
+		Boolean security = false;
 
 		final String banner = this.configurationService.findConfiguration().getBanner();
 
@@ -84,7 +74,7 @@ public class MessageActorController extends AbstractController {
 
 		if (existMessage) {
 
-			//			security = this.messageService.securityMessage(boxId);
+			security = this.messageService.securityMessage(messageId);
 
 			if (security) {
 
@@ -150,11 +140,14 @@ public class MessageActorController extends AbstractController {
 
 		ModelAndView result;
 		final Message message1;
-		final Boolean security = true;
+		Boolean security = false;
 
 		final Boolean existMessage = this.messageService.existId(messageId);
 
 		if (existMessage) {
+
+			security = this.messageService.securityMessage(messageId);
+
 			if (security) {
 				final String banner = this.configurationService.findConfiguration().getBanner();
 

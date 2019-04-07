@@ -63,8 +63,15 @@
 
 
 		<!-- Actor no autenticado -->
+		
+		<!-- Actor autenticado -->
 
-
+		<security:intercept-url pattern="/message/actor/list.do" access="isAuthenticated()" /> 
+  		<security:intercept-url pattern="/message/actor/display.do" access="isAuthenticated()" /> 
+  		<security:intercept-url pattern="/message/actor/create.do" access="isAuthenticated()" /> 
+ 		<security:intercept-url pattern="/message/actor/edit.do" access="isAuthenticated()" /> 
+  		<security:intercept-url pattern="/message/actor/delete.do" access="isAuthenticated()" />
+	
 		<!-- Registro -->
 		<security:intercept-url pattern="/register/createCompany.do" access="isAnonymous()" />
 		<security:intercept-url pattern="/register/saveCompany.do" access="isAnonymous()" />

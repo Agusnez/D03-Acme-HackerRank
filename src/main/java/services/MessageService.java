@@ -198,19 +198,21 @@ public class MessageService {
 	//	
 	//		}
 
-	//	public Boolean securityMessage(final int boxId) { //TODO Retomar 
-	//
-	//		Boolean res = false;
-	//
-	//		final Actor ownerBox = this.boxService.findOne(boxId).getActor();
-	//
-	//		final Actor login = this.actorService.findByPrincipal();
-	//
-	//		if (login.equals(ownerBox))
-	//			res = true;
-	//
-	//		return res;
-	//	}
+	public Boolean securityMessage(final int messageId) { //TODO Retomar 
+
+		Boolean res = false;
+
+		final Actor senderMessage = this.messageRepository.findOne(messageId).getSender();
+
+		final Actor recipientMessage = this.messageRepository.findOne(messageId).getRecipient();
+
+		final Actor login = this.actorService.findByPrincipal();
+
+		if ((login.equals(senderMessage)) || (login.equals(recipientMessage)))
+			res = true;
+
+		return res;
+	}
 
 	public Collection<Message> messagePerActor(final int actorId) {
 
