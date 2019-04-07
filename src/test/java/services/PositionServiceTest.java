@@ -259,4 +259,109 @@ public class PositionServiceTest extends AbstractTest {
 		super.checkExceptions(expected, caught);
 		this.rollbackTransaction();
 	}
+
+	/*
+	 * ACME.HACKERRANK
+	 * a)(Level C) Requirement 7.2: An actor who is not authenticated as a company must be able to: List the positions available and navigate to the corresponding companies
+	 * Requirement 8.1: An actor who is authenticated must be able to: Do the same as an actor who is not authenticated, but register to the system.
+	 * 
+	 * b) Negative cases:
+	 * 3. Company lists the positions available, but the number of positions is incorrect
+	 * 
+	 * c) Sentence coverage
+	 * -findPositionsFinalModeTrue(): 100%
+	 * d) Data coverage
+	 * -Position: 0%
+	 */
+	@Test
+	public void driverListPositionAvailable() {
+		final Object testingData[][] = {
+			{
+				"company1", 1, null
+			},//1. Company lists the positions available (All fine)
+			{
+				null, 1, null
+			},//2. Not registered actor lists the positions available (All fine) 
+			{
+				"company1", 2, IllegalArgumentException.class
+			},//3. Company lists the positions available, but the number of positions is incorrect
+		};
+
+		for (int i = 0; i < testingData.length; i++)
+			this.templateListPositionAvailable((String) testingData[i][0], (Integer) testingData[i][1], (Class<?>) testingData[i][2]);
+	}
+
+	protected void templateListPositionAvailable(final String username, final Integer number, final Class<?> expected) {
+		Class<?> caught;
+
+		caught = null;
+		try {
+			this.startTransaction();
+			if (username != null)
+				this.authenticate(username);
+
+			final Collection<Position> positions = this.positionService.findPositionsFinalModeTrue();
+
+			Assert.isTrue(positions.size() == number);
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+
+		}
+		this.unauthenticate();
+		super.checkExceptions(expected, caught);
+		this.rollbackTransaction();
+	}
+
+	/*
+	 * ACME.HACKERRANK
+	 * a)(Level C) Requirement 7.3: An actor who is not authenticated as a company must be able to: List the comapanies available and navigate to the corresponding positions
+	 * Requirement 8.1: An actor who is authenticated must be able to: Do the same as an actor who is not authenticated, but register to the system.
+	 * 
+	 * b) Negative cases:
+	 * 3. Company lists the positions available by a company, but the number of positions is incorrect
+	 * 
+	 * c) Sentence coverage
+	 * -findPositionsByCompanyIdAndFinalModeTrue(): 100%
+	 * d) Data coverage
+	 * -Position: 0%
+	 */
+	@Test
+	public void driverListPositionAvailableByCompany() {
+		final Object testingData[][] = {
+			{
+				"company1", 1, "Company1", null
+			},//1. Company lists the positions available by a company (All fine)
+			{
+				null, 1, "Company1", null
+			},//2. Not registered actor lists the positions available by a company (All fine) 
+			{
+				"company1", 28, "Company1", IllegalArgumentException.class
+			},//3. Company lists the positions available by a company, but the number of positions is incorrect
+		};
+
+		for (int i = 0; i < testingData.length; i++)
+			this.templateListPositionAvailableByCompany((String) testingData[i][0], (Integer) testingData[i][1], (String) testingData[i][2], (Class<?>) testingData[i][3]);
+	}
+
+	protected void templateListPositionAvailableByCompany(final String username, final Integer number, final String company, final Class<?> expected) {
+		Class<?> caught;
+
+		caught = null;
+		try {
+			this.startTransaction();
+			if (username != null)
+				this.authenticate(username);
+
+			final Collection<Position> positions = this.positionService.findPositionsByCompanyIdAndFinalModeTrue(super.getEntityId(company));
+
+			Assert.isTrue(positions.size() == number);
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+
+		}
+		this.unauthenticate();
+		super.checkExceptions(expected, caught);
+		this.rollbackTransaction();
+	}
+
 }

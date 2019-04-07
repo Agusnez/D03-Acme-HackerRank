@@ -93,9 +93,14 @@ public class ProblemService {
 
 		Problem result;
 
-		final Problem problemBBDD = this.findOne(problem.getId());
+		if (problem.getId() != 0) {
+			final Problem problemBBDD = this.findOne(problem.getId());
+			Assert.isTrue(problemBBDD.getFinalMode() == false);
+		}
 
-		Assert.isTrue(problemBBDD.getFinalMode() == false || problem.getId() == 0);
+		//		final Problem problemBBDD = this.findOne(problem.getId());
+		//
+		//		Assert.isTrue(problemBBDD.getFinalMode() == false || problem.getId() == 0);
 
 		result = this.problemRepository.save(problem);
 
@@ -112,8 +117,8 @@ public class ProblemService {
 		Assert.isTrue(actor.getUserAccount().getAuthorities().contains(comp));
 		Assert.isTrue(actor.getId() == problem.getCompany().getId());
 
-		if (problem.getFinalMode() == false)
-			this.problemRepository.delete(problem);
+		Assert.isTrue(problem.getFinalMode() == false);
+		this.problemRepository.delete(problem);
 
 	}
 

@@ -225,21 +225,36 @@ public class ProblemCompanyController extends AbstractController {
 			security1 = this.positionService.positionCompanySecurity(positionId);
 			security2 = this.problemService.problemCompanySecurity(problemId);
 
-			if (security1 && security2) {
-				this.problemService.addPositionToProblem(position, problem);
+			if (security1 && security2)
+				try {
+					this.problemService.addPositionToProblem(position, problem);
 
-				final Collection<Position> positionsResult = this.positionService.findPositionsByCompanyId(problem.getCompany().getId());
-				final Problem problemNew = this.problemService.findOne(problemId);
-				positionsResult.removeAll(problemNew.getPositions());
+					final Collection<Position> positionsResult = this.positionService.findPositionsByCompanyId(problem.getCompany().getId());
+					final Problem problemNew = this.problemService.findOne(problemId);
+					positionsResult.removeAll(problemNew.getPositions());
 
-				result = new ModelAndView("position/listAdd");
-				result.addObject("positions", positionsResult);
-				result.addObject("requestURI", "problem/company/addPosition.do");
-				result.addObject("pagesize", 5);
-				result.addObject("banner", banner);
-				result.addObject("problemId", problemId);
+					result = new ModelAndView("position/listAdd");
+					result.addObject("positions", positionsResult);
+					result.addObject("requestURI", "problem/company/addPosition.do");
+					result.addObject("pagesize", 5);
+					result.addObject("banner", banner);
+					result.addObject("problemId", problemId);
 
-			} else
+				} catch (final Throwable oops) {
+
+					final Collection<Position> positionsResult = this.positionService.findPositionsByCompanyId(problem.getCompany().getId());
+					final Problem problemNew = this.problemService.findOne(problemId);
+					positionsResult.removeAll(problemNew.getPositions());
+
+					result = new ModelAndView("position/listAdd");
+					result.addObject("positions", positionsResult);
+					result.addObject("requestURI", "problem/company/addPosition.do");
+					result.addObject("pagesize", 5);
+					result.addObject("messageError", "position.addToProblem.error");
+					result.addObject("banner", banner);
+					result.addObject("problemId", problemId);
+				}
+			else
 				result = new ModelAndView("redirect:/welcome/index.do");
 		}
 		return result;

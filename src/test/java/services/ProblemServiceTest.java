@@ -228,10 +228,10 @@ public class ProblemServiceTest extends AbstractTest {
 		};
 
 		for (int i = 0; i < testingData.length; i++)
-			this.templateListPosition((String) testingData[i][0], (Integer) testingData[i][1], (Class<?>) testingData[i][2]);
+			this.templateListProblem((String) testingData[i][0], (Integer) testingData[i][1], (Class<?>) testingData[i][2]);
 	}
 
-	protected void templateListPosition(final String company, final Integer number, final Class<?> expected) {
+	protected void templateListProblem(final String company, final Integer number, final Class<?> expected) {
 		Class<?> caught;
 
 		caught = null;

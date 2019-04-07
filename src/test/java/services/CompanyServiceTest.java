@@ -1,6 +1,8 @@
 
 package services;
 
+import java.util.Collection;
+
 import javax.transaction.Transactional;
 import javax.validation.ConstraintViolationException;
 
@@ -9,6 +11,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
 import domain.Company;
@@ -183,4 +186,57 @@ public class CompanyServiceTest extends AbstractTest {
 		this.rollbackTransaction();
 
 	}
+
+	/*
+	 * ACME.HACKERRANK
+	 * a)(Level C) Requirement 7.3: An actor who is not authenticated as a company must be able to: List the comapanies available and navigate to the corresponding positions
+	 * Requirement 8.1: An actor who is authenticated must be able to: Do the same as an actor who is not authenticated, but register to the system.
+	 * 
+	 * b) Negative cases:
+	 * 3. Company lists the positions available by a company, but the number of positions is incorrect
+	 * 
+	 * c) Sentence coverage
+	 * -findAll(): 100%
+	 * d) Data coverage
+	 * -Company: 0%
+	 */
+	@Test
+	public void driverListCompaniesAvailable() {
+		final Object testingData[][] = {
+			{
+				"company1", 10, null
+			},//1. Company lists the companies available (All fine)
+			{
+				null, 10, null
+			},//2. Not registered actor lists the companies available (All fine) 
+			{
+				"company1", 4, IllegalArgumentException.class
+			},//3. Company lists the companies available, but the number of companies is incorrect
+		};
+
+		for (int i = 0; i < testingData.length; i++)
+			this.templateListCompaniesAvailable((String) testingData[i][0], (Integer) testingData[i][1], (Class<?>) testingData[i][2]);
+	}
+
+	protected void templateListCompaniesAvailable(final String username, final Integer number, final Class<?> expected) {
+		Class<?> caught;
+
+		caught = null;
+		try {
+			this.startTransaction();
+			if (username != null)
+				this.authenticate(username);
+
+			final Collection<Company> companies = this.companyService.findAll();
+
+			Assert.isTrue(companies.size() == number);
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+
+		}
+		this.unauthenticate();
+		super.checkExceptions(expected, caught);
+		this.rollbackTransaction();
+	}
+
 }
