@@ -106,4 +106,32 @@ public class CurriculumService {
 
 		return result;
 	}
+
+	public Boolean security(final int curriculumId) {
+
+		Boolean res = false;
+
+		final Hacker hacker = this.hackerService.findByPrincipal();
+
+		final Curriculum curriculum = this.findOne(curriculumId);
+
+		final Collection<Curriculum> curriculums = this.findByHackerId(hacker.getId());
+
+		if (curriculums.contains(curriculum))
+			res = true;
+
+		return res;
+	}
+
+	public Boolean exist(final int curriculumId) {
+
+		Boolean res = false;
+
+		final Curriculum curriculum = this.curriculumRepository.findOne(curriculumId);
+
+		if (curriculum != null)
+			res = true;
+
+		return res;
+	}
 }

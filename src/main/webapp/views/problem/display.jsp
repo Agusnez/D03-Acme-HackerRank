@@ -23,7 +23,7 @@
 
 <acme:display code="problem.finalMode" property="${problem.finalMode}" />
 
-<acme:display code="problem.position" property="${problem.position.title}" />
+<acme:display code="problem.positions" property="${problem.positions}" />
 
 
 <jstl:if test="${!problem.finalMode }">
