@@ -48,8 +48,8 @@ public class ProblemServiceTest extends AbstractTest {
 	 * 2. Hacker is trying to create a problem
 	 * 
 	 * c) Sentence coverage
-	 * -create():
-	 * -save():
+	 * -create(): 100%
+	 * -save(): 74,5%
 	 * d) Data coverage
 	 * -Problem: 0%
 	 */
@@ -108,8 +108,8 @@ public class ProblemServiceTest extends AbstractTest {
 	 * 2. The problem is in final mode, it can't be edited
 	 * 
 	 * c) Sentence coverage
-	 * -findOne():
-	 * -save():
+	 * -findOne():100%
+	 * -save():98,2%
 	 * d) Data coverage
 	 * -Problem: 0%
 	 */
@@ -161,8 +161,8 @@ public class ProblemServiceTest extends AbstractTest {
 	 * 2. The position is in final mode, it can't be deleted
 	 * 
 	 * c) Sentence coverage
-	 * -findOne():
-	 * -delete():
+	 * -findOne():100%
+	 * -delete(): 97,7%
 	 * d) Data coverage
 	 * -Problem: 0%
 	 */
@@ -211,7 +211,7 @@ public class ProblemServiceTest extends AbstractTest {
 	 * 2. The number of problems is incorrect
 	 * 
 	 * c) Sentence coverage
-	 * -findProblemsByCompanyId():
+	 * -findProblemsByCompanyId():100%
 	 * d) Data coverage
 	 * -Problem: 0%
 	 */
@@ -257,8 +257,8 @@ public class ProblemServiceTest extends AbstractTest {
 	 * 2. The problem is in final mode, it can't be edited
 	 * 
 	 * c) Sentence coverage
-	 * -findOne():
-	 * -save():
+	 * -findOne():100%
+	 * -addPositionToProblem():94,5%
 	 * d) Data coverage
 	 * -Problem: 0%
 	 */
