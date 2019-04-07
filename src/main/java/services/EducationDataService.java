@@ -31,9 +31,6 @@ public class EducationDataService {
 	private ActorService			actorService;
 
 	@Autowired
-	private EducationDataService	educationDataService;
-
-	@Autowired
 	private CurriculumService		curriculumService;
 
 	@Autowired

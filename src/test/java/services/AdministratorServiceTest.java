@@ -2,6 +2,7 @@
 package services;
 
 import javax.transaction.Transactional;
+import javax.validation.ConstraintViolationException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +33,10 @@ public class AdministratorServiceTest extends AbstractTest {
 				"admin", "name1", "surname1", "121.00", "https://google.com", "email1@gmail.com", "cvycjwbi", "visa", "1111222233334444", "12", "2020", "900", "672195205", "address1", "admin55", "admin55", null
 			},//1. All fine
 			{
-				"admin", "		", "surname1", "121.00", "https://google.com", "email1@gmail.com", "cvycjwbi", "visa", "1111222233334444", "12", "2020", "900", "672195205", "address1", "admin55", "admin55", null
+				"admin", "		", "surname1", "121.00", "https://google.com", "email1@gmail.com", "cvycjwbi", "visa", "1111222233334444", "12", "2020", "900", "672195205", "address1", "admin55", "admin55", ConstraintViolationException.class
+			},//2. Name = blank
+			{
+				"admin", null, "surname1", "121.00", "https://google.com", "email1@gmail.com", "cvycjwbi", "visa", "1111222233334444", "12", "2020", "900", "672195205", "address1", "admin55", "admin55", ConstraintViolationException.class
 			},//2. Name = blank
 
 		};
