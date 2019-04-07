@@ -515,6 +515,19 @@
 	<property name="company" ref="Company1" />
 	</bean>
 	
+	<bean id="Position2" class="domain.Position">
+	<property name="ticker" value="firs-1324" />
+	<property name="title" value="position2" />
+	<property name="description" value="description position 2" />
+	<property name="deadline" value="2019/08/12" />
+	<property name="profile" value="IA" />
+	<property name="skills" value="jupyter" />
+	<property name="technologies" value="Server" />
+	<property name="offeredSalary" value="5220.0" />
+	<property name="finalMode" value="false" />
+	<property name="company" ref="Company1" />
+	</bean>
+	
 	<!-- Problems -->
 	
 	<bean id="Problem1" class="domain.Problem">

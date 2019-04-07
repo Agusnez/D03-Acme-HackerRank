@@ -8,7 +8,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<%-- Search Parade --%>
 
 <display:table name="positions" id="row" requestURI="${requestURI }" pagesize="${pagesize }">
 	
@@ -33,9 +32,15 @@
 		
 	<security:authorize access="hasRole('COMPANY')">
 		<acme:column property="finalMode" titleKey="position.finalMode" value="${row.finalMode }" />
+		
+		<acme:url href="position/company/display.do?positionId=${row.id }" code="position.display"/>
 	</security:authorize> 
 	
-	<acme:url href="position/company/display.do?positionId=${row.id }" code="position.display"/>
+	
+	
+	<jstl:if test="${requestURI == 'position/list.do'}">
+		<acme:url href="company/display.do?positionId=${row.id }" code="position.company.display"/>
+	</jstl:if>
 
 </display:table>
 

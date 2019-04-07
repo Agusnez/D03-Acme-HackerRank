@@ -24,6 +24,8 @@
 			<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
 				<ul>
 					<li class="arrow"></li>
+					<li><a href="configuration/administrator/edit.do"><spring:message code="master.page.configuration" /></a></li>	
+					<li><a href="administrator/create.do"><spring:message code="master.page.signUpAdmin" /></a></li>
 					<li><a href="administrator/dashboard.do"><spring:message code="master.page.dashboard" /></a></li>
 				</ul>
 			</li>
@@ -42,11 +44,27 @@
 			</li>
 		</security:authorize>
 		
+		<security:authorize access="hasRole('HACKER')">
+			<li><a class="fNiv"><spring:message	code="master.page.hacker" /></a>
+				<ul>
+					<li class="arrow"></li>
+
+						<li><a href="curriculum/hacker/list.do"><spring:message code="master.page.curriculum" /></a></li>
+
+				</ul>
+			</li>
+		</security:authorize>
+		
 		
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 			<li><a href="register/createCompany.do"><spring:message code="master.page.company.signup" /></a></li>
 			<li><a href="register/createHacker.do"><spring:message code="master.page.hacker.signup" /></a></li>
+		</security:authorize>
+		
+		<security:authorize access="permitAll()">
+			<li><a href="company/list.do"><spring:message code="master.page.company.list" /></a></li>
+			<li><a href="position/list.do"><spring:message code="master.page.position.list" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">

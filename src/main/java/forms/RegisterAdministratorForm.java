@@ -1,6 +1,7 @@
 
 package forms;
 
+import javax.persistence.Column;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -32,7 +33,7 @@ public class RegisterAdministratorForm {
 	private Boolean		checkbox;
 
 
-	@NotBlank
+	@NotNull
 	public int getId() {
 		return this.id;
 	}
@@ -41,7 +42,7 @@ public class RegisterAdministratorForm {
 		this.id = id;
 	}
 
-	@NotBlank
+	@NotNull
 	public int getVersion() {
 		return this.version;
 	}
@@ -129,6 +130,7 @@ public class RegisterAdministratorForm {
 	}
 
 	@Size(min = 5, max = 32)
+	@Column(unique = true)
 	@SafeHtml
 	public String getUsername() {
 		return this.username;

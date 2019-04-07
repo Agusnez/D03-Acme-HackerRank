@@ -27,6 +27,7 @@ import services.CompanyService;
 import services.ConfigurationService;
 import services.HackerService;
 import domain.Actor;
+import domain.Administrator;
 import domain.Company;
 import domain.Hacker;
 
@@ -204,6 +205,56 @@ public class ProfileController extends AbstractController {
 		result.addObject("hacker", hacker);
 		result.addObject("authority", "hacker");
 		result.addObject("actionURI", "editHacker.do");
+		result.addObject("banner", banner);
+		result.addObject("messageError", messageCode);
+		final String countryCode = this.configurationService.findConfiguration().getCountryCode();
+		result.addObject("defaultCountry", countryCode);
+
+		return result;
+	}
+
+	//--------------------------ADMINISTRATOR------------------------------
+
+	@RequestMapping(value = "/editAdministrator", method = RequestMethod.POST, params = "save")
+	public ModelAndView saveAdministrator(@ModelAttribute("administrator") final Administrator admin, final BindingResult binding) {
+		ModelAndView result;
+
+		final Administrator adminReconstruct = this.administratorService.reconstruct(admin, binding);
+
+		if (binding.hasErrors())
+			result = this.createEditModelAndViewAdmin(adminReconstruct);
+		else
+			try {
+				this.administratorService.save(adminReconstruct);
+				final Credentials credentials = new Credentials();
+				credentials.setJ_username(adminReconstruct.getUserAccount().getUsername());
+				credentials.setPassword(adminReconstruct.getUserAccount().getPassword());
+				result = new ModelAndView("redirect:/profile/displayPrincipal.do");
+				result.addObject("credentials", credentials);
+			} catch (final Throwable oops) {
+				result = this.createEditModelAndViewAdmin(adminReconstruct, "actor.commit.error");
+			}
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndViewAdmin(final Administrator admin) {
+		ModelAndView result;
+
+		result = this.createEditModelAndViewAdmin(admin, null);
+
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndViewAdmin(final Administrator admin, final String messageCode) {
+		ModelAndView result;
+
+		final String banner = this.configurationService.findConfiguration().getBanner();
+
+		result = new ModelAndView("actor/edit");
+
+		result.addObject("administrator", admin);
+		result.addObject("authority", "administrator");
+		result.addObject("actionURI", "editAdministrator.do");
 		result.addObject("banner", banner);
 		result.addObject("messageError", messageCode);
 		final String countryCode = this.configurationService.findConfiguration().getCountryCode();

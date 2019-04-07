@@ -1,5 +1,5 @@
 
-package controllers;
+package controllers.administrator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.AdministratorService;
 import services.ConfigurationService;
+import controllers.AbstractController;
 import domain.Administrator;
 import forms.RegisterAdministratorForm;
 
@@ -50,16 +51,17 @@ public class RegisterAdministratorController extends AbstractController {
 			result = this.createEditModelAndView(form);
 		else if (!form.checkPassword() || !form.getCheckbox())
 			result = this.createEditModelAndView(form, "administrator.commit.error");
+		else if (!form.checkPassword() || !form.getCheckbox())
+			result = this.createEditModelAndView(form, "administrator.commit.error.username");
 		else
 			try {
 				this.administratorService.save(adminReconstruct);
 				result = new ModelAndView("redirect:/welcome/index.do");
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(form, "administrator.commit.error");
+				result = this.createEditModelAndView(form, "actor.commit.error");
 			}
 		return result;
 	}
-
 	// Ancillary methods
 
 	protected ModelAndView createEditModelAndView(final RegisterAdministratorForm administrator) {

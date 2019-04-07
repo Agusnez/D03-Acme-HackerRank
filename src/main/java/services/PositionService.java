@@ -57,6 +57,7 @@ public class PositionService {
 
 		result.setCompany(this.companyService.findByPrincipal());
 		result.setTicker(this.generateTicker());
+		result.setFinalMode(false);
 
 		return result;
 
@@ -174,6 +175,20 @@ public class PositionService {
 		return positions;
 	}
 
+	public Collection<Position> findPositionsByCompanyIdAndFinalModeTrue(final int companyId) {
+
+		final Collection<Position> positions = this.positionRepository.findPositionsByCompanyIdAndFinalModeTrue(companyId);
+
+		return positions;
+	}
+
+	public Collection<Position> findPositionsFinalModeTrue() {
+
+		final Collection<Position> positions = this.positionRepository.findPositionsFinalModeTrue();
+
+		return positions;
+	}
+
 	public Boolean positionCompanySecurity(final int positionId) {
 		Boolean res = false;
 		Assert.notNull(positionId);
@@ -217,6 +232,11 @@ public class PositionService {
 
 		return result;
 
+	}
+
+	public void flush() {
+
+		this.positionRepository.flush();
 	}
 
 }

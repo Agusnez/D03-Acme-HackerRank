@@ -19,8 +19,6 @@ import security.UserAccount;
 import security.UserAccountService;
 import domain.Actor;
 import domain.Administrator;
-import domain.Company;
-import domain.Hacker;
 import domain.Position;
 import forms.RegisterAdministratorForm;
 
@@ -39,7 +37,7 @@ public class AdministratorService {
 
 	@Autowired
 	private UserAccountService		userAccountService;
-	
+
 	@Autowired
 	private PositionService			positionService;
 
@@ -133,8 +131,10 @@ public class AdministratorService {
 		admin.setVersion(form.getVersion());
 		admin.setName(form.getName());
 		admin.setSurnames(form.getSurnames());
+		admin.setVat(form.getVat());
 		admin.setPhoto(form.getPhoto());
 		admin.setEmail(form.getEmail());
+		admin.setCreditCard(form.getCreditCard());
 		admin.setPhone(form.getPhone());
 		admin.setAddress(form.getAddress());
 		admin.setSpammer(null);
@@ -165,6 +165,10 @@ public class AdministratorService {
 
 	}
 
+	public void flush() {
+		this.administratorRepository.flush();
+	}
+
 	// Other business methods -----------------------
 
 	public Administrator findByPrincipal() {
@@ -188,38 +192,40 @@ public class AdministratorService {
 
 		return result;
 	}
-	
+
 	// Dashboard 
-	
+
 	public Double avgOfPositionsPerCompany() {
 		return this.administratorRepository.avgOfPositionsPerCompany();
 	}
-	
+
 	public List<String> topCompaniesWithMorePositions() {
-		List<String> result = this.administratorRepository.topCompaniesWithMorePositions();
-		
+		final List<String> result = this.administratorRepository.topCompaniesWithMorePositions();
+
 		return result;
 	}
-	
-	/*public Collection<Hacker> topHackerWithMoreApplications() {
-		return this.administratorRepository.topHackerWithMoreApplications();
-	}*/
-	
+
+	/*
+	 * public Collection<Hacker> topHackerWithMoreApplications() {
+	 * return this.administratorRepository.topHackerWithMoreApplications();
+	 * }
+	 */
+
 	public Collection<Double> statsSalaries() {
 		return this.administratorRepository.statsSalaries();
 	}
-	
+
 	public Position findBestPosition() {
-		
-		int id = this.administratorRepository.findBestPosition();
-		
+
+		final int id = this.administratorRepository.findBestPosition();
+
 		return this.positionService.findOne(id);
 	}
-	
+
 	public Position findWorstPosition() {
-		int id = this.administratorRepository.findWorstPosition();
-		
+		final int id = this.administratorRepository.findWorstPosition();
+
 		return this.positionService.findOne(id);
 	}
- 
+
 }
