@@ -18,13 +18,13 @@ requestURI="${requestURI }" class="displaytag">
 	
 	<acme:column property="link" titleKey="socialProfile.link" value= "${row.link}: "/>
 	
-	<acme:url href="socialProfile/administrator,brotherhood,member/edit.do?socialProfileId=${row.id}" code="socialProfile.edit"/>
+	<acme:url href="socialProfile/administrator,company,hacker/edit.do?socialProfileId=${row.id}" code="socialProfile.edit"/>
 	
-	<acme:url href="socialProfile/administrator,brotherhood,member/display.do?socialProfileId=${row.id}" code="socialProfile.display"/>
+	<acme:url href="socialProfile/administrator,company,hacker/display.do?socialProfileId=${row.id}" code="socialProfile.display"/>
 	
 </display:table>
 
-	<acme:button name="create" code="socialProfile.create" onclick="javascript: relativeRedir('socialProfile/administrator,brotherhood,member/create.do');"/>
+	<acme:button name="create" code="socialProfile.create" onclick="javascript: relativeRedir('socialProfile/administrator,company,hacker/create.do');"/>
 	
 	<acme:button name="back" code="socialProfile.back" onclick="javascript: relativeRedir('profile/displayPrincipal.do');"/>
 <br />

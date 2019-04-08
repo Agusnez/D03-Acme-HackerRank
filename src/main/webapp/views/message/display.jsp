@@ -26,4 +26,4 @@
 
 <acme:button name="delete" code="message.delete" onclick="javascript: relativeRedir('message/actor/delete.do?messageId=${message1.id}');" />
 
-<acme:button name="back" code="message.back" onclick="javascript: relativeRedir('welcome/index.do');" />
+<acme:button name="back" code="message.back" onclick="javascript: relativeRedir('message/actor/list.do');" />

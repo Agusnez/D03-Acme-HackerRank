@@ -19,7 +19,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form modelAttribute="socialProfile" action="socialProfile/administrator,brotherhood,member/edit.do">
+<form:form modelAttribute="socialProfile" action="socialProfile/administrator,company,hacker/edit.do">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
@@ -32,7 +32,7 @@
 	
 	<acme:submit name="save" code="socialProfile.save"/>
 	
-	<acme:cancel code="socialProfile.cancel" url="socialProfile/administrator,brotherhood,member/list.do"/>
+	<acme:cancel code="socialProfile.cancel" url="socialProfile/administrator,company,hacker/list.do"/>
  
 	<jstl:if test="${socialProfile.id != 0}">
 	<acme:submit name="delete" code="socialProfile.delete" />

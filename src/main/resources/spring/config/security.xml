@@ -87,7 +87,11 @@
 		<security:intercept-url pattern="/profile/editHacker.do" access="hasRole('HACKER')" />
 
 		<!-- Social profile -->
-		<security:intercept-url pattern="/socialProfile/administrator,company,hacker/**" access="isAuthenticated()" />
+		<security:intercept-url pattern="/socialProfile/administrator,company,hacker/list.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/socialProfile/administrator,company,hacker/create.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/socialProfile/administrator,company,hacker/edit.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/socialProfile/administrator,company,hacker/delete.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/socialProfile/administrator,company,hacker/display.do" access="isAuthenticated()" />
 
 		<!-- Company: Position -->
 		<security:intercept-url pattern="/position/company/list.do" access="hasRole('COMPANY')" />
