@@ -364,4 +364,50 @@ public class PositionServiceTest extends AbstractTest {
 		this.rollbackTransaction();
 	}
 
+	/*
+	 * ACME.HACKERRANK
+	 * a)(Level C) Requirement 7.4: An actor who is not authenticated must be able to:
+	 * Search for a position using a single key word that must be contained in its title, its
+	 * description, its profile, its skills, its technologies, or the name of the corresponding
+	 * company.
+	 * 
+	 * b) Negative cases:
+	 * 2. The number of the positions finded is wrong
+	 * 
+	 * c) Sentence coverage
+	 * -findPositionsByFilter(): 94,4%
+	 * d) Data coverage
+	 */
+	@Test
+	public void driverFilter() {
+		final Object testingData[][] = {
+			{
+				"PC", 1, null
+			},//1. All fine filter
+			{
+				"PC", 0, IllegalArgumentException.class
+			},//2. The number of the positions finded is wrong
+
+		};
+
+		for (int i = 0; i < testingData.length; i++)
+			this.templateFilter((String) testingData[i][0], (Integer) testingData[i][1], (Class<?>) testingData[i][2]);
+	}
+
+	protected void templateFilter(final String keyword, final Integer results, final Class<?> expected) {
+		Class<?> caught;
+
+		caught = null;
+
+		try {
+			final Collection<Position> positionsFinded = this.positionService.findPositionsByFilter(keyword, null);
+
+			Assert.isTrue(positionsFinded.size() == results);
+
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+
+		super.checkExceptions(expected, caught);
+	}
 }

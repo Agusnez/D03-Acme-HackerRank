@@ -8,6 +8,37 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
+<jstl:if test="${!AmILogged }">
+<form:form action="position/listByFilter.do" modelAttribute="filterForm">
+
+<spring:message code="filter.keyword" />: <form:input path="keyword"/>
+<spring:message code="company.commercialName"/>: <form:input path="companyName" />
+
+<acme:submit name="search" code="filter.search"/>
+
+</form:form>
+</jstl:if>
+
+<jstl:if test="${AmInFinder }">
+<security:authorize access="hasRole('HACKER')">
+<form:form action="${requestAction }" modelAttribute="finder"> 
+
+	<form:hidden path="id"/>
+	<form:hidden path="version"/>
+
+	<acme:textbox path="keyWord" code="filter.keyword" />
+	
+	<acme:textbox path="minimumSalary" code="finder.minimumSalary" />
+	
+	<acme:textbox path="maximumSalary" code="finder.maximumSalary" />
+	
+	<acme:textbox path="maximumDeadline" code="finder.maximumDeadline" />
+	
+	<input type="submit" name="find" value="<spring:message code="filter.search"/>"/>
+	
+</form:form> 
+</security:authorize>
+</jstl:if>
 
 <display:table name="positions" id="row" requestURI="${requestURI }" pagesize="${pagesize }">
 	
@@ -31,9 +62,11 @@
 	<acme:column property="offeredSalary" titleKey="position.offeredSalary" value= "${row.offeredSalary}: "/>
 		
 	<security:authorize access="hasRole('COMPANY')">
+		<jstl:if test="${AmInCompanyController}">
 		<acme:column property="finalMode" titleKey="position.finalMode" value="${row.finalMode }" />
 		
 		<acme:url href="position/company/display.do?positionId=${row.id }" code="position.display"/>
+		</jstl:if>
 	</security:authorize> 
 	
 	
@@ -44,9 +77,11 @@
 
 </display:table>
 
+	<jstl:if test="${AmInCompanyController}">
 	<security:authorize access="hasRole('COMPANY')">
 	<a href="position/company/create.do"><spring:message code="position.create"/></a>
 	</security:authorize>
+	</jstl:if>
 	
 	<acme:button name="back" code="position.back" onclick="javascript: relativeRedir('welcome/index.do');" />
 	

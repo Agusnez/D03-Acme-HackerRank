@@ -50,6 +50,8 @@
 					<li class="arrow"></li>
 
 						<li><a href="curriculum/hacker/list.do"><spring:message code="master.page.curriculum" /></a></li>
+						<li><a href="finder/hacker/find.do"><spring:message code="master.page.hacker.finder" /></a></li>
+						
 
 				</ul>
 			</li>

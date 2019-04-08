@@ -54,6 +54,8 @@
 		<security:intercept-url pattern="/position/list.do" access="permitAll" /> 
 		<security:intercept-url pattern="/company/display.do" access="permitAll" /> 
 		<security:intercept-url pattern="/position/listByCompany.do" access="permitAll" /> 
+		<security:intercept-url pattern="/position/listByFilter.do" access="permitAll" /> 
+		
 		
 		
 		
@@ -90,7 +92,6 @@
 		<security:intercept-url pattern="/problem/company/addPositionPost.do" access="hasRole('COMPANY')" />
 		
 		
-		
 		<!-- Hacker: Curriculum -->
 		<security:intercept-url pattern="/curriculum/hacker/list.do" access="hasRole('HACKER')" /> 
 		<security:intercept-url pattern="/curriculum/hacker/create.do" access="hasRole('HACKER')" /> 
@@ -103,7 +104,10 @@
 		
 		<!-- Administrator -->
 		<security:intercept-url pattern="/administrator/dashboard.do" access="hasRole('ADMIN')" />	
-		<security:intercept-url pattern="/configuration/administrator/edit.do" access="hasRole('ADMIN')" />		
+		<security:intercept-url pattern="/configuration/administrator/edit.do" access="hasRole('ADMIN')" />
+		
+		<!-- Hacker: Finder -->	
+		<security:intercept-url pattern="/finder/hacker/find.do" access="hasRole('HACKER')" />
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 

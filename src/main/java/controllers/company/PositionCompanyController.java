@@ -19,6 +19,7 @@ import services.PositionService;
 import controllers.AbstractController;
 import domain.Company;
 import domain.Position;
+import forms.FilterForm;
 
 @Controller
 @RequestMapping("/position/company")
@@ -54,6 +55,16 @@ public class PositionCompanyController extends AbstractController {
 		result.addObject("pagesize", 5);
 		result.addObject("banner", banner);
 		result.addObject("language", LocaleContextHolder.getLocale().getLanguage());
+
+		final FilterForm filterForm = new FilterForm();
+		result.addObject("filterForm", filterForm);
+
+		//Esto es por el filter, para que no se muestre siempre en la vista de position/list
+		//Que solo se muestre unicamente con el controlador de listar position anonimo
+		result.addObject("AmILogged", true);
+
+		//Esto es para reutilizar vista de position/list en el create
+		result.addObject("AmInCompanyController", true);
 
 		return result;
 
