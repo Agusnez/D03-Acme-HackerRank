@@ -17,6 +17,7 @@ import services.PositionService;
 import controllers.AbstractController;
 import domain.Company;
 import domain.Position;
+import forms.FilterForm;
 
 @Controller
 @RequestMapping("/position")
@@ -56,6 +57,9 @@ public class PositionController extends AbstractController {
 			result.addObject("language", LocaleContextHolder.getLocale().getLanguage());
 			result.addObject("autoridad", "");
 
+			final FilterForm filterForm = new FilterForm();
+			result.addObject("filterForm", filterForm);
+
 		}
 		return result;
 
@@ -77,7 +81,29 @@ public class PositionController extends AbstractController {
 		result.addObject("language", LocaleContextHolder.getLocale().getLanguage());
 		result.addObject("autoridad", "");
 
+		final FilterForm filterForm = new FilterForm();
+		result.addObject("filterForm", filterForm);
+
 		return result;
 
+	}
+
+	@RequestMapping(value = "/listByFilter", method = RequestMethod.POST)
+	public ModelAndView listByFilter(final String keyword, final String companyName) {
+		final ModelAndView result;
+		final String banner = this.configurationService.findConfiguration().getBanner();
+
+		final Collection<Position> positions = this.positionService.findPositionsByFilter(keyword, companyName);
+
+		result = new ModelAndView("position/list");
+		result.addObject("positions", positions);
+		result.addObject("banner", banner);
+		result.addObject("language", LocaleContextHolder.getLocale().getLanguage());
+		result.addObject("autoridad", "");
+
+		final FilterForm filterForm = new FilterForm();
+		result.addObject("filterForm", filterForm);
+
+		return result;
 	}
 }

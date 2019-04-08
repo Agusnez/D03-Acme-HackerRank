@@ -18,6 +18,7 @@ import security.LoginService;
 import security.UserAccount;
 import security.UserAccountService;
 import domain.Actor;
+import domain.Finder;
 import domain.Hacker;
 import forms.RegisterHackerForm;
 
@@ -35,6 +36,9 @@ public class HackerService {
 
 	@Autowired
 	private UserAccountService	userAccountService;
+
+	@Autowired
+	private FinderService		finderService;
 
 	@Autowired
 	private Validator			validator;
@@ -113,6 +117,10 @@ public class HackerService {
 			hacker.setPhone(phone);
 
 			result = this.hackerRepository.save(hacker);
+
+			final Finder finder = this.finderService.create();
+			finder.setHacker(result);
+			this.finderService.save(finder);
 
 		}
 		return result;
