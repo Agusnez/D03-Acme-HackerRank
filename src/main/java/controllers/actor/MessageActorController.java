@@ -128,7 +128,7 @@ public class MessageActorController extends AbstractController {
 				Assert.isTrue(message3.getId() == 0);
 
 				this.messageService.save(message3);
-				result = new ModelAndView("redirect:/box/actor/list.do");
+				result = new ModelAndView("redirect:/message/actor/list.do");
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(message2, "message.commit.error");
 			}
@@ -155,11 +155,11 @@ public class MessageActorController extends AbstractController {
 
 				this.messageService.delete(message1);
 
-				result = new ModelAndView("redirect:/welcome/index.do");
+				result = new ModelAndView("redirect:/message/actor/list.do");
 				result.addObject("banner", banner);
 
 			} else
-				result = new ModelAndView("redirect:/welcome/index.do");
+				result = new ModelAndView("redirect:/message/actor/list.do");
 		} else
 			result = new ModelAndView("misc/notExist");
 

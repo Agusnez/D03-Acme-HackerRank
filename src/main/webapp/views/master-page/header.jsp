@@ -74,7 +74,8 @@
 			        (<security:authentication property="principal.username" />)
 				</a>
 				<ul>
-					<li><a href="profile/displayPrincipal.do"><spring:message code="master.page.profile" /></a></li>				
+					<li><a href="profile/displayPrincipal.do"><spring:message code="master.page.profile" /></a></li>
+					<li><a href="message/actor/list.do"><spring:message code="master.page.message" /> </a></li>				
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
 				</ul>
 			</li>

@@ -75,11 +75,11 @@ public class SocialProfileServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 
 			{
-				"socialProfile1", "brotherhood1", null
+				"socialProfile1", "Company1", null
 			//1. Todo bien
 			}, {
-				"socialProfile5", "brotherhood1", IllegalArgumentException.class
-			//2. El socialProfile no pertenece a la brotherhood
+				"socialProfile5", "Company1", IllegalArgumentException.class
+			//2. El socialProfile no pertenece a la Company
 			}
 
 		};
@@ -88,20 +88,20 @@ public class SocialProfileServiceTest extends AbstractTest {
 			this.templateListSocialProfiles((String) testingData[i][0], (String) testingData[i][1], (Class<?>) testingData[i][2]);
 
 	}
-	protected void templateListSocialProfiles(final String socialProfileId, final String brotherhoodUsername, final Class<?> expected) {
+	protected void templateListSocialProfiles(final String socialProfileId, final String companyUsername, final Class<?> expected) {
 
 		Class<?> caught;
 
 		caught = null;
 		try {
 
-			super.authenticate(brotherhoodUsername);
+			super.authenticate(companyUsername);
 			final Integer socialProfileIdInteger = super.getEntityId(socialProfileId);
-			final Integer brotherhoodIdInteger = super.getEntityId(brotherhoodUsername);
+			final Integer companyIdInteger = super.getEntityId(companyUsername);
 
 			final SocialProfile socialProfile = this.socialProfileService.findOne(socialProfileIdInteger);
 
-			final Collection<SocialProfile> socialProfiles = this.socialProfileService.findAllByActor(brotherhoodIdInteger);
+			final Collection<SocialProfile> socialProfiles = this.socialProfileService.findAllByActor(companyIdInteger);
 			super.unauthenticate();
 			Assert.isTrue(socialProfiles.contains(socialProfile));
 
@@ -134,22 +134,22 @@ public class SocialProfileServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 
 			{
-				"brotherhood1", "nick1", "socialName1", "https://www.youtube.com", null
+				"Company1", "nick1", "socialName1", "https://www.youtube.com", null
 			//1. Todo bien
 			}, {
 				null, "nick1", "socialName1", "https://www.youtube.com", IllegalArgumentException.class
 			//2. Intenta crearlo alguien no autenticado
 			}, {
-				"brotherhood1", "", "socialName1", "https://www.youtube.com", ConstraintViolationException.class
+				"Company1", "", "socialName1", "https://www.youtube.com", ConstraintViolationException.class
 			//3. nick = blank
 			}, {
-				"brotherhood1", "<script>alert('hola')</script>", "socialName1", "https://www.youtube.com", ConstraintViolationException.class
+				"Company1", "<script>alert('hola')</script>", "socialName1", "https://www.youtube.com", ConstraintViolationException.class
 			//4. nick = not safe html
 			}, {
-				"brotherhood1", "nick1", "", "https://www.youtube.com", ConstraintViolationException.class
+				"Company1", "nick1", "", "https://www.youtube.com", ConstraintViolationException.class
 			//5. socialName = blank
 			}, {
-				"brotherhood1", "nick1", "<script>alert('hola')</script>", "https://www.youtube.com", ConstraintViolationException.class
+				"Company1", "nick1", "<script>alert('hola')</script>", "https://www.youtube.com", ConstraintViolationException.class
 			//6. socialName = not safe html
 			}
 
@@ -208,11 +208,11 @@ public class SocialProfileServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 
 			{
-				"brotherhood1", "socialProfile1", "nick1", null
+				"Company1", "socialProfile1", "nick1", null
 			//1. Todo bien
 			}, {
-				"brotherhood1", "socialProfile5", "nick1", IllegalArgumentException.class
-			//3. El SocialProfile no pertenece al brotherhood autenticado
+				"Company1", "socialProfile5", "nick1", IllegalArgumentException.class
+			//3. El SocialProfile no pertenece al Company autenticado
 			}
 
 		};
@@ -269,11 +269,11 @@ public class SocialProfileServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 
 			{
-				"brotherhood1", "socialProfile1", null
+				"Company1", "socialProfile1", null
 			//1. Todo bien
 			}, {
-				"brotherhood1", "socialProfile5", IllegalArgumentException.class
-			//2. El SocialProfile no pertenece al brotherhood autenticado
+				"Company1", "socialProfile3", IllegalArgumentException.class
+			//2. El SocialProfile no pertenece al Company autenticado
 			}
 
 		};
