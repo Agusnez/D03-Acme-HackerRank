@@ -367,6 +367,20 @@
 	
 	</bean>
 	
+	<!-- Finders -->
+	<bean id="Finder1" class="domain.Finder">
+		<property name="keyWord" value="f" />
+		<property name="minimumSalary" value="" />
+		<property name="maximumSalary" value="" />
+		<property name="maximumDeadline" value="" />
+		<property name="lastUpdate" value="2019/04/07 13:13" />
+		<property name="hacker" ref="Hacker1" />
+		<property name="positions">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
 	<!-- Companies -->
 	
 	<bean id="Company1" class="domain.Company">

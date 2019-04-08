@@ -34,6 +34,9 @@ public class ConfigurationServiceTest extends AbstractTest {
 			{
 				"admin", "http://example.com", "+34", "-1", "40", "example", "example", ConstraintViolationException.class
 			},//2. Finder time < 1
+			{
+				"admin", "http://example.com", "+34", "102", "40", "example", "example", ConstraintViolationException.class
+			},//3. Finder time > 100
 
 		};
 

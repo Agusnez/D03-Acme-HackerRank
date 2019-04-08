@@ -26,7 +26,7 @@ public class Finder extends DomainEntity {
 	//Atributos-----------------------------------------------------------------------
 	private String	keyWord;
 	private Double	minimumSalary;
-	private String	minimumDeadline;
+	private Double	maximumSalary;
 	private String	maximumDeadline;
 	private Date	lastUpdate;
 
@@ -49,25 +49,23 @@ public class Finder extends DomainEntity {
 	public void setMinimumSalary(final Double minimumSalary) {
 		this.minimumSalary = minimumSalary;
 	}
-	
+
 	@Pattern(regexp = "((?:19|20)\\d\\d)/(0?[1-9]|1[012])/([12][0-9]|3[01]|0?[1-9])|| ")
 	@SafeHtml
 	public String getMaximumDeadline() {
-		return maximumDeadline;
+		return this.maximumDeadline;
 	}
 
-	public void setMaximumDeadline(String maximumDeadline) {
+	public void setMaximumDeadline(final String maximumDeadline) {
 		this.maximumDeadline = maximumDeadline;
 	}
 
-	@Pattern(regexp = "((?:19|20)\\d\\d)/(0?[1-9]|1[012])/([12][0-9]|3[01]|0?[1-9])|| ")
-	@SafeHtml
-	public String getMinimumDeadline() {
-		return minimumDeadline;
+	public Double getMaximumSalary() {
+		return this.maximumSalary;
 	}
 
-	public void setMinimumDeadline(String minimumDeadline) {
-		this.minimumDeadline = minimumDeadline;
+	public void setMaximumSalary(final Double maximumSalary) {
+		this.maximumSalary = maximumSalary;
 	}
 
 	@Past
@@ -92,10 +90,10 @@ public class Finder extends DomainEntity {
 	@ManyToMany
 	@Valid
 	public Collection<Position> getPositions() {
-		return positions;
+		return this.positions;
 	}
 
-	public void setPositions(Collection<Position> positions) {
+	public void setPositions(final Collection<Position> positions) {
 		this.positions = positions;
 	}
 
