@@ -76,4 +76,6 @@
 	
 </display:table>
 
+	<acme:button name="create" code="message.create" onclick="javascript: relativeRedir('actor/list.do');" />
+
 	<acme:button name="back" code="message.back" onclick="javascript: relativeRedir('welcome/index.do');" />

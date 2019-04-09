@@ -67,7 +67,8 @@ public class MessageService {
 		final Actor actor = this.actorService.findByPrincipal();
 
 		result.setSenderId(actor.getId());
-		result.setRecipientId(actor.getId());
+
+		result.setTags("SYSTEM");
 
 		return result;
 
@@ -198,7 +199,7 @@ public class MessageService {
 	//	
 	//		}
 
-	public Boolean securityMessage(final int messageId) { //TODO Retomar 
+	public Boolean securityMessage(final int messageId) {
 
 		Boolean res = false;
 
