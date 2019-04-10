@@ -68,6 +68,10 @@
 	
 	<display:column>
 			<a href="application/hacker/display.do?applicationId=${row3.id}"><spring:message code="application.display"/></a>
+	</display:column>
+	
+	<display:column>
+			<a href="application/hacker/edit.do?applicationId=${row3.id}"><spring:message code="application.edit"/></a>
 	</display:column>	
 	
 </display:table>
@@ -91,6 +95,10 @@
 	<display:column>
 			<a href="application/hacker/display.do?applicationId=${row4.id}"><spring:message code="application.display"/></a>
 	</display:column>	
+	
+	<display:column>
+			<a href="application/hacker/edit.do?applicationId=${row4.id}"><spring:message code="application.edit"/></a>
+	</display:column>
 	
 </display:table>
 

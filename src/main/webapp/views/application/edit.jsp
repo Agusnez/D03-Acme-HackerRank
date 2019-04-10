@@ -29,10 +29,6 @@
 	<acme:submit name="save" code="application.save" />
 	
 	<acme:cancel code="application.cancel" url="welcome/index.do" />
-	
-	<jstl:if test="${application.id != 0}">
-	<acme:submit name="delete" code="application.delete" />
-	</jstl:if>	
 
 
 </form:form>  

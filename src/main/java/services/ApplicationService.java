@@ -240,7 +240,7 @@ public class ApplicationService {
 			res.setHacker(this.hackerService.findByPrincipal());
 			res.setMoment(now);
 
-			if (res.getAnswer() != null) {
+			if (!res.getAnswer().isEmpty()) {
 
 				res.setSubmitMoment(now);
 				res.setStatus("SUBMITTED");
@@ -263,7 +263,7 @@ public class ApplicationService {
 			authority2.setAuthority(Authority.COMPANY);
 			Assert.isTrue((actor.getUserAccount().getAuthorities().contains(authority) || actor.getUserAccount().getAuthorities().contains(authority2)));
 
-			if (res.getAnswer() != null) {
+			if (!res.getAnswer().isEmpty()) {
 
 				res.setStatus("SUBMITTED");
 				res.setSubmitMoment(now);

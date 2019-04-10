@@ -183,6 +183,13 @@ public class ApplicationHackerController {
 				result = this.createEditModelAndView(applicationForm, null);
 			else
 				try {
+
+					final Curriculum curriculum = application.getCurriculum();
+
+					final Curriculum copy = this.curriculumService.copyCurriculum(curriculum);
+
+					application.setCurriculum(copy);
+
 					this.applicationService.save(application);
 					result = new ModelAndView("redirect:/application/hacker/list.do");
 				} catch (final Throwable oops) {
