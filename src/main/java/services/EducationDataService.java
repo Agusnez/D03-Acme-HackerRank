@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -75,6 +76,10 @@ public class EducationDataService {
 		Assert.notNull(education);
 
 		EducationData result;
+
+		final Date startDate = education.getStartDate();
+		final Date endDate = education.getEndDate();
+		Assert.isTrue(startDate.before(endDate));
 
 		result = this.educationDataRepository.save(education);
 

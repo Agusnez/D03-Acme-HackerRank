@@ -78,7 +78,7 @@
 
 
 <jstl:if test="${!admin}">
-	<acme:button name="socialProfile" code="actor.socialProfile" onclick="javascript: relativeRedir('socialProfile/administrator,brotherhood,member/list.do');" />
+	<acme:button name="socialProfile" code="actor.socialProfile" onclick="javascript: relativeRedir('socialProfile/administrator,company,hacker/list.do');" />
 
 
 	<security:authorize access="isAuthenticated()">

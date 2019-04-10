@@ -1,8 +1,11 @@
 
 package services;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Random;
 
 import javax.transaction.Transactional;
@@ -17,6 +20,7 @@ import repositories.PositionRepository;
 import security.Authority;
 import domain.Actor;
 import domain.Company;
+import domain.Finder;
 import domain.Position;
 import domain.Problem;
 
@@ -241,4 +245,63 @@ public class PositionService {
 		this.positionRepository.flush();
 	}
 
+	public Collection<Position> findPositionsByFilter(String keyword, String companyName) {
+
+		if (keyword == null)
+			keyword = "";
+		if (companyName == null)
+			companyName = "";
+
+		final String formatKey = "%" + keyword + "%";
+		final String formatCompany = "%" + companyName + "%";
+
+		final Collection<Position> positions = this.positionRepository.findPositionsByFilter(formatKey, formatCompany);
+
+		return positions;
+
+	}
+
+	public Date convertStringToDate(final String dateString) {
+		Date date = null;
+		final DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+		try {
+			date = df.parse(dateString);
+		} catch (final Exception ex) {
+			System.out.println(ex);
+		}
+		return date;
+	}
+
+	public Collection<Position> findPositionsByFinder(final Finder finder) {
+		String keyword = finder.getKeyWord();
+		String maximumDeadline = finder.getMaximumDeadline();
+		Double minimumSalary = finder.getMinimumSalary();
+		Double maximumSalary = finder.getMaximumSalary();
+		Collection<Position> positions = new HashSet<Position>();
+
+		if (keyword == null)
+			keyword = "";
+		if (maximumDeadline == null)
+			maximumDeadline = "";
+		if (minimumSalary == null)
+			minimumSalary = 0.;
+		if (maximumSalary == null)
+			maximumSalary = this.maxOfferedSalaryPosition();
+
+		final String keywordFormat = "%" + keyword + "%";
+		final Date maximumDeadlineFormat = this.convertStringToDate(maximumDeadline);
+
+		if (maximumDeadlineFormat != null)
+			positions = this.positionRepository.findPositionByFinder(keywordFormat, maximumDeadlineFormat, maximumSalary, minimumSalary);
+		else
+			positions = this.positionRepository.findPositionByFinderWithoutDeadline(keywordFormat, maximumSalary, minimumSalary);
+		return positions;
+	}
+
+	public Double maxOfferedSalaryPosition() {
+
+		final Double res = this.positionRepository.maxOfferedSalaryPosition();
+
+		return res;
+	}
 }

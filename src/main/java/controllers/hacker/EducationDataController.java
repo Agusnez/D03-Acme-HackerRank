@@ -117,7 +117,7 @@ public class EducationDataController extends AbstractController {
 
 		final String banner = this.configurationService.findConfiguration().getBanner();
 
-		result = new ModelAndView("curriculum/editPositionData");
+		result = new ModelAndView("curriculum/editEducationData");
 		result.addObject("educationData", educationData);
 		result.addObject("banner", banner);
 		result.addObject("messageError", messageCode);

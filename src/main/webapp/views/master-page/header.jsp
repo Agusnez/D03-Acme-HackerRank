@@ -24,7 +24,8 @@
 			<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="configuration/administrator/edit.do"><spring:message code="master.page.configuration" /></a></li>	
+					<li><a href="configuration/administrator/edit.do"><spring:message code="master.page.configuration" /></a></li>
+					<li><a href="broadcast/administrator/create.do"><spring:message code="master.page.broadcast" /></a></li>	
 					<li><a href="administrator/create.do"><spring:message code="master.page.signUpAdmin" /></a></li>
 					<li><a href="administrator/dashboard.do"><spring:message code="master.page.dashboard" /></a></li>
 				</ul>
@@ -50,6 +51,8 @@
 					<li class="arrow"></li>
 
 						<li><a href="curriculum/hacker/list.do"><spring:message code="master.page.curriculum" /></a></li>
+						<li><a href="finder/hacker/find.do"><spring:message code="master.page.hacker.finder" /></a></li>
+						
 
 				</ul>
 			</li>
@@ -74,7 +77,8 @@
 			        (<security:authentication property="principal.username" />)
 				</a>
 				<ul>
-					<li><a href="profile/displayPrincipal.do"><spring:message code="master.page.profile" /></a></li>				
+					<li><a href="profile/displayPrincipal.do"><spring:message code="master.page.profile" /></a></li>
+					<li><a href="message/actor/list.do"><spring:message code="master.page.message" /> </a></li>				
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
 				</ul>
 			</li>

@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -75,6 +76,10 @@ public class PositionDataService {
 		Assert.notNull(position);
 
 		PositionData result;
+
+		final Date startDate = position.getStartDate();
+		final Date endDate = position.getEndDate();
+		Assert.isTrue(startDate.before(endDate));
 
 		result = this.positionDataRepository.save(position);
 

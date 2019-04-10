@@ -13,6 +13,7 @@ import repositories.ConfigurationRepository;
 import security.Authority;
 import domain.Administrator;
 import domain.Configuration;
+import domain.Message;
 
 @Service
 @Transactional
@@ -30,6 +31,9 @@ public class ConfigurationService {
 
 	@Autowired
 	private ActorService			actorService;
+
+	@Autowired
+	private MessageService			messageService;
 
 
 	//Methods
@@ -87,29 +91,27 @@ public class ConfigurationService {
 		return config;
 	}
 
-	//	public void spammerDetector(final int actorId) {
-	//
-	//		final Box ob = this.boxService.findOutBoxByActorId(actorId);
-	//
-	//		final Collection<Message> messages = this.messageService.findMessagesByBoxId(ob.getId());
-	//
-	//		int total = messages.size();
-	//
-	//		if (total == 0)
-	//			total = 1;
-	//
-	//		int ac = 0;
-	//
-	//		for (final Message m : messages)
-	//			if (m.getSpam() == true)
-	//				ac++;
-	//
-	//		final Double r = (ac / total) * 1.0;
-	//		if (r >= 0.1)
-	//			this.actorService.convertToSpammerActor();
-	//
-	//	}
-	//
+	public void spammerDetector(final int actorId) {
+
+		final Collection<Message> messages = this.messageService.messagePerActor(actorId);
+
+		int total = messages.size();
+
+		if (total == 0)
+			total = 1;
+
+		int ac = 0;
+
+		for (final Message m : messages)
+			if (m.getSpam() == true)
+				ac++;
+
+		final Double r = (ac / total) * 1.0;
+		if (r >= 0.1)
+			this.actorService.convertToSpammerActor();
+
+	}
+
 
 	public Boolean spamContent(final String text) {
 
