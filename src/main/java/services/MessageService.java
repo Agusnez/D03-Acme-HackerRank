@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
 import repositories.MessageRepository;
+import security.Authority;
 import domain.Actor;
 import domain.Message;
 import forms.MessageForm;
@@ -131,6 +132,19 @@ public class MessageService {
 		if (spam1 || spam2 || spam3)
 			message.setSpam(true);
 
+		if (message.getTags().equals("SYSTEM")) {
+
+			final Actor actor = this.actorService.findByPrincipal();
+			Assert.notNull(actor);
+			final Authority authority = new Authority();
+			authority.setAuthority(Authority.ADMIN);
+			if (actor.getUserAccount().getAuthorities().contains(authority)) {
+				if (message.getRecipient() != null)
+					message.setTags(null);
+			} else
+				message.setTags(null);
+		}
+
 		result = this.messageRepository.save(message);
 
 		return result;
@@ -241,7 +255,8 @@ public class MessageService {
 		result.setVersion(message.getVersion());
 		result.setBody(message.getBody());
 		result.setPriority(message.getPriority());
-		result.setRecipient(this.actorService.findOne(message.getRecipientId()));
+		if (message.getRecipientId() != 0)
+			result.setRecipient(this.actorService.findOne(message.getRecipientId()));
 		result.setSender(this.actorService.findOne(message.getSenderId()));
 		result.setSpam(false);
 		result.setSubject(message.getSubject());

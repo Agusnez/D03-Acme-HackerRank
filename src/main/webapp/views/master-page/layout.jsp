@@ -68,9 +68,9 @@
 			<tiles:insertAttribute name="title" />
 		</h1>
 		<tiles:insertAttribute name="body" />	
-		<jstl:if test="${message != null}">
+		<jstl:if test="${messageError != null}">
 			<br />
-			<span class="message"><spring:message code="${message}" /></span>
+			<span class="message"><spring:message code="${messageError}" /></span>
 		</jstl:if>	
 	</div>
 	<div>
