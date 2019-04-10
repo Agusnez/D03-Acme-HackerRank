@@ -58,8 +58,6 @@
 
 	<acme:column property="sender.name" titleKey="message.sender" value= "${row3.sender.name}: "/>
 	
-	<acme:column property="recipient.name" titleKey="message.recipient" value= "${row3.recipient.name}: "/>
-	
 	<acme:column property="moment" titleKey="message.moment" value= "${row3.moment}: "/>
 	
 	<acme:column property="subject" titleKey="message.subject" value= "${row3.subject}: "/>

@@ -28,7 +28,7 @@
 	</form:select>
 	<form:errors path="priority" cssClass="error" />
 	
-	<acme:textbox code="message.tags" path="tags" />
+	<acme:textbox code="message.tags" path="tags" readonly="true"/>
 	
 	<acme:submit name="save" code="message.save" />
 	
