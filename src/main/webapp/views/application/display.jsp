@@ -24,4 +24,10 @@
 	
 <acme:display code="application.curriculum" property="${application.curriculum.personalData.statement} "/>
 
-<acme:button name="back" code="application.back" onclick="javascript: relativeRedir('application/hacker/list.do');" />
+<security:authorize access="hasRole('HACKER')">
+	<acme:button name="back" code="application.back" onclick="javascript: relativeRedir('application/hacker/list.do');" />
+</security:authorize>
+
+<security:authorize access="hasRole('COMPANY')">
+	<acme:button name="back" code="application.back" onclick="javascript: relativeRedir('application/company/list.do');" />
+</security:authorize>

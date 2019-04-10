@@ -22,9 +22,17 @@
 	
 	<acme:column property="curriculum.personalData.statement" titleKey="application.curriculum" value= "${row.curriculum.personalData.statement}: "/>
 	
-	<display:column>
-			<a href="application/hacker/display.do?applicationId=${row.id}"><spring:message code="application.display"/></a>
-	</display:column>	
+	<security:authorize access="hasRole('HACKER')">
+		<display:column>
+				<a href="application/hacker/display.do?applicationId=${row.id}"><spring:message code="application.display"/></a>
+		</display:column>	
+	</security:authorize>	
+	
+	<security:authorize access="hasRole('COMPANY')">
+		<display:column>
+				<a href="application/company/display.do?applicationId=${row.id}"><spring:message code="application.display"/></a>
+		</display:column>
+	</security:authorize>
 	
 </display:table>
 
@@ -44,9 +52,17 @@
 	
 	<acme:column property="curriculum.personalData.statement" titleKey="application.curriculum" value= "${row2.curriculum.personalData.statement}: "/>
 	
-	<display:column>
-			<a href="application/hacker/display.do?applicationId=${row2.id}"><spring:message code="application.display"/></a>
-	</display:column>	
+	<security:authorize access="hasRole('HACKER')">
+		<display:column>
+				<a href="application/hacker/display.do?applicationId=${row2.id}"><spring:message code="application.display"/></a>
+		</display:column>	
+	</security:authorize>
+	
+	<security:authorize access="hasRole('COMPANY')">
+		<display:column>
+				<a href="application/company/display.do?applicationId=${row2.id}"><spring:message code="application.display"/></a>
+		</display:column>
+	</security:authorize>
 	
 </display:table>
 
@@ -66,13 +82,26 @@
 	
 	<acme:column property="curriculum.personalData.statement" titleKey="application.curriculum" value= "${row3.curriculum.personalData.statement}: "/>
 	
-	<display:column>
-			<a href="application/hacker/display.do?applicationId=${row3.id}"><spring:message code="application.display"/></a>
-	</display:column>
+	<security:authorize access="hasRole('HACKER')">
+		<display:column>
+				<a href="application/hacker/display.do?applicationId=${row3.id}"><spring:message code="application.display"/></a>
+		</display:column>
+		<display:column>
+				<a href="application/hacker/edit.do?applicationId=${row3.id}"><spring:message code="application.edit"/></a>
+		</display:column>	
+	</security:authorize>
 	
-	<display:column>
-			<a href="application/hacker/edit.do?applicationId=${row3.id}"><spring:message code="application.edit"/></a>
-	</display:column>	
+	<security:authorize access="hasRole('COMPANY')">
+		<display:column>
+				<a href="application/company/display.do?applicationId=${row3.id}"><spring:message code="application.display"/></a>
+		</display:column>
+		<display:column>
+				<a href="application/company/accept.do?applicationId=${row3.id}"><spring:message code="application.accept"/></a>
+		</display:column>
+		<display:column>
+				<a href="application/company/reject.do?applicationId=${row3.id}"><spring:message code="application.reject"/></a>
+		</display:column>
+	</security:authorize>
 	
 </display:table>
 
@@ -92,13 +121,22 @@
 	
 	<acme:column property="curriculum.personalData.statement" titleKey="application.curriculum" value= "${row4.curriculum.personalData.statement}: "/>
 	
-	<display:column>
-			<a href="application/hacker/display.do?applicationId=${row4.id}"><spring:message code="application.display"/></a>
-	</display:column>	
 	
-	<display:column>
-			<a href="application/hacker/edit.do?applicationId=${row4.id}"><spring:message code="application.edit"/></a>
-	</display:column>
+	
+	<security:authorize access="hasRole('HACKER')">
+		<display:column>
+				<a href="application/hacker/display.do?applicationId=${row4.id}"><spring:message code="application.display"/></a>
+		</display:column>	
+		<display:column>
+				<a href="application/hacker/edit.do?applicationId=${row4.id}"><spring:message code="application.edit"/></a>
+		</display:column>
+	</security:authorize>
+	
+	<security:authorize access="hasRole('COMPANY')">
+		<display:column>
+				<a href="application/company/display.do?applicationId=${row4.id}"><spring:message code="application.display"/></a>
+		</display:column>
+	</security:authorize>
 	
 </display:table>
 
