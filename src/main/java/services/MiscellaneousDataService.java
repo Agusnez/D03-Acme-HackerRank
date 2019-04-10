@@ -14,6 +14,7 @@ import repositories.MiscellaneousDataRepository;
 import security.Authority;
 import domain.Actor;
 import domain.Curriculum;
+import domain.Hacker;
 import domain.MiscellaneousData;
 import forms.MiscellaneousDataForm;
 
@@ -32,6 +33,9 @@ public class MiscellaneousDataService {
 
 	@Autowired
 	private CurriculumService			curriculumService;
+
+	@Autowired
+	private HackerService				hackerService;
 
 	@Autowired
 	private Validator					validator;
@@ -86,6 +90,8 @@ public class MiscellaneousDataService {
 
 		Assert.notNull(miscellaneous);
 
+		Assert.isTrue(miscellaneous.getId() != 0);
+
 		this.miscellaneousDataRepository.delete(miscellaneous);
 
 	}
@@ -104,12 +110,12 @@ public class MiscellaneousDataService {
 
 	}
 
-	public Boolean exist(final int positionId) {
+	public Boolean exist(final int miscellaneousId) {
 
 		Boolean res = false;
 
-		if (positionId != 0) {
-			final MiscellaneousData miscellaneous = this.miscellaneousDataRepository.findOne(positionId);
+		if (miscellaneousId != 0) {
+			final MiscellaneousData miscellaneous = this.miscellaneousDataRepository.findOne(miscellaneousId);
 
 			if (miscellaneous != null)
 				res = true;
@@ -123,17 +129,51 @@ public class MiscellaneousDataService {
 
 		Boolean res = false;
 
-		if (miscellaneousId != 0) {
-			final Curriculum curriculum = this.curriculumService.findOne(curriculumId);
+		if (miscellaneousId != 0 && curriculumId != 0) {
+			final Curriculum c = this.curriculumService.findOne(curriculumId);
 
 			final MiscellaneousData miscellaneous = this.findOne(miscellaneousId);
 
-			if (curriculum.getPositionDatas().contains(miscellaneous))
+			if (c.getMiscellaneousDatas().contains(miscellaneous))
 				res = true;
+
 		} else
 			res = true;
 
 		return res;
 	}
 
+	public Boolean security(final int miscellaneousRecordId) {
+
+		Boolean result = false;
+
+		final Hacker hacker = this.hackerService.findByPrincipal();
+
+		final Collection<Curriculum> curricula = this.curriculumService.findByHackerId(hacker.getId());
+
+		final MiscellaneousData miscellaneous = this.findOne(miscellaneousRecordId);
+
+		for (final Curriculum c : curricula)
+			if (!c.getMiscellaneousDatas().isEmpty())
+				if (c.getMiscellaneousDatas().contains(miscellaneous)) {
+					result = true;
+					break;
+				}
+
+		return result;
+	}
+
+	public MiscellaneousDataForm creteForm(final int miscellaneousRecordId) {
+
+		final MiscellaneousData miscellaneousData = this.findOne(miscellaneousRecordId);
+
+		final MiscellaneousDataForm result = new MiscellaneousDataForm();
+
+		result.setId(miscellaneousData.getId());
+		result.setVersion(miscellaneousData.getVersion());
+		result.setAttachments(miscellaneousData.getAttachments());
+
+		return result;
+
+	}
 }

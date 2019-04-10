@@ -92,6 +92,7 @@ public class CurriculumService {
 
 		final Curriculum result = this.create();
 
+		result.setNoCopy(true);
 		result.setHacker(actor);
 
 		return result;
@@ -111,14 +112,16 @@ public class CurriculumService {
 
 		Boolean res = false;
 
-		final Hacker hacker = this.hackerService.findByPrincipal();
+		if (curriculumId != 0) {
+			final Hacker hacker = this.hackerService.findByPrincipal();
 
-		final Curriculum curriculum = this.findOne(curriculumId);
+			final Curriculum curriculum = this.findOne(curriculumId);
 
-		final Collection<Curriculum> curriculums = this.findByHackerId(hacker.getId());
+			final Collection<Curriculum> curriculums = this.findByHackerId(hacker.getId());
 
-		if (curriculums.contains(curriculum))
-			res = true;
+			if (curriculums.contains(curriculum))
+				res = true;
+		}
 
 		return res;
 	}

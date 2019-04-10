@@ -16,6 +16,7 @@ import security.Authority;
 import domain.Actor;
 import domain.Curriculum;
 import domain.EducationData;
+import domain.Hacker;
 import forms.EducationDataForm;
 
 @Service
@@ -33,6 +34,9 @@ public class EducationDataService {
 
 	@Autowired
 	private CurriculumService		curriculumService;
+
+	@Autowired
+	private HackerService			hackerService;
 
 	@Autowired
 	private Validator				validator;
@@ -79,7 +83,9 @@ public class EducationDataService {
 
 		final Date startDate = education.getStartDate();
 		final Date endDate = education.getEndDate();
-		Assert.isTrue(startDate.before(endDate));
+
+		if (endDate != null)
+			Assert.isTrue(startDate.before(endDate));
 
 		result = this.educationDataRepository.save(education);
 
@@ -90,6 +96,8 @@ public class EducationDataService {
 	public void delete(final EducationData education) {
 
 		Assert.notNull(education);
+
+		Assert.isTrue(education.getId() != 0);
 
 		this.educationDataRepository.delete(education);
 
@@ -113,12 +121,12 @@ public class EducationDataService {
 
 	}
 
-	public Boolean exist(final int positionId) {
+	public Boolean exist(final int educationId) {
 
 		Boolean res = false;
 
-		if (positionId != 0) {
-			final EducationData education = this.educationDataRepository.findOne(positionId);
+		if (educationId != 0) {
+			final EducationData education = this.educationDataRepository.findOne(educationId);
 
 			if (education != null)
 				res = true;
@@ -132,16 +140,54 @@ public class EducationDataService {
 
 		Boolean res = false;
 
-		if (educationId != 0) {
+		if (educationId != 0 && curriculumId != 0) {
 			final Curriculum curriculum = this.curriculumService.findOne(curriculumId);
 
 			final EducationData education = this.findOne(educationId);
 
-			if (curriculum.getPositionDatas().contains(education))
+			if (curriculum.getEducationDatas().contains(education))
 				res = true;
 		} else
 			res = true;
 
 		return res;
+	}
+
+	public EducationDataForm creteForm(final int educationRecordId) {
+
+		final EducationData educationData = this.findOne(educationRecordId);
+
+		final EducationDataForm result = new EducationDataForm();
+
+		result.setId(educationData.getId());
+		result.setVersion(educationData.getVersion());
+		result.setDegree(educationData.getDegree());
+		result.setInstitution(educationData.getInstitution());
+		result.setMark(educationData.getMark());
+		result.setStartDate(educationData.getStartDate());
+		result.setEndDate(educationData.getEndDate());
+
+		return result;
+
+	}
+
+	public Boolean security(final int educationRecordId) {
+
+		Boolean result = false;
+
+		final Hacker hacker = this.hackerService.findByPrincipal();
+
+		final Collection<Curriculum> curricula = this.curriculumService.findByHackerId(hacker.getId());
+
+		final EducationData education = this.findOne(educationRecordId);
+
+		for (final Curriculum c : curricula)
+			if (!c.getEducationDatas().isEmpty())
+				if (c.getEducationDatas().contains(education)) {
+					result = true;
+					break;
+				}
+
+		return result;
 	}
 }

@@ -15,6 +15,7 @@ import repositories.PositionDataRepository;
 import security.Authority;
 import domain.Actor;
 import domain.Curriculum;
+import domain.Hacker;
 import domain.PositionData;
 import forms.PositionDataForm;
 
@@ -33,6 +34,9 @@ public class PositionDataService {
 
 	@Autowired
 	private CurriculumService		curriculumService;
+
+	@Autowired
+	private HackerService			hackerService;
 
 	@Autowired
 	private Validator				validator;
@@ -79,7 +83,9 @@ public class PositionDataService {
 
 		final Date startDate = position.getStartDate();
 		final Date endDate = position.getEndDate();
-		Assert.isTrue(startDate.before(endDate));
+
+		if (endDate != null)
+			Assert.isTrue(startDate.before(endDate));
 
 		result = this.positionDataRepository.save(position);
 
@@ -90,6 +96,8 @@ public class PositionDataService {
 	public void delete(final PositionData position) {
 
 		Assert.notNull(position);
+
+		Assert.isTrue(position.getId() != 0);
 
 		this.positionDataRepository.delete(position);
 
@@ -131,7 +139,7 @@ public class PositionDataService {
 
 		Boolean res = false;
 
-		if (positionId != 0) {
+		if (positionId != 0 && curriculumId != 0) {
 			final Curriculum curriculum = this.curriculumService.findOne(curriculumId);
 
 			final PositionData position = this.findOne(positionId);
@@ -142,5 +150,42 @@ public class PositionDataService {
 			res = true;
 
 		return res;
+	}
+
+	public PositionDataForm creteForm(final int positionRecordId) {
+
+		final PositionData positionData = this.findOne(positionRecordId);
+
+		final PositionDataForm result = new PositionDataForm();
+
+		result.setId(positionData.getId());
+		result.setVersion(positionData.getVersion());
+		result.setTitle(positionData.getTitle());
+		result.setDescription(positionData.getDescription());
+		result.setStartDate(positionData.getStartDate());
+		result.setEndDate(positionData.getEndDate());
+
+		return result;
+
+	}
+
+	public Boolean security(final int positionRecordId) {
+
+		Boolean result = false;
+
+		final Hacker hacker = this.hackerService.findByPrincipal();
+
+		final Collection<Curriculum> curricula = this.curriculumService.findByHackerId(hacker.getId());
+
+		final PositionData position = this.findOne(positionRecordId);
+
+		for (final Curriculum c : curricula)
+			if (!c.getPositionDatas().isEmpty())
+				if (c.getPositionDatas().contains(position)) {
+					result = true;
+					break;
+				}
+
+		return result;
 	}
 }

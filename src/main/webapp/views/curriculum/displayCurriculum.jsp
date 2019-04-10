@@ -40,6 +40,10 @@
 	
 	<acme:column property="endDate" titleKey="curriculum.endDate" value= "${row1.endDate} "/>
 	
+	<acme:url href="positionData/hacker/edit.do?positionRecordId=${row1.id }" code="curriculum.edit"/>
+	
+	<acme:url href="positionData/hacker/delete.do?positionRecordId=${row1.id }&curriculumId=${curriculum.id }" code="curriculum.delete"/>
+	
 	
 </display:table>
 
@@ -65,6 +69,9 @@
 	
 	<acme:column property="endDate" titleKey="curriculum.endDate" value= "${row2.endDate} "/>
 	
+	<acme:url href="educationData/hacker/edit.do?educationRecordId=${row2.id }" code="curriculum.edit"/>
+	
+	<acme:url href="educationData/hacker/delete.do?educationId=${row2.id }&curriculumId=${curriculum.id }" code="curriculum.delete"/>
 	
 </display:table>
 
@@ -82,6 +89,10 @@
 <display:table name="curriculum.miscellaneousDatas" pagesize="5" id="row3">
 
 	<acme:column property="attachments" titleKey="curriculum.attachments" value= "${row3.attachments} "/>
+	
+	<acme:url href="miscellaneousData/hacker/edit.do?miscellaneousRecordId=${row3.id }" code="curriculum.edit"/>
+	
+	<acme:url href="miscellaneousData/hacker/delete.do?miscellaneousId=${row3.id }&curriculumId=${curriculum.id }" code="curriculum.delete"/>
 	
 </display:table>
 <br/>
