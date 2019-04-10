@@ -1,6 +1,8 @@
 
 package controllers.hacker;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -155,6 +157,11 @@ public class EducationDataHackerController extends AbstractController {
 
 			if (security)
 				try {
+					final Curriculum c = this.curriculumService.findOne(curriculumId);
+					final Collection<EducationData> datas = c.getEducationDatas();
+					datas.remove(educationData);
+					this.curriculumService.save(c);
+
 					this.educationDataService.delete(educationData);
 					result = new ModelAndView("redirect:/curriculum/hacker/display.do?curriculumId=" + curriculumId);
 				} catch (final Throwable oops) {
