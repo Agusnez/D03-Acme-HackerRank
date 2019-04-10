@@ -153,4 +153,20 @@ public class CurriculumService {
 
 		return res;
 	}
+
+	public Curriculum copyCurriculum(final Curriculum curriculum) {
+
+		final Curriculum res = new Curriculum();
+
+		res.setEducationDatas(curriculum.getEducationDatas());
+		res.setHacker(curriculum.getHacker());
+		res.setMiscellaneousDatas(curriculum.getMiscellaneousDatas());
+		res.setNoCopy(false);
+		res.setPersonalData(curriculum.getPersonalData());
+		res.setPositionDatas(curriculum.getPositionDatas());
+
+		final Curriculum copy = this.save(res);
+
+		return copy;
+	}
 }
