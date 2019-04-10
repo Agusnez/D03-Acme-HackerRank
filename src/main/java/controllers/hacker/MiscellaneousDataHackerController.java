@@ -20,7 +20,7 @@ import forms.MiscellaneousDataForm;
 
 @Controller
 @RequestMapping("/miscellaneousData/hacker")
-public class MiscellaneousDataController extends AbstractController {
+public class MiscellaneousDataHackerController extends AbstractController {
 
 	// Services ---------------------------------------------------
 
@@ -62,6 +62,34 @@ public class MiscellaneousDataController extends AbstractController {
 		return result;
 	}
 
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView edit(@RequestParam final int miscellaneousRecordId) {
+		ModelAndView result;
+		final MiscellaneousDataForm form;
+
+		final String banner = this.configurationService.findConfiguration().getBanner();
+
+		final Boolean exist = this.miscellaneousDataService.exist(miscellaneousRecordId);
+
+		if (!(miscellaneousRecordId != 0 && exist)) {
+			result = new ModelAndView("misc/notExist");
+			result.addObject("banner", banner);
+		} else {
+
+			form = this.miscellaneousDataService.creteForm(miscellaneousRecordId);
+
+			final Boolean security = this.miscellaneousDataService.security(miscellaneousRecordId);
+
+			if (security)
+				result = this.createEditModelAndView(form);
+			else
+				result = new ModelAndView("redirect:/welcome/index.do");
+
+		}
+
+		return result;
+	}
+
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@ModelAttribute("miscellaneousData") final MiscellaneousDataForm form, final BindingResult binding) {
 		ModelAndView result;
@@ -74,22 +102,28 @@ public class MiscellaneousDataController extends AbstractController {
 
 		final Boolean existData = this.miscellaneousDataService.exist(form.getId());
 
-		if (existCurriculum && existData) {
+		if ((existCurriculum && existData) || (form.getId() != 0 && existData)) {
 
 			final Boolean securityCurriculum = this.curriculumService.security(form.getCurriculumId());
 			final Boolean securityData = this.miscellaneousDataService.security(form.getId(), form.getCurriculumId());
 
-			if (securityCurriculum && securityData) {
+			if ((securityCurriculum && securityData) || (form.getId() != 0 && securityData)) {
 				final Curriculum c = this.curriculumService.findOne(form.getCurriculumId());
 
 				if (binding.hasErrors())
 					result = this.createEditModelAndView(form);
 				else
 					try {
-						final MiscellaneousData e = this.miscellaneousDataService.save(miscellaneousReconstruct);
-						c.getMiscellaneousDatas().add(e);
-						this.curriculumService.save(c);
-						result = new ModelAndView("redirect:/curriculum/hacker/display.do?curriculumId=" + form.getCurriculumId());
+						if (form.getId() == 0) {
+							final MiscellaneousData e = this.miscellaneousDataService.save(miscellaneousReconstruct);
+							c.getMiscellaneousDatas().add(e);
+							this.curriculumService.save(c);
+							result = new ModelAndView("redirect:/curriculum/hacker/display.do?curriculumId=" + form.getCurriculumId());
+						} else {
+							this.miscellaneousDataService.save(miscellaneousReconstruct);
+							result = new ModelAndView("redirect:/curriculum/hacker/list.do");
+						}
+
 					} catch (final Throwable oops) {
 						result = this.createEditModelAndView(form, "curriculum.commit.error");
 					}

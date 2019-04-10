@@ -191,28 +191,6 @@ public class MessageService {
 
 	}
 
-	//		public void broadcastSystem(final Message message) { //TODO Hay que cambiar el dominio
-	//	
-	//			final Actor actor = this.actorService.findByPrincipal();
-	//			Assert.notNull(actor);
-	//			final Authority authority = new Authority();
-	//			authority.setAuthority(Authority.ADMIN);
-	//			Assert.isTrue(actor.getUserAccount().getAuthorities().contains(authority));
-	//	
-	//			final Collection<Actor> actores = this.actorService.findAll();
-	//			actores.remove(actor);
-	//			final Collection<Box> boxes = message.getBoxes();
-	//	
-	//			for (final Actor a : actores) {
-	//	
-	//				final Box nb = this.boxService.findNotificationBoxByActorId(a.getId());
-	//				boxes.add(nb);
-	//	
-	//			}
-	//			message.setBoxes(boxes);
-	//	
-	//		}
-
 	public Boolean securityMessage(final int messageId) {
 
 		Boolean res = false;
@@ -222,6 +200,27 @@ public class MessageService {
 		final Actor recipientMessage = this.messageRepository.findOne(messageId).getRecipient();
 
 		final Actor login = this.actorService.findByPrincipal();
+
+		if ((login.equals(senderMessage)) || (login.equals(recipientMessage)))
+			res = true;
+
+		return res;
+	}
+
+	public Boolean securityDisplayMessage(final int messageId) {
+
+		Boolean res = false;
+
+		final Actor senderMessage = this.messageRepository.findOne(messageId).getSender();
+
+		final Actor recipientMessage = this.messageRepository.findOne(messageId).getRecipient();
+
+		final Message m = this.messageRepository.findOne(messageId);
+
+		final Actor login = this.actorService.findByPrincipal();
+
+		if (m.getTags().equals("SYSTEM"))
+			res = true;
 
 		if ((login.equals(senderMessage)) || (login.equals(recipientMessage)))
 			res = true;

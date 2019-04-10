@@ -26,6 +26,6 @@
 	
 	<acme:submit name="save" code="curriculum.save" />
 	
-	<acme:cancel code="curriculum.back" url="welcome/index.do" />
+	<acme:cancel code="curriculum.back" url="curriculum/hacker/list.do" />
 	
 </form:form> 

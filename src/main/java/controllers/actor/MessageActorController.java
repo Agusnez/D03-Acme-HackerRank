@@ -44,6 +44,8 @@ public class MessageActorController extends AbstractController {
 
 		final String banner = this.configurationService.findConfiguration().getBanner();
 
+		final String b = "BROADCAST";
+
 		messages = this.messageService.AllmessagePerActor(actor.getId());
 		messagesDELETE = this.messageService.AllmessageDELETEPerActor(actor.getId());
 		messagesSYSTEM = this.messageService.AllmessageSYSTEM();
@@ -56,6 +58,7 @@ public class MessageActorController extends AbstractController {
 		result.addObject("messagesDELETE", messagesDELETE);
 		result.addObject("messagesSYSTEM", messagesSYSTEM);
 		result.addObject("banner", banner);
+		result.addObject("b", b);
 
 		result.addObject("requestURI", "message/actor/list.do");
 
@@ -74,7 +77,7 @@ public class MessageActorController extends AbstractController {
 
 		if (existMessage) {
 
-			security = this.messageService.securityMessage(messageId);
+			security = this.messageService.securityDisplayMessage(messageId);
 
 			if (security) {
 
