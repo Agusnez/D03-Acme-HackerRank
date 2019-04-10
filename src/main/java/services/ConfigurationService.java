@@ -110,25 +110,26 @@ public class ConfigurationService {
 	//
 	//	}
 	//
-	//	public Boolean spamContent(final String text) {
-	//
-	//		Boolean result = false;
-	//		if (!text.isEmpty() && text != null) {
-	//			final Configuration config = this.findConfiguration();
-	//
-	//			final Collection<String> spamWords = config.getSpamWords();
-	//
-	//			if (!spamWords.isEmpty())
-	//				for (final String word : spamWords)
-	//					if (text.toLowerCase().contains(word.toLowerCase())) {
-	//						result = true;
-	//						break;
-	//					}
-	//
-	//		}
-	//
-	//		return result;
-	//	}
+
+	public Boolean spamContent(final String text) {
+
+		Boolean result = false;
+		if (!text.isEmpty() && text != null) {
+			final Configuration config = this.findConfiguration();
+
+			final Collection<String> spamWords = config.getSpamWords();
+
+			if (!spamWords.isEmpty())
+				for (final String word : spamWords)
+					if (text.toLowerCase().contains(word.toLowerCase())) {
+						result = true;
+						break;
+					}
+
+		}
+
+		return result;
+	}
 
 	public void flush() {
 		this.configurationRepository.flush();

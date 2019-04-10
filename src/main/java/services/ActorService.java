@@ -266,59 +266,49 @@ public class ActorService {
 		return result;
 	}
 
-	//ESTE MASTER DELETE HAY QUE MODIFICARLO PARA ESTE PROYECTO
+	public void masterDelete(final int actorId) {
 
-	//	public void masterDelete(final int actorId) {
-	//
-	//		final Authority company = new Authority();
-	//		company.setAuthority(Authority.COMPANY);
-	//
-	//		final Authority hacker = new Authority();
-	//		hacker.setAuthority(Authority.HACKER);
-	//
-	//
-	//		final Actor actor = this.actorRepository.findOne(actorId);
-	//
-	//		this.messageService.deleteAll(actorId);
-	//
-	//		this.boxService.deleteAll(actorId);
-	//
-	//		this.socialProfileService.deleteAll(actorId);
-	//
-	//		if (actor.getUserAccount().getAuthorities().contains(member)) {
-	//
-	//			this.requestService.deleteAll(actorId);
-	//
-	//			this.finderService.deleteFinderActor(actorId);
-	//
-	//			this.enrolmentService.deleteAllMember(actorId);
-	//
-	//			this.memberService.deleteRelantionshipBrotherhoodMember(actorId);
-	//
-	//		} else if (actor.getUserAccount().getAuthorities().contains(brotherhood)) {
-	//
-	//			this.enrolmentService.deleteAllBrotherhood(actorId);
-	//
-	//			this.areaService.deleteRelationshipAreaBrotherhood(actorId);
-	//
-	//			this.paradeService.deleteAll(actorId);
-	//
-	//			this.floatService.deleteAll(actorId);
-	//
-	//			this.historyService.deleteAll(actorId);
-	//
-	//		} else if (actor.getUserAccount().getAuthorities().contains(chapter))
-	//
-	//			this.proclaimService.deleteAll(actorId);
-	//
-	//		else if (actor.getUserAccount().getAuthorities().contains(sponsor))
-	//
-	//			this.sponsorshipService.deleteAll(actorId);
-	//
-	//		this.actorRepository.delete(actor);
-	//
-	//	}
+		final Authority company = new Authority();
+		company.setAuthority(Authority.COMPANY);
 
+		final Authority hacker = new Authority();
+		hacker.setAuthority(Authority.HACKER);
+
+		final Actor actor = this.actorRepository.findOne(actorId);
+
+		this.messageService.deleteAll(actorId);
+
+		this.boxService.deleteAll(actorId);
+
+		this.socialProfileService.deleteAll(actorId);
+
+		if (actor.getUserAccount().getAuthorities().contains(company)) {
+
+			this.requestService.deleteAll(actorId);
+
+			this.finderService.deleteFinderActor(actorId);
+
+			this.enrolmentService.deleteAllMember(actorId);
+
+			this.memberService.deleteRelantionshipBrotherhoodMember(actorId);
+
+		} else if (actor.getUserAccount().getAuthorities().contains(hacker)) {
+
+			this.enrolmentService.deleteAllBrotherhood(actorId);
+
+			this.areaService.deleteRelationshipAreaBrotherhood(actorId);
+
+			this.paradeService.deleteAll(actorId);
+
+			this.floatService.deleteAll(actorId);
+
+			this.historyService.deleteAll(actorId);
+
+		}
+
+		this.actorRepository.delete(actor);
+
+	}
 	public void flush() {
 		this.actorRepository.flush();
 	}

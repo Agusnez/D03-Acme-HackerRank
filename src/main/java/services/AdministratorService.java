@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import security.UserAccount;
 import security.UserAccountService;
 import domain.Actor;
 import domain.Administrator;
+import domain.Message;
 import domain.Position;
 import forms.RegisterAdministratorForm;
 
@@ -43,6 +45,12 @@ public class AdministratorService {
 
 	@Autowired
 	private Validator				validator;
+
+	@Autowired
+	private ConfigurationService	configurationService;
+
+	@Autowired
+	private MessageService			messageService;
 
 
 	// Simple CRUD methods -----------------------
@@ -191,6 +199,58 @@ public class AdministratorService {
 		result = this.administratorRepository.findByUserAccountId(userAccount.getId());
 
 		return result;
+	}
+
+	public void spammer() {
+
+		final Actor admin = this.actorService.findByPrincipal();
+
+		final Authority authAdmin = new Authority();
+		authAdmin.setAuthority(Authority.ADMIN);
+
+		Assert.isTrue(admin.getUserAccount().getAuthorities().contains(authAdmin));
+
+		final Collection<Actor> actors = this.actorService.findAll();
+
+		for (final Actor actor : actors) {
+
+			Collection<Message> messages = new HashSet<>();
+
+			Boolean body = false;
+			Boolean subject = false;
+			Boolean tags = false;
+
+			Integer intMesage = 0;
+			Integer intSpam = 0;
+
+			messages = this.messageService.messagePerActor(actor.getId());
+
+			if (!messages.isEmpty())
+				for (final Message message : messages) {
+
+					if (message.getBody() != null)
+						body = this.configurationService.spamContent(message.getBody());
+					if (message.getSubject() != null)
+						subject = this.configurationService.spamContent(message.getSubject());
+					if (message.getTags() != null)
+						tags = this.configurationService.spamContent(message.getTags());
+
+					intMesage++;
+					if (body || subject || tags)
+						intSpam++;
+
+				}
+
+			if (!messages.isEmpty()) {
+				if (intSpam >= 0.1 * intMesage)
+					actor.setSpammer(true);
+				else
+					actor.setSpammer(false);
+
+				this.actorService.save(actor);
+			}
+
+		}
 	}
 
 	// Dashboard 
