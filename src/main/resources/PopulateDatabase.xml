@@ -498,6 +498,7 @@
 		<property name="address" value="Company9 street" />
 		<property name="userAccount" ref="userAccount12" />
 		<property name="creditCard" ref="creditCard14" />
+		<property name="spammer" value="true" />
 	</bean>
 	
 	<bean id="Company10" class="domain.Company">
@@ -670,6 +671,17 @@
   <property name="spam" value="False" /> 
   <property name="sender" ref="Company1" /> 
   <property name="recipient" ref="Company4" /> 
+  </bean>
+  
+   <bean id="message5" class="domain.Message">
+  	<property name="moment" value="2017/09/17 13:54" /> 
+  	<property name="subject" value="subject5" /> 
+  	<property name="body" value="viagra" /> 
+  	<property name="priority" value="LOW" /> 
+  	<property name="tags" value="Spam" /> 
+  	<property name="spam" value="True" /> 
+  	<property name="sender" ref="Company9" /> 
+  	<property name="recipient" ref="Company4" /> 
   </bean>
 	
 	<!-- Configuration -->

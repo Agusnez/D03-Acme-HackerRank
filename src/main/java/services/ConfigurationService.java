@@ -112,6 +112,7 @@ public class ConfigurationService {
 
 	}
 
+
 	public Boolean spamContent(final String text) {
 
 		Boolean result = false;
