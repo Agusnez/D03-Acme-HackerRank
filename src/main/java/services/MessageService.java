@@ -168,7 +168,6 @@ public class MessageService {
 		Assert.isTrue(message.getId() != 0);
 		final Actor actor = this.actorService.findByPrincipal();
 		Assert.notNull(actor);
-		Assert.isTrue(message.getRecipient().equals(actor) || message.getSender().equals(actor));
 
 		final String tags = message.getTags();
 
@@ -195,14 +194,24 @@ public class MessageService {
 
 		Boolean res = false;
 
-		final Actor senderMessage = this.messageRepository.findOne(messageId).getSender();
-
-		final Actor recipientMessage = this.messageRepository.findOne(messageId).getRecipient();
+		final Message m = this.messageRepository.findOne(messageId);
 
 		final Actor login = this.actorService.findByPrincipal();
 
-		if ((login.equals(senderMessage)) || (login.equals(recipientMessage)))
-			res = true;
+		final Actor senderMessage = m.getSender();
+
+		if (m.getTags().equals("SYSTEM")) {
+
+			if ((login.equals(senderMessage)))
+				res = true;
+
+		} else {
+			final Actor recipientMessage = m.getRecipient();
+
+			if ((login.equals(senderMessage)) || (login.equals(recipientMessage)))
+				res = true;
+
+		}
 
 		return res;
 	}
