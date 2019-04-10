@@ -42,6 +42,15 @@ public class ActorService {
 	private CompanyService			companyService;
 
 	@Autowired
+	private CurriculumService		curriculumService;
+
+	@Autowired
+	private ProblemService			problemService;
+
+	@Autowired
+	private PositionService			positionService;
+
+	@Autowired
 	private HackerService			hackerService;
 
 	@Autowired
@@ -291,18 +300,16 @@ public class ActorService {
 
 		if (actor.getUserAccount().getAuthorities().contains(company)) {
 
-			//TODO Problem
+			this.problemService.deleteAll(actorId);
 
-			//TODO Position
-		}else if (actor.getUserAccount().getAuthorities().contains(hacker)){
-			
+			this.positionService.deleteAll(actorId);
+
+		} else if (actor.getUserAccount().getAuthorities().contains(hacker)) {
+
 			this.finderService.deleteFinderActor(actorId);
-			
-			//TODO Application
-			
-			//TODO Curricula
+
+			this.curriculumService.deleteAll(actorId);
 		}
-			
 
 		this.actorRepository.delete(actor);
 

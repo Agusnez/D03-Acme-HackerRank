@@ -44,6 +44,9 @@ public class PositionService {
 	private ProblemService		problemService;
 
 	@Autowired
+	private FinderService		finderService;
+
+	@Autowired
 	private Validator			validator;
 
 
@@ -139,6 +142,26 @@ public class PositionService {
 			}
 
 		this.positionRepository.delete(position);
+
+	}
+
+	public void deleteAll(final int actorId) {
+
+		final Collection<Position> positions = this.findPositionsByCompanyId(actorId);
+
+		if (!positions.isEmpty())
+			for (final Position p : positions) {
+
+				final Collection<Finder> finders = this.finderService.findFindersByPositionId(p.getId());
+				if (!finders.isEmpty())
+					for (final Finder f : finders) {
+
+						f.getPositions().remove(p);
+						this.finderService.save(f);
+					}
+
+				this.positionRepository.delete(p);
+			}
 
 	}
 

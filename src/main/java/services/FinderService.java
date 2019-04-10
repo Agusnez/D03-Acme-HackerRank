@@ -93,6 +93,13 @@ public class FinderService {
 
 	}
 
+	public Finder saveAdmin(final Finder finder) {
+
+		final Finder result = this.finderRepository.save(finder);
+
+		return result;
+	}
+
 	public void deletePositions(final Finder finder) {
 		final Collection<Position> positions = new HashSet<Position>();
 		finder.setPositions(positions);
@@ -125,5 +132,12 @@ public class FinderService {
 	public Finder findFinderByHacker(final int hackerId) {
 		final Finder finder = this.finderRepository.findFinderByHacker(hackerId);
 		return finder;
+	}
+
+	public Collection<Finder> findFindersByPositionId(final int positionId) {
+
+		final Collection<Finder> result = this.finderRepository.findFindersByPositionId(positionId);
+
+		return result;
 	}
 }
