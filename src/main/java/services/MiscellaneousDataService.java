@@ -7,11 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.MiscellaneousDataRepository;
 import security.Authority;
 import domain.Actor;
+import domain.Curriculum;
 import domain.MiscellaneousData;
+import forms.MiscellaneousDataForm;
 
 @Service
 @Transactional
@@ -25,6 +29,12 @@ public class MiscellaneousDataService {
 
 	@Autowired
 	private ActorService				actorService;
+
+	@Autowired
+	private CurriculumService			curriculumService;
+
+	@Autowired
+	private Validator					validator;
 
 
 	// Simple CRUD methods -----------------------
@@ -78,6 +88,52 @@ public class MiscellaneousDataService {
 
 		this.miscellaneousDataRepository.delete(miscellaneous);
 
+	}
+
+	public MiscellaneousData reconstruct(final MiscellaneousDataForm form, final BindingResult binding) {
+
+		final MiscellaneousData result = this.create();
+
+		this.validator.validate(form, binding);
+
+		result.setId(form.getId());
+		result.setVersion(form.getVersion());
+		result.setAttachments(form.getAttachments());
+
+		return result;
+
+	}
+
+	public Boolean exist(final int positionId) {
+
+		Boolean res = false;
+
+		if (positionId != 0) {
+			final MiscellaneousData miscellaneous = this.miscellaneousDataRepository.findOne(positionId);
+
+			if (miscellaneous != null)
+				res = true;
+		} else
+			res = true;
+
+		return res;
+	}
+
+	public Boolean security(final int miscellaneousId, final int curriculumId) {
+
+		Boolean res = false;
+
+		if (miscellaneousId != 0) {
+			final Curriculum curriculum = this.curriculumService.findOne(curriculumId);
+
+			final MiscellaneousData miscellaneous = this.findOne(miscellaneousId);
+
+			if (curriculum.getPositionDatas().contains(miscellaneous))
+				res = true;
+		} else
+			res = true;
+
+		return res;
 	}
 
 }

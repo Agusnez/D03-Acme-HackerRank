@@ -68,10 +68,13 @@ public class BroadcastAdministratorController extends AbstractController {
 		final String banner = this.configurationService.findConfiguration().getBanner();
 		final Collection<String> priorities = this.configurationService.findConfiguration().getPriorities();
 
-		result = new ModelAndView("message/create");
+		final String tagSys = "SYSTEM";
+
+		result = new ModelAndView("broadcast/create");
 		result.addObject("messageError", errorText);
 		result.addObject("message", message2);
 		result.addObject("banner", banner);
+		result.addObject("tagSys", tagSys);
 		result.addObject("priorities", priorities);
 		result.addObject("enlace", "broadcast/administrator/create.do");
 
