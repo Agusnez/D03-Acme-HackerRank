@@ -124,6 +124,36 @@ public class CurriculumHackerController extends AbstractController {
 		return result;
 	}
 
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public ModelAndView delete(@RequestParam final int curriculumId) {
+		ModelAndView result;
+
+		final String banner = this.configurationService.findConfiguration().getBanner();
+
+		final Boolean exist = this.curriculumService.exist(curriculumId);
+
+		if (exist) {
+			final Boolean security = this.curriculumService.security(curriculumId);
+
+			final Curriculum curriculum = this.curriculumService.findOne(curriculumId);
+
+			if (security)
+				try {
+					this.curriculumService.delete(curriculum);
+					result = new ModelAndView("redirect:/curriculum/hacker/list.do");
+				} catch (final Throwable oops) {
+					result = new ModelAndView("redirect:/curriculum/hacker/display.do?curriculumId=" + curriculumId);
+				}
+			else
+				result = new ModelAndView("redirect:/welcome/index.do");
+		} else {
+			result = new ModelAndView("misc/notExist");
+			result.addObject("banner", banner);
+		}
+
+		return result;
+	}
+
 	// Ancillary methods
 
 	protected ModelAndView createEditModelAndView(final CreateCurriculumForm createCurriculumForm) {

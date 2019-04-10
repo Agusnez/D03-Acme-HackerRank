@@ -42,7 +42,7 @@
 	
 	<acme:url href="positionData/hacker/edit.do?positionRecordId=${row1.id }" code="curriculum.edit"/>
 	
-	<acme:url href="positionData/hacker/delete.do?positionRecordId=${row1.id }&curriculumId=${curriculum.id }" code="curriculum.delete"/>
+	<acme:url href="positionData/hacker/delete.do?positionId=${row1.id }&curriculumId=${curriculum.id }" code="curriculum.delete"/>
 	
 	
 </display:table>
@@ -101,5 +101,7 @@
 </fieldset>
 <br/>
 <br/>
+<a href="curriculum/hacker/delete.do?curriculumId=${curriculum.id }"><spring:message code="curriculum.deleteall"/></a>
+
 <acme:button name="back" code="curriculum.back" onclick="javascript: relativeRedir('curriculum/hacker/list.do');"/>
 

@@ -1,6 +1,8 @@
 
 package controllers.hacker;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -136,6 +138,44 @@ public class MiscellaneousDataHackerController extends AbstractController {
 
 		return result;
 	}
+
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public ModelAndView delete(@RequestParam final int miscellaneousId, @RequestParam final int curriculumId) {
+		ModelAndView result;
+
+		final String banner = this.configurationService.findConfiguration().getBanner();
+
+		final Boolean exist1 = this.miscellaneousDataService.exist(miscellaneousId);
+
+		final Boolean exist2 = this.curriculumService.exist(curriculumId);
+
+		if (exist1 && exist2) {
+			final Boolean security = this.miscellaneousDataService.security(miscellaneousId, curriculumId);
+
+			final MiscellaneousData miscellaneousData = this.miscellaneousDataService.findOne(miscellaneousId);
+
+			if (security)
+				try {
+					final Curriculum c = this.curriculumService.findOne(curriculumId);
+					final Collection<MiscellaneousData> datas = c.getMiscellaneousDatas();
+					datas.remove(miscellaneousData);
+					this.curriculumService.save(c);
+
+					this.miscellaneousDataService.delete(miscellaneousData);
+					result = new ModelAndView("redirect:/curriculum/hacker/display.do?curriculumId=" + curriculumId);
+				} catch (final Throwable oops) {
+					result = new ModelAndView("redirect:/curriculum/hacker/list.do");
+				}
+			else
+				result = new ModelAndView("redirect:/welcome/index.do");
+		} else {
+			result = new ModelAndView("misc/notExist");
+			result.addObject("banner", banner);
+		}
+
+		return result;
+	}
+
 	// Ancillary methods
 
 	protected ModelAndView createEditModelAndView(final MiscellaneousDataForm miscellaneousData) {
