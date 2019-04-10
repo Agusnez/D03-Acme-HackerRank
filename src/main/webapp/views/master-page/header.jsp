@@ -26,6 +26,8 @@
 					<li class="arrow"></li>
 					<li><a href="configuration/administrator/edit.do"><spring:message code="master.page.configuration" /></a></li>
 					<li><a href="broadcast/administrator/create.do"><spring:message code="master.page.broadcast" /></a></li>	
+					<li><a href="actor/administrator/spammer/list.do"><spring:message code="master.page.spammer" /></a></li>
+					<li><a href="actor/administrator/profile/list.do"><spring:message code="master.page.profiles" /></a></li>
 					<li><a href="administrator/create.do"><spring:message code="master.page.signUpAdmin" /></a></li>
 					<li><a href="administrator/dashboard.do"><spring:message code="master.page.dashboard" /></a></li>
 				</ul>

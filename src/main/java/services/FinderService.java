@@ -97,6 +97,15 @@ public class FinderService {
 		final Collection<Position> positions = new HashSet<Position>();
 		finder.setPositions(positions);
 	}
+
+	public void deleteFinderActor(final int actorId) {
+
+		final Finder finder = this.finderRepository.findFinderByHacker(actorId);
+
+		this.finderRepository.delete(finder);
+
+	}
+
 	// Other business rules
 
 	public Finder reconstruct(final Finder finder, final BindingResult binding) {

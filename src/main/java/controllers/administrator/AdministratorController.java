@@ -66,6 +66,7 @@ public class AdministratorController extends AbstractController {
 		return result;
 	}
 
+	@RequestMapping(value = "/spammer/banActor", method = RequestMethod.GET)
 	public ModelAndView banSpammer(@RequestParam final int actorId) {
 		ModelAndView result;
 		Actor actor;
@@ -103,7 +104,6 @@ public class AdministratorController extends AbstractController {
 		final String banner = this.configurationService.findConfiguration().getBanner();
 
 		result = new ModelAndView("administrator/listActor");
-		result.addObject("score", false);
 		result.addObject("spam", false);
 		result.addObject("admin", true);
 		result.addObject("actors", actors);

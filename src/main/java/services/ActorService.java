@@ -44,6 +44,15 @@ public class ActorService {
 	@Autowired
 	private HackerService			hackerService;
 
+	@Autowired
+	private MessageService			messageService;
+
+	@Autowired
+	private SocialProfileService	socialProfileService;
+
+	@Autowired
+	private FinderService			finderService;
+
 
 	//Simple CRUD methods --------------------------------------------------
 
@@ -278,33 +287,22 @@ public class ActorService {
 
 		this.messageService.deleteAll(actorId);
 
-		this.boxService.deleteAll(actorId);
-
 		this.socialProfileService.deleteAll(actorId);
 
 		if (actor.getUserAccount().getAuthorities().contains(company)) {
 
-			this.requestService.deleteAll(actorId);
+			//TODO Problem
 
+			//TODO Position
+		}else if (actor.getUserAccount().getAuthorities().contains(hacker)){
+			
 			this.finderService.deleteFinderActor(actorId);
-
-			this.enrolmentService.deleteAllMember(actorId);
-
-			this.memberService.deleteRelantionshipBrotherhoodMember(actorId);
-
-		} else if (actor.getUserAccount().getAuthorities().contains(hacker)) {
-
-			this.enrolmentService.deleteAllBrotherhood(actorId);
-
-			this.areaService.deleteRelationshipAreaBrotherhood(actorId);
-
-			this.paradeService.deleteAll(actorId);
-
-			this.floatService.deleteAll(actorId);
-
-			this.historyService.deleteAll(actorId);
-
+			
+			//TODO Application
+			
+			//TODO Curricula
 		}
+			
 
 		this.actorRepository.delete(actor);
 
