@@ -31,6 +31,7 @@
 		<value>/views/curriculum/tiles.xml</value>
 		<value>/views/socialProfile/tiles.xml</value>
 		<value>/views/message/tiles.xml</value>
+		<value>/views/application/tiles.xml</value>
 	</util:list>
 
 </beans>

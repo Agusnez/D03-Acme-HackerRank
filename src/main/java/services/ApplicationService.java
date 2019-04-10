@@ -150,6 +150,13 @@ public class ApplicationService {
 		return result;
 	}
 
+	public Collection<Application> findAllDeadLinePastByHacker(final int hackerId) {
+		Collection<Application> result;
+		result = this.applicationRepository.findAllDeadLinePastByHacker(hackerId);
+		Assert.notNull(result);
+		return result;
+	}
+
 	public Collection<Application> findAllAcceptedByCompany(final int companyId) {
 		Collection<Application> result;
 		result = this.applicationRepository.findAllAcceptedByCompany(companyId);
@@ -174,6 +181,13 @@ public class ApplicationService {
 	public Collection<Application> findAllSubmittedByCompany(final int companyId) {
 		Collection<Application> result;
 		result = this.applicationRepository.findAllSubmittedByCompany(companyId);
+		Assert.notNull(result);
+		return result;
+	}
+
+	public Collection<Application> findAllDeadLinePastByCompany(final int companyId) {
+		Collection<Application> result;
+		result = this.applicationRepository.findAllDeadLinePastByCompany(companyId);
 		Assert.notNull(result);
 		return result;
 	}
@@ -275,11 +289,16 @@ public class ApplicationService {
 
 		final Hacker hacker = this.hackerService.findByPrincipal();
 
-		final Application application = this.findOne(applicationId);
+		if (applicationId != 0) {
 
-		final Hacker owner = application.getHacker();
+			final Application application = this.findOne(applicationId);
 
-		if (owner.equals(hacker))
+			final Hacker owner = application.getHacker();
+
+			if (owner.equals(hacker))
+				res = true;
+
+		} else
 			res = true;
 
 		return res;

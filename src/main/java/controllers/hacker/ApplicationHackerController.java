@@ -2,6 +2,8 @@
 package controllers.hacker;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,8 +17,10 @@ import org.springframework.web.servlet.ModelAndView;
 import services.ApplicationService;
 import services.CompanyService;
 import services.ConfigurationService;
+import services.CurriculumService;
 import services.HackerService;
 import domain.Application;
+import domain.Curriculum;
 import domain.Hacker;
 import forms.ApplicationForm;
 
@@ -38,6 +42,9 @@ public class ApplicationHackerController {
 	@Autowired
 	private ConfigurationService	configurationService;
 
+	@Autowired
+	private CurriculumService		curriculumService;
+
 
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
 	public ModelAndView display(@RequestParam final int applicationId) {
@@ -56,7 +63,7 @@ public class ApplicationHackerController {
 
 				application = this.applicationService.findOne(applicationId);
 
-				result = new ModelAndView("application/displayApplication");
+				result = new ModelAndView("application/display");
 				result.addObject("application", application);
 				result.addObject("banner", banner);
 
@@ -87,7 +94,7 @@ public class ApplicationHackerController {
 
 		final String banner = this.configurationService.findConfiguration().getBanner();
 
-		result = new ModelAndView("application/listApplication");
+		result = new ModelAndView("application/list");
 		result.addObject("applicationAccepted", applicationAccepted);
 		result.addObject("applicationRejected", applicationRejected);
 		result.addObject("applicationSubmitted", applicationSubmitted);
@@ -98,10 +105,31 @@ public class ApplicationHackerController {
 		return result;
 	}
 
+	@RequestMapping(value = "/listObsoletes", method = RequestMethod.GET)
+	public ModelAndView listObsoletes() {
+		final ModelAndView result;
+		Collection<Application> applicationObsoletes;
+
+		final Hacker hacker = this.hackerService.findByPrincipal();
+
+		applicationObsoletes = this.applicationService.findAllDeadLinePastByHacker(hacker.getId());
+
+		final String banner = this.configurationService.findConfiguration().getBanner();
+
+		result = new ModelAndView("application/listObsoletes");
+		result.addObject("applicationObsoletes", applicationObsoletes);
+		result.addObject("banner", banner);
+		result.addObject("requestURI", "application/hacker/listObsoletes.do");
+
+		return result;
+	}
+
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView create() {
+	public ModelAndView create(@RequestParam final int positionId) {
 		ModelAndView result;
 		final ApplicationForm applicationForm = new ApplicationForm();
+
+		applicationForm.setPosition(positionId);
 
 		result = this.createEditModelAndView(applicationForm);
 
@@ -183,8 +211,16 @@ public class ApplicationHackerController {
 
 		final String banner = this.configurationService.findConfiguration().getBanner();
 
-		result = new ModelAndView("application/createApplication");
+		final Collection<Curriculum> curriculums = this.curriculumService.findByHackerId(this.hackerService.findByPrincipal().getId());
+
+		final Map<Integer, String> curriculumsMap = new HashMap<>();
+
+		for (final Curriculum curriculum : curriculums)
+			curriculumsMap.put(curriculum.getId(), curriculum.getPersonalData().getStatement());
+
+		result = new ModelAndView("application/edit");
 		result.addObject("application", applicationForm);
+		result.addObject("curriculumsMap", curriculumsMap);
 		result.addObject("banner", banner);
 		result.addObject("messageError", messageCode);
 
