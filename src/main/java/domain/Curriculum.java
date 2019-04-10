@@ -11,17 +11,28 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Access(AccessType.PROPERTY)
 public class Curriculum extends DomainEntity {
 
+	private Boolean							noCopy;
 	private PersonalData					personalData;
 	private Collection<PositionData>		positionDatas;
 	private Collection<EducationData>		educationDatas;
 	private Collection<MiscellaneousData>	miscellaneousDatas;
 	private Hacker							hacker;
 
+
+	@NotNull
+	public Boolean getNoCopy() {
+		return this.noCopy;
+	}
+
+	public void setNoCopy(final Boolean noCopy) {
+		this.noCopy = noCopy;
+	}
 
 	@Valid
 	@OneToOne(optional = true, cascade = CascadeType.ALL)

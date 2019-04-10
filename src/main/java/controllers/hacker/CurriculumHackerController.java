@@ -117,7 +117,7 @@ public class CurriculumHackerController extends AbstractController {
 				final PersonalData p = this.personalDataService.save(personalReconstruct);
 				curriculumReconstruct.setPersonalData(p);
 				this.curriculumService.save(curriculumReconstruct);
-				result = new ModelAndView("redirect:/welcome/index.do");
+				result = new ModelAndView("redirect:/curriculum/hacker/list.do");
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(form, "curriculums.commit.error");
 			}
