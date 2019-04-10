@@ -122,6 +122,15 @@ public class ProblemService {
 
 	}
 
+	public void deleteAll(final int actorId) {
+
+		final Collection<Problem> problems = this.findProblemByCompanyId(actorId);
+
+		if (!problems.isEmpty())
+			for (final Problem p : problems)
+				this.problemRepository.delete(p);
+	}
+
 	//Añadir una position a un problem
 	public void addPositionToProblem(final Position position, final Problem problem) {
 

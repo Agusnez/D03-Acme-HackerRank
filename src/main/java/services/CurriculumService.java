@@ -86,6 +86,15 @@ public class CurriculumService {
 
 	}
 
+	public void deleteAll(final int actorId) {
+
+		final Collection<Curriculum> curricula = this.findAllByHackerId(actorId);
+
+		if (!curricula.isEmpty())
+			for (final Curriculum c : curricula)
+				this.curriculumRepository.delete(c);
+	}
+
 	public Curriculum reconstruct(final CreateCurriculumForm form, final BindingResult binding) {
 
 		final Hacker actor = this.hackerService.findByPrincipal();
@@ -104,6 +113,13 @@ public class CurriculumService {
 	public Collection<Curriculum> findByHackerId(final int hackerId) {
 
 		final Collection<Curriculum> result = this.curriculumRepository.findByHackerId(hackerId);
+
+		return result;
+	}
+
+	public Collection<Curriculum> findAllByHackerId(final int hackerId) {
+
+		final Collection<Curriculum> result = this.curriculumRepository.findAllByHackerId(hackerId);
 
 		return result;
 	}
