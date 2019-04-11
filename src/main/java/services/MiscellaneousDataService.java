@@ -129,7 +129,7 @@ public class MiscellaneousDataService {
 
 		Boolean res = false;
 
-		if (miscellaneousId != 0 && curriculumId != 0) {
+		if (miscellaneousId != 0 && this.curriculumService.security(curriculumId)) {
 			final Curriculum c = this.curriculumService.findOne(curriculumId);
 
 			final MiscellaneousData miscellaneous = this.findOne(miscellaneousId);
@@ -172,6 +172,10 @@ public class MiscellaneousDataService {
 		result.setId(miscellaneousData.getId());
 		result.setVersion(miscellaneousData.getVersion());
 		result.setAttachments(miscellaneousData.getAttachments());
+
+		final Curriculum c = this.curriculumService.findByMiscellaneousDataId(miscellaneousRecordId);
+
+		result.setCurriculumId(c.getId());
 
 		return result;
 

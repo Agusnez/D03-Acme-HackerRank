@@ -125,12 +125,9 @@ public class EducationDataService {
 
 		Boolean res = false;
 
-		if (educationId != 0) {
-			final EducationData education = this.educationDataRepository.findOne(educationId);
+		final EducationData education = this.educationDataRepository.findOne(educationId);
 
-			if (education != null)
-				res = true;
-		} else
+		if (education != null)
 			res = true;
 
 		return res;
@@ -140,7 +137,7 @@ public class EducationDataService {
 
 		Boolean res = false;
 
-		if (educationId != 0 && curriculumId != 0) {
+		if (educationId != 0 && this.curriculumService.security(curriculumId)) {
 			final Curriculum curriculum = this.curriculumService.findOne(curriculumId);
 
 			final EducationData education = this.findOne(educationId);
@@ -166,6 +163,10 @@ public class EducationDataService {
 		result.setMark(educationData.getMark());
 		result.setStartDate(educationData.getStartDate());
 		result.setEndDate(educationData.getEndDate());
+
+		final Curriculum c = this.curriculumService.findByEducationDataId(educationRecordId);
+
+		result.setCurriculumId(c.getId());
 
 		return result;
 

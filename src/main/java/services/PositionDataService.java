@@ -124,12 +124,9 @@ public class PositionDataService {
 
 		Boolean res = false;
 
-		if (positionId != 0) {
-			final PositionData position = this.positionDataRepository.findOne(positionId);
+		final PositionData position = this.positionDataRepository.findOne(positionId);
 
-			if (position != null)
-				res = true;
-		} else
+		if (position != null)
 			res = true;
 
 		return res;
@@ -139,15 +136,15 @@ public class PositionDataService {
 
 		Boolean res = false;
 
-		if (positionId != 0 && curriculumId != 0) {
+		if (positionId != 0 && this.curriculumService.security(curriculumId)) {
+
 			final Curriculum curriculum = this.curriculumService.findOne(curriculumId);
 
 			final PositionData position = this.findOne(positionId);
 
 			if (curriculum.getPositionDatas().contains(position))
 				res = true;
-		} else
-			res = true;
+		}
 
 		return res;
 	}
@@ -164,6 +161,10 @@ public class PositionDataService {
 		result.setDescription(positionData.getDescription());
 		result.setStartDate(positionData.getStartDate());
 		result.setEndDate(positionData.getEndDate());
+
+		final Curriculum c = this.curriculumService.findByPositionDataId(positionRecordId);
+
+		result.setCurriculumId(c.getId());
 
 		return result;
 

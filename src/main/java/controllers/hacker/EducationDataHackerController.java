@@ -104,7 +104,7 @@ public class EducationDataHackerController extends AbstractController {
 
 		final Boolean existData = this.educationDataService.exist(form.getId());
 
-		if ((existCurriculum && existData) || (form.getId() != 0 && existData)) {
+		if ((form.getId() == 0 && existCurriculum) || (form.getId() != 0 && existData)) {
 
 			final Boolean securityCurriculum = this.curriculumService.security(form.getCurriculumId());
 			final Boolean securityData = this.educationDataService.security(form.getId(), form.getCurriculumId());
@@ -121,11 +121,10 @@ public class EducationDataHackerController extends AbstractController {
 							c.getEducationDatas().add(e);
 							this.curriculumService.save(c);
 
-							result = new ModelAndView("redirect:/curriculum/hacker/display.do?curriculumId=" + form.getCurriculumId());
-						} else {
+						} else
 							this.educationDataService.save(educationReconstruct);
-							result = new ModelAndView("redirect:/curriculum/hacker/list.do");
-						}
+
+						result = new ModelAndView("redirect:/curriculum/hacker/display.do?curriculumId=" + form.getCurriculumId());
 
 					} catch (final Throwable oops) {
 						result = this.createEditModelAndView(form, "curriculum.commit.error");

@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.ConfigurationService;
 import services.CurriculumService;
-import services.EducationDataService;
 import services.PersonalDataService;
 import domain.PersonalData;
 import forms.PersonalDataForm;
@@ -25,9 +24,6 @@ public class PersonalDataHackerController {
 
 	@Autowired
 	private CurriculumService		curriculumService;
-
-	@Autowired
-	private EducationDataService	educationDataService;
 
 	@Autowired
 	private PersonalDataService		personalDataService;

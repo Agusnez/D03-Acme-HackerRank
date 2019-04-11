@@ -172,7 +172,28 @@ public class CurriculumService {
 
 	public Curriculum findByPersonalDataId(final int personalDataId) {
 
-		final Curriculum result = this.findByPersonalDataId(personalDataId);
+		final Curriculum result = this.curriculumRepository.findByPersonalDataId(personalDataId);
+
+		return result;
+	}
+
+	public Curriculum findByPositionDataId(final int positionDataId) {
+
+		final Curriculum result = this.curriculumRepository.findByPositionDataId(positionDataId);
+
+		return result;
+	}
+
+	public Curriculum findByEducationDataId(final int educationDataId) {
+
+		final Curriculum result = this.curriculumRepository.findByEducationDataId(educationDataId);
+
+		return result;
+	}
+
+	public Curriculum findByMiscellaneousDataId(final int miscellanousDataId) {
+
+		final Curriculum result = this.curriculumRepository.findByMiscellaneousDataId(miscellanousDataId);
 
 		return result;
 	}

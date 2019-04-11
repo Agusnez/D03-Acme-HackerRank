@@ -104,7 +104,7 @@ public class MiscellaneousDataHackerController extends AbstractController {
 
 		final Boolean existData = this.miscellaneousDataService.exist(form.getId());
 
-		if ((existCurriculum && existData) || (form.getId() != 0 && existData)) {
+		if ((form.getId() == 0 && existCurriculum) || (form.getId() != 0 && existData)) {
 
 			final Boolean securityCurriculum = this.curriculumService.security(form.getCurriculumId());
 			final Boolean securityData = this.miscellaneousDataService.security(form.getId(), form.getCurriculumId());
@@ -120,11 +120,11 @@ public class MiscellaneousDataHackerController extends AbstractController {
 							final MiscellaneousData e = this.miscellaneousDataService.save(miscellaneousReconstruct);
 							c.getMiscellaneousDatas().add(e);
 							this.curriculumService.save(c);
-							result = new ModelAndView("redirect:/curriculum/hacker/display.do?curriculumId=" + form.getCurriculumId());
-						} else {
+
+						} else
 							this.miscellaneousDataService.save(miscellaneousReconstruct);
-							result = new ModelAndView("redirect:/curriculum/hacker/list.do");
-						}
+
+						result = new ModelAndView("redirect:/curriculum/hacker/display.do?curriculumId=" + form.getCurriculumId());
 
 					} catch (final Throwable oops) {
 						result = this.createEditModelAndView(form, "curriculum.commit.error");

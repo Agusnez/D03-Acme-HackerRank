@@ -104,12 +104,12 @@ public class PositionDataHackerController extends AbstractController {
 
 		final Boolean existData = this.positionDataService.exist(form.getId());
 
-		if ((existCurriculum && existData) || (form.getId() != 0 && existData)) {
+		if ((form.getId() == 0 && existCurriculum) || (form.getId() != 0 && existData)) {
 
 			final Boolean securityCurriculum = this.curriculumService.security(form.getCurriculumId());
 			final Boolean securityData = this.positionDataService.security(form.getId(), form.getCurriculumId());
 
-			if ((securityCurriculum && securityData) || (form.getId() != 0 && securityData)) {
+			if ((form.getId() == 0 && securityCurriculum) || (form.getId() != 0 && securityData)) {
 				final Curriculum c = this.curriculumService.findOne(form.getCurriculumId());
 
 				if (binding.hasErrors())
@@ -120,11 +120,11 @@ public class PositionDataHackerController extends AbstractController {
 							final PositionData p = this.positionDataService.save(positionReconstruct);
 							c.getPositionDatas().add(p);
 							this.curriculumService.save(c);
-							result = new ModelAndView("redirect:/curriculum/hacker/display.do?curriculumId=" + form.getCurriculumId());
-						} else {
+
+						} else
 							this.positionDataService.save(positionReconstruct);
-							result = new ModelAndView("redirect:/curriculum/hacker/list.do");
-						}
+
+						result = new ModelAndView("redirect:/curriculum/hacker/display.do?curriculumId=" + form.getCurriculumId());
 
 					} catch (final Throwable oops) {
 						result = this.createEditModelAndView(form, "curriculum.commit.error");

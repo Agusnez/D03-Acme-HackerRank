@@ -21,4 +21,13 @@ public interface CurriculumRepository extends JpaRepository<Curriculum, Integer>
 	@Query("select c from Curriculum c where c.noCopy = true and c.personalData.id = ?1")
 	Curriculum findByPersonalDataId(int personalDataId);
 
+	@Query("select c from Curriculum c join c.positionDatas t where c.noCopy = true and t.id = ?1")
+	Curriculum findByPositionDataId(int positionDataId);
+
+	@Query("select c from Curriculum c join c.educationDatas t where c.noCopy = true and t.id = ?1")
+	Curriculum findByEducationDataId(int educationDataId);
+
+	@Query("select c from Curriculum c join c.miscellaneousDatas t where c.noCopy = true and t.id = ?1")
+	Curriculum findByMiscellaneousDataId(int miscellaneousDataId);
+
 }
