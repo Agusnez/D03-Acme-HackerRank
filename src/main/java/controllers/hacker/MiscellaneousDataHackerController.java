@@ -139,6 +139,50 @@ public class MiscellaneousDataHackerController extends AbstractController {
 		return result;
 	}
 
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
+	public ModelAndView delete(@ModelAttribute("miscellaneousData") final MiscellaneousDataForm form, final BindingResult binding) {
+		ModelAndView result;
+
+		final String banner = this.configurationService.findConfiguration().getBanner();
+
+		final MiscellaneousData miscellanousReconstruct = this.miscellaneousDataService.reconstruct(form, binding);
+
+		final Boolean existCurriculum = this.curriculumService.exist(form.getCurriculumId());
+
+		final Boolean existData = this.miscellaneousDataService.exist(form.getId());
+
+		if (form.getId() != 0 && existData && existCurriculum) {
+
+			final Boolean securityCurriculum = this.curriculumService.security(form.getCurriculumId());
+			final Boolean securityData = this.miscellaneousDataService.security(form.getId(), form.getCurriculumId());
+
+			if ((form.getId() == 0 && securityCurriculum) || (form.getId() != 0 && securityData)) {
+				final Curriculum c = this.curriculumService.findOne(form.getCurriculumId());
+
+				if (binding.hasErrors())
+					result = this.createEditModelAndView(form);
+				else
+					try {
+
+						c.getMiscellaneousDatas().remove(miscellanousReconstruct);
+						this.curriculumService.save(c);
+						this.miscellaneousDataService.delete(miscellanousReconstruct);
+
+						result = new ModelAndView("redirect:/curriculum/hacker/display.do?curriculumId=" + form.getCurriculumId());
+
+					} catch (final Throwable oops) {
+						result = this.createEditModelAndView(form, "curriculum.commit.error");
+					}
+			} else
+				result = new ModelAndView("redirect:/welcome/index.do");
+		} else {
+			result = new ModelAndView("misc/notExist");
+			result.addObject("banner", banner);
+		}
+
+		return result;
+	}
+
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public ModelAndView delete(@RequestParam final int miscellaneousId, @RequestParam final int curriculumId) {
 		ModelAndView result;
