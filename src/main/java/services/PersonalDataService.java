@@ -32,6 +32,9 @@ public class PersonalDataService {
 	@Autowired
 	private Validator				validator;
 
+	@Autowired
+	private CurriculumService		curriculumService;
+
 
 	// Simple CRUD methods -----------------------
 
@@ -104,5 +107,28 @@ public class PersonalDataService {
 
 		return result;
 
+	}
+
+	public Boolean exist(final int personalDataId) {
+		Boolean res = false;
+
+		final PersonalData find = this.personalDataRepository.findOne(personalDataId);
+
+		if (find != null)
+			res = true;
+
+		return res;
+	}
+
+	//TODO
+	public CreateCurriculumForm creteForm(final int personalDataId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	//TODO
+	public Boolean security(final int personalDataId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
