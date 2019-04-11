@@ -126,10 +126,10 @@ public class HackerServiceTest extends AbstractTest {
 	public void driverEditCompany() {
 		final Object testingData[][] = {
 			{
-				"name1", "surnames", 12456780, "https://google.com", "email1@gmail.com", "672195205", "address1", "hacker1", "functionalTest", "VISA", "377964663288126", "12", "2020", "123", "Hacker1", null
+				"name1", "surnames", 12456780, "https://google.com", "email1@gmail.com", "672195205", "address1", "hacker1", "functionalTest", "VISA", "377964663288126", "12", "2020", "123", "hacker1", null
 			},//1. All fine
 			{
-				"name1", "surnames", 12456780, "https://google.com", "email1gmail.com", "672195205", "address1", "hacker1", "functionalTest", "VISA", "377964663288126", "12", "2020", "123", "Hacker1", ConstraintViolationException.class
+				"name1", "surnames", 12456780, "https://google.com", "email1gmail.com", "672195205", "address1", "hacker1", "functionalTest", "VISA", "377964663288126", "12", "2020", "123", "hacker1", ConstraintViolationException.class
 			},//2. The email pattern is wrong
 
 		};

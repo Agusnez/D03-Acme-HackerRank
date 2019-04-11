@@ -327,7 +327,7 @@
 	
 	<!-- Administrators -->
 	
-	<bean id="Administrator1" class="domain.Administrator">
+	<bean id="administrator1" class="domain.Administrator">
 		<property name="name" value="Administrator1" />
 		<property name="surnames" value="admin1surname" />
 		<property name="vat" value="100000" />
@@ -340,7 +340,7 @@
 	
 	</bean>
 	
-	<bean id="Administrator2" class="domain.Administrator">
+	<bean id="administrator2" class="domain.Administrator">
 		<property name="name" value="Administrator2" />
 		<property name="surnames" value="admin2surname" />
 		<property name="vat" value="100001" />
@@ -354,7 +354,7 @@
 	
 	<!-- Hackers -->
 	
-	<bean id="Hacker1" class="domain.Hacker">
+	<bean id="hacker1" class="domain.Hacker">
 		<property name="name" value="Hacker1" />
 		<property name="surnames" value="hacker1surname" />
 		<property name="vat" value="100002" />
@@ -368,13 +368,13 @@
 	</bean>
 	
 	<!-- Finders -->
-	<bean id="Finder1" class="domain.Finder">
+	<bean id="finder1" class="domain.Finder">
 		<property name="keyWord" value="f" />
 		<property name="minimumSalary" value="" />
 		<property name="maximumSalary" value="" />
 		<property name="maximumDeadline" value="" />
 		<property name="lastUpdate" value="2019/04/07 13:13" />
-		<property name="hacker" ref="Hacker1" />
+		<property name="hacker" ref="hacker1" />
 		<property name="positions">
 			<list>
 			</list>
@@ -383,7 +383,7 @@
 	
 	<!-- Companies -->
 	
-	<bean id="Company1" class="domain.Company">
+	<bean id="company1" class="domain.Company">
 		<property name="name" value="Company1" />
 		<property name="surnames" value="company1surname" />
 		<property name="commercialName" value="firstCompanyCommercialName" />
@@ -396,7 +396,7 @@
 		<property name="creditCard" ref="creditCard6" />
 	</bean>
 	
-	<bean id="Company2" class="domain.Company">
+	<bean id="company2" class="domain.Company">
 		<property name="name" value="Company2" />
 		<property name="surnames" value="company2surname" />
 		<property name="commercialName" value="2CompanyCommercialName" />
@@ -409,7 +409,7 @@
 		<property name="creditCard" ref="creditCard7" />
 	</bean>
 	
-	<bean id="Company3" class="domain.Company">
+	<bean id="company3" class="domain.Company">
 		<property name="name" value="Company3" />
 		<property name="surnames" value="company1surname" />
 		<property name="commercialName" value="3CompanyCommercialName" />
@@ -422,7 +422,7 @@
 		<property name="creditCard" ref="creditCard8" />
 	</bean>
 	
-	<bean id="Company4" class="domain.Company">
+	<bean id="company4" class="domain.Company">
 		<property name="name" value="Company1" />
 		<property name="surnames" value="company4surname" />
 		<property name="commercialName" value="4CompanyCommercialName" />
@@ -435,7 +435,7 @@
 		<property name="creditCard" ref="creditCard9" />
 	</bean>
 	
-	<bean id="Company5" class="domain.Company">
+	<bean id="company5" class="domain.Company">
 		<property name="name" value="Company5" />
 		<property name="surnames" value="company5surname" />
 		<property name="commercialName" value="5CompanyCommercialName" />
@@ -448,7 +448,7 @@
 		<property name="creditCard" ref="creditCard10" />
 	</bean>
 	
-	<bean id="Company6" class="domain.Company">
+	<bean id="company6" class="domain.Company">
 		<property name="name" value="Company1" />
 		<property name="surnames" value="company6surname" />
 		<property name="commercialName" value="6CompanyCommercialName" />
@@ -461,7 +461,7 @@
 		<property name="creditCard" ref="creditCard11" />
 	</bean>
 	
-	<bean id="Company7" class="domain.Company">
+	<bean id="company7" class="domain.Company">
 		<property name="name" value="Company7" />
 		<property name="surnames" value="company7surname" />
 		<property name="commercialName" value="7CompanyCommercialName" />
@@ -474,7 +474,7 @@
 		<property name="creditCard" ref="creditCard12" />
 	</bean>
 	
-	<bean id="Company8" class="domain.Company">
+	<bean id="company8" class="domain.Company">
 		<property name="name" value="Company8" />
 		<property name="surnames" value="company8surname" />
 		<property name="commercialName" value="8CompanyCommercialName" />
@@ -487,7 +487,7 @@
 		<property name="creditCard" ref="creditCard13" />
 	</bean>
 	
-	<bean id="Company9" class="domain.Company">
+	<bean id="company9" class="domain.Company">
 		<property name="name" value="Company9" />
 		<property name="surnames" value="company9surname" />
 		<property name="commercialName" value="9CompanyCommercialName" />
@@ -501,7 +501,7 @@
 		<property name="spammer" value="true" />
 	</bean>
 	
-	<bean id="Company10" class="domain.Company">
+	<bean id="company10" class="domain.Company">
 		<property name="name" value="Company10" />
 		<property name="surnames" value="company10surname" />
 		<property name="commercialName" value="10CompanyCommercialName" />
@@ -516,7 +516,7 @@
 	
 	<!-- Positions -->
 	
-	<bean id="Position1" class="domain.Position">
+	<bean id="position1" class="domain.Position">
 	<property name="ticker" value="firs-1234" />
 	<property name="title" value="position1" />
 	<property name="description" value="description position 1" />
@@ -526,10 +526,10 @@
 	<property name="technologies" value="PC" />
 	<property name="offeredSalary" value="500.0" />
 	<property name="finalMode" value="true" />
-	<property name="company" ref="Company1" />
+	<property name="company" ref="company1" />
 	</bean>
 	
-	<bean id="Position2" class="domain.Position">
+	<bean id="position2" class="domain.Position">
 	<property name="ticker" value="firs-1324" />
 	<property name="title" value="position2" />
 	<property name="description" value="description position 2" />
@@ -539,12 +539,12 @@
 	<property name="technologies" value="Server" />
 	<property name="offeredSalary" value="5220.0" />
 	<property name="finalMode" value="false" />
-	<property name="company" ref="Company1" />
+	<property name="company" ref="company1" />
 	</bean>
 	
 	<!-- Problems -->
 	
-	<bean id="Problem1" class="domain.Problem">
+	<bean id="problem1" class="domain.Problem">
 	<property name="title" value="problem1" />
 	<property name="statement" value="statement problem 1" />
 	<property name="hint" value="Consult stackOverFlow" />
@@ -557,15 +557,15 @@
 			</list>
 		</property>
 	<property name="finalMode" value="true" />
-	<property name="company" ref="Company1" />
+	<property name="company" ref="company1" />
 	<property name="positions"  >
 		<list>
-			<ref bean="Position1"/>	
+			<ref bean="position1"/>	
 		</list>
 	</property>
 	</bean>
 	
-	<bean id="Problem2" class="domain.Problem">
+	<bean id="problem2" class="domain.Problem">
 	<property name="title" value="problem2" />
 	<property name="statement" value="statement problem 2" />
 	<property name="hint" value="Consult 3mcSchools" />
@@ -576,15 +576,15 @@
 			</list>
 		</property>
 	<property name="finalMode" value="true" />
-	<property name="company" ref="Company1" />
+	<property name="company" ref="company1" />
 	<property name="positions"  >
 		<list>
-			<ref bean="Position1"/>	
+			<ref bean="position1"/>	
 		</list>
 	</property>
 	</bean>
 	
-	<bean id="Problem3" class="domain.Problem">
+	<bean id="problem3" class="domain.Problem">
 	<property name="title" value="problem3" />
 	<property name="statement" value="statement problem 3" />
 	<property name="hint" value="Hint muy bonito" />
@@ -594,41 +594,44 @@
 			</list>
 		</property>
 	<property name="finalMode" value="false" />
-	<property name="company" ref="Company1" />
+	<property name="company" ref="company1" />
 	</bean>
 	
 	 <!--  Social profiles --> 
+	 
   <bean id="socialProfile1" class="domain.SocialProfile">
   <property name="nick" value="Company1" /> 
   <property name="socialName" value="Compañia number 1" /> 
   <property name="link" value="http://www.facebook.com/link1/" /> 
-  <property name="actor" ref="Company1" /> 
+  <property name="actor" ref="company1" /> 
   </bean>
   <bean id="socialProfile2" class="domain.SocialProfile">
   <property name="nick" value="Company1.1" /> 
   <property name="socialName" value="Compañia number 1.1" /> 
   <property name="link" value="http://www.facebook.com/link2/" /> 
-  <property name="actor" ref="Company1" /> 
+  <property name="actor" ref="company1" /> 
   </bean>
   <bean id="socialProfile3" class="domain.SocialProfile">
   <property name="nick" value="Company2" /> 
   <property name="socialName" value="Compañia number 2" /> 
   <property name="link" value="http://www.facebook.com/link3/" /> 
-  <property name="actor" ref="Company2" /> 
+  <property name="actor" ref="company2" /> 
   </bean>
   <bean id="socialProfile4" class="domain.SocialProfile">
   <property name="nick" value="Company2.1" /> 
   <property name="socialName" value="Compañia number 2.1" /> 
   <property name="link" value="http://www.facebook.com/link4/" /> 
-  <property name="actor" ref="Company2" /> 
+  <property name="actor" ref="company2" /> 
   </bean>
   <bean id="socialProfile5" class="domain.SocialProfile">
   <property name="nick" value="Company3" /> 
   <property name="socialName" value="Compañia number 3" /> 
   <property name="link" value="http://www.facebook.com/link4/" /> 
-  <property name="actor" ref="Company3" /> 
+  <property name="actor" ref="company3" /> 
   </bean>
   
+   <!--  Message --> 
+   
   <bean id="message1" class="domain.Message">
   <property name="moment" value="2017/09/17 13:53" /> 
   <property name="subject" value="Hola" /> 
@@ -636,8 +639,8 @@
   <property name="priority" value="LOW" /> 
   <property name="tags" value="tag1" /> 
   <property name="spam" value="False" /> 
-  <property name="sender" ref="Company3" /> 
-  <property name="recipient" ref="Company1" /> 
+  <property name="sender" ref="company3" /> 
+  <property name="recipient" ref="company1" /> 
   </bean>
   
   <bean id="message2" class="domain.Message">
@@ -647,8 +650,8 @@
   <property name="priority" value="LOW" /> 
   <property name="tags" value="tag1" /> 
   <property name="spam" value="False" /> 
-  <property name="sender" ref="Company1" /> 
-  <property name="recipient" ref="Company3" /> 
+  <property name="sender" ref="company1" /> 
+  <property name="recipient" ref="company3" /> 
   </bean>
   
   <bean id="message3" class="domain.Message">
@@ -658,8 +661,8 @@
   <property name="priority" value="LOW" /> 
   <property name="tags" value="tag1" /> 
   <property name="spam" value="False" /> 
-  <property name="sender" ref="Company1" /> 
-  <property name="recipient" ref="Company2" /> 
+  <property name="sender" ref="company1" /> 
+  <property name="recipient" ref="company2" /> 
   </bean>
   
   <bean id="message4" class="domain.Message">
@@ -669,8 +672,8 @@
   <property name="priority" value="LOW" /> 
   <property name="tags" value="DELETE" /> 
   <property name="spam" value="False" /> 
-  <property name="sender" ref="Company1" /> 
-  <property name="recipient" ref="Company4" /> 
+  <property name="sender" ref="company1" /> 
+  <property name="recipient" ref="company4" /> 
   </bean>
   
    <bean id="message5" class="domain.Message">
@@ -680,8 +683,8 @@
   	<property name="priority" value="LOW" /> 
   	<property name="tags" value="Spam" /> 
   	<property name="spam" value="True" /> 
-  	<property name="sender" ref="Company9" /> 
-  	<property name="recipient" ref="Company4" /> 
+  	<property name="sender" ref="company9" /> 
+  	<property name="recipient" ref="company4" /> 
   </bean>
 	
 	<!-- Configuration -->

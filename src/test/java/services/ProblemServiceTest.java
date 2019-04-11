@@ -117,10 +117,10 @@ public class ProblemServiceTest extends AbstractTest {
 	public void driverEditProblem() {
 		final Object testingData[][] = {
 			{
-				"title1", "Company1", "Problem3", null
+				"title1", "company1", "problem3", null
 			},//1. All fine
 			{
-				"title1", "Company1", "Problem1", IllegalArgumentException.class
+				"title1", "company1", "problem1", IllegalArgumentException.class
 			},//2. The problem is in final mode, it can't be edited
 
 		};
@@ -170,10 +170,10 @@ public class ProblemServiceTest extends AbstractTest {
 	public void driverDeleteProblem() {
 		final Object testingData[][] = {
 			{
-				"Company1", "Problem3", null
+				"company1", "problem3", null
 			},//1. All fine
 			{
-				"Company1", "Problem1", IllegalArgumentException.class
+				"company1", "problem1", IllegalArgumentException.class
 			},//2. The problem is in final mode, it can't be deleted
 
 		};
@@ -219,10 +219,10 @@ public class ProblemServiceTest extends AbstractTest {
 	public void driverListProblem() {
 		final Object testingData[][] = {
 			{
-				"Company1", 3, null
+				"company1", 3, null
 			},//1. All fine
 			{
-				"Company1", 0, IllegalArgumentException.class
+				"company1", 0, IllegalArgumentException.class
 			},//2. The number of problems is incorrect
 
 		};
@@ -266,10 +266,10 @@ public class ProblemServiceTest extends AbstractTest {
 	public void driverAddPositionToProblem() {
 		final Object testingData[][] = {
 			{
-				"Company1", "Problem3", "Position1", null
+				"company1", "problem3", "position1", null
 			},//1. All fine
 			{
-				"Hacker1", "Problem3", "Position1", IllegalArgumentException.class
+				"hacker1", "problem3", "position1", IllegalArgumentException.class
 			},//2. The problem is in final mode, it can't be edited
 
 		};

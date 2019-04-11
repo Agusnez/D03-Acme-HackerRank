@@ -27,10 +27,10 @@ public class ActorServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 
 			{
-				"Company1", null
+				"company1", null
 			}, //1. All fine
 			{
-				"administrator1", AssertionError.class
+				"administrator1", IllegalArgumentException.class
 			}, //2. Ban yourself
 
 		};
@@ -87,10 +87,10 @@ public class ActorServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 
 			{
-				"Hacker1", null
+				"hacker1", null
 			}, //1. All fine
 			{
-				"administrator1", AssertionError.class
+				"administrator1", IllegalArgumentException.class
 			}, //2. Unban yourself
 
 		};

@@ -130,10 +130,10 @@ public class CompanyServiceTest extends AbstractTest {
 	public void driverEditCompany() {
 		final Object testingData[][] = {
 			{
-				"endesa", "name1", "surnames", 1234654580, "https://google.com", "email1@gmail.com", "672195205", "address1", "company1", "functionalTest", "VISA", "377964663288126", "12", "2020", "123", "Company1", null
+				"endesa", "name1", "surnames", 1234654580, "https://google.com", "email1@gmail.com", "672195205", "address1", "company1", "functionalTest", "VISA", "377964663288126", "12", "2020", "123", "company1", null
 			},//1. All fine
 			{
-				"endesa", "name1", "surnames", 1234654580, "https://google.com", "email1gmail.com", "672195205", "address1", "company1", "functionalTest", "VISA", "377964663288126", "12", "2018", "123", "Company1", ConstraintViolationException.class
+				"endesa", "name1", "surnames", 1234654580, "https://google.com", "email1gmail.com", "672195205", "address1", "company1", "functionalTest", "VISA", "377964663288126", "12", "2018", "123", "company1", ConstraintViolationException.class
 			},//2. The expiration year of the credit card is past
 
 		};
