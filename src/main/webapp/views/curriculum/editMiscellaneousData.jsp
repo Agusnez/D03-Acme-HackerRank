@@ -18,8 +18,8 @@
 	
 	<acme:submit name="save" code="curriculum.save" />
 	
-	<jstl:if test="${positionData.id != 0 }">
-		<acme:submit name="save" code="curriculum.delete" />
+	<jstl:if test="${miscellaneousData.id != 0 }">
+		<acme:submit name="delete" code="curriculum.delete" />
 	</jstl:if>
 	
 	<acme:cancel code="curriculum.back" url="curriculum/hacker/display.do?curriculumId=${miscellaneousData.curriculumId }" />
