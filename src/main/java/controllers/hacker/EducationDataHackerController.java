@@ -104,7 +104,7 @@ public class EducationDataHackerController extends AbstractController {
 
 		final Boolean existData = this.educationDataService.exist(form.getId());
 
-		if ((form.getId() == 0 && existCurriculum) || (form.getId() != 0 && existData)) {
+		if ((form.getId() == 0 && existCurriculum) || (form.getId() != 0 && existData && existCurriculum)) {
 
 			final Boolean securityCurriculum = this.curriculumService.security(form.getCurriculumId());
 			final Boolean securityData = this.educationDataService.security(form.getId(), form.getCurriculumId());
