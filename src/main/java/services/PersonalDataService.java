@@ -15,6 +15,7 @@ import security.Authority;
 import domain.Actor;
 import domain.PersonalData;
 import forms.CreateCurriculumForm;
+import forms.PersonalDataForm;
 
 @Service
 @Transactional
@@ -109,6 +110,28 @@ public class PersonalDataService {
 
 	}
 
+	public PersonalData reconstruct(final PersonalDataForm form, final BindingResult binding) {
+
+		final Actor actor = this.actorService.findByPrincipal();
+
+		final String fullName = actor.getName() + " " + actor.getSurnames();
+
+		final PersonalData result = this.create();
+
+		this.validator.validate(form, binding);
+
+		result.setId(form.getId());
+		result.setVersion(form.getVersion());
+		result.setFullName(fullName);
+		result.setStatement(form.getStatement());
+		result.setPhone(form.getPhone());
+		result.setLinkGitHubProfile(form.getLinkGitHubProfile());
+		result.setLinkLinkedInProfile(form.getLinkLinkedInProfile());
+
+		return result;
+
+	}
+
 	public Boolean exist(final int personalDataId) {
 		Boolean res = false;
 
@@ -120,15 +143,25 @@ public class PersonalDataService {
 		return res;
 	}
 
-	//TODO
-	public CreateCurriculumForm creteForm(final int personalDataId) {
-		// TODO Auto-generated method stub
-		return null;
+	public PersonalDataForm creteForm(final int personalDataId) {
+
+		final PersonalData personal = this.findOne(personalDataId);
+
+		final PersonalDataForm result = new PersonalDataForm();
+
+		result.setId(personal.getId());
+		result.setVersion(personal.getVersion());
+		result.setStatement(personal.getStatement());
+		result.setPhone(personal.getPhone());
+		result.setLinkGitHubProfile(personal.getLinkGitHubProfile());
+		result.setLinkLinkedInProfile(personal.getLinkLinkedInProfile());
+
+		return result;
 	}
 
 	//TODO
 	public Boolean security(final int personalDataId) {
 		// TODO Auto-generated method stub
-		return null;
+		return true;
 	}
 }

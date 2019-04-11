@@ -23,6 +23,11 @@
 <acme:display property="${curriculum.personalData.linkGitHubProfile}" code="curriculum.linkGitHubProfile" />
 
 <acme:display property="${curriculum.personalData.linkLinkedInProfile}" code="curriculum.linkLinkedInProfile" />
+
+<br/>
+
+<a href="personalData/hacker/edit.do?personalDataId=${curriculum.personalData.id }"><spring:message code="curriculum.editPersonal"/></a>
+
 </fieldset>
 <br/>
 <br/>

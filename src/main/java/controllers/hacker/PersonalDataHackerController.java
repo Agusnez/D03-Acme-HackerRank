@@ -15,7 +15,7 @@ import services.CurriculumService;
 import services.EducationDataService;
 import services.PersonalDataService;
 import domain.PersonalData;
-import forms.CreateCurriculumForm;
+import forms.PersonalDataForm;
 
 @Controller
 @RequestMapping("/personalData/hacker")
@@ -39,7 +39,7 @@ public class PersonalDataHackerController {
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public ModelAndView edit(@RequestParam final int personalDataId) {
 		ModelAndView result;
-		final CreateCurriculumForm form;
+		final PersonalDataForm form;
 
 		final String banner = this.configurationService.findConfiguration().getBanner();
 
@@ -65,7 +65,7 @@ public class PersonalDataHackerController {
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@ModelAttribute("personalData") final CreateCurriculumForm form, final BindingResult binding) {
+	public ModelAndView save(@ModelAttribute("personalData") final PersonalDataForm form, final BindingResult binding) {
 		ModelAndView result;
 
 		final String banner = this.configurationService.findConfiguration().getBanner();
@@ -97,21 +97,21 @@ public class PersonalDataHackerController {
 
 	// Ancillary methods
 
-	protected ModelAndView createEditModelAndView(final CreateCurriculumForm createCurriculumForm) {
+	protected ModelAndView createEditModelAndView(final PersonalDataForm form) {
 		ModelAndView result;
 
-		result = this.createEditModelAndView(createCurriculumForm, null);
+		result = this.createEditModelAndView(form, null);
 
 		return result;
 	}
 
-	protected ModelAndView createEditModelAndView(final CreateCurriculumForm createCurriculumForm, final String messageCode) {
+	protected ModelAndView createEditModelAndView(final PersonalDataForm form, final String messageCode) {
 		ModelAndView result;
 
 		final String banner = this.configurationService.findConfiguration().getBanner();
 
-		result = new ModelAndView("curriculum/editEducationData");
-		result.addObject("createCurriculumForm", createCurriculumForm);
+		result = new ModelAndView("curriculum/editPersonalData");
+		result.addObject("personalData", form);
 		result.addObject("banner", banner);
 		result.addObject("messageError", messageCode);
 
