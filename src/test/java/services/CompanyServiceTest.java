@@ -54,21 +54,21 @@ public class CompanyServiceTest extends AbstractTest {
 	public void driverRegisterCompany() {
 		final Object testingData[][] = {
 			{
-				"endesa", "name1", "surnames", 12.0, "https://google.com", "email1@gmail.com", "672195205", "address1", "company100", "company100", "functionalTest", "VISA", "377964663288126", "12", "2020", "123", null
+				"endesa", "name1", "surnames", 1234567770, "https://google.com", "email1@gmail.com", "672195205", "address1", "company100", "company100", "functionalTest", "VISA", "377964663288126", "12", "2020", "123", null
 			},//1. All fine
 			{
-				"endesa", "name1", "surnames", 12.0, "https://google.com", "email1gmail.com", "672195205", "address1", "company100", "company100", "functionalTest", "VISA", "377964663288126", "12", "2020", "123", IllegalArgumentException.class
+				"endesa", "name1", "surnames", 1234567770, "https://google.com", "email1gmail.com", "672195205", "address1", "company100", "company100", "functionalTest", "VISA", "377964663288126", "12", "2020", "123", IllegalArgumentException.class
 			},//2. The email pattern is wrong
 
 		};
 
 		for (int i = 0; i < testingData.length; i++)
-			this.templateRegisterCompany((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (Double) testingData[i][3], (String) testingData[i][4], (String) testingData[i][5], (String) testingData[i][6],
+			this.templateRegisterCompany((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (Integer) testingData[i][3], (String) testingData[i][4], (String) testingData[i][5], (String) testingData[i][6],
 				(String) testingData[i][7], (String) testingData[i][8], (String) testingData[i][9], (String) testingData[i][10], (String) testingData[i][11], (String) testingData[i][12], (String) testingData[i][13], (String) testingData[i][14],
 				(String) testingData[i][15], (Class<?>) testingData[i][16]);
 	}
 
-	protected void templateRegisterCompany(final String commercialName, final String name, final String surnames, final Double vat, final String photo, final String email, final String phone, final String address, final String username,
+	protected void templateRegisterCompany(final String commercialName, final String name, final String surnames, final Integer vat, final String photo, final String email, final String phone, final String address, final String username,
 		final String password, final String holderName, final String make, final String number, final String expMonth, final String expYear, final String cvv, final Class<?> expected) {
 
 		Class<?> caught;
@@ -130,21 +130,21 @@ public class CompanyServiceTest extends AbstractTest {
 	public void driverEditCompany() {
 		final Object testingData[][] = {
 			{
-				"endesa", "name1", "surnames", 12.0, "https://google.com", "email1@gmail.com", "672195205", "address1", "company1", "functionalTest", "VISA", "377964663288126", "12", "2020", "123", "Company1", null
+				"endesa", "name1", "surnames", 1234654580, "https://google.com", "email1@gmail.com", "672195205", "address1", "company1", "functionalTest", "VISA", "377964663288126", "12", "2020", "123", "Company1", null
 			},//1. All fine
 			{
-				"endesa", "name1", "surnames", 12.0, "https://google.com", "email1gmail.com", "672195205", "address1", "company1", "functionalTest", "VISA", "377964663288126", "12", "2018", "123", "Company1", ConstraintViolationException.class
+				"endesa", "name1", "surnames", 1234654580, "https://google.com", "email1gmail.com", "672195205", "address1", "company1", "functionalTest", "VISA", "377964663288126", "12", "2018", "123", "Company1", ConstraintViolationException.class
 			},//2. The expiration year of the credit card is past
 
 		};
 
 		for (int i = 0; i < testingData.length; i++)
-			this.templateEditCompany((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (Double) testingData[i][3], (String) testingData[i][4], (String) testingData[i][5], (String) testingData[i][6],
+			this.templateEditCompany((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (Integer) testingData[i][3], (String) testingData[i][4], (String) testingData[i][5], (String) testingData[i][6],
 				(String) testingData[i][7], (String) testingData[i][8], (String) testingData[i][9], (String) testingData[i][10], (String) testingData[i][11], (String) testingData[i][12], (String) testingData[i][13], (String) testingData[i][14],
 				(String) testingData[i][15], (Class<?>) testingData[i][16]);
 	}
 
-	protected void templateEditCompany(final String commercialName, final String name, final String surnames, final Double vat, final String photo, final String email, final String phone, final String address, final String username,
+	protected void templateEditCompany(final String commercialName, final String name, final String surnames, final Integer vat, final String photo, final String email, final String phone, final String address, final String username,
 		final String holderName, final String make, final String number, final String expMonth, final String expYear, final String cvv, final String companyToEdit, final Class<?> expected) {
 
 		Class<?> caught;

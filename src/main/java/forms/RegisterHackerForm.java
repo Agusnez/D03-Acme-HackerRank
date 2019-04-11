@@ -1,6 +1,7 @@
 
 package forms;
 
+import javax.persistence.Column;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -25,7 +26,7 @@ public class RegisterHackerForm {
 
 	private String		name;
 	private String		surnames;
-	private Double		vat;
+	private Integer		vat;
 	private String		photo;
 	private String		email;
 	private String		phone;
@@ -58,10 +59,11 @@ public class RegisterHackerForm {
 	}
 
 	@NotNull
-	public Double getVat() {
+	@Column(unique = true)
+	public Integer getVat() {
 		return this.vat;
 	}
-	public void setVat(final Double vat) {
+	public void setVat(final Integer vat) {
 		this.vat = vat;
 	}
 

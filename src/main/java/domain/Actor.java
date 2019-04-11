@@ -6,6 +6,8 @@ import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -18,12 +20,15 @@ import security.UserAccount;
 
 @Entity
 @Access(AccessType.PROPERTY)
+@Table(uniqueConstraints = {
+	@UniqueConstraint(columnNames = "vat")
+})
 public abstract class Actor extends DomainEntity {
 
 	//Atributos-----------------------------------------------------------
 	private String		name;
 	private String		surnames;
-	private Double		vat;
+	private Integer		vat;
 	private String		photo;
 	private String		email;
 	private CreditCard	creditCard;
@@ -43,10 +48,10 @@ public abstract class Actor extends DomainEntity {
 	}
 
 	@NotNull
-	public Double getVat() {
+	public Integer getVat() {
 		return this.vat;
 	}
-	public void setVat(final Double vat) {
+	public void setVat(final Integer vat) {
 		this.vat = vat;
 	}
 
