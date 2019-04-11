@@ -169,4 +169,11 @@ public class CurriculumService {
 
 		return copy;
 	}
+
+	public Curriculum findByPersonalDataId(final int personalDataId) {
+
+		final Curriculum result = this.findByPersonalDataId(personalDataId);
+
+		return result;
+	}
 }

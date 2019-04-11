@@ -13,6 +13,8 @@ import org.springframework.validation.Validator;
 import repositories.PersonalDataRepository;
 import security.Authority;
 import domain.Actor;
+import domain.Curriculum;
+import domain.Hacker;
 import domain.PersonalData;
 import forms.CreateCurriculumForm;
 import forms.PersonalDataForm;
@@ -29,6 +31,9 @@ public class PersonalDataService {
 
 	@Autowired
 	private ActorService			actorService;
+
+	@Autowired
+	private HackerService			hackerService;
 
 	@Autowired
 	private Validator				validator;
@@ -143,7 +148,7 @@ public class PersonalDataService {
 		return res;
 	}
 
-	public PersonalDataForm creteForm(final int personalDataId) {
+	public PersonalDataForm createForm(final int personalDataId) {
 
 		final PersonalData personal = this.findOne(personalDataId);
 
@@ -156,12 +161,26 @@ public class PersonalDataService {
 		result.setLinkGitHubProfile(personal.getLinkGitHubProfile());
 		result.setLinkLinkedInProfile(personal.getLinkLinkedInProfile());
 
+		final Curriculum c = this.curriculumService.findByPersonalDataId(personalDataId);
+
+		result.setCurriculumId(c.getId());
+
 		return result;
 	}
 
-	//TODO
 	public Boolean security(final int personalDataId) {
-		// TODO Auto-generated method stub
-		return true;
+
+		Boolean result = false;
+
+		final Hacker hacker = this.hackerService.findByPrincipal();
+
+		final Curriculum c = this.curriculumService.findByPersonalDataId(personalDataId);
+
+		final Collection<Curriculum> curricula = this.curriculumService.findByHackerId(hacker.getId());
+
+		if (curricula.contains(c))
+			result = true;
+
+		return result;
 	}
 }

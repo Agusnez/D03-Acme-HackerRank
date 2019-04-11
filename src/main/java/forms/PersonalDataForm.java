@@ -14,6 +14,8 @@ public class PersonalDataForm {
 	private String	linkGitHubProfile;
 	private String	linkLinkedInProfile;
 
+	private int		curriculumId;
+
 
 	public int getId() {
 		return this.id;
@@ -71,6 +73,14 @@ public class PersonalDataForm {
 
 	public void setLinkLinkedInProfile(final String linkLinkedInProfile) {
 		this.linkLinkedInProfile = linkLinkedInProfile;
+	}
+
+	public int getCurriculumId() {
+		return this.curriculumId;
+	}
+
+	public void setCurriculumId(final int curriculumId) {
+		this.curriculumId = curriculumId;
 	}
 
 }

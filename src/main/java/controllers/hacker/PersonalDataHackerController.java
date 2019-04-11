@@ -50,7 +50,7 @@ public class PersonalDataHackerController {
 			result.addObject("banner", banner);
 		} else {
 
-			form = this.personalDataService.creteForm(personalDataId);
+			form = this.personalDataService.createForm(personalDataId);
 
 			final Boolean security = this.personalDataService.security(personalDataId);
 
@@ -72,25 +72,36 @@ public class PersonalDataHackerController {
 
 		final PersonalData personalReconstruct = this.personalDataService.reconstruct(form, binding);
 
-		final Boolean security = this.personalDataService.security(personalReconstruct.getId());
+		final Boolean existPersonalData = this.personalDataService.exist(form.getId());
 
-		if (security) {
+		final Boolean existCurriculum = this.curriculumService.exist(form.getCurriculumId());
 
-			if (binding.hasErrors())
-				result = this.createEditModelAndView(form);
-			else
-				try {
-					this.personalDataService.save(personalReconstruct);
-					result = new ModelAndView("redirect:/curriculum/hacker/list.do");
+		if (form.getId() != 0 && form.getCurriculumId() != 0 && existPersonalData && existCurriculum) {
 
-				} catch (final Throwable oops) {
-					result = this.createEditModelAndView(form, "curriculum.commit.error");
-				}
+			final Boolean security1 = this.personalDataService.security(personalReconstruct.getId());
 
-		} else
-			result = new ModelAndView("redirect:/welcome/index.do");
+			final Boolean security2 = this.curriculumService.security(form.getCurriculumId());
 
-		result.addObject("banner", banner);
+			if (security1 && security2) {
+
+				if (binding.hasErrors())
+					result = this.createEditModelAndView(form);
+				else
+					try {
+						this.personalDataService.save(personalReconstruct);
+						result = new ModelAndView("redirect:/curriculum/hacker/display.do?curriculumId=" + form.getCurriculumId());
+
+					} catch (final Throwable oops) {
+						result = this.createEditModelAndView(form, "curriculum.commit.error");
+					}
+
+			} else
+				result = new ModelAndView("redirect:/welcome/index.do");
+
+		} else {
+			result = new ModelAndView("misc/notExist");
+			result.addObject("banner", banner);
+		}
 
 		return result;
 	}
