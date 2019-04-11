@@ -21,7 +21,7 @@
 		<fieldset>
 			
 			<jstl:if test="${empty actor.spammer}">
-				<spring:message code="actor.score" />:<spring:message code="actor.status.na" />
+				<spring:message code="actor.spammer" />:<spring:message code="actor.status.na" />
 			</jstl:if>
 			
 			<jstl:if test="${not empty actor.spammer and !row.spammer}">

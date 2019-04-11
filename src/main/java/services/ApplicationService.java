@@ -122,6 +122,27 @@ public class ApplicationService {
 		return res;
 	}
 
+	public void delete(final Application application) {
+
+		this.applicationRepository.delete(application);
+	}
+
+	public void deleteAll(final int actorId) {
+
+		final Collection<Application> apps = this.findByHackerId(actorId);
+
+		if (!apps.isEmpty())
+			for (final Application a : apps)
+				this.applicationRepository.delete(a);
+	}
+
+	public Collection<Application> findByHackerId(final int hackerId) {
+
+		final Collection<Application> result = this.applicationRepository.findByHackerId(hackerId);
+
+		return result;
+	}
+
 	public Collection<Application> findAllAcceptedByHacker(final int hackerId) {
 		Collection<Application> result;
 		result = this.applicationRepository.findAllAcceptedByHacker(hackerId);
@@ -331,6 +352,13 @@ public class ApplicationService {
 		res.setVersion(application.getVersion());
 
 		return res;
+	}
+
+	public Collection<Application> findByPositionId(final int positionId) {
+
+		final Collection<Application> result = this.findByPositionId(positionId);
+
+		return result;
 	}
 
 }

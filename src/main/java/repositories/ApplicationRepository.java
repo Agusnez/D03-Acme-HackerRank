@@ -42,4 +42,10 @@ public interface ApplicationRepository extends JpaRepository<Application, Intege
 	@Query("select a from Application a where a.hacker.id = ?1 and a.position.deadline < CURRENT_DATE")
 	Collection<Application> findAllDeadLinePastByCompany(int companyId);
 
+	@Query("select a from Application a where a.position.id = ?1")
+	Collection<Application> findByPositionId(final int positionId);
+
+	@Query("select a from Application a where a.hacker.id = ?1")
+	Collection<Application> findByHackerId(final int hackerId);
+
 }

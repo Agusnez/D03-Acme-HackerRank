@@ -19,6 +19,7 @@ import org.springframework.validation.Validator;
 import repositories.PositionRepository;
 import security.Authority;
 import domain.Actor;
+import domain.Application;
 import domain.Company;
 import domain.Finder;
 import domain.Position;
@@ -45,6 +46,9 @@ public class PositionService {
 
 	@Autowired
 	private FinderService		finderService;
+
+	@Autowired
+	private ApplicationService	applicationService;
 
 	@Autowired
 	private Validator			validator;
@@ -157,8 +161,13 @@ public class PositionService {
 					for (final Finder f : finders) {
 
 						f.getPositions().remove(p);
-						this.finderService.save(f);
+						this.finderService.saveAdmin(f);
 					}
+
+				final Collection<Application> apps = this.applicationService.findByPositionId(p.getId());
+				if (!apps.isEmpty())
+					for (final Application a : apps)
+						this.applicationService.delete(a);
 
 				this.positionRepository.delete(p);
 			}
