@@ -14,7 +14,9 @@
 	<form:hidden path="version" />
 	<form:hidden path="curriculumId" />
 	
-	<acme:textbox code="curriculum.attachments" path="attachments" obligatory="true"/>
+	<acme:textbox code="curriculum.text" path="text" obligatory="true"/>
+	
+	<acme:textbox code="curriculum.attachments" path="attachments"/>
 	
 	<acme:submit name="save" code="curriculum.save" />
 	

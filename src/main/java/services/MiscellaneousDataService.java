@@ -104,6 +104,7 @@ public class MiscellaneousDataService {
 
 		result.setId(form.getId());
 		result.setVersion(form.getVersion());
+		result.setText(form.getText());
 		result.setAttachments(form.getAttachments());
 
 		return result;
@@ -171,6 +172,7 @@ public class MiscellaneousDataService {
 
 		result.setId(miscellaneousData.getId());
 		result.setVersion(miscellaneousData.getVersion());
+		result.setText(miscellaneousData.getText());
 		result.setAttachments(miscellaneousData.getAttachments());
 
 		final Curriculum c = this.curriculumService.findByMiscellaneousDataId(miscellaneousRecordId);
