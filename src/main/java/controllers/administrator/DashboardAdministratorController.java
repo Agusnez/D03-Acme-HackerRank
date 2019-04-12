@@ -13,6 +13,7 @@ import services.AdministratorService;
 import services.ConfigurationService;
 import controllers.AbstractController;
 import domain.Position;
+import java.util.Arrays;
 
 @Controller
 @RequestMapping("/administrator")
@@ -35,12 +36,41 @@ public class DashboardAdministratorController extends AbstractController {
 
 		final String banner = this.configurationService.findConfiguration().getBanner();
 
-		final Double avg = this.administratorService.avgOfPositionsPerCompany();
-		final Position p = this.administratorService.findBestPosition();
+		final Double avgPC = this.administratorService.avgOfPositionsPerCompany();
+		final Integer minPC = this.administratorService.minOfPositionsPerCompany();
+		final Integer maxPC = this.administratorService.maxOfPositionsPerCompany();
+		final Double stdPC = this.administratorService.stdOfPositionsPerCompany();
+		
+		final Double avgAH = this.administratorService.avgOfApplicationsPerHacker();
+		final Integer minAH = this.administratorService.minOfApplicationsPerHacker();
+		final Integer maxAH = this.administratorService.maxOfApplicationsPerHacker();
+		final Double stdAH = this.administratorService.avgOfApplicationsPerHacker();
+		
 		final List<String> topC = this.administratorService.topCompaniesWithMorePositions();
+		
+		final List<String> topH = this.administratorService.topHackersWithMoreApplications();
+		
+		final List<Double> statsSList = this.administratorService.statsSalaries();
+		final String statsS = Arrays.toString(statsSList.toArray());
+		
+		final Position bP = this.administratorService.findBestPosition();
+		final Position wP = this.administratorService.findWorstPosition();
+		
 
 		result = new ModelAndView("administrator/dashboard");
-		result.addObject("companies", topC);
+		result.addObject("avgPC",avgPC);
+		result.addObject("minPC",minPC);
+		result.addObject("maxPC",maxPC);
+		result.addObject("stdPC",stdPC);
+		result.addObject("avgAH",avgAH);
+		result.addObject("minAH",minAH);
+		result.addObject("maxAH",maxAH);
+		result.addObject("stdAH",stdAH);
+		result.addObject("topC", topC);
+		result.addObject("topH", topH);
+		result.addObject("statsS", statsS);
+		result.addObject("bP", bP);
+		result.addObject("wP", wP);
 		result.addObject("banner", banner);
 
 		return result;

@@ -273,20 +273,47 @@ public class AdministratorService {
 	public Double avgOfPositionsPerCompany() {
 		return this.administratorRepository.avgOfPositionsPerCompany();
 	}
+	
+	public Integer minOfPositionsPerCompany() {
+		return this.administratorRepository.minPositionOfCompany();
+	}
+	
+	public Integer maxOfPositionsPerCompany() {
+		return this.administratorRepository.maxPositionOfCompany();
+	}
+	
+	public Double stdOfPositionsPerCompany() {
+		return this.administratorRepository.stdOfPositionsPerCompany();
+	}
+	
+	public Double avgOfApplicationsPerHacker() {
+		return this.administratorRepository.avgOfApplicationsPerHacker();
+	}
+	
+	public Integer minOfApplicationsPerHacker() {
+		return this.administratorRepository.minApplicationsOfHacker();
+	}
 
+	public Integer maxOfApplicationsPerHacker() {
+		return this.administratorRepository.maxApplicationsOfHacker();
+	}
+	
+	public Double stdOfApplicationsPerHacker() {
+		return this.administratorRepository.stdOfApplicationsPerHacker();
+	}
+	
 	public List<String> topCompaniesWithMorePositions() {
 		final List<String> result = this.administratorRepository.topCompaniesWithMorePositions();
 
 		return result;
 	}
 
-	/*
-	 * public Collection<Hacker> topHackerWithMoreApplications() {
-	 * return this.administratorRepository.topHackerWithMoreApplications();
-	 * }
-	 */
+	public List<String> topHackersWithMoreApplications() {
+		final List<String> result = this.administratorRepository.topHackerWithMoreApplications();
+		return result;
+	}
 
-	public Collection<Double> statsSalaries() {
+	public List<Double> statsSalaries() {
 		return this.administratorRepository.statsSalaries();
 	}
 

@@ -64,15 +64,15 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 										+ "ORDER BY COUNT(*) DESC limit 3")
 	List<String> topCompaniesWithMorePositions();
 	
-	@Query(nativeQuery = true, value= "select count(*), h.name  as Count from application a "
+	@Query(nativeQuery = true, value= "select h.name  as Count from application a "
 										+ "join hacker h on (h.id = a.hacker) group by hacker "
 										+ "ORDER BY COUNT(*) DESC limit 3")
-	Collection<Object> topHackerWithMoreApplications();
+	List<String> topHackerWithMoreApplications();
 	
 	
 	//TODO: 
 	@Query(nativeQuery = true, value= "select avg(p.offered_salary), min(p.offered_salary), max(p.offered_salary), std(p.offered_salary) from `position` p")
-	Collection<Double> statsSalaries();
+	List<Double> statsSalaries();
 	
 	@Query(nativeQuery = true, value= "select p.id from `position` p order by offered_salary asc limit 1")
 	int findWorstPosition();
