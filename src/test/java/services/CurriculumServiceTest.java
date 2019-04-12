@@ -54,9 +54,12 @@ public class CurriculumServiceTest extends AbstractTest {
 
 			super.authenticate(username);
 
+			final Hacker hacker = this.hackerService.findOne(super.getEntityId(username));
+
 			final Curriculum c = this.curriculumService.create();
 
 			c.setNoCopy(true);
+			c.setHacker(hacker);
 
 			this.curriculumService.save(c);
 			this.curriculumService.flush();

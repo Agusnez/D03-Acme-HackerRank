@@ -191,4 +191,8 @@ public class EducationDataService {
 
 		return result;
 	}
+
+	public void flush() {
+		this.educationDataRepository.flush();
+	}
 }
