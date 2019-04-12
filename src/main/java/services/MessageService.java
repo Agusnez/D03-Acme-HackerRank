@@ -227,8 +227,9 @@ public class MessageService {
 
 		final Actor login = this.actorService.findByPrincipal();
 
-		if (m.getTags().equals("SYSTEM"))
-			res = true;
+		if (m.getTags() != null)
+			if (m.getTags().equals("SYSTEM"))
+				res = true;
 
 		if ((login.equals(senderMessage)) || (login.equals(recipientMessage)))
 			res = true;
