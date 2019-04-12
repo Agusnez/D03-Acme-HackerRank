@@ -145,6 +145,7 @@ public class ProblemService {
 		Assert.isTrue(actor.getId() == problem.getCompany().getId());
 		Assert.isTrue(actor.getId() == position.getCompany().getId());
 
+		Assert.isTrue(problem.getFinalMode() == true);
 		final Collection<Position> positions = problem.getPositions();
 		Assert.isTrue(!positions.contains(position));
 		positions.add(position);

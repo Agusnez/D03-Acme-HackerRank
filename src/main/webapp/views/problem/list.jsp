@@ -33,8 +33,9 @@
 	
 	<security:authorize access="hasRole('COMPANY')">
 		<acme:url href="problem/company/display.do?problemId=${row.id }" code="problem.display" />
-		
-		<acme:url href="problem/company/addPosition.do?problemId=${row.id }" code="problem.add" />
+		<jstl:if test="${!problem.finalMode }">
+			<acme:url href="problem/company/addPosition.do?problemId=${row.id }" code="problem.add" />
+		</jstl:if>
 	</security:authorize>
 
 	</display:table>

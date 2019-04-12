@@ -192,7 +192,7 @@ public class ProblemCompanyController extends AbstractController {
 			result.addObject("banner", banner);
 		} else {
 			final Boolean security = this.problemService.problemCompanySecurity(problemId);
-			if (security) {
+			if (security && problem.getFinalMode() == true) {
 				final Collection<Position> positionsResult = this.positionService.findPositionsByCompanyId(problem.getCompany().getId());
 				positionsResult.removeAll(problem.getPositions());
 
@@ -225,7 +225,7 @@ public class ProblemCompanyController extends AbstractController {
 			security1 = this.positionService.positionCompanySecurity(positionId);
 			security2 = this.problemService.problemCompanySecurity(problemId);
 
-			if (security1 && security2)
+			if (security1 && security2 && problem.getFinalMode() == true)
 				try {
 					this.problemService.addPositionToProblem(position, problem);
 

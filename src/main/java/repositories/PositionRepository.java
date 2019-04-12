@@ -19,11 +19,11 @@ public interface PositionRepository extends JpaRepository<Position, Integer> {
 	@Query("select p from Position p where p.company.id = ?1")
 	Collection<Position> findPositionsByCompanyId(int companyId);
 
-	@Query("select p from Position p where p.finalMode = true")
-	Collection<Position> findPositionsFinalModeTrue();
+	@Query("select p from Position p where p.finalMode = true and p.deadline > ?1")
+	Collection<Position> findPositionsFinalModeTrue(Date localDate);
 
-	@Query("select p from Position p where p.company.id = ?1 and p.finalMode = true")
-	Collection<Position> findPositionsByCompanyIdAndFinalModeTrue(int companyId);
+	@Query("select p from Position p where p.company.id = ?1 and p.finalMode = true and p.deadline > ?2")
+	Collection<Position> findPositionsByCompanyIdAndFinalModeTrue(int companyId, Date localDate);
 
 	@Query("select p from Position p where (p.title like ?1 or p.description like ?1 or p.profile like ?1 or p.skills like ?1 or p.technologies like ?1) and p.company.commercialName like ?2 and p.finalMode = true")
 	Collection<Position> findPositionsByFilter(String keyword, String companyName);

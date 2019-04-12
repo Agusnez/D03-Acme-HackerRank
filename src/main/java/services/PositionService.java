@@ -215,20 +215,24 @@ public class PositionService {
 		return positions;
 	}
 
+	//Esto debe usarse solo para los usuarios no registrados
 	public Collection<Position> findPositionsByCompanyIdAndFinalModeTrue(final int companyId) {
+		final Date currentMoment = new Date(System.currentTimeMillis() - 1000);
 
-		final Collection<Position> positions = this.positionRepository.findPositionsByCompanyIdAndFinalModeTrue(companyId);
+		final Collection<Position> positions = this.positionRepository.findPositionsByCompanyIdAndFinalModeTrue(companyId, currentMoment);
 
 		return positions;
 	}
 
+	//Esto debe usarse solo para los usuarios no registrados
 	public Collection<Position> findPositionsFinalModeTrue() {
 
-		final Collection<Position> positions = this.positionRepository.findPositionsFinalModeTrue();
+		final Date currentMoment = new Date(System.currentTimeMillis() - 1000);
+
+		final Collection<Position> positions = this.positionRepository.findPositionsFinalModeTrue(currentMoment);
 
 		return positions;
 	}
-
 	public Boolean positionCompanySecurity(final int positionId) {
 		Boolean res = false;
 		Assert.notNull(positionId);

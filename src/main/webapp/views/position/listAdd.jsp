@@ -46,4 +46,4 @@
 	<div class="error"><spring:message code="${messageError }" /></div>
 	</jstl:if> 
 		
-	<acme:button name="back" code="position.back" onclick="javascript: relativeRedir('welcome/index.do');" />
+	<acme:button name="back" code="position.back" onclick="javascript: relativeRedir('problem/company/list.do');" />
