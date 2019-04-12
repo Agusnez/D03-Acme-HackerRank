@@ -39,9 +39,10 @@
 				<ul>
 					<li class="arrow"></li>
 
-						<li><a href="problem/company/list.do"><spring:message code="master.page.list.problem" /></a></li>		
-
+					<li><a href="problem/company/list.do"><spring:message code="master.page.list.problem" /></a></li>		
 					<li><a href="position/company/list.do"><spring:message code="master.page.company.position.list" /></a></li>
+					<li><a href="application/company/list.do"><spring:message code="master.page.hacker.application" /></a></li>
+					<li><a href="application/company/listObsoletes.do"><spring:message code="master.page.hacker.applicationObsoletes" /></a></li>
 
 				</ul>
 			</li>
@@ -54,6 +55,8 @@
 
 						<li><a href="curriculum/hacker/list.do"><spring:message code="master.page.curriculum" /></a></li>
 						<li><a href="finder/hacker/find.do"><spring:message code="master.page.hacker.finder" /></a></li>
+						<li><a href="application/hacker/list.do"><spring:message code="master.page.hacker.application" /></a></li>
+						<li><a href="application/hacker/listObsoletes.do"><spring:message code="master.page.hacker.applicationObsoletes" /></a></li>
 						
 
 				</ul>
