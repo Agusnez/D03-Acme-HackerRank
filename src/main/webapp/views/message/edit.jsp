@@ -22,13 +22,13 @@
 	
 	<acme:textbox code="message.tags" path="tags" />
 	
+	<p><spring:message code="message.tagSystem" /></p>
+	
+	<br>
+	
 	<acme:submit name="save" code="message.save" />
 	
 	<acme:cancel code="message.cancel" url="actor/list.do" />
-	
-	<jstl:if test="${message.id != 0}">
-	<acme:submit name="delete" code="message.delete" />
-	</jstl:if>	
 
 
 </form:form>  
