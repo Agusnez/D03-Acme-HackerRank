@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 
@@ -102,6 +103,11 @@ public class AdministratorService {
 
 			Assert.isTrue(actor.getId() == administrator.getId());
 
+			final Date now = new Date(System.currentTimeMillis() - 1000);
+
+			Assert.isTrue(administrator.getCreditCard().getExpYear() - 1900 >= now.getYear());
+			Assert.isTrue(administrator.getCreditCard().getExpMonth() - 1 >= now.getMonth() || administrator.getCreditCard().getExpYear() - 1900 > now.getYear());
+
 			this.actorService.checkEmail(administrator.getEmail(), true);
 			this.actorService.checkPhone(administrator.getPhone());
 
@@ -123,12 +129,21 @@ public class AdministratorService {
 
 			administrator.setUserAccount(userAccount);
 
+			final Date now = new Date(System.currentTimeMillis() - 1000);
+
+			Assert.isTrue(administrator.getCreditCard().getExpYear() - 1900 >= now.getYear());
+			Assert.isTrue(administrator.getCreditCard().getExpMonth() - 1 >= now.getMonth() || administrator.getCreditCard().getExpYear() - 1900 > now.getYear());
+
+			this.actorService.checkEmail(administrator.getEmail(), false);
+			this.actorService.checkPhone(administrator.getPhone());
+
+			final String phone = this.actorService.checkPhone(administrator.getPhone());
+
 			result = this.administratorRepository.save(administrator);
 
 		}
 		return result;
 	}
-
 	public Administrator reconstruct(final RegisterAdministratorForm form, final BindingResult binding) {
 
 		final Administrator admin = this.create();

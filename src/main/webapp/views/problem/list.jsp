@@ -7,6 +7,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
 
 
@@ -23,7 +24,12 @@
 	
 	<acme:column property="finalMode" titleKey="problem.finalMode" value= "${row.finalMode}: "/>
 	
-	<acme:column property="positions" titleKey="problem.positions" value= "${row.positions}: "/>
+	<display:column titleKey="problem.positions">
+		<c:forEach items="${row.positions}" var="item">
+    		${item.title}
+		</c:forEach>
+	</display:column>
+	
 	
 	<security:authorize access="hasRole('COMPANY')">
 		<acme:url href="problem/company/display.do?problemId=${row.id }" code="problem.display" />

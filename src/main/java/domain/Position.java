@@ -8,9 +8,11 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -30,6 +32,8 @@ public class Position extends DomainEntity {
 	private Company	company;
 
 
+	@SafeHtml
+	@NotBlank
 	public String getTicker() {
 		return this.ticker;
 	}
@@ -39,6 +43,7 @@ public class Position extends DomainEntity {
 	}
 
 	@NotBlank
+	@SafeHtml
 	public String getTitle() {
 		return this.title;
 	}
@@ -48,6 +53,7 @@ public class Position extends DomainEntity {
 	}
 
 	@NotBlank
+	@SafeHtml
 	public String getDescription() {
 		return this.description;
 	}
@@ -67,6 +73,7 @@ public class Position extends DomainEntity {
 	}
 
 	@NotBlank
+	@SafeHtml
 	public String getProfile() {
 		return this.profile;
 	}
@@ -76,6 +83,7 @@ public class Position extends DomainEntity {
 	}
 
 	@NotBlank
+	@SafeHtml
 	public String getSkills() {
 		return this.skills;
 	}
@@ -85,6 +93,7 @@ public class Position extends DomainEntity {
 	}
 
 	@NotBlank
+	@SafeHtml
 	public String getTechnologies() {
 		return this.technologies;
 	}
@@ -94,6 +103,7 @@ public class Position extends DomainEntity {
 	}
 
 	@NotNull
+	@Min(0)
 	public Double getOfferedSalary() {
 		return this.offeredSalary;
 	}

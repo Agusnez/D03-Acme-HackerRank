@@ -45,6 +45,7 @@ public class Configuration extends DomainEntity {
 	}
 
 	@SafeHtml
+	@NotBlank
 	public String getWelcomeMessage() {
 		return this.welcomeMessage;
 	}
@@ -54,6 +55,7 @@ public class Configuration extends DomainEntity {
 	}
 
 	@SafeHtml
+	@NotBlank
 	public String getWelcomeMessageEs() {
 		return this.welcomeMessageEs;
 	}
@@ -74,6 +76,7 @@ public class Configuration extends DomainEntity {
 
 	@URL
 	@SafeHtml
+	@NotBlank
 	public String getBanner() {
 		return this.banner;
 	}

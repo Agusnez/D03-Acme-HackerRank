@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
 
 import javax.transaction.Transactional;
 
@@ -89,6 +90,11 @@ public class HackerService {
 
 			Assert.isTrue(actor.getId() == hacker.getId() || actor.getUserAccount().getAuthorities().contains(admin));
 
+			final Date now = new Date(System.currentTimeMillis() - 1000);
+
+			Assert.isTrue(hacker.getCreditCard().getExpYear() - 1900 >= now.getYear());
+			Assert.isTrue(hacker.getCreditCard().getExpMonth() - 1 >= now.getMonth() || hacker.getCreditCard().getExpYear() - 1900 > now.getYear());
+
 			this.actorService.checkEmail(hacker.getEmail(), false);
 			this.actorService.checkPhone(hacker.getPhone());
 
@@ -109,6 +115,11 @@ public class HackerService {
 			userAccount.setPassword(pass);
 
 			hacker.setUserAccount(userAccount);
+
+			final Date now = new Date(System.currentTimeMillis() - 1000);
+
+			Assert.isTrue(hacker.getCreditCard().getExpYear() - 1900 >= now.getYear());
+			Assert.isTrue(hacker.getCreditCard().getExpMonth() - 1 >= now.getMonth() || hacker.getCreditCard().getExpYear() - 1900 > now.getYear());
 
 			this.actorService.checkEmail(hacker.getEmail(), false);
 			this.actorService.checkPhone(hacker.getPhone());

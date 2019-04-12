@@ -45,7 +45,3 @@
 	
 
 </form:form>   
-
-<jstl:if test="${messageError!=null }">
-	<div class="error"><spring:message code="${messageError }" /></div>
-	</jstl:if> 

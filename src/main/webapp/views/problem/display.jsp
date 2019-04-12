@@ -10,6 +10,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
 <security:authorize access="hasRole('COMPANY')">
 
@@ -23,7 +24,12 @@
 
 <acme:display code="problem.finalMode" property="${problem.finalMode}" />
 
-<acme:display code="problem.positions" property="${problem.positions}" />
+<spring:message code="problem.positions" />:  
+	<c:forEach items="${problem.positions}" var="item">
+    	${item.title} /
+	</c:forEach>
+<br>
+
 
 
 <jstl:if test="${!problem.finalMode }">

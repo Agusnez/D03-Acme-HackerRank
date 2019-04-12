@@ -179,9 +179,11 @@ public class PositionService {
 	private String generateTicker() {
 
 		final String companyName = this.companyService.findByPrincipal().getCommercialName();
-
-		String firstLetters = companyName.substring(0, 4);
-
+		String firstLetters = "";
+		if (companyName.length() >= 4)
+			firstLetters = companyName.substring(0, 4);
+		else
+			firstLetters = companyName;
 		while (firstLetters.length() < 4)
 			firstLetters += "X";
 

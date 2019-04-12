@@ -139,6 +139,7 @@
 		<security:intercept-url pattern="/actor/administrator/profile/list.do" access="hasRole('ADMIN')" /> 
 		<security:intercept-url pattern="/actor/administrator/profile/displayActor.do" access="hasRole('ADMIN')" /> 
 		<security:intercept-url pattern="/actor/administrator/profile/deleteProfile.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/profile/editAdministrator.do" access="hasRole('ADMIN')" />
 		
 		<!-- Hacker: Finder -->
 		<security:intercept-url pattern="/finder/hacker/find.do" access="hasRole('HACKER')" />
