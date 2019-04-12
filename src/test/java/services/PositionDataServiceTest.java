@@ -129,6 +129,45 @@ public class PositionDataServiceTest extends AbstractTest {
 
 	}
 
+	@Test
+	public void driverDeletePositionData() {
+		final Object testingData[][] = {
+
+			{
+				"positionData1", null
+			},//1. All fine
+			{
+				"hacker1", IllegalArgumentException.class
+			},//2. Not Curriculum
+
+		};
+
+		for (int i = 0; i < testingData.length; i++)
+			this.templateDeletePositionData((String) testingData[i][0], (Class<?>) testingData[i][1]);
+
+	}
+
+	protected void templateDeletePositionData(final String dataBean, final Class<?> expected) {
+
+		Class<?> caught;
+
+		caught = null;
+		try {
+
+			this.startTransaction();
+
+			this.positionDataService.delete(this.positionDataService.findOne(super.getEntityId(dataBean)));
+
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+
+		this.rollbackTransaction();
+
+		super.checkExceptions(expected, caught);
+
+	}
+
 	protected Date convertStringToDate(final String dateString) {
 		Date date = null;
 
