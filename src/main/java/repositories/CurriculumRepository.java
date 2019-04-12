@@ -30,4 +30,7 @@ public interface CurriculumRepository extends JpaRepository<Curriculum, Integer>
 	@Query("select c from Curriculum c join c.miscellaneousDatas t where c.noCopy = true and t.id = ?1")
 	Curriculum findByMiscellaneousDataId(int miscellaneousDataId);
 
+	@Query("select count(p) from Curriculum p where p.ticker = ?1")
+	int countCurriculumWithTicker(String ticker);
+
 }

@@ -1,8 +1,12 @@
 
 package services;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -124,15 +128,19 @@ public class CurriculumService {
 
 		final Hacker actor = this.hackerService.findByPrincipal();
 
+		final Date currentMoment = new Date(System.currentTimeMillis());
+
+		final String ticker = this.generateTicker(currentMoment);
+
 		final Curriculum result = this.create();
 
 		result.setNoCopy(true);
+		result.setTicker(ticker);
 		result.setHacker(actor);
 
 		return result;
 
 	}
-
 	//Other methods
 
 	public Collection<Curriculum> findByHackerId(final int hackerId) {
@@ -251,6 +259,7 @@ public class CurriculumService {
 		res.setHacker(curriculum.getHacker());
 		res.setMiscellaneousDatas(miscellaneousDataCopy);
 		res.setNoCopy(false);
+		res.setTicker("C-" + curriculum.getTicker());
 		res.setPersonalData(personalDataCopy);
 		res.setPositionDatas(positionDataCopy);
 
@@ -258,7 +267,6 @@ public class CurriculumService {
 
 		return copy;
 	}
-
 	public Curriculum findByPersonalDataId(final int personalDataId) {
 
 		final Curriculum result = this.curriculumRepository.findByPersonalDataId(personalDataId);
@@ -304,5 +312,30 @@ public class CurriculumService {
 			res = true;
 
 		return res;
+	}
+
+	private String generateTicker(final Date moment) {
+
+		final DateFormat dateFormat = new SimpleDateFormat("yyMMdd");
+		final String dateString = dateFormat.format(moment);
+
+		final String alphaNumeric = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+		final StringBuilder salt = new StringBuilder();
+		final Random rnd = new Random();
+		while (salt.length() < 6) { // length of the random string.
+			final int index = (int) (rnd.nextFloat() * alphaNumeric.length());
+			salt.append(alphaNumeric.charAt(index));
+		}
+		final String randomAlphaNumeric = salt.toString();
+
+		final String ticker = dateString + "-" + randomAlphaNumeric;
+
+		final int SameTicker = this.curriculumRepository.countCurriculumWithTicker(ticker);
+
+		while (SameTicker > 0)
+			this.generateTicker(moment);
+
+		return ticker;
+
 	}
 }

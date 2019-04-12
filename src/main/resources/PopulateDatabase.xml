@@ -680,6 +680,7 @@
 	<!-- Curricula -->
 
 	<bean id="curriculum1" class="domain.Curriculum">
+		<property name="ticker" value="170623-T5YDFG" />
 		<property name="noCopy" value="true" />
 		<property name="personalData" ref="personalData1" />
 		<property name="positionDatas">

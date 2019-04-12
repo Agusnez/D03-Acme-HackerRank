@@ -10,6 +10,8 @@
 
 <display:table name="curriculums" id="row" requestURI="${requestURI }" pagesize="5">
 	
+	<acme:column property="ticker" titleKey="curriculum.ticker" value= "${row.ticker}"/>
+	
 	<acme:url href="curriculum/hacker/display.do?curriculumId=${row.id }" code="curriculum.display" />
 
 </display:table>

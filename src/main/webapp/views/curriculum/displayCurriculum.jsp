@@ -11,6 +11,11 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
+<br/>
+<acme:display property="${curriculum.ticker}" code="curriculum.ticker" />
+<br/>
+<br/>
+
 <fieldset>
 <h3><spring:message code="curriculum.personalData" /></h3>
 
