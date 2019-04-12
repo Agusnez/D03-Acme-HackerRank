@@ -79,6 +79,56 @@ public class PositionDataServiceTest extends AbstractTest {
 		super.checkExceptions(expected, caught);
 
 	}
+
+	@Test
+	public void driverEditPositionData() {
+		final Object testingData[][] = {
+			{
+				"positionData1", "test", "description1", "1998/06/29", "2000/06/29", null
+			},//1. All fine
+			{
+				"positionData1", null, "description1", "1998/06/29", "2000/06/29", ConstraintViolationException.class
+			},//2. Title = null
+			{
+				"positionData1", "		", "description1", "1998/06/29", "2000/06/29", ConstraintViolationException.class
+			},//3. Title = blank
+		};
+
+		for (int i = 0; i < testingData.length; i++)
+			this.templateEditPositionData((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], this.convertStringToDate((String) testingData[i][3]), this.convertStringToDate((String) testingData[i][4]),
+				(Class<?>) testingData[i][5]);
+	}
+	protected void templateEditPositionData(final String dataBean, final String title, final String description, final Date startDate, final Date endDate, final Class<?> expected) {
+
+		Class<?> caught;
+
+		caught = null;
+		try {
+
+			this.startTransaction();
+
+			final PositionData data = this.positionDataService.findOne(super.getEntityId(dataBean));
+
+			data.setTitle(title);
+			data.setDescription(description);
+			data.setStartDate(startDate);
+			data.setEndDate(endDate);
+
+			this.positionDataService.save(data);
+			this.positionDataService.flush();
+
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+
+		this.unauthenticate();
+
+		this.rollbackTransaction();
+
+		super.checkExceptions(expected, caught);
+
+	}
+
 	protected Date convertStringToDate(final String dateString) {
 		Date date = null;
 

@@ -7,6 +7,7 @@ import javax.persistence.ElementCollection;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 
 public class MiscellaneousDataForm {
 
@@ -37,6 +38,7 @@ public class MiscellaneousDataForm {
 	}
 
 	@NotBlank
+	@SafeHtml
 	public String getText() {
 		return this.text;
 	}
