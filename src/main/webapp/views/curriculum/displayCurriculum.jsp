@@ -26,8 +26,9 @@
 
 <br/>
 
-<a href="personalData/hacker/edit.do?personalDataId=${curriculum.personalData.id }"><spring:message code="curriculum.editPersonal"/></a>
-
+<security:authorize access="hasRole('HACKER')">
+	<a href="personalData/hacker/edit.do?personalDataId=${curriculum.personalData.id }"><spring:message code="curriculum.editPersonal"/></a>
+</security:authorize>	
 </fieldset>
 <br/>
 <br/>
@@ -45,13 +46,18 @@
 	
 	<acme:column property="endDate" titleKey="curriculum.endDate" value= "${row1.endDate} "/>
 	
-	<acme:url href="positionData/hacker/edit.do?positionRecordId=${row1.id }" code="curriculum.edit"/>
+	<security:authorize access="hasRole('HACKER')">
+		<acme:url href="positionData/hacker/edit.do?positionRecordId=${row1.id }" code="curriculum.edit"/>
+	</security:authorize>	
 	
 </display:table>
 
 <br/>
 
-<a href="positionData/hacker/create.do?curriculumId=${curriculum.id }"><spring:message code="curriculum.create"/></a>
+<security:authorize access="hasRole('HACKER')">
+	<a href="positionData/hacker/create.do?curriculumId=${curriculum.id }"><spring:message code="curriculum.create"/></a>
+</security:authorize>	
+
 </fieldset>
 
 <br/>
@@ -71,13 +77,18 @@
 	
 	<acme:column property="endDate" titleKey="curriculum.endDate" value= "${row2.endDate} "/>
 	
-	<acme:url href="educationData/hacker/edit.do?educationRecordId=${row2.id }" code="curriculum.edit"/>
+	<security:authorize access="hasRole('HACKER')">
+		<acme:url href="educationData/hacker/edit.do?educationRecordId=${row2.id }" code="curriculum.edit"/>
+	</security:authorize>	
 	
 </display:table>
 
 <br/>
 
-<a href="educationData/hacker/create.do?curriculumId=${curriculum.id }"><spring:message code="curriculum.create"/></a>
+<security:authorize access="hasRole('HACKER')">
+	<a href="educationData/hacker/create.do?curriculumId=${curriculum.id }"><spring:message code="curriculum.create"/></a>
+</security:authorize>	
+
 </fieldset>
 
 <br/>
@@ -90,16 +101,28 @@
 
 	<acme:column property="attachments" titleKey="curriculum.attachments" value= "${row3.attachments} "/>
 	
-	<acme:url href="miscellaneousData/hacker/edit.do?miscellaneousRecordId=${row3.id }" code="curriculum.edit"/>
+	<security:authorize access="hasRole('HACKER')">
+		<acme:url href="miscellaneousData/hacker/edit.do?miscellaneousRecordId=${row3.id }" code="curriculum.edit"/>
+	</security:authorize>	
 	
 </display:table>
 <br/>
 
-<a href="miscellaneousData/hacker/create.do?curriculumId=${curriculum.id }"><spring:message code="curriculum.create"/></a>
+<security:authorize access="hasRole('HACKER')">
+	<a href="miscellaneousData/hacker/create.do?curriculumId=${curriculum.id }"><spring:message code="curriculum.create"/></a>
+</security:authorize>	
 </fieldset>
 <br/>
 <br/>
-<a href="curriculum/hacker/delete.do?curriculumId=${curriculum.id }"><spring:message code="curriculum.deleteall"/></a>
+<security:authorize access="hasRole('HACKER')">
+	<a href="curriculum/hacker/delete.do?curriculumId=${curriculum.id }"><spring:message code="curriculum.deleteall"/></a>
+</security:authorize>	
 
-<acme:button name="back" code="curriculum.back" onclick="javascript: relativeRedir('curriculum/hacker/list.do');"/>
+<security:authorize access="hasRole('HACKER')">
+	<acme:button name="back" code="curriculum.back" onclick="javascript: relativeRedir('curriculum/hacker/list.do');"/>
+</security:authorize>	
+
+<security:authorize access="hasRole('COMPANY')">
+	<acme:button name="back" code="curriculum.back" onclick="javascript: relativeRedir('application/company/list.do');"/>
+</security:authorize>	
 

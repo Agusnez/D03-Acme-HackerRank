@@ -28,7 +28,7 @@
 	
 	<acme:submit name="save" code="application.save" />
 	
-	<acme:cancel code="application.cancel" url="welcome/index.do" />
+	<acme:cancel code="application.cancel" url="application/hacker/list.do" />
 
 
 </form:form>  

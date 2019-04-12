@@ -12,6 +12,8 @@ import org.springframework.validation.BindingResult;
 import repositories.CurriculumRepository;
 import security.Authority;
 import domain.Actor;
+import domain.Application;
+import domain.Company;
 import domain.Curriculum;
 import domain.Hacker;
 import forms.CreateCurriculumForm;
@@ -31,6 +33,12 @@ public class CurriculumService {
 
 	@Autowired
 	private HackerService			hackerService;
+
+	@Autowired
+	private ApplicationService		applicationService;
+
+	@Autowired
+	private CompanyService			companyService;
 
 
 	// Simple CRUD methods -----------------------
@@ -200,5 +208,20 @@ public class CurriculumService {
 
 	public void flush() {
 		this.curriculumRepository.flush();
+	}
+
+	public Boolean securityCompany(final int applicationId) {
+
+		Boolean res = false;
+
+		final Application app = this.applicationService.findOne(applicationId);
+
+		final Company owner = app.getPosition().getCompany();
+		final Company login = this.companyService.findByPrincipal();
+
+		if (owner.equals(login))
+			res = true;
+
+		return res;
 	}
 }

@@ -128,6 +128,9 @@
 		<security:intercept-url pattern="/miscellaneousData/hacker/create.do" access="hasRole('HACKER')" />
 		<security:intercept-url pattern="/miscellaneousData/hacker/edit.do" access="hasRole('HACKER')" />
 		<security:intercept-url pattern="/miscellaneousData/hacker/delete.do" access="hasRole('HACKER')" />
+		
+		<!-- Hacker: Curriculum -->
+		<security:intercept-url pattern="/curriculum/company/display.do" access="hasRole('COMPANY')" />
 
 		<!-- Administrator -->
 		<security:intercept-url pattern="/administrator/dashboard.do" access="hasRole('ADMIN')" />

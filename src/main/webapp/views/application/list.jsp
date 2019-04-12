@@ -20,18 +20,24 @@
 	
 	<acme:column property="submitMoment" titleKey="application.submitMoment" value= "${row.submitMoment}: "/>
 	
-	<acme:column property="curriculum.personalData.statement" titleKey="application.curriculum" value= "${row.curriculum.personalData.statement}: "/>
-	
 	<security:authorize access="hasRole('HACKER')">
+	
+	<acme:url href="curriculum/hacker/display.do?curriculumId=${row.curriculum.id}" code = "application.curriculum" />
+	
 		<display:column>
 				<a href="application/hacker/display.do?applicationId=${row.id}"><spring:message code="application.display"/></a>
-		</display:column>	
+		</display:column>
+			
 	</security:authorize>	
 	
 	<security:authorize access="hasRole('COMPANY')">
+	
+	<acme:url href="curriculum/company/display.do?curriculumId=${row.curriculum.id}&applicationId=${row.id}" code = "application.curriculum" />
+	
 		<display:column>
 				<a href="application/company/display.do?applicationId=${row.id}"><spring:message code="application.display"/></a>
 		</display:column>
+		
 	</security:authorize>
 	
 </display:table>
@@ -50,18 +56,24 @@
 	
 	<acme:column property="submitMoment" titleKey="application.submitMoment" value= "${row2.submitMoment}: "/>
 	
-	<acme:column property="curriculum.personalData.statement" titleKey="application.curriculum" value= "${row2.curriculum.personalData.statement}: "/>
-	
 	<security:authorize access="hasRole('HACKER')">
+	
+	<acme:url href="curriculum/hacker/display.do?curriculumId=${row2.curriculum.id}" code = "application.curriculum" />
+	
 		<display:column>
 				<a href="application/hacker/display.do?applicationId=${row2.id}"><spring:message code="application.display"/></a>
 		</display:column>	
+		
 	</security:authorize>
 	
 	<security:authorize access="hasRole('COMPANY')">
+	
+	<acme:url href="curriculum/company/display.do?curriculumId=${row2.curriculum.id}&applicationId=${row2.id}" code = "application.curriculum" />
+	
 		<display:column>
 				<a href="application/company/display.do?applicationId=${row2.id}"><spring:message code="application.display"/></a>
 		</display:column>
+		
 	</security:authorize>
 	
 </display:table>
@@ -80,27 +92,36 @@
 	
 	<acme:column property="submitMoment" titleKey="application.submitMoment" value= "${row3.submitMoment}: "/>
 	
-	<acme:column property="curriculum.personalData.statement" titleKey="application.curriculum" value= "${row3.curriculum.personalData.statement}: "/>
-	
 	<security:authorize access="hasRole('HACKER')">
+	
+	<acme:url href="curriculum/hacker/display.do?curriculumId=${row3.curriculum.id}" code = "application.curriculum" />
+	
 		<display:column>
 				<a href="application/hacker/display.do?applicationId=${row3.id}"><spring:message code="application.display"/></a>
 		</display:column>
+		
 		<display:column>
 				<a href="application/hacker/edit.do?applicationId=${row3.id}"><spring:message code="application.edit"/></a>
-		</display:column>	
+		</display:column>
+			
 	</security:authorize>
 	
 	<security:authorize access="hasRole('COMPANY')">
+	
+	<acme:url href="curriculum/company/display.do?curriculumId=${row3.curriculum.id}&applicationId=${row3.id}" code = "application.curriculum" />
+	
 		<display:column>
 				<a href="application/company/display.do?applicationId=${row3.id}"><spring:message code="application.display"/></a>
 		</display:column>
+		
 		<display:column>
 				<a href="application/company/accept.do?applicationId=${row3.id}"><spring:message code="application.accept"/></a>
 		</display:column>
+		
 		<display:column>
 				<a href="application/company/reject.do?applicationId=${row3.id}"><spring:message code="application.reject"/></a>
 		</display:column>
+		
 	</security:authorize>
 	
 </display:table>
@@ -119,23 +140,28 @@
 	
 	<acme:column property="submitMoment" titleKey="application.submitMoment" value= "${row4.submitMoment}: "/>
 	
-	<acme:column property="curriculum.personalData.statement" titleKey="application.curriculum" value= "${row4.curriculum.personalData.statement}: "/>
-	
-	
-	
 	<security:authorize access="hasRole('HACKER')">
+	
+	<acme:url href="curriculum/hacker/display.do?curriculumId=${row4.curriculum.id}" code = "application.curriculum" />
+	
 		<display:column>
 				<a href="application/hacker/display.do?applicationId=${row4.id}"><spring:message code="application.display"/></a>
-		</display:column>	
+		</display:column>
+			
 		<display:column>
 				<a href="application/hacker/edit.do?applicationId=${row4.id}"><spring:message code="application.edit"/></a>
 		</display:column>
+		
 	</security:authorize>
 	
 	<security:authorize access="hasRole('COMPANY')">
+	
+	<acme:url href="curriculum/company/display.do?curriculumId=${row4.curriculum.id}&applicationId=${row4.id}" code = "application.curriculum" />
+	
 		<display:column>
 				<a href="application/company/display.do?applicationId=${row4.id}"><spring:message code="application.display"/></a>
 		</display:column>
+		
 	</security:authorize>
 	
 </display:table>
