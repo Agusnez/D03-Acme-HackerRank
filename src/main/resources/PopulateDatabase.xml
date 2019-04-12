@@ -705,7 +705,7 @@
 	<bean id="personalData1" class="domain.PersonalData">
 		<property name="fullName" value="Hacker1 hacker1surname" />
 		<property name="statement" value="statement1" />
-		<property name="phone" value="+34 954909090" />
+		<property name="phone" value="+954909090" />
 		<property name="linkGitHubProfile" value="http://www.gitHub.com/" />
 		<property name="linkLinkedInProfile" value="http://www.linkedIn.com/" />
 		
