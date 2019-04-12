@@ -183,4 +183,8 @@ public class PersonalDataService {
 
 		return result;
 	}
+
+	public void flush() {
+		this.personalDataRepository.flush();
+	}
 }
