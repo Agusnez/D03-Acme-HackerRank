@@ -148,10 +148,9 @@ public class ApplicationHackerController {
 		if (exist) {
 
 			security = this.applicationService.securityHacker(applicationId);
+			final Application application = this.applicationService.findOne(applicationId);
 
-			if (security) {
-
-				final Application application = this.applicationService.findOne(applicationId);
+			if (security && (application.getStatus().equals("SUBMITTED") || application.getStatus().equals("PENDING"))) {
 
 				final ApplicationForm applicationForm = this.applicationService.editForm(application);
 
@@ -177,7 +176,7 @@ public class ApplicationHackerController {
 
 		final Boolean security = this.applicationService.securityHacker(application.getId());
 
-		if (security) {
+		if (security && (application.getStatus().equals("SUBMITTED") || application.getStatus().equals("PENDING"))) {
 
 			if (binding.hasErrors())
 				result = this.createEditModelAndView(applicationForm, null);
