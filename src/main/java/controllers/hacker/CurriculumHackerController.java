@@ -63,7 +63,7 @@ public class CurriculumHackerController extends AbstractController {
 				result.addObject("banner", banner);
 
 			} else
-				result = new ModelAndView("redirect:/list.do");
+				result = new ModelAndView("redirect:/welcome/index.do");
 		} else {
 			result = new ModelAndView("misc/notExist");
 			result.addObject("banner", banner);

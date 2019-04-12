@@ -133,7 +133,7 @@ public class CurriculumService {
 
 			final Curriculum curriculum = this.findOne(curriculumId);
 
-			final Collection<Curriculum> curriculums = this.findByHackerId(hacker.getId());
+			final Collection<Curriculum> curriculums = this.findAllByHackerId(hacker.getId());
 
 			if (curriculums.contains(curriculum))
 				res = true;
