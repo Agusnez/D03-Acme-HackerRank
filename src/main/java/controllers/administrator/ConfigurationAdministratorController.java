@@ -43,15 +43,26 @@ public class ConfigurationAdministratorController extends AbstractController {
 	public ModelAndView save(@Valid final Configuration configuration, final BindingResult binding) {
 		ModelAndView result;
 
-		if (binding.hasErrors())
-			result = this.createEditModelAndView(configuration);
-		else
-			try {
-				this.configurationService.save(configuration);
-				result = new ModelAndView("redirect:edit.do");
-			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(configuration, "configuration.commit.error");
-			}
+		final String banner = this.configurationService.findConfiguration().getBanner();
+
+		final Boolean exist = this.configurationService.exist(configuration.getId());
+
+		if (configuration.getId() != 0 && exist) {
+			if (binding.hasErrors())
+				result = this.createEditModelAndView(configuration);
+			else
+				try {
+					this.configurationService.save(configuration);
+					result = new ModelAndView("redirect:edit.do");
+				} catch (final Throwable oops) {
+					result = this.createEditModelAndView(configuration, "configuration.commit.error");
+				}
+		} else {
+			result = new ModelAndView("misc/notExist");
+			result.addObject("banner", banner);
+
+		}
+
 		return result;
 	}
 
