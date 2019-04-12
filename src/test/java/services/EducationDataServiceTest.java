@@ -29,6 +29,22 @@ public class EducationDataServiceTest extends AbstractTest {
 	private EducationDataService	educationDataService;
 
 
+	/*
+	 * ACME.HACKERRANK
+	 * a)(Level B) Requirement 17.1: An actor who is authenticated as an hacker must be able to: Manage his or her curricula: Create education data
+	 * 
+	 * b) Negative cases:
+	 * 2. Degree = null
+	 * 3. Degree = blank
+	 * 
+	 * c) Sentence coverage
+	 * -create(): 100%
+	 * -save(): 100%
+	 * 
+	 * d) Data coverage
+	 * -Curriculum: 20%
+	 */
+
 	@Test
 	public void driverCreateEducationData() {
 		final Object testingData[][] = {
