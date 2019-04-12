@@ -12,7 +12,7 @@
 <h3><spring:message code="actor.hackers" /></h3>
 	
 	<display:table pagesize="5" name="hackers" id="row" 
-requestURI="${requestURI }" class="displaytag">
+requestURI="${requestURI }" >
 
 	<acme:column property="name" titleKey="actor.name" value= "${row.name}: "/>
 	
@@ -25,7 +25,7 @@ requestURI="${requestURI }" class="displaytag">
 <h3><spring:message code="actor.companies" /></h3>
 	
 		<display:table pagesize="5" name="companies" id="row" 
-requestURI="${requestURI }" class="displaytag">
+requestURI="${requestURI }" >
 
 	<acme:column property="name" titleKey="actor.name" value= "${row.name}: "/>
 	
@@ -38,7 +38,7 @@ requestURI="${requestURI }" class="displaytag">
 <h3><spring:message code="actor.administrators" /></h3>
 	
 	<display:table pagesize="5" name="administrators" id="row" 
-requestURI="${requestURI }" class="displaytag">
+requestURI="${requestURI }" >
 
 	<acme:column property="name" titleKey="actor.name" value= "${row.name}: "/>
 	
