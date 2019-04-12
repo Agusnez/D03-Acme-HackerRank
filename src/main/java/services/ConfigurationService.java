@@ -112,7 +112,6 @@ public class ConfigurationService {
 
 	}
 
-
 	public Boolean spamContent(final String text) {
 
 		Boolean result = false;
@@ -129,6 +128,18 @@ public class ConfigurationService {
 					}
 
 		}
+
+		return result;
+	}
+
+	public Boolean exist(final int id) {
+
+		Boolean result = false;
+
+		final Configuration c = this.configurationRepository.findOne(id);
+
+		if (c != null)
+			result = true;
 
 		return result;
 	}

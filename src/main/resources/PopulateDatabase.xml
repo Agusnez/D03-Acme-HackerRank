@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- 
- * PopulateDatabase.xml
- *
- * Copyright (C) 2019 Universidad de Sevilla
- * 
- * The use of this project is hereby constrained to the conditions of the 
- * TDG Licence, a copy of which you may download from 
- * http://www.tdg-seville.info/License.html
- -->
+<!-- * PopulateDatabase.xml * * Copyright (C) 2019 Universidad de Sevilla 
+	* * The use of this project is hereby constrained to the conditions of the 
+	* TDG Licence, a copy of which you may download from * http://www.tdg-seville.info/License.html -->
 
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	
+
 	<!-- User accounts -->
 
 	<bean id="userAccount1" class="security.UserAccount">
@@ -55,7 +49,7 @@
 		</property>
 		<property name="isNotBanned" value="true" />
 	</bean>
-	
+
 	<bean id="userAccount4" class="security.UserAccount">
 		<property name="username" value="company1" />
 		<property name="password" value="df655f976f7c9d3263815bd981225cd9" />
@@ -68,7 +62,7 @@
 		</property>
 		<property name="isNotBanned" value="true" />
 	</bean>
-	
+
 	<bean id="userAccount5" class="security.UserAccount">
 		<property name="username" value="company2" />
 		<property name="password" value="d196a28097115067fefd73d25b0c0be8" />
@@ -81,7 +75,7 @@
 		</property>
 		<property name="isNotBanned" value="true" />
 	</bean>
-	
+
 	<bean id="userAccount6" class="security.UserAccount">
 		<property name="username" value="company3" />
 		<property name="password" value="e828ae3339b8d80b3902c1564578804e" />
@@ -94,7 +88,7 @@
 		</property>
 		<property name="isNotBanned" value="true" />
 	</bean>
-	
+
 	<bean id="userAccount7" class="security.UserAccount">
 		<property name="username" value="company4" />
 		<property name="password" value="856dfd9045541fa727ef6ad392835eb0" />
@@ -107,7 +101,7 @@
 		</property>
 		<property name="isNotBanned" value="true" />
 	</bean>
-	
+
 	<bean id="userAccount8" class="security.UserAccount">
 		<property name="username" value="company5" />
 		<property name="password" value="efa5a30f11d85b93518ba6cc3f229b14" />
@@ -120,7 +114,7 @@
 		</property>
 		<property name="isNotBanned" value="true" />
 	</bean>
-	
+
 	<bean id="userAccount9" class="security.UserAccount">
 		<property name="username" value="company6" />
 		<property name="password" value="65ea58759487b11278c234e510c34817" />
@@ -133,7 +127,7 @@
 		</property>
 		<property name="isNotBanned" value="true" />
 	</bean>
-	
+
 	<bean id="userAccount10" class="security.UserAccount">
 		<property name="username" value="company7" />
 		<property name="password" value="31f0cb8ec36a9dd5ea0c8a476c847897" />
@@ -146,7 +140,7 @@
 		</property>
 		<property name="isNotBanned" value="true" />
 	</bean>
-	
+
 	<bean id="userAccount11" class="security.UserAccount">
 		<property name="username" value="company8" />
 		<property name="password" value="665cda0d9335940646e9a5c973295fbf" />
@@ -159,7 +153,7 @@
 		</property>
 		<property name="isNotBanned" value="true" />
 	</bean>
-	
+
 	<bean id="userAccount12" class="security.UserAccount">
 		<property name="username" value="company9" />
 		<property name="password" value="baa141dffb1abd335608732af5ed289e" />
@@ -172,7 +166,7 @@
 		</property>
 		<property name="isNotBanned" value="true" />
 	</bean>
-	
+
 	<bean id="userAccount13" class="security.UserAccount">
 		<property name="username" value="company10" />
 		<property name="password" value="bcbd03f869249e7f2e6fa60778356048" />
@@ -185,148 +179,148 @@
 		</property>
 		<property name="isNotBanned" value="true" />
 	</bean>
-	
-	<!-- Other domain beans come here -->	
-	
+
+	<!-- Other domain beans come here -->
+
 	<!-- CreditCards -->
-	
+
 	<bean id="creditCard1" class="domain.CreditCard">
-		<property name="holderName" value="admin1"/>
-		<property name="make" value="VISA"/>
-		<property name="number" value="1111222233334444"/>
-		<property name="expMonth" value="12"/>
-		<property name="expYear" value="2020"/>
-		<property name="cvv" value="123"/>
+		<property name="holderName" value="admin1" />
+		<property name="make" value="VISA" />
+		<property name="number" value="1111222233334444" />
+		<property name="expMonth" value="12" />
+		<property name="expYear" value="2020" />
+		<property name="cvv" value="123" />
 	</bean>
-	
+
 	<bean id="creditCard2" class="domain.CreditCard">
-		<property name="holderName" value="admin2"/>
-		<property name="make" value="VISA"/>
-		<property name="number" value="1111222233334444"/>
-		<property name="expMonth" value="12"/>
-		<property name="expYear" value="2020"/>
-		<property name="cvv" value="123"/>
+		<property name="holderName" value="admin2" />
+		<property name="make" value="VISA" />
+		<property name="number" value="1111222233334444" />
+		<property name="expMonth" value="12" />
+		<property name="expYear" value="2020" />
+		<property name="cvv" value="123" />
 	</bean>
-	
+
 	<bean id="creditCard3" class="domain.CreditCard">
-		<property name="holderName" value="hacker1"/>
-		<property name="make" value="MCARD"/>
-		<property name="number" value="1111222233334444"/>
-		<property name="expMonth" value="12"/>
-		<property name="expYear" value="2020"/>
-		<property name="cvv" value="123"/>
+		<property name="holderName" value="hacker1" />
+		<property name="make" value="MCARD" />
+		<property name="number" value="1111222233334444" />
+		<property name="expMonth" value="12" />
+		<property name="expYear" value="2020" />
+		<property name="cvv" value="123" />
 	</bean>
-	
+
 	<bean id="creditCard4" class="domain.CreditCard">
-		<property name="holderName" value="hacker2"/>
-		<property name="make" value="VISA"/>
-		<property name="number" value="1111222233334444"/>
-		<property name="expMonth" value="12"/>
-		<property name="expYear" value="2020"/>
-		<property name="cvv" value="123"/>
+		<property name="holderName" value="hacker2" />
+		<property name="make" value="VISA" />
+		<property name="number" value="1111222233334444" />
+		<property name="expMonth" value="12" />
+		<property name="expYear" value="2020" />
+		<property name="cvv" value="123" />
 	</bean>
-	
+
 	<bean id="creditCard5" class="domain.CreditCard">
-		<property name="holderName" value="hacker3"/>
-		<property name="make" value="MCARD"/>
-		<property name="number" value="1111222233334444"/>
-		<property name="expMonth" value="12"/>
-		<property name="expYear" value="2020"/>
-		<property name="cvv" value="123"/>
+		<property name="holderName" value="hacker3" />
+		<property name="make" value="MCARD" />
+		<property name="number" value="1111222233334444" />
+		<property name="expMonth" value="12" />
+		<property name="expYear" value="2020" />
+		<property name="cvv" value="123" />
 	</bean>
-	
+
 	<bean id="creditCard6" class="domain.CreditCard">
-		<property name="holderName" value="company1"/>
-		<property name="make" value="VISA"/>
-		<property name="number" value="1111222233334444"/>
-		<property name="expMonth" value="12"/>
-		<property name="expYear" value="2020"/>
-		<property name="cvv" value="123"/>
+		<property name="holderName" value="company1" />
+		<property name="make" value="VISA" />
+		<property name="number" value="1111222233334444" />
+		<property name="expMonth" value="12" />
+		<property name="expYear" value="2020" />
+		<property name="cvv" value="123" />
 	</bean>
-	
+
 	<bean id="creditCard7" class="domain.CreditCard">
-		<property name="holderName" value="company2"/>
-		<property name="make" value="VISA"/>
-		<property name="number" value="4485980039894802"/>
-		<property name="expMonth" value="12"/>
-		<property name="expYear" value="2020"/>
-		<property name="cvv" value="123"/>
+		<property name="holderName" value="company2" />
+		<property name="make" value="VISA" />
+		<property name="number" value="4485980039894802" />
+		<property name="expMonth" value="12" />
+		<property name="expYear" value="2020" />
+		<property name="cvv" value="123" />
 	</bean>
-	
+
 	<bean id="creditCard8" class="domain.CreditCard">
-		<property name="holderName" value="company3"/>
-		<property name="make" value="VISA"/>
-		<property name="number" value="4532285256047016"/>
-		<property name="expMonth" value="12"/>
-		<property name="expYear" value="2020"/>
-		<property name="cvv" value="123"/>
+		<property name="holderName" value="company3" />
+		<property name="make" value="VISA" />
+		<property name="number" value="4532285256047016" />
+		<property name="expMonth" value="12" />
+		<property name="expYear" value="2020" />
+		<property name="cvv" value="123" />
 	</bean>
-	
+
 	<bean id="creditCard9" class="domain.CreditCard">
-		<property name="holderName" value="company4"/>
-		<property name="make" value="VISA"/>
-		<property name="number" value="4716668657734753"/>
-		<property name="expMonth" value="12"/>
-		<property name="expYear" value="2020"/>
-		<property name="cvv" value="123"/>
+		<property name="holderName" value="company4" />
+		<property name="make" value="VISA" />
+		<property name="number" value="4716668657734753" />
+		<property name="expMonth" value="12" />
+		<property name="expYear" value="2020" />
+		<property name="cvv" value="123" />
 	</bean>
-	
+
 	<bean id="creditCard10" class="domain.CreditCard">
-		<property name="holderName" value="company5"/>
-		<property name="make" value="VISA"/>
-		<property name="number" value="4532110992153987"/>
-		<property name="expMonth" value="12"/>
-		<property name="expYear" value="2020"/>
-		<property name="cvv" value="123"/>
+		<property name="holderName" value="company5" />
+		<property name="make" value="VISA" />
+		<property name="number" value="4532110992153987" />
+		<property name="expMonth" value="12" />
+		<property name="expYear" value="2020" />
+		<property name="cvv" value="123" />
 	</bean>
-	
+
 	<bean id="creditCard11" class="domain.CreditCard">
-		<property name="holderName" value="company6"/>
-		<property name="make" value="VISA"/>
-		<property name="number" value="4422966351593425"/>
-		<property name="expMonth" value="12"/>
-		<property name="expYear" value="2020"/>
-		<property name="cvv" value="123"/>
+		<property name="holderName" value="company6" />
+		<property name="make" value="VISA" />
+		<property name="number" value="4422966351593425" />
+		<property name="expMonth" value="12" />
+		<property name="expYear" value="2020" />
+		<property name="cvv" value="123" />
 	</bean>
-	
+
 	<bean id="creditCard12" class="domain.CreditCard">
-		<property name="holderName" value="company7"/>
-		<property name="make" value="VISA"/>
-		<property name="number" value="4556614999598798"/>
-		<property name="expMonth" value="12"/>
-		<property name="expYear" value="2020"/>
-		<property name="cvv" value="123"/>
+		<property name="holderName" value="company7" />
+		<property name="make" value="VISA" />
+		<property name="number" value="4556614999598798" />
+		<property name="expMonth" value="12" />
+		<property name="expYear" value="2020" />
+		<property name="cvv" value="123" />
 	</bean>
-	
+
 	<bean id="creditCard13" class="domain.CreditCard">
-		<property name="holderName" value="company8"/>
-		<property name="make" value="VISA"/>
-		<property name="number" value="4716419133534585"/>
-		<property name="expMonth" value="12"/>
-		<property name="expYear" value="2020"/>
-		<property name="cvv" value="123"/>
+		<property name="holderName" value="company8" />
+		<property name="make" value="VISA" />
+		<property name="number" value="4716419133534585" />
+		<property name="expMonth" value="12" />
+		<property name="expYear" value="2020" />
+		<property name="cvv" value="123" />
 	</bean>
-	
+
 	<bean id="creditCard14" class="domain.CreditCard">
-		<property name="holderName" value="company9"/>
-		<property name="make" value="VISA"/>
-		<property name="number" value="4916356871771342"/>
-		<property name="expMonth" value="12"/>
-		<property name="expYear" value="2020"/>
-		<property name="cvv" value="123"/>
+		<property name="holderName" value="company9" />
+		<property name="make" value="VISA" />
+		<property name="number" value="4916356871771342" />
+		<property name="expMonth" value="12" />
+		<property name="expYear" value="2020" />
+		<property name="cvv" value="123" />
 	</bean>
-	
+
 	<bean id="creditCard15" class="domain.CreditCard">
-		<property name="holderName" value="company10"/>
-		<property name="make" value="VISA"/>
-		<property name="number" value="4490165237589999"/>
-		<property name="expMonth" value="12"/>
-		<property name="expYear" value="2020"/>
-		<property name="cvv" value="123"/>
+		<property name="holderName" value="company10" />
+		<property name="make" value="VISA" />
+		<property name="number" value="4490165237589999" />
+		<property name="expMonth" value="12" />
+		<property name="expYear" value="2020" />
+		<property name="cvv" value="123" />
 	</bean>
-	
+
 	<!-- Administrators -->
-	
+
 	<bean id="administrator1" class="domain.Administrator">
 		<property name="name" value="Administrator1" />
 		<property name="surnames" value="admin1surname" />
@@ -337,9 +331,9 @@
 		<property name="address" value="admin1 street" />
 		<property name="userAccount" ref="userAccount1" />
 		<property name="creditCard" ref="creditCard1" />
-	
+
 	</bean>
-	
+
 	<bean id="administrator2" class="domain.Administrator">
 		<property name="name" value="Administrator2" />
 		<property name="surnames" value="admin2surname" />
@@ -351,9 +345,9 @@
 		<property name="userAccount" ref="userAccount2" />
 		<property name="creditCard" ref="creditCard2" />
 	</bean>
-	
+
 	<!-- Hackers -->
-	
+
 	<bean id="hacker1" class="domain.Hacker">
 		<property name="name" value="Hacker1" />
 		<property name="surnames" value="hacker1surname" />
@@ -364,9 +358,9 @@
 		<property name="address" value="hacker1 street" />
 		<property name="userAccount" ref="userAccount3" />
 		<property name="creditCard" ref="creditCard3" />
-	
+
 	</bean>
-	
+
 	<!-- Finders -->
 	<bean id="finder1" class="domain.Finder">
 		<property name="keyWord" value="f" />
@@ -380,9 +374,9 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<!-- Companies -->
-	
+
 	<bean id="company1" class="domain.Company">
 		<property name="name" value="Company1" />
 		<property name="surnames" value="company1surname" />
@@ -395,7 +389,7 @@
 		<property name="userAccount" ref="userAccount4" />
 		<property name="creditCard" ref="creditCard6" />
 	</bean>
-	
+
 	<bean id="company2" class="domain.Company">
 		<property name="name" value="Company2" />
 		<property name="surnames" value="company2surname" />
@@ -408,7 +402,7 @@
 		<property name="userAccount" ref="userAccount5" />
 		<property name="creditCard" ref="creditCard7" />
 	</bean>
-	
+
 	<bean id="company3" class="domain.Company">
 		<property name="name" value="Company3" />
 		<property name="surnames" value="company1surname" />
@@ -421,7 +415,7 @@
 		<property name="userAccount" ref="userAccount6" />
 		<property name="creditCard" ref="creditCard8" />
 	</bean>
-	
+
 	<bean id="company4" class="domain.Company">
 		<property name="name" value="Company1" />
 		<property name="surnames" value="company4surname" />
@@ -434,7 +428,7 @@
 		<property name="userAccount" ref="userAccount7" />
 		<property name="creditCard" ref="creditCard9" />
 	</bean>
-	
+
 	<bean id="company5" class="domain.Company">
 		<property name="name" value="Company5" />
 		<property name="surnames" value="company5surname" />
@@ -447,7 +441,7 @@
 		<property name="userAccount" ref="userAccount8" />
 		<property name="creditCard" ref="creditCard10" />
 	</bean>
-	
+
 	<bean id="company6" class="domain.Company">
 		<property name="name" value="Company1" />
 		<property name="surnames" value="company6surname" />
@@ -460,7 +454,7 @@
 		<property name="userAccount" ref="userAccount9" />
 		<property name="creditCard" ref="creditCard11" />
 	</bean>
-	
+
 	<bean id="company7" class="domain.Company">
 		<property name="name" value="Company7" />
 		<property name="surnames" value="company7surname" />
@@ -473,7 +467,7 @@
 		<property name="userAccount" ref="userAccount10" />
 		<property name="creditCard" ref="creditCard12" />
 	</bean>
-	
+
 	<bean id="company8" class="domain.Company">
 		<property name="name" value="Company8" />
 		<property name="surnames" value="company8surname" />
@@ -486,7 +480,7 @@
 		<property name="userAccount" ref="userAccount11" />
 		<property name="creditCard" ref="creditCard13" />
 	</bean>
-	
+
 	<bean id="company9" class="domain.Company">
 		<property name="name" value="Company9" />
 		<property name="surnames" value="company9surname" />
@@ -500,7 +494,7 @@
 		<property name="creditCard" ref="creditCard14" />
 		<property name="spammer" value="true" />
 	</bean>
-	
+
 	<bean id="company10" class="domain.Company">
 		<property name="name" value="Company10" />
 		<property name="surnames" value="company10surname" />
@@ -513,42 +507,42 @@
 		<property name="userAccount" ref="userAccount13" />
 		<property name="creditCard" ref="creditCard15" />
 	</bean>
-	
+
 	<!-- Positions -->
-	
+
 	<bean id="position1" class="domain.Position">
-	<property name="ticker" value="firs-1234" />
-	<property name="title" value="position1" />
-	<property name="description" value="description position 1" />
-	<property name="deadline" value="2019/08/12" />
-	<property name="profile" value="Java developer" />
-	<property name="skills" value="javascript,django" />
-	<property name="technologies" value="PC" />
-	<property name="offeredSalary" value="500.0" />
-	<property name="finalMode" value="true" />
-	<property name="company" ref="company1" />
+		<property name="ticker" value="firs-1234" />
+		<property name="title" value="position1" />
+		<property name="description" value="description position 1" />
+		<property name="deadline" value="2019/08/12" />
+		<property name="profile" value="Java developer" />
+		<property name="skills" value="javascript,django" />
+		<property name="technologies" value="PC" />
+		<property name="offeredSalary" value="500.0" />
+		<property name="finalMode" value="true" />
+		<property name="company" ref="company1" />
 	</bean>
-	
+
 	<bean id="position2" class="domain.Position">
-	<property name="ticker" value="firs-1324" />
-	<property name="title" value="position2" />
-	<property name="description" value="description position 2" />
-	<property name="deadline" value="2019/08/12" />
-	<property name="profile" value="IA" />
-	<property name="skills" value="jupyter" />
-	<property name="technologies" value="Server" />
-	<property name="offeredSalary" value="5220.0" />
-	<property name="finalMode" value="false" />
-	<property name="company" ref="company1" />
+		<property name="ticker" value="firs-1324" />
+		<property name="title" value="position2" />
+		<property name="description" value="description position 2" />
+		<property name="deadline" value="2019/08/12" />
+		<property name="profile" value="IA" />
+		<property name="skills" value="jupyter" />
+		<property name="technologies" value="Server" />
+		<property name="offeredSalary" value="5220.0" />
+		<property name="finalMode" value="false" />
+		<property name="company" ref="company1" />
 	</bean>
-	
+
 	<!-- Problems -->
-	
+
 	<bean id="problem1" class="domain.Problem">
-	<property name="title" value="problem1" />
-	<property name="statement" value="statement problem 1" />
-	<property name="hint" value="Consult stackOverFlow" />
-	<property name="attachments">
+		<property name="title" value="problem1" />
+		<property name="statement" value="statement problem 1" />
+		<property name="hint" value="Consult stackOverFlow" />
+		<property name="attachments">
 			<list>
 				<value>http://www.dropbox.com/problem 1/</value>
 				<value>http://www.stackOverFlow.com/</value>
@@ -556,131 +550,191 @@
 				<value>http://www.wuolah.com/</value>
 			</list>
 		</property>
-	<property name="finalMode" value="true" />
-	<property name="company" ref="company1" />
-	<property name="positions"  >
-		<list>
-			<ref bean="position1"/>	
-		</list>
-	</property>
+		<property name="finalMode" value="true" />
+		<property name="company" ref="company1" />
+		<property name="positions">
+			<list>
+				<ref bean="position1" />
+			</list>
+		</property>
 	</bean>
-	
+
 	<bean id="problem2" class="domain.Problem">
-	<property name="title" value="problem2" />
-	<property name="statement" value="statement problem 2" />
-	<property name="hint" value="Consult 3mcSchools" />
-	<property name="attachments">
+		<property name="title" value="problem2" />
+		<property name="statement" value="statement problem 2" />
+		<property name="hint" value="Consult 3mcSchools" />
+		<property name="attachments">
 			<list>
 				<value>http://www.dropbox.com/problem 3/</value>
 				<value>http://www.stackOverFlow.com/</value>
 			</list>
 		</property>
-	<property name="finalMode" value="true" />
-	<property name="company" ref="company1" />
-	<property name="positions"  >
-		<list>
-			<ref bean="position1"/>	
-		</list>
-	</property>
+		<property name="finalMode" value="true" />
+		<property name="company" ref="company1" />
+		<property name="positions">
+			<list>
+				<ref bean="position1" />
+			</list>
+		</property>
 	</bean>
-	
+
 	<bean id="problem3" class="domain.Problem">
-	<property name="title" value="problem3" />
-	<property name="statement" value="statement problem 3" />
-	<property name="hint" value="Hint muy bonito" />
-	<property name="attachments">
+		<property name="title" value="problem3" />
+		<property name="statement" value="statement problem 3" />
+		<property name="hint" value="Hint muy bonito" />
+		<property name="attachments">
 			<list>
 				<value>http://www.dropbox.com/problem 4/</value>
 			</list>
 		</property>
-	<property name="finalMode" value="false" />
-	<property name="company" ref="company1" />
+		<property name="finalMode" value="false" />
+		<property name="company" ref="company1" />
+	</bean>
+
+	<!-- Social profiles -->
+
+	<bean id="socialProfile1" class="domain.SocialProfile">
+		<property name="nick" value="Company1" />
+		<property name="socialName" value="Compañia number 1" />
+		<property name="link" value="http://www.facebook.com/link1/" />
+		<property name="actor" ref="company1" />
+	</bean>
+	<bean id="socialProfile2" class="domain.SocialProfile">
+		<property name="nick" value="Company1.1" />
+		<property name="socialName" value="Compañia number 1.1" />
+		<property name="link" value="http://www.facebook.com/link2/" />
+		<property name="actor" ref="company1" />
+	</bean>
+	<bean id="socialProfile3" class="domain.SocialProfile">
+		<property name="nick" value="Company2" />
+		<property name="socialName" value="Compañia number 2" />
+		<property name="link" value="http://www.facebook.com/link3/" />
+		<property name="actor" ref="company2" />
+	</bean>
+	<bean id="socialProfile4" class="domain.SocialProfile">
+		<property name="nick" value="Company2.1" />
+		<property name="socialName" value="Compañia number 2.1" />
+		<property name="link" value="http://www.facebook.com/link4/" />
+		<property name="actor" ref="company2" />
+	</bean>
+	<bean id="socialProfile5" class="domain.SocialProfile">
+		<property name="nick" value="Company3" />
+		<property name="socialName" value="Compañia number 3" />
+		<property name="link" value="http://www.facebook.com/link4/" />
+		<property name="actor" ref="company3" />
+	</bean>
+
+	<!-- Message -->
+
+	<bean id="message1" class="domain.Message">
+		<property name="moment" value="2017/09/17 13:53" />
+		<property name="subject" value="Hola" />
+		<property name="body" value="Hola" />
+		<property name="tags" value="tag1" />
+		<property name="spam" value="False" />
+		<property name="sender" ref="company3" />
+		<property name="recipient" ref="company1" />
+	</bean>
+
+	<bean id="message2" class="domain.Message">
+		<property name="moment" value="2017/09/17 13:53" />
+		<property name="subject" value="subject2" />
+		<property name="body" value="body2" />
+		<property name="tags" value="tag1" />
+		<property name="spam" value="False" />
+		<property name="sender" ref="company1" />
+		<property name="recipient" ref="company3" />
+	</bean>
+
+	<bean id="message3" class="domain.Message">
+		<property name="moment" value="2017/09/17 13:53" />
+		<property name="subject" value="subject3" />
+		<property name="body" value="body3" />
+		<property name="tags" value="tag1" />
+		<property name="spam" value="False" />
+		<property name="sender" ref="company1" />
+		<property name="recipient" ref="company2" />
+	</bean>
+
+	<bean id="message4" class="domain.Message">
+		<property name="moment" value="2017/09/17 13:53" />
+		<property name="subject" value="subject4" />
+		<property name="body" value="body4" />
+		<property name="tags" value="DELETE" />
+		<property name="spam" value="False" />
+		<property name="sender" ref="company1" />
+		<property name="recipient" ref="company4" />
+	</bean>
+
+	<bean id="message5" class="domain.Message">
+		<property name="moment" value="2017/09/17 13:54" />
+		<property name="subject" value="subject5" />
+		<property name="body" value="viagra" />
+		<property name="tags" value="Spam" />
+		<property name="spam" value="True" />
+		<property name="sender" ref="company9" />
+		<property name="recipient" ref="company4" />
+	</bean>
+
+
+	<!-- Curricula -->
+
+	<bean id="curriculum1" class="domain.Curriculum">
+		<property name="noCopy" value="true" />
+		<property name="personalData" ref="personalData1" />
+		<property name="positionDatas">
+			<list>
+				<ref bean="positionData1" />
+			</list>
+		</property>
+		<property name="educationDatas">
+			<list>
+				<ref bean="educationData1" />
+			</list>
+		</property>
+		<property name="miscellaneousDatas">
+			<list>
+				<ref bean="miscellaneousData1" />
+			</list>
+		</property>
+		<property name="hacker" ref="hacker1" />
 	</bean>
 	
-	 <!--  Social profiles --> 
-	 
-  <bean id="socialProfile1" class="domain.SocialProfile">
-  <property name="nick" value="Company1" /> 
-  <property name="socialName" value="Compañia number 1" /> 
-  <property name="link" value="http://www.facebook.com/link1/" /> 
-  <property name="actor" ref="company1" /> 
-  </bean>
-  <bean id="socialProfile2" class="domain.SocialProfile">
-  <property name="nick" value="Company1.1" /> 
-  <property name="socialName" value="Compañia number 1.1" /> 
-  <property name="link" value="http://www.facebook.com/link2/" /> 
-  <property name="actor" ref="company1" /> 
-  </bean>
-  <bean id="socialProfile3" class="domain.SocialProfile">
-  <property name="nick" value="Company2" /> 
-  <property name="socialName" value="Compañia number 2" /> 
-  <property name="link" value="http://www.facebook.com/link3/" /> 
-  <property name="actor" ref="company2" /> 
-  </bean>
-  <bean id="socialProfile4" class="domain.SocialProfile">
-  <property name="nick" value="Company2.1" /> 
-  <property name="socialName" value="Compañia number 2.1" /> 
-  <property name="link" value="http://www.facebook.com/link4/" /> 
-  <property name="actor" ref="company2" /> 
-  </bean>
-  <bean id="socialProfile5" class="domain.SocialProfile">
-  <property name="nick" value="Company3" /> 
-  <property name="socialName" value="Compañia number 3" /> 
-  <property name="link" value="http://www.facebook.com/link4/" /> 
-  <property name="actor" ref="company3" /> 
-  </bean>
-  
-   <!--  Message --> 
-   
-  <bean id="message1" class="domain.Message">
-  <property name="moment" value="2017/09/17 13:53" /> 
-  <property name="subject" value="Hola" /> 
-  <property name="body" value="Hola" /> 
-  <property name="tags" value="tag1" /> 
-  <property name="spam" value="False" /> 
-  <property name="sender" ref="company3" /> 
-  <property name="recipient" ref="company1" /> 
-  </bean>
-  
-  <bean id="message2" class="domain.Message">
-  <property name="moment" value="2017/09/17 13:53" /> 
-  <property name="subject" value="subject2" /> 
-  <property name="body" value="body2" />  
-  <property name="tags" value="tag1" /> 
-  <property name="spam" value="False" /> 
-  <property name="sender" ref="company1" /> 
-  <property name="recipient" ref="company3" /> 
-  </bean>
-  
-  <bean id="message3" class="domain.Message">
-  <property name="moment" value="2017/09/17 13:53" /> 
-  <property name="subject" value="subject3" /> 
-  <property name="body" value="body3" /> 
-  <property name="tags" value="tag1" /> 
-  <property name="spam" value="False" /> 
-  <property name="sender" ref="company1" /> 
-  <property name="recipient" ref="company2" /> 
-  </bean>
-  
-  <bean id="message4" class="domain.Message">
-  <property name="moment" value="2017/09/17 13:53" /> 
-  <property name="subject" value="subject4" /> 
-  <property name="body" value="body4" /> 
-  <property name="tags" value="DELETE" /> 
-  <property name="spam" value="False" /> 
-  <property name="sender" ref="company1" /> 
-  <property name="recipient" ref="company4" /> 
-  </bean>
-  
-   <bean id="message5" class="domain.Message">
-  	<property name="moment" value="2017/09/17 13:54" /> 
-  	<property name="subject" value="subject5" /> 
-  	<property name="body" value="viagra" /> 
-  	<property name="tags" value="Spam" /> 
-  	<property name="spam" value="True" /> 
-  	<property name="sender" ref="company9" /> 
-  	<property name="recipient" ref="company4" /> 
-  </bean>
+	<!-- Personal Datas -->
+
+	<bean id="personalData1" class="domain.PersonalData">
+		<property name="fullName" value="Hacker1 hacker1surname" />
+		<property name="statement" value="statement1" />
+		<property name="phone" value="+34 954909090" />
+		<property name="linkGitHubProfile" value="http://www.gitHub.com/" />
+		<property name="linkLinkedInProfile" value="http://www.linkedIn.com/" />
+		
+	</bean>
+	
+	<!-- Position Datas -->
+	
+	<bean id="positionData1" class="domain.PositionData">
+		<property name="title" value="title1" />
+		<property name="description" value="subject5" />
+		<property name="startDate" value="1998/06/29" />
+		<property name="endDate" value="2000/06/29" />
+	</bean>
+	
+	<!-- Education Datas -->
+	
+	<bean id="educationData1" class="domain.EducationData">
+		<property name="degree" value="degree1" />
+		<property name="institution" value="institution1" />
+		<property name="mark" value="7.1" />
+		<property name="startDate" value="1996/06/29" />
+		<property name="endDate" value="1998/06/29" />
+	</bean>
+	
+	<!-- Miscellaneous Datas -->
+	
+	<bean id="miscellaneousData1" class="domain.MiscellaneousData">
+		<property name="text" value="text1" />
+	</bean>
 	
 	<!-- Configuration -->
 	<bean id="configuration" class="domain.Configuration">
@@ -700,10 +754,12 @@
 		<property name="countryCode" value="+34" />
 		<property name="finderTime" value="1" />
 		<property name="finderResult" value="10" />
-		<property name="welcomeMessageEs" value="¡Bienvenidos a Acme Hacker Rank! ¡Somos el mercado de trabajo favorito de los profesionales de las TICs!" />
+		<property name="welcomeMessageEs"
+			value="¡Bienvenidos a Acme Hacker Rank! ¡Somos el mercado de trabajo favorito de los profesionales de las TICs!" />
 		<property name="banner" value="https://i.imgur.com/7b8lu4b.png" />
-		<property name="welcomeMessage" value="Welcome to Acme Hacker Rank! We're IT hacker's favourite job marketplace!" />
+		<property name="welcomeMessage"
+			value="Welcome to Acme Hacker Rank! We're IT hacker's favourite job marketplace!" />
 
 	</bean>
-	
+
 </beans>
