@@ -24,27 +24,27 @@ requestURI="${requestURI }" >
 	
 <h3><spring:message code="actor.companies" /></h3>
 	
-		<display:table pagesize="5" name="companies" id="row" 
+		<display:table pagesize="5" name="companies" id="row2" 
 requestURI="${requestURI }" >
 
-	<acme:column property="name" titleKey="actor.name" value= "${row.name}: "/>
+	<acme:column property="name" titleKey="actor.name" value= "${row2.name}: "/>
 	
-	<acme:column property="surnames" titleKey="actor.surnames" value= "${row.surnames}: "/>
+	<acme:column property="surnames" titleKey="actor.surnames" value= "${row2.surnames}: "/>
 	
-	<acme:url href="message/actor/create.do?actorId=${row.id}" code="actor.contact"/>
+	<acme:url href="message/actor/create.do?actorId=${row2.id}" code="actor.contact"/>
 	
 </display:table>
 	
 <h3><spring:message code="actor.administrators" /></h3>
 	
-	<display:table pagesize="5" name="administrators" id="row" 
+	<display:table pagesize="5" name="administrators" id="row3" 
 requestURI="${requestURI }" >
 
-	<acme:column property="name" titleKey="actor.name" value= "${row.name}: "/>
+	<acme:column property="name" titleKey="actor.name" value= "${row3.name}: "/>
 	
-	<acme:column property="surnames" titleKey="actor.surnames" value= "${row.surnames}: "/>
+	<acme:column property="surnames" titleKey="actor.surnames" value= "${row3.surnames}: "/>
 	
-	<acme:url href="message/actor/create.do?actorId=${row.id}" code="actor.contact"/>
+	<acme:url href="message/actor/create.do?actorId=${row3.id}" code="actor.contact"/>
 	
 </display:table>
 	
