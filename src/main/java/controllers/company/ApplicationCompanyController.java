@@ -126,7 +126,7 @@ public class ApplicationCompanyController {
 
 			final Boolean security = this.applicationService.securityCompany(applicationId);
 
-			if (security) {
+			if (security && this.applicationService.findOne(applicationId).getStatus().equals("SUBMITTED")) {
 
 				this.applicationService.accept(applicationId);
 
@@ -154,7 +154,7 @@ public class ApplicationCompanyController {
 
 			final Boolean security = this.applicationService.securityCompany(applicationId);
 
-			if (security) {
+			if (security && this.applicationService.findOne(applicationId).getStatus().equals("SUBMITTED")) {
 
 				this.applicationService.reject(applicationId);
 
