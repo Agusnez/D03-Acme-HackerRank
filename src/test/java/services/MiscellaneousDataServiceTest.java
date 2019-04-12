@@ -120,4 +120,43 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 		super.checkExceptions(expected, caught);
 
 	}
+
+	@Test
+	public void driverDeleteMiscellanousData() {
+		final Object testingData[][] = {
+
+			{
+				"miscellaneousData1", null
+			},//1. All fine
+			{
+				"hacker1", IllegalArgumentException.class
+			},//2. Not Curriculum
+
+		};
+
+		for (int i = 0; i < testingData.length; i++)
+			this.templateDeleteMiscellanousData((String) testingData[i][0], (Class<?>) testingData[i][1]);
+
+	}
+
+	protected void templateDeleteMiscellanousData(final String dataBean, final Class<?> expected) {
+
+		Class<?> caught;
+
+		caught = null;
+		try {
+
+			this.startTransaction();
+
+			this.miscellaneousDataService.delete(this.miscellaneousDataService.findOne(super.getEntityId(dataBean)));
+
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+
+		this.rollbackTransaction();
+
+		super.checkExceptions(expected, caught);
+
+	}
 }
