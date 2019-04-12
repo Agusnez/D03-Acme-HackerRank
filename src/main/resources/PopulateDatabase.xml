@@ -636,7 +636,6 @@
   <property name="moment" value="2017/09/17 13:53" /> 
   <property name="subject" value="Hola" /> 
   <property name="body" value="Hola" /> 
-  <property name="priority" value="LOW" /> 
   <property name="tags" value="tag1" /> 
   <property name="spam" value="False" /> 
   <property name="sender" ref="company3" /> 
@@ -646,8 +645,7 @@
   <bean id="message2" class="domain.Message">
   <property name="moment" value="2017/09/17 13:53" /> 
   <property name="subject" value="subject2" /> 
-  <property name="body" value="body2" /> 
-  <property name="priority" value="LOW" /> 
+  <property name="body" value="body2" />  
   <property name="tags" value="tag1" /> 
   <property name="spam" value="False" /> 
   <property name="sender" ref="company1" /> 
@@ -658,7 +656,6 @@
   <property name="moment" value="2017/09/17 13:53" /> 
   <property name="subject" value="subject3" /> 
   <property name="body" value="body3" /> 
-  <property name="priority" value="LOW" /> 
   <property name="tags" value="tag1" /> 
   <property name="spam" value="False" /> 
   <property name="sender" ref="company1" /> 
@@ -669,7 +666,6 @@
   <property name="moment" value="2017/09/17 13:53" /> 
   <property name="subject" value="subject4" /> 
   <property name="body" value="body4" /> 
-  <property name="priority" value="LOW" /> 
   <property name="tags" value="DELETE" /> 
   <property name="spam" value="False" /> 
   <property name="sender" ref="company1" /> 
@@ -680,7 +676,6 @@
   	<property name="moment" value="2017/09/17 13:54" /> 
   	<property name="subject" value="subject5" /> 
   	<property name="body" value="viagra" /> 
-  	<property name="priority" value="LOW" /> 
   	<property name="tags" value="Spam" /> 
   	<property name="spam" value="True" /> 
   	<property name="sender" ref="company9" /> 
@@ -702,13 +697,6 @@
 				<value>ha sido seleccionado</value>
 			</list>
 		</property>
-		<property name="priorities">
-  			<list>
-  				<value>HIGH</value> 
-  				<value>NEUTRAL</value> 
-  				<value>LOW</value> 
-  			</list>
-  		</property>
 		<property name="countryCode" value="+34" />
 		<property name="finderTime" value="1" />
 		<property name="finderResult" value="10" />

@@ -23,7 +23,6 @@ public class Message extends DomainEntity {
 	private Date	moment;
 	private String	subject;
 	private String	body;
-	private String	priority;
 	private String	tags;
 	private Boolean	spam;
 
@@ -55,15 +54,6 @@ public class Message extends DomainEntity {
 	}
 	public void setBody(final String body) {
 		this.body = body;
-	}
-
-	@NotBlank
-	@SafeHtml
-	public String getPriority() {
-		return this.priority;
-	}
-	public void setPriority(final String priority) {
-		this.priority = priority;
 	}
 
 	@SafeHtml

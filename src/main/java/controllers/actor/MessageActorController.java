@@ -177,13 +177,11 @@ public class MessageActorController extends AbstractController {
 		final ModelAndView result;
 
 		final String banner = this.configurationService.findConfiguration().getBanner();
-		final Collection<String> priorities = this.configurationService.findConfiguration().getPriorities();
 
 		result = new ModelAndView("message/create");
 		result.addObject("messageError", errorText);
 		result.addObject("message", message2);
 		result.addObject("banner", banner);
-		result.addObject("priorities", priorities);
 		result.addObject("enlace", "message/actor/edit.do");
 
 		return result;
