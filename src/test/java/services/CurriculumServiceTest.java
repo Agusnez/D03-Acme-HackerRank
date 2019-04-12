@@ -31,13 +31,14 @@ public class CurriculumServiceTest extends AbstractTest {
 
 	/*
 	 * ACME.HACKERRANK
-	 * a)(Level B) Requirement 11.1: An actor who is authenticated as an hacker must be able to: Manage his or her curricula: Create curriculum
+	 * a)(Level B) Requirement 17.1: An actor who is authenticated as an hacker must be able to: Manage his or her curricula: Create curriculum
 	 * 
 	 * b) Negative cases:
 	 * 2. Invalid authority
 	 * 
 	 * c) Sentence coverage
-	 * -
+	 * -create(): 100%
+	 * -save(): 100%
 	 * 
 	 * d) Data coverage
 	 * -Curriculum: 0%
@@ -72,6 +73,7 @@ public class CurriculumServiceTest extends AbstractTest {
 
 			final Curriculum c = this.curriculumService.create();
 
+			c.setTicker("180918-F4T78H");
 			c.setNoCopy(true);
 			c.setHacker(hacker);
 
@@ -89,6 +91,20 @@ public class CurriculumServiceTest extends AbstractTest {
 		super.checkExceptions(expected, caught);
 
 	}
+
+	/*
+	 * ACME.HACKERRANK
+	 * a)(Level B) Requirement 17.1: An actor who is authenticated as an hacker must be able to: Manage his or her curricula: List curriculum
+	 * 
+	 * b) Negative cases:
+	 * 2. Incorrect result
+	 * 
+	 * c) Sentence coverage
+	 * -findAllByHackerId(): 100%
+	 * 
+	 * d) Data coverage
+	 * -Curriculum: 0%
+	 */
 
 	@Test
 	public void driverListCurriculum() {
@@ -126,6 +142,22 @@ public class CurriculumServiceTest extends AbstractTest {
 		super.checkExceptions(expected, caught);
 
 	}
+
+	/*
+	 * ACME.HACKERRANK
+	 * a)(Level B) Requirement 17.1: An actor who is authenticated as an hacker must be able to: Manage his or her curricula: Display curriculum
+	 * 
+	 * b) Negative cases:
+	 * 2. Unexpected position datas size
+	 * 3. Unexpected education datas size
+	 * 4. Unexpected miscellaneous datas size
+	 * 
+	 * c) Sentence coverage
+	 * -findOne(): 100%
+	 * 
+	 * d) Data coverage
+	 * -Curriculum: 0%
+	 */
 
 	@Test
 	public void driverDisplayCurriculum() {
@@ -171,6 +203,21 @@ public class CurriculumServiceTest extends AbstractTest {
 		super.checkExceptions(expected, caught);
 
 	}
+
+	/*
+	 * ACME.HACKERRANK
+	 * a)(Level B) Requirement 17.1: An actor who is authenticated as an hacker must be able to: Manage his or her curricula: Delete curriculum
+	 * 
+	 * b) Negative cases:
+	 * 2. Not Curriculum
+	 * 
+	 * c) Sentence coverage
+	 * -findOne(): 100%
+	 * -delete(): 100%
+	 * 
+	 * d) Data coverage
+	 * -Curriculum: 0%
+	 */
 
 	@Test
 	public void driverDeleteCurriculum() {
