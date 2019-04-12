@@ -29,6 +29,20 @@ public class CurriculumServiceTest extends AbstractTest {
 	private HackerService		hackerService;
 
 
+	/*
+	 * ACME.HACKERRANK
+	 * a)(Level B) Requirement 11.1: An actor who is authenticated as an hacker must be able to: Manage his or her curricula: Create curriculum
+	 * 
+	 * b) Negative cases:
+	 * 2. Invalid authority
+	 * 
+	 * c) Sentence coverage
+	 * -
+	 * 
+	 * d) Data coverage
+	 * -Curriculum: 0%
+	 */
+
 	@Test
 	public void driverCreateCurriculum() {
 		final Object testingData[][] = {

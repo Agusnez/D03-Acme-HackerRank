@@ -13,10 +13,13 @@ import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
 @Access(AccessType.PROPERTY)
 public class Curriculum extends DomainEntity {
 
+	private String							ticker;
 	private Boolean							noCopy;
 	private PersonalData					personalData;
 	private Collection<PositionData>		positionDatas;
@@ -24,6 +27,15 @@ public class Curriculum extends DomainEntity {
 	private Collection<MiscellaneousData>	miscellaneousDatas;
 	private Hacker							hacker;
 
+
+	@NotBlank
+	public String getTicker() {
+		return this.ticker;
+	}
+
+	public void setTicker(final String ticker) {
+		this.ticker = ticker;
+	}
 
 	@NotNull
 	public Boolean getNoCopy() {
