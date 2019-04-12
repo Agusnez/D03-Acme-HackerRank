@@ -20,8 +20,6 @@
 	
 <acme:display code="message.body" property="${message1.body} "/>
 	
-<acme:display code="message.priority" property="${message1.priority} "/>
-	
 <acme:display code="message.tags" property="${message1.tags} "/>
 
 <acme:button name="delete" code="message.delete" onclick="javascript: relativeRedir('message/actor/delete.do?messageId=${message1.id}');" />

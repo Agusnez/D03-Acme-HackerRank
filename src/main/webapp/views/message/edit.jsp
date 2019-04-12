@@ -20,14 +20,6 @@
 
 	<acme:textarea code="message.body" path="body" obligatory="true"/>
 	
-	<form:label path="priority">
-		<spring:message code="message.priority" />
-	</form:label>	
-	<form:select path="priority">	
-		<form:options items="${priorities}" />
-	</form:select>
-	<form:errors path="priority" cssClass="error" />
-	
 	<acme:textbox code="message.tags" path="tags" />
 	
 	<acme:submit name="save" code="message.save" />

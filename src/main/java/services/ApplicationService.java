@@ -356,7 +356,7 @@ public class ApplicationService {
 
 	public Collection<Application> findByPositionId(final int positionId) {
 
-		final Collection<Application> result = this.findByPositionId(positionId);
+		final Collection<Application> result = this.applicationRepository.findByPositionId(positionId);
 
 		return result;
 	}

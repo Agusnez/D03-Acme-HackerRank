@@ -1,7 +1,6 @@
 
 package forms;
 
-
 public class MessageForm {
 
 	// Constructors -----------------------------------------------------------
@@ -18,7 +17,6 @@ public class MessageForm {
 	private int		senderId;
 	private String	subject;
 	private String	body;
-	private String	priority;
 	private String	tags;
 
 
@@ -68,14 +66,6 @@ public class MessageForm {
 
 	public void setBody(final String body) {
 		this.body = body;
-	}
-
-	public String getPriority() {
-		return this.priority;
-	}
-
-	public void setPriority(final String priority) {
-		this.priority = priority;
 	}
 
 	public String getTags() {

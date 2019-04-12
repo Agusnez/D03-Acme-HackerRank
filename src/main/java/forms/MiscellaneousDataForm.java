@@ -6,12 +6,14 @@ import java.util.Collection;
 import javax.persistence.ElementCollection;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class MiscellaneousDataForm {
 
 	private int					id;
 	private int					version;
+	private String				text;
 	private Collection<String>	attachments;
 
 	private int					curriculumId;
@@ -33,6 +35,15 @@ public class MiscellaneousDataForm {
 
 	public void setVersion(final int version) {
 		this.version = version;
+	}
+
+	@NotBlank
+	public String getText() {
+		return this.text;
+	}
+
+	public void setText(final String text) {
+		this.text = text;
 	}
 
 	@NotEmpty

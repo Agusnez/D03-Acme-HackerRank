@@ -117,10 +117,10 @@ public class PositionServiceTest extends AbstractTest {
 	public void driverEditPosition() {
 		final Object testingData[][] = {
 			{
-				"title", "description", "2019/12/12", "profile", "skills", "technologies", 12.0, "company1", "Position2", null
+				"title", "description", "2019/12/12", "profile", "skills", "technologies", 12.0, "company1", "position2", null
 			},//1. All fine
 			{
-				"title", "description", "2019/12/12", "profile", "skills", "technologies", 12.0, "company1", "Position1", IllegalArgumentException.class
+				"title", "description", "2019/12/12", "profile", "skills", "technologies", 12.0, "company1", "position1", IllegalArgumentException.class
 			},//2. The position is in final mode, it can't be edited
 
 		};
@@ -181,10 +181,10 @@ public class PositionServiceTest extends AbstractTest {
 	public void driverDeletePosition() {
 		final Object testingData[][] = {
 			{
-				"company1", "Position2", null
+				"company1", "position2", null
 			},//1. All fine
 			{
-				"company1", "Position1", IllegalArgumentException.class
+				"company1", "position1", IllegalArgumentException.class
 			},//2. The position is in final mode, it can't be edited
 
 		};
@@ -230,10 +230,10 @@ public class PositionServiceTest extends AbstractTest {
 	public void driverListPosition() {
 		final Object testingData[][] = {
 			{
-				"Company1", 2, null
+				"company1", 2, null
 			},//1. All fine
 			{
-				"Company1", 0, IllegalArgumentException.class
+				"company1", 0, IllegalArgumentException.class
 			},//2. The number of position is incorrect
 
 		};
@@ -329,13 +329,13 @@ public class PositionServiceTest extends AbstractTest {
 	public void driverListPositionAvailableByCompany() {
 		final Object testingData[][] = {
 			{
-				"company1", 1, "Company1", null
+				"company1", 1, "company1", null
 			},//1. Company lists the positions available by a company (All fine)
 			{
-				null, 1, "Company1", null
+				null, 1, "company1", null
 			},//2. Not registered actor lists the positions available by a company (All fine) 
 			{
-				"company1", 28, "Company1", IllegalArgumentException.class
+				"company1", 28, "company1", IllegalArgumentException.class
 			},//3. Company lists the positions available by a company, but the number of positions is incorrect
 		};
 

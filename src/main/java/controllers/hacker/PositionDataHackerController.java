@@ -1,8 +1,6 @@
 
 package controllers.hacker;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -174,43 +172,6 @@ public class PositionDataHackerController extends AbstractController {
 						result = this.createEditModelAndView(form, "curriculum.commit.error");
 					}
 			} else
-				result = new ModelAndView("redirect:/welcome/index.do");
-		} else {
-			result = new ModelAndView("misc/notExist");
-			result.addObject("banner", banner);
-		}
-
-		return result;
-	}
-
-	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public ModelAndView delete(@RequestParam final int positionId, @RequestParam final int curriculumId) {
-		ModelAndView result;
-
-		final String banner = this.configurationService.findConfiguration().getBanner();
-
-		final Boolean exist1 = this.positionDataService.exist(positionId);
-
-		final Boolean exist2 = this.curriculumService.exist(curriculumId);
-
-		if (exist1 && exist2) {
-			final Boolean security = this.positionDataService.security(positionId, curriculumId);
-
-			final PositionData positionData = this.positionDataService.findOne(positionId);
-
-			if (security)
-				try {
-					final Curriculum c = this.curriculumService.findOne(curriculumId);
-					final Collection<PositionData> datas = c.getPositionDatas();
-					datas.remove(positionData);
-					this.curriculumService.save(c);
-
-					this.positionDataService.delete(positionData);
-					result = new ModelAndView("redirect:/curriculum/hacker/display.do?curriculumId=" + curriculumId);
-				} catch (final Throwable oops) {
-					result = new ModelAndView("redirect:/curriculum/hacker/list.do");
-				}
-			else
 				result = new ModelAndView("redirect:/welcome/index.do");
 		} else {
 			result = new ModelAndView("misc/notExist");

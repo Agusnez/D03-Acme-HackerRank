@@ -20,9 +20,7 @@
 	<acme:column property="subject" titleKey="message.subject" value= "${row.subject}: "/>
 	
 	<acme:column property="body" titleKey="message.body" value= "${row.body}: "/>
-	
-	<acme:column property="priority" titleKey="message.priority" value= "${row.priority}: "/>
-	
+		
 	<acme:column property="tags" titleKey="message.tags" value= "${row.tags}: "/>
 	
 	<display:column>
@@ -43,9 +41,7 @@
 	<acme:column property="subject" titleKey="message.subject" value= "${row2.subject}: "/>
 	
 	<acme:column property="body" titleKey="message.body" value= "${row2.body}: "/>
-	
-	<acme:column property="priority" titleKey="message.priority" value= "${row2.priority}: "/>
-	
+		
 	<acme:column property="tags" titleKey="message.tags" value= "${row2.tags}: "/>
 	
 	<display:column>
@@ -63,9 +59,7 @@
 	<acme:column property="subject" titleKey="message.subject" value= "${row3.subject}: "/>
 	
 	<acme:column property="body" titleKey="message.body" value= "${row3.body}: "/>
-	
-	<acme:column property="priority" titleKey="message.priority" value= "${row3.priority}: "/>
-	
+		
 	<acme:column property="tags" titleKey="message.tags" value= "${row3.tags}: "/>
 	
 	<display:column>

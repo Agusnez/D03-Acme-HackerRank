@@ -8,14 +8,25 @@ import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Access(AccessType.PROPERTY)
 public class MiscellaneousData extends DomainEntity {
 
+	private String				text;
 	private Collection<String>	attachments;
 
+
+	@NotBlank
+	public String getText() {
+		return this.text;
+	}
+
+	public void setText(final String text) {
+		this.text = text;
+	}
 
 	@NotEmpty
 	@ElementCollection

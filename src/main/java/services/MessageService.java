@@ -90,7 +90,6 @@ public class MessageService {
 		result.setSender(actor);
 		result.setMoment(momentSent);
 		result.setSpam(spam);
-		result.setPriority("NORMAL");
 
 		return result;
 
@@ -262,7 +261,6 @@ public class MessageService {
 		result.setId(message.getId());
 		result.setVersion(message.getVersion());
 		result.setBody(message.getBody());
-		result.setPriority(message.getPriority());
 		if (message.getRecipientId() != 0)
 			result.setRecipient(this.actorService.findOne(message.getRecipientId()));
 		result.setSender(this.actorService.findOne(message.getSenderId()));

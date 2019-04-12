@@ -19,7 +19,7 @@ public class RegisterAdministratorForm {
 	private int			version;
 	private String		name;
 	private String		surnames;
-	private Double		vat;
+	private Integer		vat;
 	private String		photo;
 	private String		email;
 	private CreditCard	creditCard;
@@ -72,11 +72,12 @@ public class RegisterAdministratorForm {
 	}
 
 	@NotNull
-	public Double getVat() {
+	@Column(unique = true)
+	public Integer getVat() {
 		return this.vat;
 	}
 
-	public void setVat(final Double vat) {
+	public void setVat(final Integer vat) {
 		this.vat = vat;
 	}
 

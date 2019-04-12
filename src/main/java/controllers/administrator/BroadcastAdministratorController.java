@@ -1,8 +1,6 @@
 
 package controllers.administrator;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -66,16 +64,11 @@ public class BroadcastAdministratorController extends AbstractController {
 		final ModelAndView result;
 
 		final String banner = this.configurationService.findConfiguration().getBanner();
-		final Collection<String> priorities = this.configurationService.findConfiguration().getPriorities();
-
-		final String tagSys = "SYSTEM";
 
 		result = new ModelAndView("broadcast/create");
 		result.addObject("messageError", errorText);
 		result.addObject("message", message2);
 		result.addObject("banner", banner);
-		result.addObject("tagSys", tagSys);
-		result.addObject("priorities", priorities);
 		result.addObject("enlace", "broadcast/administrator/create.do");
 
 		return result;

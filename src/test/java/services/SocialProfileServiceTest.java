@@ -33,10 +33,10 @@ public class SocialProfileServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 
 			{
-				"socialProfile1", "Company1", null
+				"socialProfile1", "company1", null
 			//1. Todo bien
 			}, {
-				"socialProfile5", "Company1", IllegalArgumentException.class
+				"socialProfile5", "company1", IllegalArgumentException.class
 			//2. El socialProfile no pertenece a la Company
 			}
 

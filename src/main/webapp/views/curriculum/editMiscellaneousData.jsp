@@ -14,12 +14,14 @@
 	<form:hidden path="version" />
 	<form:hidden path="curriculumId" />
 	
-	<acme:textbox code="curriculum.attachments" path="attachments" obligatory="true"/>
+	<acme:textbox code="curriculum.text" path="text" obligatory="true"/>
+	
+	<acme:textbox code="curriculum.attachments" path="attachments"/>
 	
 	<acme:submit name="save" code="curriculum.save" />
 	
-	<jstl:if test="${positionData.id != 0 }">
-		<acme:submit name="save" code="curriculum.delete" />
+	<jstl:if test="${miscellaneousData.id != 0 }">
+		<acme:submit name="delete" code="curriculum.delete" />
 	</jstl:if>
 	
 	<acme:cancel code="curriculum.back" url="curriculum/hacker/display.do?curriculumId=${miscellaneousData.curriculumId }" />
