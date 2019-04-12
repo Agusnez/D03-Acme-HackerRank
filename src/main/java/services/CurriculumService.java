@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,11 @@ import domain.Actor;
 import domain.Application;
 import domain.Company;
 import domain.Curriculum;
+import domain.EducationData;
 import domain.Hacker;
+import domain.MiscellaneousData;
+import domain.PersonalData;
+import domain.PositionData;
 import forms.CreateCurriculumForm;
 
 @Service
@@ -24,21 +29,33 @@ public class CurriculumService {
 
 	// Managed Repository ------------------------
 	@Autowired
-	private CurriculumRepository	curriculumRepository;
+	private CurriculumRepository		curriculumRepository;
 
 	// Suporting services ------------------------
 
 	@Autowired
-	private ActorService			actorService;
+	private ActorService				actorService;
 
 	@Autowired
-	private HackerService			hackerService;
+	private HackerService				hackerService;
 
 	@Autowired
-	private ApplicationService		applicationService;
+	private ApplicationService			applicationService;
 
 	@Autowired
-	private CompanyService			companyService;
+	private CompanyService				companyService;
+
+	@Autowired
+	private EducationDataService		educationDataService;
+
+	@Autowired
+	private MiscellaneousDataService	miscellaneousDataService;
+
+	@Autowired
+	private PersonalDataService			personalDataService;
+
+	@Autowired
+	private PositionDataService			positionDataService;
 
 
 	// Simple CRUD methods -----------------------
@@ -166,12 +183,76 @@ public class CurriculumService {
 
 		final Curriculum res = new Curriculum();
 
-		res.setEducationDatas(curriculum.getEducationDatas());
+		final Collection<EducationData> educationData = curriculum.getEducationDatas();
+		final Collection<EducationData> educationDataCopy = new HashSet<>();
+
+		for (final EducationData educationData2 : educationData) {
+
+			final EducationData newEducationData = new EducationData();
+
+			newEducationData.setDegree(educationData2.getDegree());
+			newEducationData.setEndDate(educationData2.getEndDate());
+			newEducationData.setInstitution(educationData2.getInstitution());
+			newEducationData.setMark(educationData2.getMark());
+			newEducationData.setStartDate(educationData2.getStartDate());
+
+			final EducationData copyEducationData = this.educationDataService.save(newEducationData);
+
+			educationDataCopy.add(copyEducationData);
+		}
+
+		final Collection<MiscellaneousData> miscellaneousData = curriculum.getMiscellaneousDatas();
+		final Collection<MiscellaneousData> miscellaneousDataCopy = new HashSet<>();
+
+		for (final MiscellaneousData miscellaneousData2 : miscellaneousData) {
+
+			final MiscellaneousData newMiscellaneousData = new MiscellaneousData();
+
+			newMiscellaneousData.setAttachments(miscellaneousData2.getAttachments());
+			newMiscellaneousData.setText(miscellaneousData2.getText());
+
+			final MiscellaneousData copyMiscellaneousData = this.miscellaneousDataService.save(newMiscellaneousData);
+
+			miscellaneousDataCopy.add(copyMiscellaneousData);
+
+		}
+
+		final Collection<PositionData> positionData = curriculum.getPositionDatas();
+		final Collection<PositionData> positionDataCopy = new HashSet<>();
+
+		for (final PositionData positionData2 : positionData) {
+
+			final PositionData newPositionData = new PositionData();
+
+			newPositionData.setDescription(positionData2.getDescription());
+			newPositionData.setEndDate(positionData2.getEndDate());
+			newPositionData.setStartDate(positionData2.getStartDate());
+			newPositionData.setTitle(positionData2.getTitle());
+
+			final PositionData copyPositionData = this.positionDataService.save(newPositionData);
+
+			positionDataCopy.add(copyPositionData);
+
+		}
+
+		final PersonalData personalData = curriculum.getPersonalData();
+
+		final PersonalData newPersonalData = new PersonalData();
+
+		newPersonalData.setFullName(personalData.getFullName());
+		newPersonalData.setLinkGitHubProfile(personalData.getLinkGitHubProfile());
+		newPersonalData.setLinkLinkedInProfile(personalData.getLinkLinkedInProfile());
+		newPersonalData.setPhone(personalData.getPhone());
+		newPersonalData.setStatement(personalData.getStatement());
+
+		final PersonalData personalDataCopy = this.personalDataService.save(newPersonalData);
+
+		res.setEducationDatas(educationDataCopy);
 		res.setHacker(curriculum.getHacker());
-		res.setMiscellaneousDatas(curriculum.getMiscellaneousDatas());
+		res.setMiscellaneousDatas(miscellaneousDataCopy);
 		res.setNoCopy(false);
-		res.setPersonalData(curriculum.getPersonalData());
-		res.setPositionDatas(curriculum.getPositionDatas());
+		res.setPersonalData(personalDataCopy);
+		res.setPositionDatas(positionDataCopy);
 
 		final Curriculum copy = this.save(res);
 
