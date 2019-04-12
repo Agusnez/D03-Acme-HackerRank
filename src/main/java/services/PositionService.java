@@ -338,4 +338,17 @@ public class PositionService {
 
 		return res;
 	}
+
+	public Boolean exist(final int positionId) {
+
+		Boolean res = false;
+
+		final Position position = this.positionRepository.findOne(positionId);
+
+		if (position != null)
+			res = true;
+
+		return res;
+
+	}
 }

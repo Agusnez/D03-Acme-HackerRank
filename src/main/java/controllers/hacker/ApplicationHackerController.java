@@ -19,6 +19,7 @@ import services.CompanyService;
 import services.ConfigurationService;
 import services.CurriculumService;
 import services.HackerService;
+import services.PositionService;
 import domain.Application;
 import domain.Curriculum;
 import domain.Hacker;
@@ -44,6 +45,9 @@ public class ApplicationHackerController {
 
 	@Autowired
 	private CurriculumService		curriculumService;
+
+	@Autowired
+	private PositionService			positionService;
 
 
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
@@ -129,9 +133,20 @@ public class ApplicationHackerController {
 		ModelAndView result;
 		final ApplicationForm applicationForm = new ApplicationForm();
 
-		applicationForm.setPosition(positionId);
+		final String banner = this.configurationService.findConfiguration().getBanner();
 
-		result = this.createEditModelAndView(applicationForm);
+		final Boolean exist = this.positionService.exist(positionId);
+
+		if (exist) {
+
+			applicationForm.setPosition(positionId);
+			result = this.createEditModelAndView(applicationForm);
+
+		} else {
+
+			result = new ModelAndView("misc/notExist");
+			result.addObject("banner", banner);
+		}
 
 		return result;
 	}
