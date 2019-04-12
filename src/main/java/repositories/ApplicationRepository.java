@@ -39,7 +39,7 @@ public interface ApplicationRepository extends JpaRepository<Application, Intege
 	@Query("select a from Application a where a.position.company.id = ?1 and a.status = 'SUBMITTED' and a.position.deadline > CURRENT_DATE")
 	Collection<Application> findAllSubmittedByCompany(int companyId);
 
-	@Query("select a from Application a where a.hacker.id = ?1 and a.position.deadline < CURRENT_DATE")
+	@Query("select a from Application a where a.position.company.id = ?1 and a.position.deadline < CURRENT_DATE")
 	Collection<Application> findAllDeadLinePastByCompany(int companyId);
 
 	@Query("select a from Application a where a.position.id = ?1")
