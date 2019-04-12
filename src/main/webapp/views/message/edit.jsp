@@ -22,6 +22,10 @@
 	
 	<acme:textbox code="message.tags" path="tags" />
 	
+	<p><spring:message code="message.tagSystem" /></p>
+	
+	<br>
+	
 	<acme:submit name="save" code="message.save" />
 	
 	<acme:cancel code="message.cancel" url="actor/list.do" />
