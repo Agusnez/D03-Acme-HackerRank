@@ -125,4 +125,5 @@ public class PersonalDataServiceTest extends AbstractTest {
 		super.checkExceptions(expected, caught);
 
 	}
+
 }

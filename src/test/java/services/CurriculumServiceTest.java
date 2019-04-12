@@ -81,7 +81,7 @@ public class CurriculumServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 
 			{
-				"hacker1", 0, null
+				"hacker1", 1, null
 			},//1. All fine
 			{
 				"hacker1", 1651, IllegalArgumentException.class
@@ -108,6 +108,90 @@ public class CurriculumServiceTest extends AbstractTest {
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 		}
+
+		super.checkExceptions(expected, caught);
+
+	}
+
+	@Test
+	public void driverDisplayCurriculum() {
+		final Object testingData[][] = {
+
+			{
+				"curriculum1", 1, 1, 1, null
+			},//1. All fine
+			{
+				"curriculum1", 10000, 1, 1, IllegalArgumentException.class
+			},//2. Unexpected position datas size
+			{
+				"curriculum1", 1, 199999, 1, IllegalArgumentException.class
+			},//3. Unexpected education datas size
+			{
+				"curriculum1", 1, 1, 145678, IllegalArgumentException.class
+			},//4. Unexpected miscellaneous datas size
+
+		};
+
+		for (int i = 0; i < testingData.length; i++)
+			this.templateDisplayCurriculum((String) testingData[i][0], (Integer) testingData[i][1], (Integer) testingData[i][2], (Integer) testingData[i][3], (Class<?>) testingData[i][4]);
+
+	}
+
+	protected void templateDisplayCurriculum(final String curriculumBean, final Integer expectedPositionInt, final Integer expectedEducationInt, final Integer expectedMiscellaneousInt, final Class<?> expected) {
+
+		Class<?> caught;
+
+		caught = null;
+		try {
+
+			final Curriculum c = this.curriculumService.findOne(super.getEntityId(curriculumBean));
+
+			Assert.isTrue(expectedPositionInt == c.getPositionDatas().size());
+			Assert.isTrue(expectedEducationInt == c.getEducationDatas().size());
+			Assert.isTrue(expectedMiscellaneousInt == c.getMiscellaneousDatas().size());
+
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+
+		super.checkExceptions(expected, caught);
+
+	}
+
+	@Test
+	public void driverDeleteCurriculum() {
+		final Object testingData[][] = {
+
+			{
+				"curriculum1", null
+			},//1. All fine
+			{
+				"hacker1", IllegalArgumentException.class
+			},//2. Not Curriculum
+
+		};
+
+		for (int i = 0; i < testingData.length; i++)
+			this.templateDeleteCurriculum((String) testingData[i][0], (Class<?>) testingData[i][1]);
+
+	}
+
+	protected void templateDeleteCurriculum(final String curriculumBean, final Class<?> expected) {
+
+		Class<?> caught;
+
+		caught = null;
+		try {
+
+			this.startTransaction();
+
+			this.curriculumService.delete(this.curriculumService.findOne(super.getEntityId(curriculumBean)));
+
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+
+		this.rollbackTransaction();
 
 		super.checkExceptions(expected, caught);
 
