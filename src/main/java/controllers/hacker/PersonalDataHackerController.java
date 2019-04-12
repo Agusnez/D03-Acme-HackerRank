@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import services.ConfigurationService;
 import services.CurriculumService;
 import services.PersonalDataService;
+import domain.Curriculum;
 import domain.PersonalData;
 import forms.PersonalDataForm;
 
@@ -50,7 +51,9 @@ public class PersonalDataHackerController {
 
 			final Boolean security = this.personalDataService.security(personalDataId);
 
-			if (security)
+			final Curriculum c = this.curriculumService.findByPersonalDataId(personalDataId);
+
+			if (security && c.getNoCopy())
 				result = this.createEditModelAndView(form);
 			else
 				result = new ModelAndView("redirect:/welcome/index.do");
@@ -78,7 +81,9 @@ public class PersonalDataHackerController {
 
 			final Boolean security2 = this.curriculumService.security(form.getCurriculumId());
 
-			if (security1 && security2) {
+			final Curriculum c = this.curriculumService.findOne(form.getCurriculumId());
+
+			if (security1 && security2 && c.getNoCopy()) {
 
 				if (binding.hasErrors())
 					result = this.createEditModelAndView(form);

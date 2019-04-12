@@ -81,6 +81,58 @@ public class EducationDataServiceTest extends AbstractTest {
 
 	}
 
+	@Test
+	public void driverEditEducationData() {
+		final Object testingData[][] = {
+			{
+				"educationData1", "degree1", "institution1", 5.0, "1996/06/29", "1998/06/29", null
+			},//1. All fine
+			{
+				"educationData1", "degree1", "institution1", -9.1, "1996/06/29", "1998/06/29", ConstraintViolationException.class
+			},//2. Mark < 0 
+			{
+				"educationData1", "degree1", "institution1", 12.5, "1996/06/29", "1998/06/29", ConstraintViolationException.class
+			},//3. Mark > 10
+			{
+				"educationData1", "degree1", "institution1", null, "1996/06/29", "1998/06/29", ConstraintViolationException.class
+			},//4. Mark = null
+
+		};
+
+		for (int i = 0; i < testingData.length; i++)
+			this.templateEditEducationData((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (Double) testingData[i][3], this.convertStringToDate((String) testingData[i][4]),
+				this.convertStringToDate((String) testingData[i][5]), (Class<?>) testingData[i][6]);
+	}
+	protected void templateEditEducationData(final String dataBean, final String degree, final String institution, final Double mark, final Date startDate, final Date endDate, final Class<?> expected) {
+
+		Class<?> caught;
+
+		caught = null;
+		try {
+
+			this.startTransaction();
+
+			final EducationData data = this.educationDataService.findOne(super.getEntityId(dataBean));
+
+			data.setDegree(degree);
+			data.setInstitution(institution);
+			data.setMark(mark);
+			data.setStartDate(startDate);
+			data.setEndDate(endDate);
+
+			this.educationDataService.save(data);
+			this.educationDataService.flush();
+
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
+
+		this.rollbackTransaction();
+
+		super.checkExceptions(expected, caught);
+
+	}
+
 	protected Date convertStringToDate(final String dateString) {
 		Date date = null;
 

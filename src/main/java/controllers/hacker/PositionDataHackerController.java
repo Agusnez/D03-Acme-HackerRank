@@ -46,7 +46,9 @@ public class PositionDataHackerController extends AbstractController {
 		if (exist) {
 			final Boolean security = this.curriculumService.security(curriculumId);
 
-			if (security) {
+			final Curriculum c = this.curriculumService.findOne(curriculumId);
+
+			if (c.getNoCopy() && security) {
 				positionData = new PositionDataForm();
 
 				positionData.setCurriculumId(curriculumId);
@@ -80,7 +82,9 @@ public class PositionDataHackerController extends AbstractController {
 
 			final Boolean security = this.positionDataService.security(positionRecordId);
 
-			if (security)
+			final Curriculum c = this.curriculumService.findByPositionDataId(positionRecordId);
+
+			if (c.getNoCopy() && security)
 				result = this.createEditModelAndView(form);
 			else
 				result = new ModelAndView("redirect:/welcome/index.do");
@@ -107,8 +111,9 @@ public class PositionDataHackerController extends AbstractController {
 			final Boolean securityCurriculum = this.curriculumService.security(form.getCurriculumId());
 			final Boolean securityData = this.positionDataService.security(form.getId(), form.getCurriculumId());
 
-			if ((form.getId() == 0 && securityCurriculum) || (form.getId() != 0 && securityData)) {
-				final Curriculum c = this.curriculumService.findOne(form.getCurriculumId());
+			final Curriculum c = this.curriculumService.findOne(form.getCurriculumId());
+
+			if (c.getNoCopy() && ((form.getId() == 0 && securityCurriculum) || (form.getId() != 0 && securityData))) {
 
 				if (binding.hasErrors())
 					result = this.createEditModelAndView(form);
@@ -154,8 +159,9 @@ public class PositionDataHackerController extends AbstractController {
 			final Boolean securityCurriculum = this.curriculumService.security(form.getCurriculumId());
 			final Boolean securityData = this.positionDataService.security(form.getId(), form.getCurriculumId());
 
-			if ((form.getId() == 0 && securityCurriculum) || (form.getId() != 0 && securityData)) {
-				final Curriculum c = this.curriculumService.findOne(form.getCurriculumId());
+			final Curriculum c = this.curriculumService.findOne(form.getCurriculumId());
+
+			if (c.getNoCopy() && ((form.getId() == 0 && securityCurriculum) || (form.getId() != 0 && securityData))) {
 
 				if (binding.hasErrors())
 					result = this.createEditModelAndView(form);

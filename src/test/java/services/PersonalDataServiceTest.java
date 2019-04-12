@@ -26,17 +26,17 @@ public class PersonalDataServiceTest extends AbstractTest {
 
 
 	@Test
-	public void driverCreateEducationData() {
+	public void driverCreatePersonalData() {
 		final Object testingData[][] = {
 			{
 				"hacker1", "test", "test", "954920633", "http://github.com", "http://linkedIn.com", null
 			},//1. All fine
 			{
 				"hacker1", "test", null, "954920633", "http://github.com", "http://linkedIn.com", ConstraintViolationException.class
-			},//2. Degree = null
+			},//2. Statement = null
 			{
 				"hacker1", "test", "		", "954920633", "http://github.com", "http://linkedIn.com", ConstraintViolationException.class
-			},//3. Degree = blank
+			},//3. Statement = blank
 		};
 
 		for (int i = 0; i < testingData.length; i++)
@@ -69,6 +69,56 @@ public class PersonalDataServiceTest extends AbstractTest {
 		}
 
 		this.unauthenticate();
+
+		this.rollbackTransaction();
+
+		super.checkExceptions(expected, caught);
+
+	}
+
+	@Test
+	public void driverEditPersonalData() {
+		final Object testingData[][] = {
+			{
+				"personalData1", "Hacker1 hacker1surname", "statement1", "954909090", "http://www.gitHub.com/albacorare", "http://www.linkedIn.com/", null
+			},//1. All fine
+			{
+				"personalData1", "Hacker1 hacker1surname", "statement1", "954909090", "		", "http://www.linkedIn.com/", ConstraintViolationException.class
+			},//2. LinkGitHubProfile = blank
+			{
+				"personalData1", "Hacker1 hacker1surname", "statement1", "954909090", null, "http://www.linkedIn.com/", ConstraintViolationException.class
+			},//3. LinkGitHubProfile = null
+			{
+				"personalData1", "Hacker1 hacker1surname", "statement1", "954909090", "hppp:", "http://www.linkedIn.com/", ConstraintViolationException.class
+			},//4. LinkGitHubProfile = invalid url
+		};
+
+		for (int i = 0; i < testingData.length; i++)
+			this.templateEditPersonalData((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (String) testingData[i][3], (String) testingData[i][4], (String) testingData[i][5], (Class<?>) testingData[i][6]);
+	}
+	protected void templateEditPersonalData(final String dataBean, final String fullName, final String statement, final String phone, final String linkGitHubProfile, final String linkLinkedInProfile, final Class<?> expected) {
+
+		Class<?> caught;
+
+		caught = null;
+		try {
+
+			this.startTransaction();
+
+			final PersonalData data = this.personalDataService.findOne(super.getEntityId(dataBean));
+
+			data.setFullName(fullName);
+			data.setStatement(statement);
+			data.setPhone(phone);
+			data.setLinkGitHubProfile(linkGitHubProfile);
+			data.setLinkLinkedInProfile(linkLinkedInProfile);
+
+			this.personalDataService.save(data);
+			this.personalDataService.flush();
+
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+		}
 
 		this.rollbackTransaction();
 
