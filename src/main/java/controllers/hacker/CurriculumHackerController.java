@@ -173,6 +173,8 @@ public class CurriculumHackerController extends AbstractController {
 		result.addObject("curriculum", createCurriculumForm);
 		result.addObject("banner", banner);
 		result.addObject("messageError", messageCode);
+		final String countryCode = this.configurationService.findConfiguration().getCountryCode();
+		result.addObject("defaultCountry", countryCode);
 
 		return result;
 	}

@@ -126,6 +126,8 @@ public class PersonalDataHackerController {
 		result.addObject("personalData", form);
 		result.addObject("banner", banner);
 		result.addObject("messageError", messageCode);
+		final String countryCode = this.configurationService.findConfiguration().getCountryCode();
+		result.addObject("defaultCountry", countryCode);
 
 		return result;
 	}

@@ -16,7 +16,7 @@
 	
 	<acme:textbox path="statement" code="curriculum.statement" obligatory="true"/>
 	
-	<acme:textbox path="phone" code="curriculum.phone" obligatory="true"/>
+	<acme:textbox path="phone" code="curriculum.phone" id="phone" onblur="javascript: checkPhone();" obligatory="true"/>
 	
 	<acme:textbox path="linkGitHubProfile" code="curriculum.linkGitHubProfile" obligatory="true"/>
 	
@@ -27,3 +27,22 @@
 	<acme:cancel code="curriculum.back" url="curriculum/hacker/display.do?curriculumId=${personalData.curriculumId }" />
 
 </form:form>
+
+<script type="text/javascript">
+	function checkPhone() {
+		var target = document.getElementById("phone");
+		var input = target.value;
+		var regExp1 = new RegExp("(^[+]([1-9]{1,3})) ([(][1-9]{1,3}[)]) (\\d{4,}$)");
+		var regExp2 = new RegExp("(^[+]([1-9]{1,3})) (\\d{4,}$)");
+		var regExp3 = new RegExp("(^\\d{4}$)");
+
+		if ('${phone}' != input && regExp1.test(input) == false && regExp2.test(input) == false && regExp3.test(input) == false) {
+			if (confirm('<spring:message code="curriculum.phone.wrong" />') == false) {
+				return true;
+			
+			}
+		} else if ('${phone}' != input && regExp1.test(input) == false && regExp2.test(input) == false && regExp3.test(input) == true) {
+			target.value = '${defaultCountry}' + " " + input;
+		}
+	}
+</script>
