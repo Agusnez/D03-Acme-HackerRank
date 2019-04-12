@@ -24,6 +24,10 @@
 	
 	<acme:textbox code="configuration.finderResult" path="finderResult" obligatory="true"/>
 	
+	<acme:textbox code="configuration.welcomeMessageEs" path="welcomeMessageEs" obligatory="true"/>
+	
+	<acme:textbox code="configuration.welcomeMessage" path="welcomeMessage" obligatory="true"/>
+	
 	<acme:submit name="save" code="configuration.save" />
 	
 	<acme:cancel code="configuration.cancel" url="welcome/index.do" />
