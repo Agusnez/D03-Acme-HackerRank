@@ -70,6 +70,9 @@
 	</security:authorize> 
 	
 	
+	<security:authorize access="hasRole('HACKER')">
+		<acme:url href="application/hacker/create.do?positionId=${row.id }" code="position.application"/>
+	</security:authorize> 
 	
 	<jstl:if test="${requestURI == 'position/list.do'}">
 		<acme:url href="company/display.do?positionId=${row.id }" code="position.company.display"/>
