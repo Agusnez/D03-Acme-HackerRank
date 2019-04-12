@@ -9,6 +9,8 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
+<h3><spring:message code="message.list" /></h3>
+
 <display:table name="messages" id="row" requestURI="${requestURI }" pagesize="5">
 
 	<acme:column property="sender.name" titleKey="message.sender" value= "${row.sender.name}: "/>
@@ -30,6 +32,8 @@
 </display:table>
 
 
+<h3><spring:message code="message.listDelete" /></h3>
+
 <display:table name="messagesDELETE" id="row2" requestURI="${requestURI }" pagesize="5">
 
 	<acme:column property="sender.name" titleKey="message.sender" value= "${row2.sender.name}: "/>
@@ -49,6 +53,8 @@
 	</display:column>
 	
 </display:table>
+
+<h3><spring:message code="message.listBroadcast" /></h3>
 
 <display:table name="messagesSYSTEM" id="row3" requestURI="${requestURI }" pagesize="5">
 
