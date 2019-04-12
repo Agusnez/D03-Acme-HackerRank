@@ -7,7 +7,6 @@ import javax.persistence.ElementCollection;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
 
 public class MiscellaneousDataForm {
 
@@ -46,7 +45,6 @@ public class MiscellaneousDataForm {
 		this.text = text;
 	}
 
-	@NotEmpty
 	@ElementCollection
 	public Collection<String> getAttachments() {
 		return this.attachments;
