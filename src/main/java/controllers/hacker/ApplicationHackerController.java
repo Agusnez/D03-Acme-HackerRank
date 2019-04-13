@@ -2,6 +2,7 @@
 package controllers.hacker;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -72,7 +73,7 @@ public class ApplicationHackerController {
 				result.addObject("banner", banner);
 
 			} else
-				result = new ModelAndView("redirect:/list.do");
+				result = new ModelAndView("redirect:/application/hacker/list.do");
 		} else {
 			result = new ModelAndView("misc/notExist");
 			result.addObject("banner", banner);
@@ -137,7 +138,9 @@ public class ApplicationHackerController {
 
 		final Boolean exist = this.positionService.exist(positionId);
 
-		if (exist) {
+		final Date now = new Date(System.currentTimeMillis() - 1000);
+
+		if (exist && this.positionService.findOne(positionId).getDeadline().after(now)) {
 
 			applicationForm.setPosition(positionId);
 			result = this.createEditModelAndView(applicationForm);
@@ -165,7 +168,9 @@ public class ApplicationHackerController {
 			security = this.applicationService.securityHacker(applicationId);
 			final Application application = this.applicationService.findOne(applicationId);
 
-			if (security && (application.getStatus().equals("SUBMITTED") || application.getStatus().equals("PENDING"))) {
+			final Date now = new Date(System.currentTimeMillis() - 1000);
+
+			if (security && (application.getStatus().equals("SUBMITTED") || application.getStatus().equals("PENDING")) && application.getPosition().getDeadline().after(now)) {
 
 				final ApplicationForm applicationForm = this.applicationService.editForm(application);
 
@@ -191,7 +196,9 @@ public class ApplicationHackerController {
 
 		final Boolean security = this.applicationService.securityHacker(application.getId());
 
-		if (security && (application.getStatus().equals("SUBMITTED") || application.getStatus().equals("PENDING"))) {
+		final Date now = new Date(System.currentTimeMillis() - 1000);
+
+		if (security && (application.getStatus().equals("SUBMITTED") || application.getStatus().equals("PENDING")) && application.getPosition().getDeadline().after(now)) {
 
 			if (binding.hasErrors())
 				result = this.createEditModelAndView(applicationForm, null);

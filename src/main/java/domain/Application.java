@@ -82,6 +82,7 @@ public class Application extends DomainEntity {
 
 	@ManyToOne(optional = false)
 	@Valid
+	@NotNull
 	public Curriculum getCurriculum() {
 		return this.curriculum;
 	}

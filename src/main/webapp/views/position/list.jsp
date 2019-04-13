@@ -7,6 +7,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
+<jsp:useBean id="now" class="java.util.Date" />
 
 <jstl:if test="${!AmILogged }">
 <form:form action="position/listByFilter.do" modelAttribute="filterForm">
@@ -71,7 +72,11 @@
 	
 	
 	<security:authorize access="hasRole('HACKER')">
-		<acme:url href="application/hacker/create.do?positionId=${row.id }" code="position.application"/>
+		<display:column>
+			<jstl:if test="${row.deadline > now}">
+				<a href="application/hacker/create.do?positionId=${row.id }"> <spring:message code="position.application"/></a>
+			</jstl:if>
+		</display:column>
 	</security:authorize> 
 	
 	<jstl:if test="${requestURI == 'position/list.do'}">
