@@ -19,8 +19,8 @@
 <acme:display code="message.subject" property="${message1.subject} "/>
 	
 <acme:display code="message.body" property="${message1.body} "/>
-	
-<acme:display code="message.tags" property="${message1.tags} "/>
+
+<spring:message code="message.tags" />: <jstl:out value="${message1.tags}"></jstl:out><br>
 
 <acme:button name="delete" code="message.delete" onclick="javascript: relativeRedir('message/actor/delete.do?messageId=${message1.id}');" />
 

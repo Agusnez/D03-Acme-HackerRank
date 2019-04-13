@@ -104,8 +104,8 @@
 
 <display:table name="curriculum.miscellaneousDatas" pagesize="5" id="row3">
 
-	<acme:column property="attachments" titleKey="curriculum.attachments" value= "${row3.attachments} "/>
-	
+	<spring:message code="curriculum.attachments" />: <jstl:out value="${row3.attachments}"></jstl:out><br>
+
 	<security:authorize access="hasRole('HACKER')">
 		<acme:url href="miscellaneousData/hacker/edit.do?miscellaneousRecordId=${row3.id }" code="curriculum.edit"/>
 	</security:authorize>	

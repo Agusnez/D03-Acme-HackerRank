@@ -25,6 +25,8 @@
 		
 	<acme:column property="tags" titleKey="message.tags" value= "${row.tags}: "/>
 	
+	<spring:message code="message.tags" />: <jstl:out value="${row.tags}"></jstl:out><br>
+	
 	<display:column>
 			<a href="message/actor/display.do?messageId=${row.id}"><spring:message code="message.display"/></a>
 	
@@ -46,7 +48,7 @@
 	
 	<acme:column property="body" titleKey="message.body" value= "${row2.body}: "/>
 		
-	<acme:column property="tags" titleKey="message.tags" value= "${row2.tags}: "/>
+	<spring:message code="message.tags" />: <jstl:out value="${row2.tags}"></jstl:out><br>
 	
 	<display:column>
 			<a href="message/actor/display.do?messageId=${row2.id}"><spring:message code="message.display"/></a>
@@ -66,7 +68,7 @@
 	
 	<acme:column property="body" titleKey="message.body" value= "${row3.body}: "/>
 		
-	<acme:column property="tags" titleKey="message.tags" value= "${row3.tags}: "/>
+	<spring:message code="message.tags" />: <jstl:out value="${row3.tags}"></jstl:out><br>
 	
 	<display:column>
 			<a href="message/actor/display.do?messageId=${row3.id}"><spring:message code="message.display"/></a>

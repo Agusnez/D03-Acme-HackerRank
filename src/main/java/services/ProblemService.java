@@ -102,6 +102,7 @@ public class ProblemService {
 		//
 		//		Assert.isTrue(problemBBDD.getFinalMode() == false || problem.getId() == 0);
 
+		this.checkPictures(problem.getAttachments());
 		result = this.problemRepository.save(problem);
 
 		return result;
@@ -129,6 +130,15 @@ public class ProblemService {
 		if (!problems.isEmpty())
 			for (final Problem p : problems)
 				this.problemRepository.delete(p);
+	}
+
+	public void checkPictures(final Collection<String> attachments) {
+
+		for (final String url : attachments) {
+			final boolean checkUrl = url.matches("^http(s*)://(?:[a-zA-Z0-9-]+[\\.\\:])+[a-zA-Z0-9/]+$");
+			Assert.isTrue(checkUrl);
+
+		}
 	}
 
 	//Añadir una position a un problem
