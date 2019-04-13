@@ -2,6 +2,7 @@
 package controllers.company;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -58,7 +59,7 @@ public class ApplicationCompanyController {
 				result.addObject("banner", banner);
 
 			} else
-				result = new ModelAndView("redirect:/list.do");
+				result = new ModelAndView("redirect:/application/company/list.do");
 		} else {
 			result = new ModelAndView("misc/notExist");
 			result.addObject("banner", banner);
@@ -126,7 +127,9 @@ public class ApplicationCompanyController {
 
 			final Boolean security = this.applicationService.securityCompany(applicationId);
 
-			if (security && this.applicationService.findOne(applicationId).getStatus().equals("SUBMITTED")) {
+			final Date now = new Date(System.currentTimeMillis() - 1000);
+
+			if (security && this.applicationService.findOne(applicationId).getStatus().equals("SUBMITTED") && this.applicationService.findOne(applicationId).getPosition().getDeadline().after(now)) {
 
 				this.applicationService.accept(applicationId);
 
@@ -154,7 +157,9 @@ public class ApplicationCompanyController {
 
 			final Boolean security = this.applicationService.securityCompany(applicationId);
 
-			if (security && this.applicationService.findOne(applicationId).getStatus().equals("SUBMITTED")) {
+			final Date now = new Date(System.currentTimeMillis() - 1000);
+
+			if (security && this.applicationService.findOne(applicationId).getStatus().equals("SUBMITTED") && this.applicationService.findOne(applicationId).getPosition().getDeadline().after(now)) {
 
 				this.applicationService.reject(applicationId);
 
