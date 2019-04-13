@@ -74,19 +74,27 @@ public class FinderHackerController extends AbstractController {
 	public ModelAndView editFinder(Finder finder, final BindingResult binding) {
 		ModelAndView result;
 
-		finder = this.finderService.reconstruct(finder, binding);
+		final Finder finderSearched = this.finderService.findOne(finder.getId());
+		final String banner = this.configurationService.findConfiguration().getBanner();
 
-		if (binding.hasErrors())
-			result = this.createEditModelAndView(finder, null);
-		else
-			try {
-				this.finderService.save(finder);
-				result = new ModelAndView("redirect:find.do");
-			} catch (final Throwable oops) {
-				System.out.println(oops.getMessage());
-				result = this.createEditModelAndView(finder, "finder.commit.error");
+		if (finderSearched != null) {
+			finder = this.finderService.reconstruct(finder, binding);
 
-			}
+			if (binding.hasErrors())
+				result = this.createEditModelAndView(finder, null);
+			else
+				try {
+					this.finderService.save(finder);
+					result = new ModelAndView("redirect:find.do");
+				} catch (final Throwable oops) {
+					System.out.println(oops.getMessage());
+					result = this.createEditModelAndView(finder, "finder.commit.error");
+
+				}
+		} else {
+			result = new ModelAndView("misc/notExist");
+			result.addObject("banner", banner);
+		}
 
 		return result;
 	}

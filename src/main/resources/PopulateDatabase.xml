@@ -179,6 +179,20 @@
 		</property>
 		<property name="isNotBanned" value="true" />
 	</bean>
+	
+	<bean id="userAccount14" class="security.UserAccount">
+		<property name="username" value="hacker2" />
+		<property name="password" value="91af68b69a50a98dbc0800942540342c" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="HACKER" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotBanned" value="true" />
+	</bean>
+	
 
 	<!-- Other domain beans come here -->
 
@@ -318,6 +332,15 @@
 		<property name="expYear" value="2020" />
 		<property name="cvv" value="123" />
 	</bean>
+	
+	<bean id="creditCard16" class="domain.CreditCard">
+		<property name="holderName" value="hacker2" />
+		<property name="make" value="VISA" />
+		<property name="number" value="4490165237589999" />
+		<property name="expMonth" value="12" />
+		<property name="expYear" value="2020" />
+		<property name="cvv" value="123" />
+	</bean>
 
 	<!-- Administrators -->
 
@@ -360,6 +383,19 @@
 		<property name="creditCard" ref="creditCard3" />
 
 	</bean>
+	
+	<bean id="hacker2" class="domain.Hacker">
+		<property name="name" value="Hacker2" />
+		<property name="surnames" value="hacker2surname" />
+		<property name="vat" value="100003" />
+		<property name="photo" value="http://www.dropbox.com/hacker2/" />
+		<property name="email" value="hacker2@mail.com" />
+		<property name="phone" value="+34 676925236" />
+		<property name="address" value="hacker2 street" />
+		<property name="userAccount" ref="userAccount14" />
+		<property name="creditCard" ref="creditCard16" />
+
+	</bean>
 
 	<!-- Finders -->
 	<bean id="finder1" class="domain.Finder">
@@ -369,6 +405,19 @@
 		<property name="maximumDeadline" value="" />
 		<property name="lastUpdate" value="2019/04/07 13:13" />
 		<property name="hacker" ref="hacker1" />
+		<property name="positions">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="finder2" class="domain.Finder">
+		<property name="keyWord" value="" />
+		<property name="minimumSalary" value="" />
+		<property name="maximumSalary" value="" />
+		<property name="maximumDeadline" value="" />
+		<property name="lastUpdate" value="2019/04/07 13:13" />
+		<property name="hacker" ref="hacker2" />
 		<property name="positions">
 			<list>
 			</list>
@@ -535,6 +584,19 @@
 		<property name="finalMode" value="false" />
 		<property name="company" ref="company1" />
 	</bean>
+	
+	<bean id="position3" class="domain.Position">
+		<property name="ticker" value="firs-1534" />
+		<property name="title" value="position3" />
+		<property name="description" value="description position 3" />
+		<property name="deadline" value="2018/08/12" />
+		<property name="profile" value="devops" />
+		<property name="skills" value="jupyter" />
+		<property name="technologies" value="Server" />
+		<property name="offeredSalary" value="520.0" />
+		<property name="finalMode" value="true" />
+		<property name="company" ref="company1" />
+	</bean>
 
 	<!-- Problems -->
 
@@ -555,6 +617,7 @@
 		<property name="positions">
 			<list>
 				<ref bean="position1" />
+				<ref bean="position3" />
 			</list>
 		</property>
 	</bean>
@@ -574,6 +637,7 @@
 		<property name="positions">
 			<list>
 				<ref bean="position1" />
+				<ref bean="position3" />
 			</list>
 		</property>
 	</bean>
@@ -589,6 +653,25 @@
 		</property>
 		<property name="finalMode" value="false" />
 		<property name="company" ref="company1" />
+	</bean>
+	
+	<!-- Applications -->
+	<bean id="application1" class="domain.Application">
+		<property name="moment" value="2019/03/03" />
+		<property name="status" value="PENDING" />
+		<property name="answer" value=""/>
+		<property name="position" ref="position3"/>
+		<property name="curriculum" ref="curriculum1"/>
+		<property name="hacker" ref="hacker1"/>
+	</bean>
+	
+	<bean id="application2" class="domain.Application">
+		<property name="moment" value="2019/03/03" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="http://www.stackOverFlow.com"/>
+		<property name="position" ref="position3"/>
+		<property name="curriculum" ref="curriculum1"/>
+		<property name="hacker" ref="hacker1"/>
 	</bean>
 
 	<!-- Social profiles -->
@@ -762,5 +845,7 @@
 			value="Welcome to Acme Hacker Rank! We're IT hacker's favourite job marketplace!" />
 
 	</bean>
+	
+	
 
 </beans>
