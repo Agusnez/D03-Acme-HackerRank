@@ -312,12 +312,14 @@ public class ApplicationService {
 
 		if (applicationId != 0) {
 
-			final Application application = this.findOne(applicationId);
+			final Application application = this.applicationRepository.findOne(applicationId);
 
-			final Hacker owner = application.getHacker();
+			if (application != null) {
+				final Hacker owner = application.getHacker();
 
-			if (owner.equals(hacker))
-				res = true;
+				if (owner.equals(hacker))
+					res = true;
+			}
 
 		} else
 			res = true;
