@@ -257,4 +257,17 @@ public class CurriculumServiceTest extends AbstractTest {
 		super.checkExceptions(expected, caught);
 
 	}
+
+	/*
+	 * -------Coverage CurriculumService-------
+	 * 
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * save() = 100%
+	 * findOne() = 100%
+	 * create() = 100%
+	 * delete() = 92.9%
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 * Curriculum = 0%
+	 */
 }

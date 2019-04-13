@@ -29,6 +29,22 @@ public class PositionDataServiceTest extends AbstractTest {
 	private PositionDataService	positionDataService;
 
 
+	/*
+	 * ACME.HACKERRANK
+	 * a)(Level B) Requirement 17.1: An actor who is authenticated as an hacker must be able to: Manage his or her curricula: Create position data
+	 * 
+	 * b) Negative cases:
+	 * 2. Title = null
+	 * 3. Title = blank
+	 * 
+	 * c) Sentence coverage
+	 * -create(): 100%
+	 * -save(): 100%
+	 * 
+	 * d) Data coverage
+	 * -Position Data: 25%
+	 */
+
 	@Test
 	public void driverCreatePositionData() {
 		final Object testingData[][] = {
@@ -47,6 +63,7 @@ public class PositionDataServiceTest extends AbstractTest {
 			this.templateCreatePositionData((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], this.convertStringToDate((String) testingData[i][3]), this.convertStringToDate((String) testingData[i][4]),
 				(Class<?>) testingData[i][5]);
 	}
+
 	protected void templateCreatePositionData(final String username, final String title, final String description, final Date startDate, final Date endDate, final Class<?> expected) {
 
 		Class<?> caught;
@@ -80,6 +97,22 @@ public class PositionDataServiceTest extends AbstractTest {
 
 	}
 
+	/*
+	 * ACME.HACKERRANK
+	 * a)(Level B) Requirement 17.1: An actor who is authenticated as an hacker must be able to: Manage his or her curricula: Edit position data
+	 * 
+	 * b) Negative cases:
+	 * 2. Title = null
+	 * 3. Title = blank
+	 * 
+	 * c) Sentence coverage
+	 * -findOne(): 100%
+	 * -save(): 100%
+	 * 
+	 * d) Data coverage
+	 * -Position Data: 25%
+	 */
+
 	@Test
 	public void driverEditPositionData() {
 		final Object testingData[][] = {
@@ -98,6 +131,7 @@ public class PositionDataServiceTest extends AbstractTest {
 			this.templateEditPositionData((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], this.convertStringToDate((String) testingData[i][3]), this.convertStringToDate((String) testingData[i][4]),
 				(Class<?>) testingData[i][5]);
 	}
+
 	protected void templateEditPositionData(final String dataBean, final String title, final String description, final Date startDate, final Date endDate, final Class<?> expected) {
 
 		Class<?> caught;
@@ -128,6 +162,21 @@ public class PositionDataServiceTest extends AbstractTest {
 		super.checkExceptions(expected, caught);
 
 	}
+
+	/*
+	 * ACME.HACKERRANK
+	 * a)(Level B) Requirement 17.1: An actor who is authenticated as an hacker must be able to: Manage his or her curricula: Delete position data
+	 * 
+	 * b) Negative cases:
+	 * 2. Not Curriculum
+	 * 
+	 * c) Sentence coverage
+	 * -findOne(): 100%
+	 * -delete(): 92.9%
+	 * 
+	 * d) Data coverage
+	 * -Position Data: 0%
+	 */
 
 	@Test
 	public void driverDeletePositionData() {
@@ -167,6 +216,21 @@ public class PositionDataServiceTest extends AbstractTest {
 		super.checkExceptions(expected, caught);
 
 	}
+
+	/*
+	 * -------Coverage PositionDataService-------
+	 * 
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * save() = 100%
+	 * findOne() = 100%
+	 * create() = 100%
+	 * delete() = 92.9%
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 * Position data = 25%
+	 */
+
+	//Methods
 
 	protected Date convertStringToDate(final String dateString) {
 		Date date = null;
