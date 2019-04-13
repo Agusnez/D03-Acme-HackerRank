@@ -3,6 +3,7 @@ package controllers.administrator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,18 +40,33 @@ public class BroadcastAdministratorController extends AbstractController {
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@ModelAttribute(value = "message") final MessageForm message1, final BindingResult binding) {
-		final Message message2 = this.messageService.reconstruct(message1, binding);
-		ModelAndView result;
-		if (binding.hasErrors())
-			result = this.createEditModelAndView(message1);
-		else
-			try {
 
-				this.messageService.save(message2);
-				result = new ModelAndView("redirect:/welcome/index.do");
-			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(message1, "message.commit.error");
-			}
+		Message message2 = null;
+		ModelAndView result;
+
+		try {
+
+			message2 = this.messageService.reconstruct(message1, binding);
+
+			Assert.isTrue(message2.getId() == 0);
+
+			if (binding.hasErrors())
+				result = this.createEditModelAndView(message1);
+			else
+				try {
+
+					this.messageService.save(message2);
+					result = new ModelAndView("redirect:/welcome/index.do");
+				} catch (final Throwable oops) {
+					result = this.createEditModelAndView(message1, "message.commit.error");
+				}
+
+		} catch (final Exception e) {
+
+			result = this.createEditModelAndView(message1, "message.commit.error");
+
+		}
+
 		return result;
 	}
 

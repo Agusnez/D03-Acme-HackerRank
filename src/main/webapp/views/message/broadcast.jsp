@@ -13,7 +13,6 @@
 	
 	<form:hidden path="id" />
 	<form:hidden path="version" />
-	<form:hidden path="recipientId" />
 	<form:hidden path="senderId" />
 	
 	<acme:textbox code="message.subject" path="subject" obligatory="true"/>
@@ -26,9 +25,5 @@
 	
 	<acme:cancel code="message.cancel" url="welcome/index.do" />
 	
-	<jstl:if test="${message.id != 0}">
-	<acme:submit name="delete" code="message.delete" />
-	</jstl:if>	
-
 
 </form:form>  
