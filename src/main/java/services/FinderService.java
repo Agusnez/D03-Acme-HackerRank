@@ -62,7 +62,6 @@ public class FinderService {
 	public Finder findOne(final int finderId) {
 
 		final Finder result = this.finderRepository.findOne(finderId);
-		Assert.notNull(result);
 		return result;
 
 	}
