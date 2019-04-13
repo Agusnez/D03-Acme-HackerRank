@@ -117,22 +117,33 @@ public class MessageActorController extends AbstractController {
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@ModelAttribute(value = "message") final MessageForm message2, final BindingResult binding) {
-		final Message message3 = this.messageService.reconstruct(message2, binding);
 		ModelAndView result;
-		if (binding.hasErrors())
-			result = this.createEditModelAndView(message2);
-		else
-			try {
+		Message message3 = null;
+		try {
 
-				Assert.isTrue(message3.getSender() == this.actorService.findByPrincipal());
-				Assert.isTrue(message3.getRecipient() != this.actorService.findByPrincipal());
-				Assert.isTrue(message3.getId() == 0);
+			message3 = this.messageService.reconstruct(message2, binding);
 
-				this.messageService.save(message3);
-				result = new ModelAndView("redirect:/message/actor/list.do");
-			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(message2, "message.commit.error");
-			}
+			Assert.isTrue(message2.getId() == 0);
+
+			if (binding.hasErrors())
+				result = this.createEditModelAndView(message2);
+			else
+				try {
+
+					Assert.isTrue(message3.getSender() == this.actorService.findByPrincipal());
+					Assert.isTrue(message3.getRecipient() != this.actorService.findByPrincipal());
+					Assert.isTrue(message3.getId() == 0);
+
+					this.messageService.save(message3);
+					result = new ModelAndView("redirect:/message/actor/list.do");
+				} catch (final Throwable oops) {
+					result = this.createEditModelAndView(message2, "message.commit.error");
+				}
+
+		} catch (final Exception e) {
+			result = this.createEditModelAndView(message2, "message.commit.error");
+		}
+
 		return result;
 	}
 
