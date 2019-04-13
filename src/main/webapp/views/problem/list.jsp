@@ -20,7 +20,7 @@
 	
 	<acme:column property="hint" titleKey="problem.hint" value= "${row.hint}: "/>
 	
-	<acme:column property="attachments" titleKey="problem.attachments" value= "${row.attachments}: "/>
+	<spring:message code="problem.attachments" />: <jstl:out value="${row.attachments}"></jstl:out><br>
 	
 	<acme:column property="finalMode" titleKey="problem.finalMode" value= "${row.finalMode}: "/>
 	

@@ -80,6 +80,8 @@ public class MiscellaneousDataService {
 
 		MiscellaneousData result;
 
+		this.checkPictures(miscellaneous.getAttachments());
+
 		result = this.miscellaneousDataRepository.save(miscellaneous);
 
 		return result;
@@ -109,6 +111,15 @@ public class MiscellaneousDataService {
 
 		return result;
 
+	}
+
+	public void checkPictures(final Collection<String> attachments) {
+
+		for (final String url : attachments) {
+			final boolean checkUrl = url.matches("^http(s*)://(?:[a-zA-Z0-9-]+[\\.\\:])+[a-zA-Z0-9/]+$");
+			Assert.isTrue(checkUrl);
+
+		}
 	}
 
 	public Boolean exist(final int miscellaneousId) {
