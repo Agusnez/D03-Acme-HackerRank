@@ -25,6 +25,22 @@ public class PersonalDataServiceTest extends AbstractTest {
 	private PersonalDataService	personalDataService;
 
 
+	/*
+	 * ACME.HACKERRANK
+	 * a)(Level B) Requirement 17.1: An actor who is authenticated as an hacker must be able to: Manage his or her curricula: Create personal data
+	 * 
+	 * b) Negative cases:
+	 * 2. Statement = null
+	 * 3. Statement = blank
+	 * 
+	 * c) Sentence coverage
+	 * -create(): 100%
+	 * -save(): 100%
+	 * 
+	 * d) Data coverage
+	 * -Personal Data: 20%
+	 */
+
 	@Test
 	public void driverCreatePersonalData() {
 		final Object testingData[][] = {
@@ -42,6 +58,7 @@ public class PersonalDataServiceTest extends AbstractTest {
 		for (int i = 0; i < testingData.length; i++)
 			this.templateCreatePersonalData((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (String) testingData[i][3], (String) testingData[i][4], (String) testingData[i][5], (Class<?>) testingData[i][6]);
 	}
+
 	protected void templateCreatePersonalData(final String username, final String fullName, final String statement, final String phone, final String linkGitHubProfile, final String linkLinkedInProfile, final Class<?> expected) {
 
 		Class<?> caught;
@@ -76,6 +93,23 @@ public class PersonalDataServiceTest extends AbstractTest {
 
 	}
 
+	/*
+	 * ACME.HACKERRANK
+	 * a)(Level B) Requirement 17.1: An actor who is authenticated as an hacker must be able to: Manage his or her curricula: Edit personal data
+	 * 
+	 * b) Negative cases:
+	 * 2. LinkGitHubProfile = blank
+	 * 3. LinkGitHubProfile = null
+	 * 4. LinkGitHubProfile = invalid url
+	 * 
+	 * c) Sentence coverage
+	 * -findOne(): 100%
+	 * -save(): 100%
+	 * 
+	 * d) Data coverage
+	 * -Personal Data: 20%
+	 */
+
 	@Test
 	public void driverEditPersonalData() {
 		final Object testingData[][] = {
@@ -96,6 +130,7 @@ public class PersonalDataServiceTest extends AbstractTest {
 		for (int i = 0; i < testingData.length; i++)
 			this.templateEditPersonalData((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (String) testingData[i][3], (String) testingData[i][4], (String) testingData[i][5], (Class<?>) testingData[i][6]);
 	}
+
 	protected void templateEditPersonalData(final String dataBean, final String fullName, final String statement, final String phone, final String linkGitHubProfile, final String linkLinkedInProfile, final Class<?> expected) {
 
 		Class<?> caught;
@@ -125,5 +160,18 @@ public class PersonalDataServiceTest extends AbstractTest {
 		super.checkExceptions(expected, caught);
 
 	}
+
+	/*
+	 * -------Coverage PersonalDataService-------
+	 * 
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * save() = 100%
+	 * findOne() = 100%
+	 * create() = 100%
+	 * delete() = 92.9%
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 * Personal data = 25%
+	 */
 
 }

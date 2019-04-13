@@ -42,7 +42,7 @@ public class EducationDataServiceTest extends AbstractTest {
 	 * -save(): 100%
 	 * 
 	 * d) Data coverage
-	 * -Curriculum: 20%
+	 * -Education Data: 20%
 	 */
 
 	@Test
@@ -97,6 +97,23 @@ public class EducationDataServiceTest extends AbstractTest {
 
 	}
 
+	/*
+	 * ACME.HACKERRANK
+	 * a)(Level B) Requirement 17.1: An actor who is authenticated as an hacker must be able to: Manage his or her curricula: Edit education data
+	 * 
+	 * b) Negative cases:
+	 * 2. Mark < 0
+	 * 3. Mark > 10
+	 * 4. Mark = null
+	 * 
+	 * c) Sentence coverage
+	 * -findOne(): 100%
+	 * -save(): 100%
+	 * 
+	 * d) Data coverage
+	 * -Education Data: 20%
+	 */
+
 	@Test
 	public void driverEditEducationData() {
 		final Object testingData[][] = {
@@ -119,6 +136,7 @@ public class EducationDataServiceTest extends AbstractTest {
 			this.templateEditEducationData((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (Double) testingData[i][3], this.convertStringToDate((String) testingData[i][4]),
 				this.convertStringToDate((String) testingData[i][5]), (Class<?>) testingData[i][6]);
 	}
+
 	protected void templateEditEducationData(final String dataBean, final String degree, final String institution, final Double mark, final Date startDate, final Date endDate, final Class<?> expected) {
 
 		Class<?> caught;
@@ -148,6 +166,21 @@ public class EducationDataServiceTest extends AbstractTest {
 		super.checkExceptions(expected, caught);
 
 	}
+
+	/*
+	 * ACME.HACKERRANK
+	 * a)(Level B) Requirement 17.1: An actor who is authenticated as an hacker must be able to: Manage his or her curricula: Delete education data
+	 * 
+	 * b) Negative cases:
+	 * 2. Not Curriculum
+	 * 
+	 * c) Sentence coverage
+	 * -findOne(): 100%
+	 * -delete(): 92.9%
+	 * 
+	 * d) Data coverage
+	 * -Education Data: 0%
+	 */
 
 	@Test
 	public void driverDeleteEducationData() {
@@ -188,6 +221,20 @@ public class EducationDataServiceTest extends AbstractTest {
 
 	}
 
+	/*
+	 * -------Coverage EducationDataService-------
+	 * 
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * save() = 100%
+	 * findOne() = 100%
+	 * create() = 100%
+	 * delete() = 92.9%
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 * Education data = 40%
+	 */
+
+	//Methods
 	protected Date convertStringToDate(final String dateString) {
 		Date date = null;
 

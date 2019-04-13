@@ -28,6 +28,22 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 	private MiscellaneousDataService	miscellaneousDataService;
 
 
+	/*
+	 * ACME.HACKERRANK
+	 * a)(Level B) Requirement 17.1: An actor who is authenticated as an hacker must be able to: Manage his or her curricula: Create miscellaneous data
+	 * 
+	 * b) Negative cases:
+	 * 2. Text = null
+	 * 3. Text = blank
+	 * 
+	 * c) Sentence coverage
+	 * -create(): 100%
+	 * -save(): 100%
+	 * 
+	 * d) Data coverage
+	 * -Miscellaneous Data: 50%
+	 */
+
 	@Test
 	public void driverCreateMiscellanousData() {
 		final Object testingData[][] = {
@@ -45,6 +61,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 		for (int i = 0; i < testingData.length; i++)
 			this.templateCreateMiscellanousData((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (Class<?>) testingData[i][3]);
 	}
+
 	protected void templateCreateMiscellanousData(final String username, final String text, final String attachment, final Class<?> expected) {
 
 		Class<?> caught;
@@ -76,6 +93,22 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 		super.checkExceptions(expected, caught);
 
 	}
+
+	/*
+	 * ACME.HACKERRANK
+	 * a)(Level B) Requirement 17.1: An actor who is authenticated as an hacker must be able to: Manage his or her curricula: Edit miscellaneous data
+	 * 
+	 * b) Negative cases:
+	 * 2. Text = null
+	 * 3. Text = blank
+	 * 
+	 * c) Sentence coverage
+	 * -findOne(): 100%
+	 * -save(): 100%
+	 * 
+	 * d) Data coverage
+	 * -Miscellaneous Data: 50%
+	 */
 
 	@Test
 	public void driverEditMiscellanousData() {
@@ -121,6 +154,21 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 
 	}
 
+	/*
+	 * ACME.HACKERRANK
+	 * a)(Level B) Requirement 17.1: An actor who is authenticated as an hacker must be able to: Manage his or her curricula: Delete miscellaneous data
+	 * 
+	 * b) Negative cases:
+	 * 2. Not Curriculum
+	 * 
+	 * c) Sentence coverage
+	 * -findOne(): 100%
+	 * -delete(): 92.9%
+	 * 
+	 * d) Data coverage
+	 * -Miscellaneous Data: 0%
+	 */
+
 	@Test
 	public void driverDeleteMiscellanousData() {
 		final Object testingData[][] = {
@@ -159,4 +207,17 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 		super.checkExceptions(expected, caught);
 
 	}
+
+	/*
+	 * -------Coverage MiscellaneousDataService-------
+	 * 
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * save() = 100%
+	 * findOne() = 100%
+	 * create() = 100%
+	 * delete() = 92.9%
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 * Miscellaneous data = 50%
+	 */
 }

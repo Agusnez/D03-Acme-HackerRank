@@ -21,6 +21,20 @@ public class ActorServiceTest extends AbstractTest {
 	private ActorService	actorService;
 
 
+	/*
+	 * ACME.HACKERRANK
+	 * a)(Level A) Requirement 24.3: An actor who is authenticated as an administrator must be able to: Ban an actor
+	 * 
+	 * b) Negative cases:
+	 * 2. Ban yourself
+	 * 
+	 * c) Sentence coverage
+	 * -banOrUnBanActor(): 58.5%
+	 * 
+	 * d) Data coverage
+	 * -Actor: 0%
+	 */
+
 	@Test
 	public void driverBanActor() {
 
@@ -68,17 +82,17 @@ public class ActorServiceTest extends AbstractTest {
 	}
 
 	/*
-	 * ACME-MADRUGÁ
-	 * a)(Level A) Requirement 28.6: Administrator can unban an actor
+	 * ACME.HACKERRANK
+	 * a)(Level A) Requirement 24.4: An actor who is authenticated as an administrator must be able to: Unban an actor
 	 * 
 	 * b) Negative cases:
 	 * 2. Unban yourself
 	 * 
 	 * c) Sentence coverage
-	 * -banOrUnBanActor(): 2 passed cases / 6 total cases = 33,33333%
+	 * -banOrUnBanActor(): 56.1%
 	 * 
 	 * d) Data coverage
-	 * -Segment: 0 passed cases / 4 total cases = 0%
+	 * -Actor: 0%
 	 */
 
 	@Test
@@ -126,4 +140,14 @@ public class ActorServiceTest extends AbstractTest {
 
 		super.checkExceptions(expected, caught);
 	}
+
+	/*
+	 * -------Coverage ActorService-------
+	 * 
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * 
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 * Actor = 0%
+	 */
 }
