@@ -114,7 +114,11 @@
 
 <display:table name="curriculum.miscellaneousDatas" pagesize="5" id="row3">
 
-	<spring:message code="curriculum.attachments" />: <jstl:out value="${row3.attachments}"></jstl:out><br>
+	<spring:message code="curriculum.text" /> <jstl:out value="${row3.text}"></jstl:out><br>
+
+	<display:column>
+		<spring:message code="curriculum.attachments" /> <jstl:out value="${row3.attachments}"></jstl:out><br>
+	</display:column>
 
 	<security:authorize access="hasRole('HACKER')">
 		<jstl:if test="${curriculum.noCopy}">

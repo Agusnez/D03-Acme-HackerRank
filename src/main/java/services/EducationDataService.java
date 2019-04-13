@@ -166,7 +166,8 @@ public class EducationDataService {
 
 		final Curriculum c = this.curriculumService.findByEducationDataId(educationRecordId);
 
-		result.setCurriculumId(c.getId());
+		if (c != null)
+			result.setCurriculumId(c.getId());
 
 		return result;
 
