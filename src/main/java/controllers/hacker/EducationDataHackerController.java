@@ -83,7 +83,7 @@ public class EducationDataHackerController extends AbstractController {
 
 			final Curriculum c = this.curriculumService.findByEducationDataId(educationRecordId);
 
-			if (security && c.getNoCopy())
+			if (c != null && security && c.getNoCopy())
 				result = this.createEditModelAndView(form);
 			else
 				result = new ModelAndView("redirect:/welcome/index.do");

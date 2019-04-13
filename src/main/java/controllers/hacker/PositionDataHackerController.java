@@ -84,7 +84,7 @@ public class PositionDataHackerController extends AbstractController {
 
 			final Curriculum c = this.curriculumService.findByPositionDataId(positionRecordId);
 
-			if (c.getNoCopy() && security)
+			if (c != null && c.getNoCopy() && security)
 				result = this.createEditModelAndView(form);
 			else
 				result = new ModelAndView("redirect:/welcome/index.do");

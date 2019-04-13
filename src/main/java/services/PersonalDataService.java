@@ -163,7 +163,8 @@ public class PersonalDataService {
 
 		final Curriculum c = this.curriculumService.findByPersonalDataId(personalDataId);
 
-		result.setCurriculumId(c.getId());
+		if (c != null)
+			result.setCurriculumId(c.getId());
 
 		return result;
 	}

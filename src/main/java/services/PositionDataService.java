@@ -164,7 +164,8 @@ public class PositionDataService {
 
 		final Curriculum c = this.curriculumService.findByPositionDataId(positionRecordId);
 
-		result.setCurriculumId(c.getId());
+		if (c != null)
+			result.setCurriculumId(c.getId());
 
 		return result;
 
