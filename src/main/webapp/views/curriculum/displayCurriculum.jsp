@@ -116,8 +116,8 @@
 
 	<spring:message code="curriculum.text" /> <jstl:out value="${row3.text}"></jstl:out><br>
 
-	<display:column>
-		<spring:message code="curriculum.attachments" /> <jstl:out value="${row3.attachments}"></jstl:out><br>
+	<display:column titleKey="curriculum.attachments">
+		<jstl:out value="${row3.attachments}"></jstl:out><br>
 	</display:column>
 
 	<security:authorize access="hasRole('HACKER')">
