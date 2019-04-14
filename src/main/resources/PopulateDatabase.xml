@@ -589,7 +589,7 @@
 		<property name="ticker" value="firs-1534" />
 		<property name="title" value="position3" />
 		<property name="description" value="description position 3" />
-		<property name="deadline" value="2018/08/12" />
+		<property name="deadline" value="2019/08/12" />
 		<property name="profile" value="devops" />
 		<property name="skills" value="jupyter" />
 		<property name="technologies" value="Server" />
