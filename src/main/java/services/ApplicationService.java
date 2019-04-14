@@ -80,6 +80,12 @@ public class ApplicationService {
 
 		Assert.notNull(application);
 
+		final Actor actor = this.actorService.findByPrincipal();
+		Assert.notNull(actor);
+		final Authority authority = new Authority();
+		authority.setAuthority(Authority.HACKER);
+		Assert.isTrue((actor.getUserAccount().getAuthorities().contains(authority)));
+
 		Application res = null;
 
 		res = this.applicationRepository.save(application);

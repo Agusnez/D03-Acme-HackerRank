@@ -15,6 +15,7 @@ import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
 import domain.Application;
+import forms.ApplicationForm;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -57,7 +58,7 @@ public class ApplicationServiceTest extends AbstractTest {
 	public void driverListApplicationCompany() {
 		final Object testingData[][] = {
 			{
-				"company1", 2, null
+				"company1", 1, null
 			},//1. All fine
 			{
 				"company1", 0, IllegalArgumentException.class
@@ -274,7 +275,7 @@ public class ApplicationServiceTest extends AbstractTest {
 	public void driverListApplicationHacker() {
 		final Object testingData[][] = {
 			{
-				"hacker1", 2, null
+				"hacker1", 1, null
 			},//1. All fine
 			{
 				"hacker1", 0, IllegalArgumentException.class
@@ -386,37 +387,41 @@ public class ApplicationServiceTest extends AbstractTest {
 	 * -Application=0%
 	 */
 
-	//	@Test
-	//	public void driverCreateApplication() {
-	//		final Object testingData[][] = {
-	//			{
-	//				"hacker1", "answer", null
-	//			},//1. All fine
-	//			{
-	//				"company1", "answer", IllegalArgumentException.class
-	//			},//2. A hacker is not registered
-	//		};
-	//		for (int i = 0; i < testingData.length; i++)
-	//			this.templateCreateApplication((String) testingData[i][0], (String) testingData[i][1], (Class<?>) testingData[i][2]);
-	//
-	//	}
-	//	protected void templateCreateApplication(final String hacker, final String application, final Class<?> expected) {
-	//
-	//		Class<?> caught;
-	//
-	//		caught = null;
-	//		try {
-	//			this.startTransaction();
-	//			this.authenticate(hacker);
-	//
-	//		} catch (final Throwable oops) {
-	//			caught = oops.getClass();
-	//
-	//		}
-	//		this.unauthenticate();
-	//		super.checkExceptions(expected, caught);
-	//		this.rollbackTransaction();
-	//	}
+	@Test
+	public void driverCreateApplication() {
+		final Object testingData[][] = {
+			{
+				"hacker1", "answer", null
+			},//1. All fine
+			{
+				"company1", "answer", IllegalArgumentException.class
+			},//2. A hacker is not registered
+		};
+		for (int i = 0; i < testingData.length; i++)
+			this.templateCreateApplication((String) testingData[i][0], (String) testingData[i][1], (Class<?>) testingData[i][2]);
+
+	}
+	protected void templateCreateApplication(final String hacker, final String application, final Class<?> expected) {
+
+		Class<?> caught;
+
+		caught = null;
+		try {
+			this.startTransaction();
+			this.authenticate(hacker);
+
+			final ApplicationForm app = this.applicationService.create();
+
+			Assert.isTrue(app != null);
+
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+
+		}
+		this.unauthenticate();
+		super.checkExceptions(expected, caught);
+		this.rollbackTransaction();
+	}
 
 	/*
 	 * ACME.HACKERRANK
@@ -433,36 +438,42 @@ public class ApplicationServiceTest extends AbstractTest {
 	 * -
 	 */
 
-	//	@Test
-	//	public void driverEditApplication() {
-	//		final Object testingData[][] = {
-	//			{
-	//				"hacker1", "answer", null
-	//			},//1. All fine
-	//			{
-	//				"company1", "answer", IllegalArgumentException.class
-	//			},//2. A hacker is not registered
-	//		};
-	//		for (int i = 0; i < testingData.length; i++)
-	//			this.templateEditApplication((String) testingData[i][0], (String) testingData[i][1], (Class<?>) testingData[i][2]);
-	//
-	//	}
-	//	protected void templateEditApplication(final String hacker, final String application, final Class<?> expected) {
-	//
-	//		Class<?> caught;
-	//
-	//		caught = null;
-	//		try {
-	//			this.startTransaction();
-	//			this.authenticate(hacker);
-	//
-	//		} catch (final Throwable oops) {
-	//			caught = oops.getClass();
-	//
-	//		}
-	//		this.unauthenticate();
-	//		super.checkExceptions(expected, caught);
-	//		this.rollbackTransaction();
-	//	}
+	@Test
+	public void driverEditApplication() {
+		final Object testingData[][] = {
+			{
+				"hacker1", "answer", null
+			},//1. All fine
+			{
+				"company1", "answer", IllegalArgumentException.class
+			},//2. A hacker is not registered
+		};
+		for (int i = 0; i < testingData.length; i++)
+			this.templateEditApplication((String) testingData[i][0], (String) testingData[i][1], (Class<?>) testingData[i][2]);
+
+	}
+	protected void templateEditApplication(final String hacker, final String answer, final Class<?> expected) {
+
+		Class<?> caught;
+
+		caught = null;
+		try {
+			this.startTransaction();
+			this.authenticate(hacker);
+
+			final Application app = this.applicationService.findOne(super.getEntityId("application1"));
+
+			app.setAnswer(answer);
+
+			final Application saved = this.applicationService.save(app);
+
+		} catch (final Throwable oops) {
+			caught = oops.getClass();
+
+		}
+		this.unauthenticate();
+		super.checkExceptions(expected, caught);
+		this.rollbackTransaction();
+	}
 
 }
