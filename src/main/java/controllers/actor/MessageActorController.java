@@ -120,7 +120,7 @@ public class MessageActorController extends AbstractController {
 		ModelAndView result;
 		Message message3 = null;
 		try {
-
+			Assert.isTrue(message2.getRecipientId() != 0);
 			message3 = this.messageService.reconstruct(message2, binding);
 
 			Assert.isTrue(message2.getId() == 0);

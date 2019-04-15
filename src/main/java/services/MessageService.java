@@ -131,7 +131,7 @@ public class MessageService {
 		if (spam1 || spam2 || spam3)
 			message.setSpam(true);
 
-		if (message.getTags().equals("SYSTEM")) {
+		if (message.getTags().contains("SYSTEM")) {
 
 			final Actor actor = this.actorService.findByPrincipal();
 			Assert.notNull(actor);
