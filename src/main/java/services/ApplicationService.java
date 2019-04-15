@@ -80,6 +80,12 @@ public class ApplicationService {
 
 		Assert.notNull(application);
 
+		final Actor actor = this.actorService.findByPrincipal();
+		Assert.notNull(actor);
+		final Authority authority = new Authority();
+		authority.setAuthority(Authority.HACKER);
+		Assert.isTrue((actor.getUserAccount().getAuthorities().contains(authority)));
+
 		Application res = null;
 
 		res = this.applicationRepository.save(application);
@@ -312,12 +318,14 @@ public class ApplicationService {
 
 		if (applicationId != 0) {
 
-			final Application application = this.findOne(applicationId);
+			final Application application = this.applicationRepository.findOne(applicationId);
 
-			final Hacker owner = application.getHacker();
+			if (application != null) {
+				final Hacker owner = application.getHacker();
 
-			if (owner.equals(hacker))
-				res = true;
+				if (owner.equals(hacker))
+					res = true;
+			}
 
 		} else
 			res = true;

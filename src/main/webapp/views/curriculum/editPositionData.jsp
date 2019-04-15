@@ -18,9 +18,9 @@
 	
 	<acme:textbox code="curriculum.description" path="description" obligatory="true"/>
 	
-	<acme:textbox code="curriculum.startDate" path="startDate" obligatory="true"/>
+	<acme:textbox code="curriculum.startDate" path="startDate" placeholder="yyyy/mm/dd" obligatory="true"/>
 	
-	<acme:textbox code="curriculum.endDate" path="endDate"/>
+	<acme:textbox code="curriculum.endDate" path="endDate" placeholder="yyyy/mm/dd"/>
 	
 	<acme:submit name="save" code="curriculum.save" />
 	

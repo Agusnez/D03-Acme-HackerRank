@@ -191,14 +191,17 @@ public class ApplicationHackerController {
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@ModelAttribute(value = "application") final ApplicationForm applicationForm, final BindingResult binding) {
 		ModelAndView result;
+		Application application = null;
 
-		final Application application = this.applicationService.reconstruct(applicationForm, binding);
+		final Boolean security = this.applicationService.securityHacker(applicationForm.getId());
+		final Boolean exist = this.positionService.exist(applicationForm.getPosition());
 
-		final Boolean security = this.applicationService.securityHacker(application.getId());
+		if (security && exist)
+			application = this.applicationService.reconstruct(applicationForm, binding);
 
 		final Date now = new Date(System.currentTimeMillis() - 1000);
 
-		if (security && (application.getStatus().equals("SUBMITTED") || application.getStatus().equals("PENDING")) && application.getPosition().getDeadline().after(now)) {
+		if (exist && security && (application.getStatus().equals("SUBMITTED") || application.getStatus().equals("PENDING")) && application.getPosition().getDeadline().after(now) && application.getPosition().getFinalMode()) {
 
 			if (binding.hasErrors())
 				result = this.createEditModelAndView(applicationForm, null);
@@ -223,7 +226,6 @@ public class ApplicationHackerController {
 
 		return result;
 	}
-
 	// Ancillary methods
 
 	protected ModelAndView createEditModelAndView(final ApplicationForm applicationForm) {

@@ -84,7 +84,7 @@ public class MiscellaneousDataHackerController extends AbstractController {
 
 			final Curriculum c = this.curriculumService.findByMiscellaneousDataId(miscellaneousRecordId);
 
-			if (c.getNoCopy() && security)
+			if (c != null && c.getNoCopy() && security)
 				result = this.createEditModelAndView(form);
 			else
 				result = new ModelAndView("redirect:/welcome/index.do");
