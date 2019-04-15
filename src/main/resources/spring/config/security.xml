@@ -49,10 +49,6 @@
 
 
 
-		<security:intercept-url pattern="/termsAndConditions/show.do" access="permitAll" />
-
-
-
 		<!-- Todo el mundo -->
 		<security:intercept-url pattern="/company/list.do" access="permitAll" />
 		<security:intercept-url pattern="/position/list.do" access="permitAll" />
