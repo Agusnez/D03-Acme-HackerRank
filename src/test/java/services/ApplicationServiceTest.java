@@ -45,10 +45,10 @@ public class ApplicationServiceTest extends AbstractTest {
 	 * 2. The number is incorrect
 	 * 
 	 * c) Sentence coverage
-	 * findAllAcceptedByCompany()=
-	 * findAllRejectedByCompany()=
-	 * findAllSubmittedByCompany()=
-	 * findAllPendingByCompany()=
+	 * findAllAcceptedByCompany()=100%
+	 * findAllRejectedByCompany()=100%
+	 * findAllSubmittedByCompany()=100%
+	 * findAllPendingByCompany()=100%
 	 * 
 	 * d) Data coverage
 	 * -Application=0%
@@ -58,7 +58,7 @@ public class ApplicationServiceTest extends AbstractTest {
 	public void driverListApplicationCompany() {
 		final Object testingData[][] = {
 			{
-				"company1", 1, null
+				"company1", 2, null
 			},//1. All fine
 			{
 				"company1", 0, IllegalArgumentException.class
@@ -115,7 +115,7 @@ public class ApplicationServiceTest extends AbstractTest {
 	 * 2.Application not exist
 	 * 
 	 * c) Sentence coverage
-	 * -findOne()=
+	 * -findOne()=100%
 	 * 
 	 * d) Data coverage
 	 * -Application=0%
@@ -163,7 +163,8 @@ public class ApplicationServiceTest extends AbstractTest {
 	 * //2. A company is not registered
 	 * 
 	 * c) Sentence coverage
-	 * -accept()=
+	 * -accept()=100%
+	 * -findOne()=100%
 	 * 
 	 * d) Data coverage
 	 * -Application=0%
@@ -212,7 +213,8 @@ public class ApplicationServiceTest extends AbstractTest {
 	 * //2. A company is not registered
 	 * 
 	 * c) Sentence coverage
-	 * -reject()=
+	 * -reject()=100%
+	 * -findOne()=100%
 	 * 
 	 * d) Data coverage
 	 * -Application=0%
@@ -262,10 +264,10 @@ public class ApplicationServiceTest extends AbstractTest {
 	 * 2. The number is incorrect
 	 * 
 	 * c) Sentence coverage
-	 * findAllAcceptedByHacker()=
-	 * findAllRejectedByHacker()=
-	 * findAllSubmittedByHacker()=
-	 * findAllPendingByHacker()=
+	 * findAllAcceptedByHacker()=100%
+	 * findAllRejectedByHacker()=100%
+	 * findAllSubmittedByHacker()=100%
+	 * findAllPendingByHacker()=100%
 	 * 
 	 * d) Data coverage
 	 * -Application=0%
@@ -275,7 +277,7 @@ public class ApplicationServiceTest extends AbstractTest {
 	public void driverListApplicationHacker() {
 		final Object testingData[][] = {
 			{
-				"hacker1", 1, null
+				"hacker1", 2, null
 			},//1. All fine
 			{
 				"hacker1", 0, IllegalArgumentException.class
@@ -331,7 +333,7 @@ public class ApplicationServiceTest extends AbstractTest {
 	 * 2.Application not exist
 	 * 
 	 * c) Sentence coverage
-	 * -findOne()=
+	 * -findOne()=100%
 	 * 
 	 * d) Data coverage
 	 * -Application=0%
@@ -377,11 +379,11 @@ public class ApplicationServiceTest extends AbstractTest {
 	 * Create an application
 	 * 
 	 * b) Negative cases:
-	 * 
+	 * 2. A hacker is not registered
 	 * 
 	 * c) Sentence coverage
-	 * -create()=
-	 * -save()=
+	 * -create()=100%
+	 * 
 	 * 
 	 * d) Data coverage
 	 * -Application=0%
@@ -429,13 +431,14 @@ public class ApplicationServiceTest extends AbstractTest {
 	 * Update an application.
 	 * 
 	 * b) Negative cases:
-	 * 
+	 * 2. A hacker is not registered
 	 * 
 	 * c) Sentence coverage
-	 * 
+	 * findOne()=100%
+	 * save()=100%
 	 * 
 	 * d) Data coverage
-	 * -
+	 * --Application=0%
 	 */
 
 	@Test
