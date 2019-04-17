@@ -606,7 +606,7 @@
 		<property name="hint" value="Consult stackOverFlow" />
 		<property name="attachments">
 			<list>
-				<value>http://www.dropbox.com/problem 1/</value>
+				<value>http://www.dropbox.com/problem1/</value>
 				<value>http://www.stackOverFlow.com/</value>
 				<value>http://www.programadoresenapuros.com/</value>
 				<value>http://www.wuolah.com/</value>
@@ -628,7 +628,7 @@
 		<property name="hint" value="Consult 3mcSchools" />
 		<property name="attachments">
 			<list>
-				<value>http://www.dropbox.com/problem 3/</value>
+				<value>http://www.dropbox.com/problem3/</value>
 				<value>http://www.stackOverFlow.com/</value>
 			</list>
 		</property>
@@ -648,7 +648,7 @@
 		<property name="hint" value="Hint muy bonito" />
 		<property name="attachments">
 			<list>
-				<value>http://www.dropbox.com/problem 4/</value>
+				<value>http://www.dropbox.com/problem4/</value>
 			</list>
 		</property>
 		<property name="finalMode" value="false" />
