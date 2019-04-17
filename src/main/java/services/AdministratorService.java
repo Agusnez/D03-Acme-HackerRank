@@ -134,9 +134,6 @@ public class AdministratorService {
 			Assert.isTrue(administrator.getCreditCard().getExpYear() - 1900 >= now.getYear());
 			Assert.isTrue(administrator.getCreditCard().getExpMonth() - 1 >= now.getMonth() || administrator.getCreditCard().getExpYear() - 1900 > now.getYear());
 
-			this.actorService.checkEmail(administrator.getEmail(), false);
-			this.actorService.checkPhone(administrator.getPhone());
-
 			final String phone = this.actorService.checkPhone(administrator.getPhone());
 
 			result = this.administratorRepository.save(administrator);
@@ -273,23 +270,23 @@ public class AdministratorService {
 	public Double avgOfPositionsPerCompany() {
 		return this.administratorRepository.avgOfPositionsPerCompany();
 	}
-	
+
 	public Integer minOfPositionsPerCompany() {
 		return this.administratorRepository.minPositionOfCompany();
 	}
-	
+
 	public Integer maxOfPositionsPerCompany() {
 		return this.administratorRepository.maxPositionOfCompany();
 	}
-	
+
 	public Double stdOfPositionsPerCompany() {
 		return this.administratorRepository.stdOfPositionsPerCompany();
 	}
-	
+
 	public Double avgOfApplicationsPerHacker() {
 		return this.administratorRepository.avgOfApplicationsPerHacker();
 	}
-	
+
 	public Integer minOfApplicationsPerHacker() {
 		return this.administratorRepository.minApplicationsOfHacker();
 	}
@@ -297,11 +294,11 @@ public class AdministratorService {
 	public Integer maxOfApplicationsPerHacker() {
 		return this.administratorRepository.maxApplicationsOfHacker();
 	}
-	
+
 	public Double stdOfApplicationsPerHacker() {
 		return this.administratorRepository.stdOfApplicationsPerHacker();
 	}
-	
+
 	public List<String> topCompaniesWithMorePositions() {
 		final List<String> result = this.administratorRepository.topCompaniesWithMorePositions();
 

@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ActorService;
 import services.ConfigurationService;
 import services.MessageService;
 import controllers.AbstractController;
+import domain.Actor;
 import domain.Message;
 import forms.MessageForm;
 
@@ -25,6 +27,9 @@ public class BroadcastAdministratorController extends AbstractController {
 
 	@Autowired
 	private ConfigurationService	configurationService;
+
+	@Autowired
+	private ActorService			actorService;
 
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -46,9 +51,15 @@ public class BroadcastAdministratorController extends AbstractController {
 
 		try {
 
+			Assert.isTrue(message1.getTags().contains("SYSTEM"));
+
 			message2 = this.messageService.reconstruct(message1, binding);
 
 			Assert.isTrue(message2.getId() == 0);
+
+			final Actor login = this.actorService.findByPrincipal();
+
+			Assert.isTrue(message2.getSender().getId() == login.getId());
 
 			if (binding.hasErrors())
 				result = this.createEditModelAndView(message1);

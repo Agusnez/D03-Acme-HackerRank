@@ -35,6 +35,9 @@
 <jstl:if test="${!problem.finalMode }">
 	<acme:button name="edit" code="problem.edit" onclick="javascript: relativeRedir('problem/company/edit.do?problemId=${problem.id }');" />
 </jstl:if>
+<jstl:if test="${problem.finalMode }">
+		<acme:button onclick="javascript: relativeRedir('problem/company/addPosition.do?problemId=${problem.id }');" name="add" code="problem.add" />
+</jstl:if>
 
 <acme:button name="back" code="problem.back" onclick="javascript: relativeRedir('problem/company/list.do');" />
 
