@@ -41,7 +41,10 @@
 
 <fieldset>
 <legend><spring:message code="dashboard.statssalaries" /></legend>
-<p><spring:message code="dashboard.statssalaries.all" />: ${statsS}</p>
+<p><spring:message code="dashboard.statssalaries.avg" />: ${avgS}</p>
+<p><spring:message code="dashboard.statssalaries.min" />: ${minS}</p>
+<p><spring:message code="dashboard.statssalaries.max" />: ${maxS}</p>
+<p><spring:message code="dashboard.statssalaries.std" />: ${stdS}</p>
 <br/>
 </fieldset>
 <br/>
@@ -49,5 +52,36 @@
 <legend><spring:message code="dashboard.positions" /></legend>
 <p><spring:message code="dashboard.positions.best" />: ${bP.title} </p>
 <p><spring:message code="dashboard.positions.worst" />: ${wP.title} </p>
+<br/>
+</fieldset>
+
+<br/>
+<fieldset>
+<legend><spring:message code="dashboard.statscv" /></legend>
+<p><spring:message code="dashboard.statscv.avg" />: ${avgS}</p>
+<p><spring:message code="dashboard.statscv.min" />: ${minCH}</p>
+<p><spring:message code="dashboard.statscv.max" />: ${maxCH}</p>
+<p><spring:message code="dashboard.statscv.std" />: ${stdCH}</p>
+<br/>
+</fieldset>
+
+<br/>
+<fieldset>
+<legend><spring:message code="dashboard.statsfinder" /></legend>
+<p><spring:message code="dashboard.statsfinder.avg" />: ${avgRF}</p>
+<p><spring:message code="dashboard.statsfinder.min" />: ${minRF}</p>
+<p><spring:message code="dashboard.statsfinder.max" />: ${maxRF}</p>
+<p><spring:message code="dashboard.statsfinder.std" />: ${stdRF}</p>
+<br/>
+</fieldset>
+
+<br/>
+<fieldset>
+<legend><spring:message code="dashboard.statsfinder" /></legend>
+<p><spring:message code="dashboard.statsfinder.avg" />: ${avgRF}</p>
+<p><spring:message code="dashboard.statsfinder.min" />: ${minRF}</p>
+<p><spring:message code="dashboard.statsfinder.max" />: ${maxRF}</p>
+<p><spring:message code="dashboard.statsfinder.std" />: ${stdRF}</p>
+<p><spring:message code="dashboard.statsfinder.ratio" />: ${ratioEF}</p>
 <br/>
 </fieldset>

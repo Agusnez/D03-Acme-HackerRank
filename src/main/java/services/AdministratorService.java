@@ -310,8 +310,20 @@ public class AdministratorService {
 		return result;
 	}
 
-	public List<Double> statsSalaries() {
-		return this.administratorRepository.statsSalaries();
+	public Double avgSalaries() {
+		return this.administratorRepository.avgSalaries();
+	}
+	
+	public Integer minSalary() {
+		return this.administratorRepository.minSalary();
+	}
+	
+	public Integer maxSalary() {
+		return this.administratorRepository.maxSalary();
+	}
+	
+	public Double stdSalaries() {
+		return this.administratorRepository.stdSalaries();
 	}
 
 	public Position findBestPosition() {
@@ -326,5 +338,41 @@ public class AdministratorService {
 
 		return this.positionService.findOne(id);
 	}
+	
+	public Integer minNumberOfCurriculaPerHacker() {
+		return this.administratorRepository.minNumberOfCurriculaPerHacker();
+	}
+	
+	public Integer maxNumberOfCurriculaPerHacker() {
+		return this.administratorRepository.maxNumberOfCurriculaPerHacker();
+	}
+	
+	public Double avgNumberOfCurriculaPerHacker() {
+		return this.administratorRepository.avgNumberOfCurriculaPerHacker();
+	}
+	
+	public Double stdNumberOfCurriculaPerHacker() {
+		return this.administratorRepository.stdNumberOfCurriculaPerHacker();
+	}
 
+	public Integer minNumberOfResultsInFinders() {
+		return this.administratorRepository.minNumberOfResultsInFinders();
+	}
+	
+	public Integer maxNumberOfResultsInFinders() {
+		return this.administratorRepository.maxNumberOfResultsInFinders();
+	}
+	
+	public Double avgNumberOfResultsInFinders() {
+		return this.administratorRepository.avgNumberOfResultsInFinders();
+	}
+	
+	public Double stdNumberOfResultsInFinders() {
+		return this.administratorRepository.stdNumberOfCurriculaPerHacker();
+	}
+	
+	public Double ratioEmptyNotEmptyFinders() {
+		return this.administratorRepository.ratioEmptyNotEmptyFinders();
+	}
+	
 }

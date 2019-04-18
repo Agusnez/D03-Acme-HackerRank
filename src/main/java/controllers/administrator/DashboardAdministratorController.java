@@ -50,11 +50,26 @@ public class DashboardAdministratorController extends AbstractController {
 		
 		final List<String> topH = this.administratorService.topHackersWithMoreApplications();
 		
-		final List<Double> statsSList = this.administratorService.statsSalaries();
-		final String statsS = Arrays.toString(statsSList.toArray());
+		
+		final Double avgS = this.administratorService.avgSalaries();
+		final Integer minS = this.administratorService.minSalary();
+		final Integer maxS = this.administratorService.maxSalary();
+		final Double stdS = this.administratorService.stdSalaries();
 		
 		final Position bP = this.administratorService.findBestPosition();
 		final Position wP = this.administratorService.findWorstPosition();
+		
+		final Integer minCH = this.administratorService.minNumberOfCurriculaPerHacker();
+		final Integer maxCH = this.administratorService.maxNumberOfCurriculaPerHacker();
+		final Double avgCH = this.administratorService.avgNumberOfCurriculaPerHacker();
+		final Double stdCH = this.administratorService.stdNumberOfCurriculaPerHacker();
+		
+		final Double stdRF = this.administratorService.stdNumberOfResultsInFinders();
+		final Integer minRF = this.administratorService.minNumberOfResultsInFinders();
+		final Integer maxRF = this.administratorService.maxNumberOfResultsInFinders();
+		final Double avgRF = this.administratorService.avgNumberOfResultsInFinders();
+		
+		final Double ratioEF = this.administratorService.ratioEmptyNotEmptyFinders();
 		
 
 		result = new ModelAndView("administrator/dashboard");
@@ -68,9 +83,21 @@ public class DashboardAdministratorController extends AbstractController {
 		result.addObject("stdAH",stdAH);
 		result.addObject("topC", topC);
 		result.addObject("topH", topH);
-		result.addObject("statsS", statsS);
+		result.addObject("avgS", avgS);
+		result.addObject("stdS", stdS);
+		result.addObject("minS", minS);
+		result.addObject("maxS", maxS);
 		result.addObject("bP", bP);
 		result.addObject("wP", wP);
+		result.addObject("minCH", minCH);
+		result.addObject("maxCH", maxCH);
+		result.addObject("avgCH", avgCH);
+		result.addObject("stdCH", stdCH);
+		result.addObject("avgRF", avgRF);
+		result.addObject("minRF", minRF);
+		result.addObject("maxRF", maxRF);
+		result.addObject("stdRF", stdRF);
+		result.addObject("ratioEF", ratioEF);
 		result.addObject("banner", banner);
 
 		return result;

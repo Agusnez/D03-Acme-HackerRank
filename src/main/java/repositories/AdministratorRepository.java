@@ -69,10 +69,17 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 										+ "ORDER BY COUNT(*) DESC limit 3")
 	List<String> topHackerWithMoreApplications();
 	
+	@Query(nativeQuery = true, value= "select avg(p.offered_salary) from `position` p")
+	Double avgSalaries();
 	
-	//TODO: 
-	@Query(nativeQuery = true, value= "select avg(p.offered_salary), min(p.offered_salary), max(p.offered_salary), std(p.offered_salary) from `position` p")
-	List<Double> statsSalaries();
+	@Query(nativeQuery = true, value= "select min(p.offered_salary) from `position` p")
+	Integer minSalary();
+	
+	@Query(nativeQuery = true, value= "select max(p.offered_salary) from `position` p")
+	Integer maxSalary();
+	
+	@Query(nativeQuery = true, value= "select std(p.offered_salary) from `position` p")
+	Double stdSalaries();
 	
 	@Query(nativeQuery = true, value= "select p.id from `position` p order by offered_salary asc limit 1")
 	int findWorstPosition();
@@ -80,5 +87,61 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 	@Query(nativeQuery = true, value= "select p.id from `position` p order by offered_salary desc limit 1")
 	int findBestPosition();
 	
+	@Query(nativeQuery = true, value= "select min(count) from (select count(*) as Count " + 
+			"from curricula c join hacker h on (h.id = c.hacker) " + 
+			 "group by hacker) as counts")
+	Integer minNumberOfCurriculaPerHacker();
+	
+	@Query(nativeQuery = true, value= "select max(count) from (select count(*) as Coun t " + 
+				"from curricula c join hacker h on (h.id = c.hacker) " + 
+				"group by hacker) as counts")
+	Integer maxNumberOfCurriculaPerHacker();
+	
+	@Query(nativeQuery = true, value= "select avg(count) from (select count(*) as Count " + 
+				"from curricula c join hacker h on (h.id = c.hacker)" + 
+					"group by hacker) as counts")
+	Double avgNumberOfCurriculaPerHacker();
+	
+	@Query(nativeQuery = true, value= "select std(count) from (select count(*) as Count " + 
+				"from curricula c join hacker h on (h.id = c.hacker) " + 
+				"group by hacker) as counts")
+	Double stdNumberOfCurriculaPerHacker();
+	
+	@Query(nativeQuery = true, value= "select min(count) from (" + 
+				" select f.id, count(fp.finder) as Count from finder f" + 
+				" left join finder_positions fp on (f.id = fp.finder)" + 
+				" group by f.id" + 
+				" ) as counts")	
+	Integer minNumberOfResultsInFinders();
+	
+	@Query(nativeQuery = true, value= "select max(count) from (" + 
+				" select f.id, count(fp.finder) as Count from finder f" + 
+				" left join finder_positions fp on (f.id = fp.finder)" + 
+				" group by f.id" + 
+				" ) as counts")	
+	Integer maxNumberOfResultsInFinders();
+	
+	@Query(nativeQuery = true, value= "select avg(count) from (" + 
+				" select f.id, count(fp.finder) as Count from finder f" + 
+				" left join finder_positions fp on (f.id = fp.finder)" + 
+				" group by f.id" + 
+				" ) as counts")	
+	Double avgNumberOfResultsInFinders();
+	
+	@Query(nativeQuery = true, value= "select std(count) from (" + 
+				" select f.id, count(fp.finder) as Count from finder f" + 
+				" left join finder_positions fp on (f.id = fp.finder)" + 
+				" group by f.id" + 
+				" ) as counts")	
+	Double stdNumberOfResultsInFinders();
+	
+	
+	@Query(nativeQuery = true, value = "select sum(case when Count < 1 then 1 else 0 end)/sum(case when Count > 0 then 1 else 0 end)  n from ( " + 
+				"select f.id, count(fp.finder) as Count from finder f " + 
+				"left join finder_positions fp on (f.id = fp.finder) " + 
+				"group by f.id " + 
+				") as counts")
+	Double ratioEmptyNotEmptyFinders();
+		
 	
 }
