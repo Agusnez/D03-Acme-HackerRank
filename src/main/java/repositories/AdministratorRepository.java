@@ -88,22 +88,22 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 	int findBestPosition();
 	
 	@Query(nativeQuery = true, value= "select min(count) from (select count(*) as Count " + 
-			"from curricula c join hacker h on (h.id = c.hacker) " + 
-			 "group by hacker) as counts")
+									"from curriculum c join hacker h on (h.id = c.hacker) " + 
+			 						"group by hacker) as counts")
 	Integer minNumberOfCurriculaPerHacker();
 	
-	@Query(nativeQuery = true, value= "select max(count) from (select count(*) as Coun t " + 
-				"from curricula c join hacker h on (h.id = c.hacker) " + 
+	@Query(nativeQuery = true, value= "select max(count) from (select count(*) as Count " + 
+				"from curriculum c join hacker h on (h.id = c.hacker) " + 
 				"group by hacker) as counts")
 	Integer maxNumberOfCurriculaPerHacker();
 	
 	@Query(nativeQuery = true, value= "select avg(count) from (select count(*) as Count " + 
-				"from curricula c join hacker h on (h.id = c.hacker)" + 
+				"from curriculum c join hacker h on (h.id = c.hacker)" + 
 					"group by hacker) as counts")
 	Double avgNumberOfCurriculaPerHacker();
 	
 	@Query(nativeQuery = true, value= "select std(count) from (select count(*) as Count " + 
-				"from curricula c join hacker h on (h.id = c.hacker) " + 
+				"from curriculum c join hacker h on (h.id = c.hacker) " + 
 				"group by hacker) as counts")
 	Double stdNumberOfCurriculaPerHacker();
 	
@@ -136,7 +136,7 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 	Double stdNumberOfResultsInFinders();
 	
 	
-	@Query(nativeQuery = true, value = "select sum(case when Count < 1 then 1 else 0 end)/sum(case when Count > 0 then 1 else 0 end)  n from ( " + 
+	@Query(nativeQuery = true, value = "select sum(case when Count > 0 then 1 else 0 end)/sum(case when Count < 1 then 1 else 0 end) n from ( " + 
 				"select f.id, count(fp.finder) as Count from finder f " + 
 				"left join finder_positions fp on (f.id = fp.finder) " + 
 				"group by f.id " + 
