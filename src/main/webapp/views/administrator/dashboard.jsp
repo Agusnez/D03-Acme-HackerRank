@@ -85,3 +85,7 @@
 <p><spring:message code="dashboard.statsfinder.ratio" />: ${ratioEF}</p>
 <br/>
 </fieldset>
+<br/>
+
+<acme:button name="back" code="back" onclick="javascript: relativeRedir('welcome/index.do');" />
+

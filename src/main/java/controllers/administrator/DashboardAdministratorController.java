@@ -44,7 +44,7 @@ public class DashboardAdministratorController extends AbstractController {
 		final Double avgAH = this.administratorService.avgOfApplicationsPerHacker();
 		final Integer minAH = this.administratorService.minOfApplicationsPerHacker();
 		final Integer maxAH = this.administratorService.maxOfApplicationsPerHacker();
-		final Double stdAH = this.administratorService.avgOfApplicationsPerHacker();
+		final Double stdAH = this.administratorService.stdOfApplicationsPerHacker();
 		
 		final List<String> topC = this.administratorService.topCompaniesWithMorePositions();
 		
