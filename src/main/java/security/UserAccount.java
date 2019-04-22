@@ -26,6 +26,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.Assert;
 
@@ -63,6 +64,7 @@ public class UserAccount extends DomainEntity implements UserDetails {
 	@Size(min = 5, max = 32)
 	@Column(unique = true)
 	@Override
+	@SafeHtml
 	public String getUsername() {
 		return this.username;
 	}
@@ -73,6 +75,7 @@ public class UserAccount extends DomainEntity implements UserDetails {
 
 	@Size(min = 5, max = 32)
 	@Override
+	@SafeHtml
 	public String getPassword() {
 		return this.password;
 	}

@@ -47,7 +47,7 @@ public class Curriculum extends DomainEntity {
 	}
 
 	@Valid
-	@OneToOne(optional = true, cascade = CascadeType.ALL)
+	@OneToOne(optional = false, cascade = CascadeType.ALL)
 	public PersonalData getPersonalData() {
 		return this.personalData;
 	}
