@@ -51,6 +51,12 @@ public class PositionService {
 	private ApplicationService	applicationService;
 
 	@Autowired
+	private HackerService		hackerService;
+
+	@Autowired
+	private MessageService		messageService;
+
+	@Autowired
 	private Validator			validator;
 
 
@@ -117,6 +123,10 @@ public class PositionService {
 		final Date currentMoment = new Date(System.currentTimeMillis() - 1000);
 		Assert.isTrue(position.getDeadline().after(currentMoment));
 		result = this.positionRepository.save(position);
+
+		if (position.getFinalMode())
+			this.messageService.containsNewPosition(result);
+
 		return result;
 
 	}
