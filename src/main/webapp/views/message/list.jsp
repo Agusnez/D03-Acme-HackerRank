@@ -25,10 +25,6 @@
 		
 	<acme:column property="tags" titleKey="message.tags" value= "${row.tags}: "/>
 	
-	<display:column titleKey="message.tags">
-	<jstl:out value="${row.tags}"></jstl:out><br>
-	</display:column>
-	
 	<display:column>
 			<a href="message/actor/display.do?messageId=${row.id}"><spring:message code="message.display"/></a>
 	

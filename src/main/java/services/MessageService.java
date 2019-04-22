@@ -14,6 +14,7 @@ import org.springframework.validation.Validator;
 import repositories.MessageRepository;
 import security.Authority;
 import domain.Actor;
+import domain.Application;
 import domain.Finder;
 import domain.Hacker;
 import domain.Message;
@@ -155,6 +156,9 @@ public class MessageService {
 			} else
 				message.setTags(null);
 		}
+
+		if (message.getTags().contains("NOTIFICATION"))
+			message.setTags(null);
 
 		result = this.messageRepository.save(message);
 
@@ -321,6 +325,20 @@ public class MessageService {
 
 	public void flush() {
 		this.messageRepository.flush();
+	}
+
+	public void notificationApplicationStatus(final Application application) {
+
+		final Message message = this.create3();
+
+		message.setRecipient(application.getHacker());
+		message.setSubject("Applicatiion/Solicitud");
+		message.setBody("One of your applcations has been changed" + "\n" + "Una de sus solicitudes ha sido modificada");
+
+		message.setTags("NOTIFICATION");
+
+		this.save2(message);
+
 	}
 
 	public void containsNewPosition(final Position position) {
