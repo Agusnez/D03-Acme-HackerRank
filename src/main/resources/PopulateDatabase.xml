@@ -1550,6 +1550,8 @@
 			</list>
 		</property>
 	</bean>
+	
+	<!-- Messages -->
 
 	<!-- Configuration -->
 	<bean id="configuration" class="domain.Configuration">
