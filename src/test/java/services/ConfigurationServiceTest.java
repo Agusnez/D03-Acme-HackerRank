@@ -25,6 +25,14 @@ public class ConfigurationServiceTest extends AbstractTest {
 	private ConfigurationService	configurationService;
 
 
+	/*
+	 * ----CALCULATE COVERAGE----
+	 * The previous delivery, we calculate it manually. In this one instead we are using the plugin called EclEmma,
+	 * with which we can automatically calculate the percentage.
+	 * 
+	 * Each of the test have their result just before them, and the coverage of the complete test is shown at the end of the document.
+	 */
+
 	@Test
 	public void EditConfigurationTest() {
 		final Object testingData[][] = {
@@ -77,4 +85,14 @@ public class ConfigurationServiceTest extends AbstractTest {
 
 		this.checkExceptions(expected, caught);
 	}
+
+	/*
+	 * -------Coverage ConfigurationService-------
+	 * 
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * ConfigurationService = 22,6%
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 * Configuration = 100%
+	 */
 }

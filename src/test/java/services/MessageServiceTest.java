@@ -28,6 +28,14 @@ public class MessageServiceTest extends AbstractTest {
 	private ActorService	actorService;
 
 
+	/*
+	 * ----CALCULATE COVERAGE----
+	 * The previous delivery, we calculate it manually. In this one instead we are using the plugin called EclEmma,
+	 * with which we can automatically calculate the percentage.
+	 * 
+	 * Each of the test have their result just before them, and the coverage of the complete test is shown at the end of the document.
+	 */
+
 	@Test
 	public void driverExchangeMessage() {
 		final Object testingData[][] = {
@@ -74,5 +82,15 @@ public class MessageServiceTest extends AbstractTest {
 		this.rollbackTransaction();
 
 	}
+
+	/*
+	 * -------Coverage MessageService-------
+	 * 
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * MessageService = 14.1%
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 * Message = 100%
+	 */
 
 }

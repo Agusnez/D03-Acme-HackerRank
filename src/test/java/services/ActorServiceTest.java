@@ -22,6 +22,14 @@ public class ActorServiceTest extends AbstractTest {
 
 
 	/*
+	 * ----CALCULATE COVERAGE----
+	 * The previous delivery, we calculate it manually. In this one instead we are using the plugin called EclEmma,
+	 * with which we can automatically calculate the percentage.
+	 * 
+	 * Each of the test have their result just before them, and the coverage of the complete test is shown at the end of the document.
+	 */
+
+	/*
 	 * ACME.HACKERRANK
 	 * a)(Level A) Requirement 24.3: An actor who is authenticated as an administrator must be able to: Ban an actor
 	 * 
@@ -145,9 +153,9 @@ public class ActorServiceTest extends AbstractTest {
 	 * -------Coverage ActorService-------
 	 * 
 	 * ----TOTAL SENTENCE COVERAGE:
-	 * 
+	 * ActorService = 25,8%
 	 * 
 	 * ----TOTAL DATA COVERAGE:
-	 * Actor = 0%
+	 * Actor = 100%
 	 */
 }

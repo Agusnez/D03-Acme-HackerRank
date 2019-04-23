@@ -30,11 +30,11 @@ public class PositionServiceTest extends AbstractTest {
 
 
 	/*
-	 * ----CALCULATE SENTENCE COVERAGE----
-	 */
-
-	/*
-	 * ----CALCULATE DATA COVERAGE----
+	 * ----CALCULATE COVERAGE----
+	 * The previous delivery, we calculate it manually. In this one instead we are using the plugin called EclEmma,
+	 * with which we can automatically calculate the percentage.
+	 * 
+	 * Each of the test have their result just before them, and the coverage of the complete test is shown at the end of the document.
 	 */
 
 	/*
@@ -410,4 +410,13 @@ public class PositionServiceTest extends AbstractTest {
 
 		super.checkExceptions(expected, caught);
 	}
+
+	/*
+	 * -------Coverage PositionService
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * PositionService = 54%
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 * Position = 100%
+	 */
 }
