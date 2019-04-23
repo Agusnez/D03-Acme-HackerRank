@@ -117,40 +117,52 @@ public class ProblemCompanyController extends AbstractController {
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@ModelAttribute(value = "problem") Problem problem, final BindingResult binding) {
 		ModelAndView result;
+		final String banner = this.configurationService.findConfiguration().getBanner();
 
-		problem = this.problemService.reconstruct(problem, binding);
+		if (problem.getId() != 0 && this.problemService.findOne(problem.getId()) == null) {
+			result = new ModelAndView("misc/notExist");
+			result.addObject("banner", banner);
+		} else {
 
-		if (binding.hasErrors())
-			result = this.createEditModelAndView(problem, null);
-		else
-			try {
-				this.problemService.save(problem);
-				result = new ModelAndView("redirect:list.do");
-			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(problem, "problem.commit.error");
+			problem = this.problemService.reconstruct(problem, binding);
 
-			}
+			if (binding.hasErrors())
+				result = this.createEditModelAndView(problem, null);
+			else
+				try {
+					this.problemService.save(problem);
+					result = new ModelAndView("redirect:list.do");
+				} catch (final Throwable oops) {
+					result = this.createEditModelAndView(problem, "problem.commit.error");
 
+				}
+		}
 		return result;
 	}
-
 	//Delete--------------------------------------------------------------------------------
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
 	public ModelAndView delete(Problem problem, final BindingResult binding) {
 		ModelAndView result;
 
-		problem = this.problemService.findOne(problem.getId());
-		final Company company = this.companyService.findByPrincipal();
+		final String banner = this.configurationService.findConfiguration().getBanner();
+		if (this.problemService.findOne(problem.getId()) == null) {
+			result = new ModelAndView("misc/notExist");
+			result.addObject("banner", banner);
+		} else {
+			problem = this.problemService.findOne(problem.getId());
+			final Company company = this.companyService.findByPrincipal();
 
-		if (problem.getCompany().getId() == company.getId() && problem.getFinalMode() == false)
-			try {
-				this.problemService.delete(problem);
-				result = new ModelAndView("redirect:list.do");
-			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(problem, "problem.commit.error");
-			}
-		else
-			result = new ModelAndView("redirect:/welcome/index.do");
+			if (problem.getCompany().getId() == company.getId() && problem.getFinalMode() == false)
+				try {
+					this.problemService.delete(problem);
+					result = new ModelAndView("redirect:list.do");
+				} catch (final Throwable oops) {
+					result = this.createEditModelAndView(problem, "problem.commit.error");
+				}
+			else
+				result = new ModelAndView("redirect:/welcome/index.do");
+
+		}
 		return result;
 	}
 

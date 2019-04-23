@@ -269,6 +269,7 @@ public class PositionService {
 
 			position.setCompany(positionNew.getCompany());
 			position.setTicker(positionNew.getTicker());
+			position.setFinalMode(false);
 
 			this.validator.validate(position, binding);
 
