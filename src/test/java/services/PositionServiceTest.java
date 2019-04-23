@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Date;
 
 import javax.transaction.Transactional;
+import javax.validation.ConstraintViolationException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,11 +31,11 @@ public class PositionServiceTest extends AbstractTest {
 
 
 	/*
-	 * ----CALCULATE SENTENCE COVERAGE----
-	 */
-
-	/*
-	 * ----CALCULATE DATA COVERAGE----
+	 * ----CALCULATE COVERAGE----
+	 * The previous delivery, we calculate it manually. In this one instead we are using the plugin called EclEmma,
+	 * with which we can automatically calculate the percentage.
+	 * 
+	 * Each of the test have their result just before them, and the coverage of the complete test is shown at the end of the document.
 	 */
 
 	/*
@@ -42,7 +43,11 @@ public class PositionServiceTest extends AbstractTest {
 	 * a)(Level C) Requirement 9.1: An actor who is authenticated as a company must be able to: Manage their positions
 	 * 
 	 * b) Negative cases:
-	 * 2. The deadline is past
+	 * 6. The deadline is past
+	 * 7. The title is null
+	 * 8. The description is null
+	 * 9. The deadline is null
+	 * 10. The profile is null
 	 * 
 	 * c) Sentence coverage
 	 * -create(): 100%
@@ -57,8 +62,32 @@ public class PositionServiceTest extends AbstractTest {
 				"title", "description", "2019/12/12", "profile", "skills", "technologies", 12.0, "company1", null
 			},//1. All fine
 			{
+				"problemas varios", "problemas servicios web", "2019/09/12", "desarrollador javascript", "mecanografía rápida", "pc 8 gb ram", 500.0, "company2", null
+			},//2. All fine
+			{
+				"testing", "jmeter's problems", "2019/09/12", "jtester", "knowledge about http errors", "pc with jmeter", 1000.0, "company3", null
+			},//3. All fine
+			{
+				"UML", "I need to make a uml diagram", "2019/09/12", "software engineering", "astah skills", "pc with astah", 1000.0, "company4", null
+			},//4. All fine
+			{
+				"Organisation group", "I need to coordinate a DP group", "2019/09/12", "Project Manager", "Knowledge about resolve group's conflicts", "trello,drive,skype", 1000.0, "company5", null
+			},//5. All fine
+			{
 				"title", "description", "2018/12/12", "profile", "skills", "technologies", 12.0, "company1", IllegalArgumentException.class
-			},//2. The deadline is past
+			},//6. The deadline is past
+			{
+				null, "description", "2019/12/12", "profile", "skills", "technologies", 12.0, "company1", ConstraintViolationException.class
+			},//7. The title is null
+			{
+				"title", null, "2018/12/12", "profile", "skills", "technologies", 12.0, "company1", IllegalArgumentException.class
+			},//8. The description is null
+			{
+				"title", "description", null, "profile", "skills", "technologies", 12.0, "company1", NullPointerException.class
+			},//9. The deadline is null
+			{
+				"title", "description", "2019/12/12", null, "skills", "technologies", 12.0, "company1", ConstraintViolationException.class
+			},//10. The profile is null
 
 		};
 
@@ -66,7 +95,6 @@ public class PositionServiceTest extends AbstractTest {
 			this.templateCreatePosition((String) testingData[i][0], (String) testingData[i][1], (String) testingData[i][2], (String) testingData[i][3], (String) testingData[i][4], (String) testingData[i][5], (Double) testingData[i][6],
 				(String) testingData[i][7], (Class<?>) testingData[i][8]);
 	}
-
 	protected void templateCreatePosition(final String title, final String description, final String deadline, final String profile, final String skills, final String technologies, final Double offeredSalary, final String username, final Class<?> expected) {
 		Class<?> caught;
 
@@ -96,8 +124,9 @@ public class PositionServiceTest extends AbstractTest {
 
 		}
 		this.unauthenticate();
-		super.checkExceptions(expected, caught);
 		this.rollbackTransaction();
+		super.checkExceptions(expected, caught);
+
 	}
 
 	/*
@@ -160,8 +189,9 @@ public class PositionServiceTest extends AbstractTest {
 
 		}
 		this.unauthenticate();
-		super.checkExceptions(expected, caught);
 		this.rollbackTransaction();
+		super.checkExceptions(expected, caught);
+
 	}
 
 	/*
@@ -209,8 +239,8 @@ public class PositionServiceTest extends AbstractTest {
 
 		}
 		this.unauthenticate();
-		super.checkExceptions(expected, caught);
 		this.rollbackTransaction();
+		super.checkExceptions(expected, caught);
 
 	}
 
@@ -230,7 +260,7 @@ public class PositionServiceTest extends AbstractTest {
 	public void driverListPosition() {
 		final Object testingData[][] = {
 			{
-				"company1", 2, null
+				"company1", 3, null
 			},//1. All fine
 			{
 				"company1", 0, IllegalArgumentException.class
@@ -256,8 +286,9 @@ public class PositionServiceTest extends AbstractTest {
 			caught = oops.getClass();
 
 		}
-		super.checkExceptions(expected, caught);
 		this.rollbackTransaction();
+		super.checkExceptions(expected, caught);
+
 	}
 
 	/*
@@ -277,13 +308,13 @@ public class PositionServiceTest extends AbstractTest {
 	public void driverListPositionAvailable() {
 		final Object testingData[][] = {
 			{
-				"company1", 1, null
+				"company1", 2, null
 			},//1. Company lists the positions available (All fine)
 			{
-				null, 1, null
+				null, 2, null
 			},//2. Not registered actor lists the positions available (All fine) 
 			{
-				"company1", 2, IllegalArgumentException.class
+				"company1", 1, IllegalArgumentException.class
 			},//3. Company lists the positions available, but the number of positions is incorrect
 		};
 
@@ -307,9 +338,11 @@ public class PositionServiceTest extends AbstractTest {
 			caught = oops.getClass();
 
 		}
-		this.unauthenticate();
-		super.checkExceptions(expected, caught);
+		if (username != null)
+			this.unauthenticate();
 		this.rollbackTransaction();
+		super.checkExceptions(expected, caught);
+
 	}
 
 	/*
@@ -329,10 +362,10 @@ public class PositionServiceTest extends AbstractTest {
 	public void driverListPositionAvailableByCompany() {
 		final Object testingData[][] = {
 			{
-				"company1", 1, "company1", null
+				"company1", 2, "company1", null
 			},//1. Company lists the positions available by a company (All fine)
 			{
-				null, 1, "company1", null
+				null, 2, "company1", null
 			},//2. Not registered actor lists the positions available by a company (All fine) 
 			{
 				"company1", 28, "company1", IllegalArgumentException.class
@@ -359,9 +392,11 @@ public class PositionServiceTest extends AbstractTest {
 			caught = oops.getClass();
 
 		}
-		this.unauthenticate();
-		super.checkExceptions(expected, caught);
+		if (username != null)
+			this.unauthenticate();
 		this.rollbackTransaction();
+		super.checkExceptions(expected, caught);
+
 	}
 
 	/*
@@ -410,4 +445,13 @@ public class PositionServiceTest extends AbstractTest {
 
 		super.checkExceptions(expected, caught);
 	}
+
+	/*
+	 * -------Coverage PositionService
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * PositionService = 54%
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 * Position = 100%
+	 */
 }

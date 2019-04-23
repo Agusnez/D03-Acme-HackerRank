@@ -28,10 +28,15 @@
 <%@ attribute name="value2" required="true" %>
 <%@	attribute name="label1" required="true" %>
 <%@ attribute name="label2" required="true" %>
+<%@ attribute name="readonly" required="false" %>
 
 
 
 <%-- Definition --%>
+
+<jstl:if test="${readonly == null}">
+	<jstl:set var="readonly" value="false" />
+</jstl:if>
 
 <form:label path="${path}">
 		<spring:message code="${code}" />

@@ -45,6 +45,9 @@ public class ApplicationService {
 	private CompanyService			companyService;
 
 	@Autowired
+	private MessageService			messageService;
+
+	@Autowired
 	private Validator				validator;
 
 
@@ -108,6 +111,8 @@ public class ApplicationService {
 		res.setStatus("ACCEPTED");
 		this.applicationRepository.save(res);
 
+		this.messageService.notificationApplicationStatus(res);
+
 		return res;
 	}
 
@@ -124,6 +129,8 @@ public class ApplicationService {
 		res = this.findOne(applicationId);
 		res.setStatus("REJECTED");
 		this.applicationRepository.save(res);
+
+		this.messageService.notificationApplicationStatus(res);
 
 		return res;
 	}

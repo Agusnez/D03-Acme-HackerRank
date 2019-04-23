@@ -14,6 +14,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -29,6 +30,7 @@ public class Curriculum extends DomainEntity {
 
 
 	@NotBlank
+	@SafeHtml
 	public String getTicker() {
 		return this.ticker;
 	}
@@ -47,7 +49,7 @@ public class Curriculum extends DomainEntity {
 	}
 
 	@Valid
-	@OneToOne(optional = true, cascade = CascadeType.ALL)
+	@OneToOne(optional = false, cascade = CascadeType.ALL)
 	public PersonalData getPersonalData() {
 		return this.personalData;
 	}

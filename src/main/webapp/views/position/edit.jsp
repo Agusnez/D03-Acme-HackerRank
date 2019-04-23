@@ -30,10 +30,10 @@
 	<acme:textbox path="technologies" code="position.technologies" obligatory="true"/>
 	
 	<acme:textbox path="offeredSalary" code="position.offeredSalary" obligatory="true"/>
-	  	
-  	<acme:choose path="finalMode" code="problem.finalMode" value1="false" value2="true" label1="No Final" label2="Final" />
 	
-	<br>
+	<acme:choose path="finalMode" code="problem.finalMode" value1="false" value2="true" label1="No Final" label2="Final"/>
+	
+	<h4><spring:message code="position.finalMode.explanation"/></h4>
 	
 	<acme:submit name="save" code="position.save" />	
 

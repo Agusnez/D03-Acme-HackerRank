@@ -24,7 +24,7 @@
 	
 	<acme:textbox path="hint" code="problem.hint" obligatory="false"/>
 	
-	<acme:textbox path="attachments" code="problem.attachments" obligatory="true"/>
+	<acme:textbox path="attachments" size="100" code="problem.attachments" obligatory="true" placeholder="http(s)://www.___.__,http(s)://www.___.__,..."/>
 	  	
   	<acme:choose path="finalMode" code="problem.finalMode" value1="true" value2="false" label1="Final" label2="No Final" />
 	

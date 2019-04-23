@@ -115,20 +115,25 @@ public class PositionCompanyController extends AbstractController {
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@ModelAttribute(value = "position") Position position, final BindingResult binding) {
 		ModelAndView result;
+		final String banner = this.configurationService.findConfiguration().getBanner();
 
-		position = this.positionService.reconstruct(position, binding);
+		if (position.getId() != 0 && this.positionService.findOne(position.getId()) == null) {
+			result = new ModelAndView("misc/notExist");
+			result.addObject("banner", banner);
+		} else {
+			position = this.positionService.reconstruct(position, binding);
 
-		if (binding.hasErrors())
-			result = this.createEditModelAndView(position, null);
-		else
-			try {
-				this.positionService.save(position);
-				result = new ModelAndView("redirect:list.do");
-			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(position, "position.commit.error");
+			if (binding.hasErrors())
+				result = this.createEditModelAndView(position, null);
+			else
+				try {
+					this.positionService.save(position);
+					result = new ModelAndView("redirect:list.do");
+				} catch (final Throwable oops) {
+					result = this.createEditModelAndView(position, "position.commit.error");
 
-			}
-
+				}
+		}
 		return result;
 	}
 
@@ -136,18 +141,25 @@ public class PositionCompanyController extends AbstractController {
 	public ModelAndView delete(Position position, final BindingResult binding) {
 		ModelAndView result;
 
-		position = this.positionService.findOne(position.getId());
-		final Boolean security = this.positionService.positionCompanySecurity(position.getId());
+		final String banner = this.configurationService.findConfiguration().getBanner();
 
-		if (security)
-			try {
-				this.positionService.delete(position);
-				result = new ModelAndView("redirect:list.do");
-			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(position, "position.commit.error");
-			}
-		else
-			result = new ModelAndView("redirect:/welcome/index.do");
+		if (position.getId() != 0 && this.positionService.findOne(position.getId()) == null) {
+			result = new ModelAndView("misc/notExist");
+			result.addObject("banner", banner);
+		} else {
+			position = this.positionService.findOne(position.getId());
+			final Boolean security = this.positionService.positionCompanySecurity(position.getId());
+
+			if (security)
+				try {
+					this.positionService.delete(position);
+					result = new ModelAndView("redirect:list.do");
+				} catch (final Throwable oops) {
+					result = this.createEditModelAndView(position, "position.commit.error");
+				}
+			else
+				result = new ModelAndView("redirect:/welcome/index.do");
+		}
 		return result;
 	}
 

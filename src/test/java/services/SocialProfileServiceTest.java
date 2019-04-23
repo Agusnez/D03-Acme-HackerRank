@@ -28,6 +28,14 @@ public class SocialProfileServiceTest extends AbstractTest {
 	private SocialProfileService	socialProfileService;
 
 
+	/*
+	 * ----CALCULATE COVERAGE----
+	 * The previous delivery, we calculate it manually. In this one instead we are using the plugin called EclEmma,
+	 * with which we can automatically calculate the percentage.
+	 * 
+	 * Each of the test have their result just before them, and the coverage of the complete test is shown at the end of the document.
+	 */
+
 	@Test
 	public void driverListSocialProfiles() {
 		final Object testingData[][] = {
@@ -60,13 +68,13 @@ public class SocialProfileServiceTest extends AbstractTest {
 			final SocialProfile socialProfile = this.socialProfileService.findOne(socialProfileIdInteger);
 
 			final Collection<SocialProfile> socialProfiles = this.socialProfileService.findAllByActor(companyIdInteger);
-			super.unauthenticate();
+
 			Assert.isTrue(socialProfiles.contains(socialProfile));
 
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 		}
-
+		super.unauthenticate();
 		super.checkExceptions(expected, caught);
 
 	}
@@ -119,12 +127,13 @@ public class SocialProfileServiceTest extends AbstractTest {
 			this.socialProfileService.flush();
 
 			final Collection<SocialProfile> socialProfiles = this.socialProfileService.findAll();
-			super.unauthenticate();
 			Assert.isTrue(socialProfiles.contains(saved));
 
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 		}
+		if (actor != null)
+			super.unauthenticate();
 		super.checkExceptions(expected, caught);
 
 	}
@@ -163,13 +172,13 @@ public class SocialProfileServiceTest extends AbstractTest {
 			this.socialProfileService.flush();
 
 			final Collection<SocialProfile> socialProfiles = this.socialProfileService.findAll();
-			super.unauthenticate();
+
 			Assert.isTrue(socialProfiles.contains(saved));
 
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 		}
-
+		super.unauthenticate();
 		super.checkExceptions(expected, caught);
 		//this.rollbackTransaction();
 
@@ -207,15 +216,22 @@ public class SocialProfileServiceTest extends AbstractTest {
 			this.socialProfileService.flush();
 
 			final Collection<SocialProfile> socialProfiles = this.socialProfileService.findAll();
-			super.unauthenticate();
 			Assert.isTrue(!socialProfiles.contains(socialProfile));
 
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 		}
-
+		super.unauthenticate();
 		super.checkExceptions(expected, caught);
 
 	}
 
+	/*
+	 * -------Coverage SocialProfileService
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * SocialProfileService = 52,9%
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 * SocialProfile = 100%
+	 */
 }

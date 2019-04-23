@@ -30,6 +30,14 @@ public class FinderServiceTest extends AbstractTest {
 
 
 	/*
+	 * ----CALCULATE COVERAGE----
+	 * The previous delivery, we calculate it manually. In this one instead we are using the plugin called EclEmma,
+	 * with which we can automatically calculate the percentage.
+	 * 
+	 * Each of the test have their result just before them, and the coverage of the complete test is shown at the end of the document.
+	 */
+
+	/*
 	 * ACME.HACKERRANK
 	 * a)(Level C) Requirement 17.2: An actor who is authenticated as a hacker must be able to:
 	 * Manage his or her finder, which involves updating the search criteria, listing its contents,
@@ -84,5 +92,15 @@ public class FinderServiceTest extends AbstractTest {
 		this.unauthenticate();
 		super.checkExceptions(expected, caught);
 	}
+
+	/*
+	 * -------Coverage FinderService-------
+	 * 
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * FinderService = 42,6%
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 * Finder = 100%
+	 */
 
 }

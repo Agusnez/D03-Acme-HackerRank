@@ -14,7 +14,11 @@ import org.springframework.validation.Validator;
 import repositories.MessageRepository;
 import security.Authority;
 import domain.Actor;
+import domain.Application;
+import domain.Finder;
+import domain.Hacker;
 import domain.Message;
+import domain.Position;
 import forms.MessageForm;
 
 @Service
@@ -36,6 +40,15 @@ public class MessageService {
 
 	@Autowired
 	private Validator				validator;
+
+	@Autowired
+	private HackerService			hackerService;
+
+	@Autowired
+	private PositionService			positionService;
+
+	@Autowired
+	private FinderService			finderService;
 
 
 	//Simple CRUD methods
@@ -143,6 +156,9 @@ public class MessageService {
 			} else
 				message.setTags(null);
 		}
+
+		if (message.getTags().contains("NOTIFICATION"))
+			message.setTags(null);
 
 		result = this.messageRepository.save(message);
 
@@ -309,6 +325,50 @@ public class MessageService {
 
 	public void flush() {
 		this.messageRepository.flush();
+	}
+
+	public void notificationApplicationStatus(final Application application) {
+
+		final Message message = this.create3();
+
+		message.setRecipient(application.getHacker());
+		message.setSubject("Application/Solicitud");
+		message.setBody("One of your applications about the position " + application.getPosition().getTicker() + " has been changed" + "\n" + "Una de sus solicitudes sobre la posición" + application.getPosition().getTicker() + " ha sido modificada");
+
+		message.setTags("NOTIFICATION");
+
+		this.save2(message);
+
+	}
+
+	public void containsNewPosition(final Position position) {
+
+		final Collection<Hacker> hackers = this.hackerService.findAll();
+
+		for (final Hacker hacker : hackers) {
+
+			final Finder finder = this.finderService.findFinderByHacker(hacker.getId());
+
+			if (!finder.getKeyWord().equals("") || !finder.getMaximumDeadline().equals("") || finder.getMaximumSalary() != null || finder.getMinimumSalary() != null) {
+
+				final Collection<Position> positions = this.positionService.findPositionsByFinder(finder);
+
+				if (positions.contains(position)) {
+
+					final Message message = this.create3();
+
+					message.setRecipient(hacker);
+					message.setSubject("New position matches yor finder/Nueva posición se ajusta a su buscador");
+					message.setBody("The position created by " + position.getCompany().getName() + " may interest you/ La posición creada por " + position.getCompany().getName() + "puede interesarte.");
+					message.setTags("NOTIFICATION");
+
+					this.save2(message);
+				}
+
+			}
+
+		}
+
 	}
 
 }

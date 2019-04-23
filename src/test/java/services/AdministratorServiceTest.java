@@ -27,6 +27,14 @@ public class AdministratorServiceTest extends AbstractTest {
 
 
 	/*
+	 * ----CALCULATE COVERAGE----
+	 * The previous delivery, we calculate it manually. In this one instead we are using the plugin called EclEmma,
+	 * with which we can automatically calculate the percentage.
+	 * 
+	 * Each of the test have their result just before them, and the coverage of the complete test is shown at the end of the document.
+	 */
+
+	/*
 	 * ACME.HACKERRANK
 	 * a)(Level C) Requirement 11.1: An actor who is authenticated as an administrator must be able to: Create user accounts for new administrators.
 	 * 
@@ -93,8 +101,6 @@ public class AdministratorServiceTest extends AbstractTest {
 			admin.getUserAccount().setUsername(username);
 			admin.getUserAccount().setPassword(password);
 
-			this.startTransaction();
-
 			this.adminService.save(admin);
 			this.adminService.flush();
 
@@ -102,6 +108,7 @@ public class AdministratorServiceTest extends AbstractTest {
 			caught = oops.getClass();
 		}
 		super.unauthenticate();
+
 		this.rollbackTransaction();
 
 		super.checkExceptions(expected, caught);
@@ -203,13 +210,21 @@ public class AdministratorServiceTest extends AbstractTest {
 
 			this.adminService.spammer();
 
-			this.unauthenticate();
-
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 		}
-
+		this.unauthenticate();
 		this.checkExceptions(expected, caught);
 	}
+
+	/*
+	 * -------Coverage AdministratorService-------
+	 * 
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * AdministratorService = 58%
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 * Administrator = 100%
+	 */
 
 }

@@ -13,6 +13,7 @@ import org.springframework.util.Assert;
 import utilities.AbstractTest;
 import domain.Curriculum;
 import domain.Hacker;
+import domain.PersonalData;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -26,8 +27,19 @@ public class CurriculumServiceTest extends AbstractTest {
 	private CurriculumService	curriculumService;
 
 	@Autowired
+	private PersonalDataService	personalDataService;
+
+	@Autowired
 	private HackerService		hackerService;
 
+
+	/*
+	 * ----CALCULATE COVERAGE----
+	 * The previous delivery, we calculate it manually. In this one instead we are using the plugin called EclEmma,
+	 * with which we can automatically calculate the percentage.
+	 * 
+	 * Each of the test have their result just before them, and the coverage of the complete test is shown at the end of the document.
+	 */
 
 	/*
 	 * ACME.HACKERRANK
@@ -73,9 +85,19 @@ public class CurriculumServiceTest extends AbstractTest {
 
 			final Curriculum c = this.curriculumService.create();
 
+			final PersonalData pd = this.personalDataService.create();
+			pd.setFullName("example");
+			pd.setStatement("example");
+			pd.setPhone("+34 999888777666");
+			pd.setLinkLinkedInProfile("http://example.com");
+			pd.setLinkGitHubProfile("http://example.com");
+			this.personalDataService.save(pd);
+			this.personalDataService.flush();
+
 			c.setTicker("180918-F4T78H");
 			c.setNoCopy(true);
 			c.setHacker(hacker);
+			c.setPersonalData(pd);
 
 			this.curriculumService.save(c);
 			this.curriculumService.flush();
@@ -262,12 +284,9 @@ public class CurriculumServiceTest extends AbstractTest {
 	 * -------Coverage CurriculumService-------
 	 * 
 	 * ----TOTAL SENTENCE COVERAGE:
-	 * save() = 100%
-	 * findOne() = 100%
-	 * create() = 100%
-	 * delete() = 92.9%
+	 * CurriculumService = 12,7%
 	 * 
 	 * ----TOTAL DATA COVERAGE:
-	 * Curriculum = 0%
+	 * Curriculum = 100%
 	 */
 }
