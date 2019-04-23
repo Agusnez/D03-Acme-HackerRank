@@ -33,13 +33,7 @@
 	
 	<acme:choose path="finalMode" code="problem.finalMode" value1="false" value2="true" label1="No Final" label2="Final"/>
 	
-	<jstl:if test="${position.id == 0}">
-	<h3><spring:message code="position.finalMode.explanation.create"/></h3>
-	</jstl:if>
-	<jstl:if test="${position.id != 0}"> 	
-	<h3><spring:message code="position.finalMode.explanation.edit"/></h3>
-	</jstl:if>
-	<br>
+	<h4><spring:message code="position.finalMode.explanation"/></h4>
 	
 	<acme:submit name="save" code="position.save" />	
 

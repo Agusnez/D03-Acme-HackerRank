@@ -29,6 +29,7 @@
 	<display:column titleKey="problem.positions">
 		<c:forEach items="${row.positions}" var="item">
     		${item.title}
+    		<br>
 		</c:forEach>
 	</display:column>
 	

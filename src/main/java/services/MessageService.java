@@ -332,8 +332,8 @@ public class MessageService {
 		final Message message = this.create3();
 
 		message.setRecipient(application.getHacker());
-		message.setSubject("Applicatiion/Solicitud");
-		message.setBody("One of your applcations has been changed" + "\n" + "Una de sus solicitudes ha sido modificada");
+		message.setSubject("Application/Solicitud");
+		message.setBody("One of your applications about the position " + application.getPosition().getTicker() + " has been changed" + "\n" + "Una de sus solicitudes sobre la posición" + application.getPosition().getTicker() + " ha sido modificada");
 
 		message.setTags("NOTIFICATION");
 
