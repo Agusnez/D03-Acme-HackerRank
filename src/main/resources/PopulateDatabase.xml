@@ -1056,7 +1056,7 @@
 
 	<!-- Positions & Problems -->
 	<bean id="position1" class="domain.Position">
-		<property name="ticker" value="B8CL-1629" />
+		<property name="ticker" value="Russ-1629" />
 		<property name="title" value="position1" />
 		<property name="description" value="Moment might thank history contain listen artist." />
 		<property name="deadline" value="25/12/2019" />
@@ -1103,7 +1103,7 @@
 		</property>
 	</bean>
 	<bean id="position2" class="domain.Position">
-		<property name="ticker" value="DKPQ-8985" />
+		<property name="ticker" value="Russ-8985" />
 		<property name="title" value="position2" />
 		<property name="description" value="Because realize fly whom argue expert member my scientist." />
 		<property name="deadline" value="27/02/2020" />
@@ -1115,7 +1115,7 @@
 		<property name="company" ref="company1" />
 	</bean>
 	<bean id="position3" class="domain.Position">
-		<property name="ticker" value="4X5R-7446" />
+		<property name="ticker" value="Wilk-7446" />
 		<property name="title" value="position3" />
 		<property name="description" value="Wrong investment population decade sometimes itself education positive everyone large red include above husband avoid." />
 		<property name="deadline" value="26/01/2020" />
@@ -1165,7 +1165,7 @@
 		</property>
 	</bean>
 	<bean id="position4" class="domain.Position">
-		<property name="ticker" value="ZRR3-9821" />
+		<property name="ticker" value="Wall-9821" />
 		<property name="title" value="position4" />
 		<property name="description" value="Close answer together security size want economic unit particularly single must film oil boy two." />
 		<property name="deadline" value="26/02/2020" />
@@ -1177,7 +1177,7 @@
 		<property name="company" ref="company3" />
 	</bean>
 	<bean id="position5" class="domain.Position">
-		<property name="ticker" value="80PU-8398" />
+		<property name="ticker" value="Wall-8398" />
 		<property name="title" value="position5" />
 		<property name="description" value="Weight close together apply arrive someone thousand artist professor." />
 		<property name="deadline" value="18/12/2019" />
@@ -1189,7 +1189,7 @@
 		<property name="company" ref="company3" />
 	</bean>
 	<bean id="position6" class="domain.Position">
-		<property name="ticker" value="FBG7-5081" />
+		<property name="ticker" value="Wall-5081" />
 		<property name="title" value="position6" />
 		<property name="description" value="Space here public society pretty test term at go relationship physical example huge." />
 		<property name="deadline" value="02/09/2019" />
@@ -1201,7 +1201,7 @@
 		<property name="company" ref="company3" />
 	</bean>
 	<bean id="position7" class="domain.Position">
-		<property name="ticker" value="4JMW-9170" />
+		<property name="ticker" value="Wall-9170" />
 		<property name="title" value="position7" />
 		<property name="description" value="Food big society second sense wind institution risk yes serve region style amount yeah fine take." />
 		<property name="deadline" value="06/11/2019" />
@@ -1213,7 +1213,7 @@
 		<property name="company" ref="company3" />
 	</bean>
 	<bean id="position8" class="domain.Position">
-		<property name="ticker" value="9WLL-8907" />
+		<property name="ticker" value="Trev-8907" />
 		<property name="title" value="position8" />
 		<property name="description" value="Hand player easy man much us chance personal however." />
 		<property name="deadline" value="30/09/2019" />
@@ -1225,7 +1225,7 @@
 		<property name="company" ref="company4" />
 	</bean>
 	<bean id="position9" class="domain.Position">
-		<property name="ticker" value="9G5J-1400" />
+		<property name="ticker" value="Ross-1400" />
 		<property name="title" value="position9" />
 		<property name="description" value="Democratic candidate may security finally site message off." />
 		<property name="deadline" value="12/01/2020" />
@@ -1237,7 +1237,7 @@
 		<property name="company" ref="company5" />
 	</bean>
 	<bean id="position10" class="domain.Position">
-		<property name="ticker" value="KVJD-4034" />
+		<property name="ticker" value="Monte-4034" />
 		<property name="title" value="position10" />
 		<property name="description" value="Research traditional away Mr exactly born sign maybe employee." />
 		<property name="deadline" value="16/04/2020" />
@@ -1284,7 +1284,7 @@
 		</property>
 	</bean>
 	<bean id="position11" class="domain.Position">
-		<property name="ticker" value="HIYN-1576" />
+		<property name="ticker" value="Edwa-1576" />
 		<property name="title" value="position11" />
 		<property name="description" value="Trial game worker anyone agency would raise court house beat." />
 		<property name="deadline" value="21/04/2020" />
@@ -1332,7 +1332,7 @@
 		</property>
 	</bean>
 	<bean id="position12" class="domain.Position">
-		<property name="ticker" value="G6DO-1679" />
+		<property name="ticker" value="Edwa-1679" />
 		<property name="title" value="position12" />
 		<property name="description" value="Current become different few think check one who these indeed west onto person." />
 		<property name="deadline" value="08/01/2020" />
@@ -1344,7 +1344,7 @@
 		<property name="company" ref="company8" />
 	</bean>
 	<bean id="position13" class="domain.Position">
-		<property name="ticker" value="J1F7-6684" />
+		<property name="ticker" value="Pett-6684" />
 		<property name="title" value="position13" />
 		<property name="description" value="Plant ten place protect sound reveal enough nature someone really." />
 		<property name="deadline" value="05/09/2019" />
@@ -1356,7 +1356,7 @@
 		<property name="company" ref="company9" />
 	</bean>
 	<bean id="position14" class="domain.Position">
-		<property name="ticker" value="4RAA-6867" />
+		<property name="ticker" value="Pett-6867" />
 		<property name="title" value="position14" />
 		<property name="description" value="Part throw ahead development it one manage benefit yard believe third." />
 		<property name="deadline" value="18/11/2019" />
@@ -1368,7 +1368,7 @@
 		<property name="company" ref="company9" />
 	</bean>
 	<bean id="position15" class="domain.Position">
-		<property name="ticker" value="1PO7-7534" />
+		<property name="ticker" value="Pett-7534" />
 		<property name="title" value="position15" />
 		<property name="description" value="Decade I cold region rock wait weight light partner relationship one statement." />
 		<property name="deadline" value="11/09/2019" />
