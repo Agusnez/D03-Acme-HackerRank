@@ -27,11 +27,11 @@ public class HackerServiceTest extends AbstractTest {
 
 
 	/*
-	 * ----CALCULATE SENTENCE COVERAGE----
-	 */
-
-	/*
-	 * ----CALCULATE DATA COVERAGE----
+	 * ----CALCULATE COVERAGE----
+	 * The previous delivery, we calculate it manually. In this one instead we are using the plugin called EclEmma,
+	 * with which we can automatically calculate the percentage.
+	 * 
+	 * Each of the test have their result just before them, and the coverage of the complete test is shown at the end of the document.
 	 */
 
 	/*
@@ -180,5 +180,15 @@ public class HackerServiceTest extends AbstractTest {
 		this.rollbackTransaction();
 
 	}
+
+	/*
+	 * -------Coverage HackerService-------
+	 * 
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * HackerService = 60,7%
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 * Hacker = 100%
+	 */
 
 }

@@ -30,6 +30,14 @@ public class EducationDataServiceTest extends AbstractTest {
 
 
 	/*
+	 * ----CALCULATE COVERAGE----
+	 * The previous delivery, we calculate it manually. In this one instead we are using the plugin called EclEmma,
+	 * with which we can automatically calculate the percentage.
+	 * 
+	 * Each of the test have their result just before them, and the coverage of the complete test is shown at the end of the document.
+	 */
+
+	/*
 	 * ACME.HACKERRANK
 	 * a)(Level B) Requirement 17.1: An actor who is authenticated as an hacker must be able to: Manage his or her curricula: Create education data
 	 * 
@@ -221,19 +229,6 @@ public class EducationDataServiceTest extends AbstractTest {
 
 	}
 
-	/*
-	 * -------Coverage EducationDataService-------
-	 * 
-	 * ----TOTAL SENTENCE COVERAGE:
-	 * save() = 100%
-	 * findOne() = 100%
-	 * create() = 100%
-	 * delete() = 92.9%
-	 * 
-	 * ----TOTAL DATA COVERAGE:
-	 * Education data = 40%
-	 */
-
 	//Methods
 	protected Date convertStringToDate(final String dateString) {
 		Date date = null;
@@ -249,4 +244,14 @@ public class EducationDataServiceTest extends AbstractTest {
 
 		return date;
 	}
+
+	/*
+	 * -------Coverage EducationDataService-------
+	 * 
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * EducationDataService = 29,6%
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 * EducationData = 100%
+	 */
 }

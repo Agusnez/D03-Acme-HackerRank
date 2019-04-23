@@ -30,6 +30,14 @@ public class PositionDataServiceTest extends AbstractTest {
 
 
 	/*
+	 * ----CALCULATE COVERAGE----
+	 * The previous delivery, we calculate it manually. In this one instead we are using the plugin called EclEmma,
+	 * with which we can automatically calculate the percentage.
+	 * 
+	 * Each of the test have their result just before them, and the coverage of the complete test is shown at the end of the document.
+	 */
+
+	/*
 	 * ACME.HACKERRANK
 	 * a)(Level B) Requirement 17.1: An actor who is authenticated as an hacker must be able to: Manage his or her curricula: Create position data
 	 * 
@@ -217,19 +225,6 @@ public class PositionDataServiceTest extends AbstractTest {
 
 	}
 
-	/*
-	 * -------Coverage PositionDataService-------
-	 * 
-	 * ----TOTAL SENTENCE COVERAGE:
-	 * save() = 100%
-	 * findOne() = 100%
-	 * create() = 100%
-	 * delete() = 92.9%
-	 * 
-	 * ----TOTAL DATA COVERAGE:
-	 * Position data = 25%
-	 */
-
 	//Methods
 
 	protected Date convertStringToDate(final String dateString) {
@@ -246,4 +241,13 @@ public class PositionDataServiceTest extends AbstractTest {
 
 		return date;
 	}
+
+	/*
+	 * -------Coverage PositionDataService
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * PositionDataService = 31%
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 * PositionData = 100%
+	 */
 }

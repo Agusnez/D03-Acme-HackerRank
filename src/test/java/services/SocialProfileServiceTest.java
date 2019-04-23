@@ -28,6 +28,14 @@ public class SocialProfileServiceTest extends AbstractTest {
 	private SocialProfileService	socialProfileService;
 
 
+	/*
+	 * ----CALCULATE COVERAGE----
+	 * The previous delivery, we calculate it manually. In this one instead we are using the plugin called EclEmma,
+	 * with which we can automatically calculate the percentage.
+	 * 
+	 * Each of the test have their result just before them, and the coverage of the complete test is shown at the end of the document.
+	 */
+
 	@Test
 	public void driverListSocialProfiles() {
 		final Object testingData[][] = {
@@ -218,4 +226,12 @@ public class SocialProfileServiceTest extends AbstractTest {
 
 	}
 
+	/*
+	 * -------Coverage SocialProfileService
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * SocialProfileService = 52,9%
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 * SocialProfile = 100%
+	 */
 }

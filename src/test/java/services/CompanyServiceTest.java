@@ -30,11 +30,11 @@ public class CompanyServiceTest extends AbstractTest {
 
 
 	/*
-	 * ----CALCULATE SENTENCE COVERAGE----
-	 */
-
-	/*
-	 * ----CALCULATE DATA COVERAGE----
+	 * ----CALCULATE COVERAGE----
+	 * The previous delivery, we calculate it manually. In this one instead we are using the plugin called EclEmma,
+	 * with which we can automatically calculate the percentage.
+	 * 
+	 * Each of the test have their result just before them, and the coverage of the complete test is shown at the end of the document.
 	 */
 
 	/*
@@ -238,5 +238,15 @@ public class CompanyServiceTest extends AbstractTest {
 		super.checkExceptions(expected, caught);
 		this.rollbackTransaction();
 	}
+
+	/*
+	 * -------Coverage CompanyService-------
+	 * 
+	 * ----TOTAL SENTENCE COVERAGE:
+	 * CompanyService = 60,9%
+	 * 
+	 * ----TOTAL DATA COVERAGE:
+	 * Company = 100%
+	 */
 
 }
