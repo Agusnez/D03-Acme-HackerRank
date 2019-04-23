@@ -1681,7 +1681,7 @@
 		<property name="email" value="luistrz@mail.com" />
 		<property name="phone" value="+34 676925236" />
 		<property name="address" value="c/Pechamiel 2" />
-		<property name="userAccount" ref="userAccount2" />
+		<property name="userAccount" ref="userAccountAdmin2" />
 		<property name="creditCard" ref="creditCardAdmin2" />
 	</bean>
 	
