@@ -1624,6 +1624,76 @@
 		<property name="sender" ref="company3" />
 		<property name="recipient" ref="company9" />
 	</bean>
+	
+	<!-- Administrators -->
+
+	<bean id="administrator1" class="domain.Administrator">
+		<property name="name" value="Sara" />
+		<property name="surnames" value="Guillena" />
+		<property name="vat" value="100000" />
+		<property name="photo" value="http://www.dropbox.com/admin1/" />
+		<property name="email" value="sguille@mail.com" />
+		<property name="phone" value="+34 676925236" />
+		<property name="address" value="Av. Bueno Mazon" />
+		<property name="userAccount" ref="userAccountAdmin1" />
+		<property name="creditCard" ref="creditCardAdmin1" />
+
+	</bean>
+
+	<bean id="administrator2" class="domain.Administrator">
+		<property name="name" value="Luis" />
+		<property name="surnames" value="Toranzo" />
+		<property name="vat" value="100001" />
+		<property name="photo" value="http://www.dropbox.com/admin2/" />
+		<property name="email" value="luistrz@mail.com" />
+		<property name="phone" value="+34 676925236" />
+		<property name="address" value="c/Pechamiel 2" />
+		<property name="userAccount" ref="userAccount2" />
+		<property name="creditCard" ref="creditCardAdmin2" />
+	</bean>
+	
+	<bean id="userAccountAdmin1" class="security.UserAccount">
+		<property name="username" value="admin" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotBanned" value="true" />
+	</bean>
+
+	<bean id="userAccountAdmin2" class="security.UserAccount">
+		<property name="username" value="admin2" />
+		<property name="password" value="c84258e9c39059a89ab77d846ddab909" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotBanned" value="true" />
+	</bean>
+	<bean id="creditCardAdmin1" class="domain.CreditCard">
+		<property name="holderName" value="Sara Guillena" />
+		<property name="make" value="VISA" />
+		<property name="number" value="1111222233334444" />
+		<property name="expMonth" value="12" />
+		<property name="expYear" value="2020" />
+		<property name="cvv" value="123" />
+	</bean>
+
+	<bean id="creditCardAdmin2" class="domain.CreditCard">
+		<property name="holderName" value="Luis Toranzano" />
+		<property name="make" value="VISA" />
+		<property name="number" value="1111222233334444" />
+		<property name="expMonth" value="12" />
+		<property name="expYear" value="2020" />
+		<property name="cvv" value="123" />
+	</bean>
 
 	<!-- Configuration -->
 	<bean id="configuration" class="domain.Configuration">
