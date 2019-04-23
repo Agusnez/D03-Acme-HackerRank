@@ -13,6 +13,7 @@ import org.springframework.util.Assert;
 import utilities.AbstractTest;
 import domain.Curriculum;
 import domain.Hacker;
+import domain.PersonalData;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -24,6 +25,9 @@ public class CurriculumServiceTest extends AbstractTest {
 	//The SUT----------------------------------------------------
 	@Autowired
 	private CurriculumService	curriculumService;
+
+	@Autowired
+	private PersonalDataService	personalDataService;
 
 	@Autowired
 	private HackerService		hackerService;
@@ -73,9 +77,19 @@ public class CurriculumServiceTest extends AbstractTest {
 
 			final Curriculum c = this.curriculumService.create();
 
+			final PersonalData pd = this.personalDataService.create();
+			pd.setFullName("example");
+			pd.setStatement("example");
+			pd.setPhone("+34 999888777666");
+			pd.setLinkLinkedInProfile("http://example.com");
+			pd.setLinkGitHubProfile("http://example.com");
+			this.personalDataService.save(pd);
+			this.personalDataService.flush();
+
 			c.setTicker("180918-F4T78H");
 			c.setNoCopy(true);
 			c.setHacker(hacker);
+			c.setPersonalData(pd);
 
 			this.curriculumService.save(c);
 			this.curriculumService.flush();
