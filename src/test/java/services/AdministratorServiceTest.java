@@ -101,8 +101,6 @@ public class AdministratorServiceTest extends AbstractTest {
 			admin.getUserAccount().setUsername(username);
 			admin.getUserAccount().setPassword(password);
 
-			this.startTransaction();
-
 			this.adminService.save(admin);
 			this.adminService.flush();
 
@@ -110,6 +108,7 @@ public class AdministratorServiceTest extends AbstractTest {
 			caught = oops.getClass();
 		}
 		super.unauthenticate();
+
 		this.rollbackTransaction();
 
 		super.checkExceptions(expected, caught);
