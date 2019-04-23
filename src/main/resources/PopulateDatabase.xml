@@ -898,6 +898,27 @@
 		<property name="expYear" value="2024" />
 		<property name="cvv" value="181"/>
 	</bean>
+	<bean id="curriculum14" class="domain.Curriculum">
+		<property name="ticker" value="170842-562DFG" />
+		<property name="noCopy" value="true" />
+		<property name="personalData" ref="personalData14" />
+		<property name="positionDatas">
+			<list>
+				<ref bean="positionData14" />
+			</list>
+		</property>
+		<property name="educationDatas">
+			<list>
+				<ref bean="educationData14" />
+			</list>
+		</property>
+		<property name="miscellaneousDatas">
+			<list>
+				<ref bean="miscellaneousData14" />
+			</list>
+		</property>
+		<property name="hacker" ref="hacker14" />
+	</bean>
 	<bean id="personalData14" class="domain.PersonalData">
 		<property name="fullName" value="Kelly Gutierrez" />
 		<property name="statement" value="lorem ipsum" />
@@ -905,11 +926,23 @@
 		<property name="linkGitHubProfile" value="http://www.github.com/" />
 		<property name="linkLinkedInProfile" value="http://www.linkedin.com/" />
 	</bean>
-	<bean id="curriculum14" class="domain.Curriculum">
-		<property name="ticker" value="170842-562DFG" />
-		<property name="noCopy" value="true" />
-		<property name="personalData" ref="personalData14" />
-		<property name="hacker" ref="hacker14" />
+	<bean id="positionData14" class="domain.PositionData">
+		<property name="title" value="title1" />
+		<property name="description" value="description1" />
+		<property name="startDate" value="1998/06/29" />
+		<property name="endDate" value="2000/06/29" />
+	</bean>
+
+	<bean id="educationData14" class="domain.EducationData">
+		<property name="degree" value="degree1" />
+		<property name="institution" value="institution1" />
+		<property name="mark" value="7.1" />
+		<property name="startDate" value="1996/06/29" />
+		<property name="endDate" value="1998/06/29" />
+	</bean>
+
+	<bean id="miscellaneousData14" class="domain.MiscellaneousData">
+		<property name="text" value="text1" />
 	</bean>
 	<bean id="hacker14" class="domain.Hacker">
 		<property name="name" value="Kelly" />
@@ -1561,7 +1594,7 @@
 		<property name="sender" ref="company3" />
 		<property name="recipient" ref="company1" />
 	</bean>
-	<bean id="message1" class="domain.Message">
+	<bean id="message2" class="domain.Message">
 		<property name="moment" value="2018/09/17 12:53" />
 		<property name="subject" value="Collaboration" />
 		<property name="body" value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
@@ -1570,7 +1603,7 @@
 		<property name="sender" ref="company3" />
 		<property name="recipient" ref="company2" />
 	</bean>
-	<bean id="message1" class="domain.Message">
+	<bean id="message3" class="domain.Message">
 		<property name="moment" value="2018/09/17 12:54" />
 		<property name="subject" value="Collaboration" />
 		<property name="body" value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
@@ -1579,7 +1612,7 @@
 		<property name="sender" ref="company3" />
 		<property name="recipient" ref="company4" />
 	</bean>
-	<bean id="message1" class="domain.Message">
+	<bean id="message4" class="domain.Message">
 		<property name="moment" value="2018/09/17 12:55" />
 		<property name="subject" value="Collaboration" />
 		<property name="body" value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
@@ -1588,7 +1621,7 @@
 		<property name="sender" ref="company3" />
 		<property name="recipient" ref="company5" />
 	</bean>
-	<bean id="message1" class="domain.Message">
+	<bean id="message5" class="domain.Message">
 		<property name="moment" value="2018/09/17 12:56" />
 		<property name="subject" value="Collaboration" />
 		<property name="body" value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
@@ -1597,7 +1630,7 @@
 		<property name="sender" ref="company3" />
 		<property name="recipient" ref="company6" />
 	</bean>
-	<bean id="message1" class="domain.Message">
+	<bean id="message6" class="domain.Message">
 		<property name="moment" value="2018/09/17 12:57" />
 		<property name="subject" value="Collaboration" />
 		<property name="body" value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
@@ -1606,7 +1639,7 @@
 		<property name="sender" ref="company3" />
 		<property name="recipient" ref="company7" />
 	</bean>
-	<bean id="message1" class="domain.Message">
+	<bean id="message7" class="domain.Message">
 		<property name="moment" value="2018/09/17 12:58" />
 		<property name="subject" value="Collaboration" />
 		<property name="body" value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
@@ -1615,7 +1648,7 @@
 		<property name="sender" ref="company3" />
 		<property name="recipient" ref="company8" />
 	</bean>
-	<bean id="message1" class="domain.Message">
+	<bean id="message8" class="domain.Message">
 		<property name="moment" value="2018/09/17 12:59" />
 		<property name="subject" value="Collaboration" />
 		<property name="body" value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
