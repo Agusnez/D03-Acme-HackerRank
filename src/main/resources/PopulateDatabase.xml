@@ -1552,6 +1552,15 @@
 	</bean>
 	
 	<!-- Messages -->
+	<bean id="message1" class="domain.Message">
+		<property name="moment" value="2018/09/17 12:53" />
+		<property name="subject" value="Collaboration" />
+		<property name="body" value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
+		<property name="tags" value="Collab" />
+		<property name="spam" value="False" />
+		<property name="sender" ref="company3" />
+		<property name="recipient" ref="company1" />
+	</bean>
 
 	<!-- Configuration -->
 	<bean id="configuration" class="domain.Configuration">
