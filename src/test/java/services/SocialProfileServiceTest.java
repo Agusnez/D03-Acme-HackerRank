@@ -68,13 +68,13 @@ public class SocialProfileServiceTest extends AbstractTest {
 			final SocialProfile socialProfile = this.socialProfileService.findOne(socialProfileIdInteger);
 
 			final Collection<SocialProfile> socialProfiles = this.socialProfileService.findAllByActor(companyIdInteger);
-			super.unauthenticate();
+
 			Assert.isTrue(socialProfiles.contains(socialProfile));
 
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 		}
-
+		super.unauthenticate();
 		super.checkExceptions(expected, caught);
 
 	}
@@ -127,12 +127,13 @@ public class SocialProfileServiceTest extends AbstractTest {
 			this.socialProfileService.flush();
 
 			final Collection<SocialProfile> socialProfiles = this.socialProfileService.findAll();
-			super.unauthenticate();
 			Assert.isTrue(socialProfiles.contains(saved));
 
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 		}
+		if (actor != null)
+			super.unauthenticate();
 		super.checkExceptions(expected, caught);
 
 	}
@@ -171,13 +172,13 @@ public class SocialProfileServiceTest extends AbstractTest {
 			this.socialProfileService.flush();
 
 			final Collection<SocialProfile> socialProfiles = this.socialProfileService.findAll();
-			super.unauthenticate();
+
 			Assert.isTrue(socialProfiles.contains(saved));
 
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 		}
-
+		super.unauthenticate();
 		super.checkExceptions(expected, caught);
 		//this.rollbackTransaction();
 
@@ -215,13 +216,12 @@ public class SocialProfileServiceTest extends AbstractTest {
 			this.socialProfileService.flush();
 
 			final Collection<SocialProfile> socialProfiles = this.socialProfileService.findAll();
-			super.unauthenticate();
 			Assert.isTrue(!socialProfiles.contains(socialProfile));
 
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 		}
-
+		super.unauthenticate();
 		super.checkExceptions(expected, caught);
 
 	}

@@ -78,8 +78,10 @@ public class MessageServiceTest extends AbstractTest {
 			caught = oops.getClass();
 		}
 
-		super.checkExceptions(expected, caught);
+		if (sender != null)
+			super.unauthenticate();
 		this.rollbackTransaction();
+		super.checkExceptions(expected, caught);
 
 	}
 

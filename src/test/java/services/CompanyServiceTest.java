@@ -109,8 +109,8 @@ public class CompanyServiceTest extends AbstractTest {
 			caught = oops.getClass();
 		}
 
-		super.checkExceptions(expected, caught);
 		this.rollbackTransaction();
+		super.checkExceptions(expected, caught);
 
 	}
 
@@ -182,8 +182,8 @@ public class CompanyServiceTest extends AbstractTest {
 
 		}
 		this.unauthenticate();
-		super.checkExceptions(expected, caught);
 		this.rollbackTransaction();
+		super.checkExceptions(expected, caught);
 
 	}
 
@@ -234,9 +234,11 @@ public class CompanyServiceTest extends AbstractTest {
 			caught = oops.getClass();
 
 		}
-		this.unauthenticate();
-		super.checkExceptions(expected, caught);
+		if (username != null)
+			this.unauthenticate();
 		this.rollbackTransaction();
+		super.checkExceptions(expected, caught);
+
 	}
 
 	/*

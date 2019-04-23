@@ -105,8 +105,8 @@ public class HackerServiceTest extends AbstractTest {
 			caught = oops.getClass();
 		}
 
-		super.checkExceptions(expected, caught);
 		this.rollbackTransaction();
+		super.checkExceptions(expected, caught);
 
 	}
 
@@ -176,8 +176,8 @@ public class HackerServiceTest extends AbstractTest {
 
 		}
 		this.unauthenticate();
-		super.checkExceptions(expected, caught);
 		this.rollbackTransaction();
+		super.checkExceptions(expected, caught);
 
 	}
 

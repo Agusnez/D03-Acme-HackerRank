@@ -210,12 +210,10 @@ public class AdministratorServiceTest extends AbstractTest {
 
 			this.adminService.spammer();
 
-			this.unauthenticate();
-
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 		}
-
+		this.unauthenticate();
 		this.checkExceptions(expected, caught);
 	}
 

@@ -96,8 +96,9 @@ public class ProblemServiceTest extends AbstractTest {
 
 		}
 		this.unauthenticate();
-		super.checkExceptions(expected, caught);
 		this.rollbackTransaction();
+		super.checkExceptions(expected, caught);
+
 	}
 
 	/*
@@ -149,8 +150,9 @@ public class ProblemServiceTest extends AbstractTest {
 
 		}
 		this.unauthenticate();
-		super.checkExceptions(expected, caught);
 		this.rollbackTransaction();
+		super.checkExceptions(expected, caught);
+
 	}
 
 	/*
@@ -198,8 +200,8 @@ public class ProblemServiceTest extends AbstractTest {
 
 		}
 		this.unauthenticate();
-		super.checkExceptions(expected, caught);
 		this.rollbackTransaction();
+		super.checkExceptions(expected, caught);
 
 	}
 
@@ -245,8 +247,9 @@ public class ProblemServiceTest extends AbstractTest {
 			caught = oops.getClass();
 
 		}
-		super.checkExceptions(expected, caught);
 		this.rollbackTransaction();
+		super.checkExceptions(expected, caught);
+
 	}
 
 	/*
@@ -270,7 +273,7 @@ public class ProblemServiceTest extends AbstractTest {
 			},//1. All fine
 			{
 				"hacker1", "problem3", "position1", IllegalArgumentException.class
-			},//2. The problem is in final mode, it can't be edited
+			},//2. Hacker cannot add position to problem
 
 		};
 
@@ -296,8 +299,9 @@ public class ProblemServiceTest extends AbstractTest {
 
 		}
 		this.unauthenticate();
-		super.checkExceptions(expected, caught);
 		this.rollbackTransaction();
+		super.checkExceptions(expected, caught);
+
 	}
 
 	/*

@@ -163,8 +163,6 @@ public class PositionDataServiceTest extends AbstractTest {
 			caught = oops.getClass();
 		}
 
-		this.unauthenticate();
-
 		this.rollbackTransaction();
 
 		super.checkExceptions(expected, caught);
