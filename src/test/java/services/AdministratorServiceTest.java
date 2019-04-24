@@ -275,37 +275,9 @@ public class AdministratorServiceTest extends AbstractTest {
 			final Double avgRF = this.adminService.avgNumberOfResultsInFinders();
 			
 			final Double ratioEF = this.adminService.ratioEmptyNotEmptyFinders();
-			
-			System.out.println(avgPC);
-			System.out.println(minPC);
-			System.out.println(maxPC);
-			System.out.println(stdPC);
-			System.out.println(avgAH);
-			System.out.println(minAH);
-			System.out.println(maxAH);
-			System.out.println(stdAH);
-			System.out.println(topC);
-			System.out.println(topH);
-			System.out.println(avgS);
-			System.out.println(stdS);
-			System.out.println(minS);
-			System.out.println(maxS);
-			System.out.println(bP);
-			System.out.println(wP);
-			System.out.println(minCH);
-			System.out.println(maxCH);
-			System.out.println(avgCH);
-			System.out.println(stdCH);
-			System.out.println(avgRF);
-			System.out.println(minRF);
-			System.out.println(maxRF);
-			System.out.println(stdRF);
-			System.out.println(ratioEF);
+		
 			
 			boolean result9 = topC.toString().equals(expectedResult9);
-			//boolean result10 = topH.toString().equals(expectedResult10);
-			System.out.println(result9);
-			//System.out.println(result10);
 			
 			Integer result15 = (Integer) bP.getId();
 			Integer result16 = (Integer) wP.getId();
@@ -319,7 +291,6 @@ public class AdministratorServiceTest extends AbstractTest {
 			Assert.isTrue(maxAH.equals(expectedResult7));
 			Assert.isTrue(stdAH.equals(expectedResult8));
 			Assert.isTrue(result9);
-			//Assert.isTrue(result10);
 			Assert.isTrue(avgS.equals(expectedResult11));
 			Assert.isTrue(stdS.equals(expectedResult12));
 			Assert.isTrue(minS.equals(expectedResult13));
