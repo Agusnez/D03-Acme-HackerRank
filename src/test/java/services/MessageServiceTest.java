@@ -36,6 +36,20 @@ public class MessageServiceTest extends AbstractTest {
 	 * Each of the test have their result just before them, and the coverage of the complete test is shown at the end of the document.
 	 */
 
+	/*
+	 * ACME.HACKERRANK
+	 * a)(Level A) Requirement 23.1: An actor who is authenticated must be able to: Manage his or her messages.
+	 * 
+	 * b) Negative cases:
+	 * 2. Body is blank
+	 * 3. Subject is blank
+	 * 
+	 * c) Sentence coverage
+	 * -create3(): 100%
+	 * -save():49%
+	 * d) Data coverage
+	 */
+
 	@Test
 	public void driverExchangeMessage() {
 		final Object testingData[][] = {

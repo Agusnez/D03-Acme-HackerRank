@@ -36,16 +36,37 @@ public class SocialProfileServiceTest extends AbstractTest {
 	 * Each of the test have their result just before them, and the coverage of the complete test is shown at the end of the document.
 	 */
 
+	/*
+	 * ACME.HACKERRANK
+	 * a)(Level A) Requirement 23.1: An actor who is authenticated must be able to: Manage his or her social profiles, which includes listing, showing, creating, updating, and deleting them.
+	 * 
+	 * b) Negative cases:
+	 * 2. SocialProfile doesn't belong Company
+	 * 4. Somebody not authenticated tries to create a social profile
+	 * 5. nick = blank
+	 * 6. nick = not safe html
+	 * 7. socialName = blank
+	 * 8. socialName = not safe html
+	 * 
+	 * c) Sentence coverage
+	 * -create(): 100%
+	 * -save(): 100%
+	 * -delete(): 100%
+	 * -findAll(): 100%
+	 * -findOne(): 100%
+	 * d) Data coverage
+	 */
+
 	@Test
 	public void driverListSocialProfiles() {
 		final Object testingData[][] = {
 
 			{
 				"socialProfile1", "company1", null
-			//1. Todo bien
+			//1. All right
 			}, {
 				"socialProfile5", "company1", IllegalArgumentException.class
-			//2. El socialProfile no pertenece a la Company
+			//2. SocialProfile doesn't belong Company
 			}
 
 		};
@@ -85,22 +106,22 @@ public class SocialProfileServiceTest extends AbstractTest {
 
 			{
 				"Company1", "nick1", "socialName1", "https://www.youtube.com", null
-			//1. Todo bien
+			//3. All right
 			}, {
 				null, "nick1", "socialName1", "https://www.youtube.com", IllegalArgumentException.class
-			//2. Intenta crearlo alguien no autenticado
+			//4. Somebody not authenticated tries to create a social profile
 			}, {
 				"Company1", "", "socialName1", "https://www.youtube.com", ConstraintViolationException.class
-			//3. nick = blank
+			//5. nick = blank
 			}, {
 				"Company1", "<script>alert('hola')</script>", "socialName1", "https://www.youtube.com", ConstraintViolationException.class
-			//4. nick = not safe html
+			//6. nick = not safe html
 			}, {
 				"Company1", "nick1", "", "https://www.youtube.com", ConstraintViolationException.class
-			//5. socialName = blank
+			//7. socialName = blank
 			}, {
 				"Company1", "nick1", "<script>alert('hola')</script>", "https://www.youtube.com", ConstraintViolationException.class
-			//6. socialName = not safe html
+			//8. socialName = not safe html
 			}
 
 		};
