@@ -36,7 +36,7 @@
 		<property name="surnames" value="monetize enterprise systems" />
 		<property name="commercialName"
 			value="Russell, Skinner and Wilson PLC" />
-		<property name="vat" value="319034" />
+		<property name="vat" value="1" />
 		<property name="photo"
 			value="https://www.lorempixel.com/500/500" />
 		<property name="email" value="mariahhernandez@example.net" />
@@ -70,7 +70,7 @@
 		<property name="name" value="Wilkins-Brown" />
 		<property name="surnames" value="brand dynamic architectures" />
 		<property name="commercialName" value="Wilkins-Brown Group" />
-		<property name="vat" value="811539" />
+		<property name="vat" value="2" />
 		<property name="photo"
 			value="https://placeholdit.imgix.net/~text?txtsize=55&amp;txt=500x500&amp;w=500&amp;h=500" />
 		<property name="email" value="zphillips@example.org" />
@@ -105,7 +105,7 @@
 		<property name="surnames"
 			value="redefine out-of-the-box models" />
 		<property name="commercialName" value="Wallace Inc Ltd" />
-		<property name="vat" value="252258" />
+		<property name="vat" value="3" />
 		<property name="photo"
 			value="https://placeimg.com/500/500/any" />
 		<property name="email" value="andrew39@example.org" />
@@ -141,7 +141,7 @@
 			value="architect scalable info-mediaries" />
 		<property name="commercialName"
 			value="Trevino, Snyder and Blankenship Inc" />
-		<property name="vat" value="75817" />
+		<property name="vat" value="4" />
 		<property name="photo"
 			value="https://placeholdit.imgix.net/~text?txtsize=55&amp;txt=500x500&amp;w=500&amp;h=500" />
 		<property name="email" value="sandralewis@example.net" />
@@ -175,7 +175,7 @@
 		<property name="name" value="Ross Group" />
 		<property name="surnames" value="generate seamless e-tailers" />
 		<property name="commercialName" value="Ross Group PLC" />
-		<property name="vat" value="126300" />
+		<property name="vat" value="5" />
 		<property name="photo"
 			value="https://placeimg.com/500/500/any" />
 		<property name="email" value="whitneyyoung@example.net" />
@@ -209,7 +209,7 @@
 		<property name="name" value="Davenport Inc" />
 		<property name="surnames" value="drive 24/365 applications" />
 		<property name="commercialName" value="Davenport Inc Group" />
-		<property name="vat" value="279091" />
+		<property name="vat" value="6" />
 		<property name="photo" value="https://dummyimage.com/500x500" />
 		<property name="email" value="urobinson@example.com" />
 		<property name="phone" value="+34285579306" />
@@ -243,7 +243,7 @@
 		<property name="surnames" value="monetize rich networks" />
 		<property name="commercialName"
 			value="Montes, Delacruz and Moore and Sons" />
-		<property name="vat" value="168340" />
+		<property name="vat" value="7" />
 		<property name="photo" value="https://dummyimage.com/500x500" />
 		<property name="email" value="cmullins@example.com" />
 		<property name="phone" value="+34446812949" />
@@ -278,7 +278,7 @@
 			value="strategize mission-critical bandwidth" />
 		<property name="commercialName"
 			value="Edwards, Tyler and Jones and Sons" />
-		<property name="vat" value="278695" />
+		<property name="vat" value="8" />
 		<property name="photo"
 			value="https://www.lorempixel.com/500/500" />
 		<property name="email" value="david42@example.net" />
@@ -314,7 +314,7 @@
 			value="visualize e-business e-markets" />
 		<property name="commercialName"
 			value="Petty, Sanchez and Davis and Sons" />
-		<property name="vat" value="24372" />
+		<property name="vat" value="9" />
 		<property name="photo"
 			value="https://placekitten.com/500/500" />
 		<property name="email" value="qholmes@example.org" />
@@ -356,8 +356,19 @@
 		<property name="linkLinkedInProfile"
 			value="http://www.linkedin.com/" />
 	</bean>
+	
+	<bean id="personalData1Copy" class="domain.PersonalData">
+		<property name="fullName" value="Michael Yu" />
+		<property name="statement" value="lorem ipsum" />
+		<property name="phone" value="+34762915970" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
+	</bean>
+	
 	<bean id="curriculum1" class="domain.Curriculum">
-		<property name="ticker" value="170989-27DFG" />
+		<property name="ticker" value="190101-127DFG" />
 		<property name="noCopy" value="true" />
 		<property name="personalData" ref="personalData1" />
 		<property name="hacker" ref="hacker1" />
@@ -365,7 +376,7 @@
 	<bean id="hacker1" class="domain.Hacker">
 		<property name="name" value="Michael" />
 		<property name="surnames" value="Yu" />
-		<property name="vat" value="502709" />
+		<property name="vat" value="10" />
 		<property name="photo"
 			value="https://placeimg.com/500/500/any" />
 		<property name="email" value="qallison@example.net" />
@@ -404,8 +415,19 @@
 		<property name="linkLinkedInProfile"
 			value="http://www.linkedin.com/" />
 	</bean>
+	
+	<bean id="personalData2Copy" class="domain.PersonalData">
+		<property name="fullName" value="Melissa Burns" />
+		<property name="statement" value="lorem ipsum" />
+		<property name="phone" value="+34209368164" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
+	</bean>
+	
 	<bean id="curriculum2" class="domain.Curriculum">
-		<property name="ticker" value="170702-93DFG" />
+		<property name="ticker" value="190101-293DFG" />
 		<property name="noCopy" value="true" />
 		<property name="personalData" ref="personalData2" />
 		<property name="hacker" ref="hacker2" />
@@ -413,7 +435,7 @@
 	<bean id="hacker2" class="domain.Hacker">
 		<property name="name" value="Melissa" />
 		<property name="surnames" value="Burns" />
-		<property name="vat" value="104962" />
+		<property name="vat" value="11" />
 		<property name="photo"
 			value="https://placeholdit.imgix.net/~text?txtsize=55&amp;txt=500x500&amp;w=500&amp;h=500" />
 		<property name="email" value="cynthiacastro@example.com" />
@@ -452,8 +474,19 @@
 		<property name="linkLinkedInProfile"
 			value="http://www.linkedin.com/" />
 	</bean>
+	
+	<bean id="personalData3Copy" class="domain.PersonalData">
+		<property name="fullName" value="Thomas Martin" />
+		<property name="statement" value="lorem ipsum" />
+		<property name="phone" value="+34848421574" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
+	</bean>
+	
 	<bean id="curriculum3" class="domain.Curriculum">
-		<property name="ticker" value="170572-20DFG" />
+		<property name="ticker" value="190101-320DFG" />
 		<property name="noCopy" value="true" />
 		<property name="personalData" ref="personalData3" />
 		<property name="hacker" ref="hacker3" />
@@ -461,7 +494,7 @@
 	<bean id="hacker3" class="domain.Hacker">
 		<property name="name" value="Thomas" />
 		<property name="surnames" value="Martin" />
-		<property name="vat" value="739178" />
+		<property name="vat" value="12" />
 		<property name="photo"
 			value="https://placekitten.com/500/500" />
 		<property name="email" value="nreid@example.com" />
@@ -500,8 +533,17 @@
 		<property name="linkLinkedInProfile"
 			value="http://www.linkedin.com/" />
 	</bean>
+	<bean id="personalData4Copy" class="domain.PersonalData">
+		<property name="fullName" value="Robert Ferguson" />
+		<property name="statement" value="lorem ipsum" />
+		<property name="phone" value="+34893120013" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
+	</bean>
 	<bean id="curriculum4" class="domain.Curriculum">
-		<property name="ticker" value="170220-566DFG" />
+		<property name="ticker" value="190101-566DFG" />
 		<property name="noCopy" value="true" />
 		<property name="personalData" ref="personalData4" />
 		<property name="hacker" ref="hacker4" />
@@ -509,7 +551,7 @@
 	<bean id="hacker4" class="domain.Hacker">
 		<property name="name" value="Robert" />
 		<property name="surnames" value="Ferguson" />
-		<property name="vat" value="656707" />
+		<property name="vat" value="13" />
 		<property name="photo"
 			value="https://www.lorempixel.com/500/500" />
 		<property name="email" value="michael83@example.org" />
@@ -548,8 +590,17 @@
 		<property name="linkLinkedInProfile"
 			value="http://www.linkedin.com/" />
 	</bean>
+	<bean id="personalData5Copy" class="domain.PersonalData">
+		<property name="fullName" value="Brenda Green" />
+		<property name="statement" value="lorem ipsum" />
+		<property name="phone" value="+34045271509" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
+	</bean>
 	<bean id="curriculum5" class="domain.Curriculum">
-		<property name="ticker" value="170799-699DFG" />
+		<property name="ticker" value="190101-699DFG" />
 		<property name="noCopy" value="true" />
 		<property name="personalData" ref="personalData5" />
 		<property name="hacker" ref="hacker5" />
@@ -557,7 +608,7 @@
 	<bean id="hacker5" class="domain.Hacker">
 		<property name="name" value="Brenda" />
 		<property name="surnames" value="Green" />
-		<property name="vat" value="995625" />
+		<property name="vat" value="14" />
 		<property name="photo"
 			value="https://placekitten.com/500/500" />
 		<property name="email" value="tinaschwartz@example.com" />
@@ -596,8 +647,17 @@
 		<property name="linkLinkedInProfile"
 			value="http://www.linkedin.com/" />
 	</bean>
+	<bean id="personalData6Copy" class="domain.PersonalData">
+		<property name="fullName" value="Seth Anthony" />
+		<property name="statement" value="lorem ipsum" />
+		<property name="phone" value="+34366370707" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
+	</bean>
 	<bean id="curriculum6" class="domain.Curriculum">
-		<property name="ticker" value="170434-714DFG" />
+		<property name="ticker" value="190101-714DFG" />
 		<property name="noCopy" value="true" />
 		<property name="personalData" ref="personalData6" />
 		<property name="hacker" ref="hacker6" />
@@ -605,7 +665,7 @@
 	<bean id="hacker6" class="domain.Hacker">
 		<property name="name" value="Seth" />
 		<property name="surnames" value="Anthony" />
-		<property name="vat" value="406689" />
+		<property name="vat" value="15" />
 		<property name="photo"
 			value="https://placeimg.com/500/500/any" />
 		<property name="email" value="fwoods@example.com" />
@@ -644,8 +704,17 @@
 		<property name="linkLinkedInProfile"
 			value="http://www.linkedin.com/" />
 	</bean>
+	<bean id="personalData7Copy" class="domain.PersonalData">
+		<property name="fullName" value="Adam Kelly" />
+		<property name="statement" value="lorem ipsum" />
+		<property name="phone" value="+34405656059" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
+	</bean>
 	<bean id="curriculum7" class="domain.Curriculum">
-		<property name="ticker" value="170900-772DFG" />
+		<property name="ticker" value="190101-772DFG" />
 		<property name="noCopy" value="true" />
 		<property name="personalData" ref="personalData7" />
 		<property name="hacker" ref="hacker7" />
@@ -653,7 +722,7 @@
 	<bean id="hacker7" class="domain.Hacker">
 		<property name="name" value="Adam" />
 		<property name="surnames" value="Kelly" />
-		<property name="vat" value="123142" />
+		<property name="vat" value="16" />
 		<property name="photo"
 			value="https://placeimg.com/500/500/any" />
 		<property name="email" value="tracy45@example.com" />
@@ -692,8 +761,17 @@
 		<property name="linkLinkedInProfile"
 			value="http://www.linkedin.com/" />
 	</bean>
+	<bean id="personalData8Copy" class="domain.PersonalData">
+		<property name="fullName" value="Craig Jones" />
+		<property name="statement" value="lorem ipsum" />
+		<property name="phone" value="+34922650902" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
+	</bean>
 	<bean id="curriculum8" class="domain.Curriculum">
-		<property name="ticker" value="170633-598DFG" />
+		<property name="ticker" value="190101-598DFG" />
 		<property name="noCopy" value="true" />
 		<property name="personalData" ref="personalData8" />
 		<property name="hacker" ref="hacker8" />
@@ -701,7 +779,7 @@
 	<bean id="hacker8" class="domain.Hacker">
 		<property name="name" value="Craig" />
 		<property name="surnames" value="Jones" />
-		<property name="vat" value="376889" />
+		<property name="vat" value="17" />
 		<property name="photo"
 			value="https://www.lorempixel.com/500/500" />
 		<property name="email" value="xjoyce@example.org" />
@@ -740,8 +818,17 @@
 		<property name="linkLinkedInProfile"
 			value="http://www.linkedin.com/" />
 	</bean>
+	<bean id="personalData9Copy" class="domain.PersonalData">
+		<property name="fullName" value="Angela Barry" />
+		<property name="statement" value="lorem ipsum" />
+		<property name="phone" value="+34760708817" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
+	</bean>
 	<bean id="curriculum9" class="domain.Curriculum">
-		<property name="ticker" value="170346-503DFG" />
+		<property name="ticker" value="190101-503DFG" />
 		<property name="noCopy" value="true" />
 		<property name="personalData" ref="personalData9" />
 		<property name="hacker" ref="hacker9" />
@@ -749,7 +836,7 @@
 	<bean id="hacker9" class="domain.Hacker">
 		<property name="name" value="Angela" />
 		<property name="surnames" value="Barry" />
-		<property name="vat" value="649340" />
+		<property name="vat" value="18" />
 		<property name="photo"
 			value="https://placeimg.com/500/500/any" />
 		<property name="email" value="michael26@example.net" />
@@ -788,8 +875,17 @@
 		<property name="linkLinkedInProfile"
 			value="http://www.linkedin.com/" />
 	</bean>
+	<bean id="personalData10Copy" class="domain.PersonalData">
+		<property name="fullName" value="Steven Bowers" />
+		<property name="statement" value="lorem ipsum" />
+		<property name="phone" value="+34337211409" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
+	</bean>
 	<bean id="curriculum10" class="domain.Curriculum">
-		<property name="ticker" value="170700-136DFG" />
+		<property name="ticker" value="190101-136DFG" />
 		<property name="noCopy" value="true" />
 		<property name="personalData" ref="personalData10" />
 		<property name="hacker" ref="hacker10" />
@@ -797,7 +893,7 @@
 	<bean id="hacker10" class="domain.Hacker">
 		<property name="name" value="Steven" />
 		<property name="surnames" value="Bowers" />
-		<property name="vat" value="978586" />
+		<property name="vat" value="19" />
 		<property name="photo"
 			value="https://www.lorempixel.com/500/500" />
 		<property name="email" value="floresjamie@example.com" />
@@ -836,8 +932,17 @@
 		<property name="linkLinkedInProfile"
 			value="http://www.linkedin.com/" />
 	</bean>
+	<bean id="personalData11Copy" class="domain.PersonalData">
+		<property name="fullName" value="Kimberly Rice" />
+		<property name="statement" value="lorem ipsum" />
+		<property name="phone" value="+34728058350" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
+	</bean>
 	<bean id="curriculum11" class="domain.Curriculum">
-		<property name="ticker" value="170800-803DFG" />
+		<property name="ticker" value="190101-803DFG" />
 		<property name="noCopy" value="true" />
 		<property name="personalData" ref="personalData11" />
 		<property name="hacker" ref="hacker11" />
@@ -845,7 +950,7 @@
 	<bean id="hacker11" class="domain.Hacker">
 		<property name="name" value="Kimberly" />
 		<property name="surnames" value="Rice" />
-		<property name="vat" value="581438" />
+		<property name="vat" value="20" />
 		<property name="photo"
 			value="https://placekitten.com/500/500" />
 		<property name="email" value="randolphemily@example.org" />
@@ -884,8 +989,17 @@
 		<property name="linkLinkedInProfile"
 			value="http://www.linkedin.com/" />
 	</bean>
+	<bean id="personalData12Copy" class="domain.PersonalData">
+		<property name="fullName" value="Ryan Davis" />
+		<property name="statement" value="lorem ipsum" />
+		<property name="phone" value="+34001441837" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
+	</bean>
 	<bean id="curriculum12" class="domain.Curriculum">
-		<property name="ticker" value="170263-439DFG" />
+		<property name="ticker" value="190101-439DFG" />
 		<property name="noCopy" value="true" />
 		<property name="personalData" ref="personalData12" />
 		<property name="hacker" ref="hacker12" />
@@ -893,7 +1007,7 @@
 	<bean id="hacker12" class="domain.Hacker">
 		<property name="name" value="Ryan" />
 		<property name="surnames" value="Davis" />
-		<property name="vat" value="519929" />
+		<property name="vat" value="21" />
 		<property name="photo"
 			value="https://placekitten.com/500/500" />
 		<property name="email" value="amy53@example.net" />
@@ -932,8 +1046,17 @@
 		<property name="linkLinkedInProfile"
 			value="http://www.linkedin.com/" />
 	</bean>
+	<bean id="personalData13Copy" class="domain.PersonalData">
+		<property name="fullName" value="Jacob Pearson" />
+		<property name="statement" value="lorem ipsum" />
+		<property name="phone" value="+34230511300" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
+	</bean>
 	<bean id="curriculum13" class="domain.Curriculum">
-		<property name="ticker" value="170552-591DFG" />
+		<property name="ticker" value="190101-591DFG" />
 		<property name="noCopy" value="true" />
 		<property name="personalData" ref="personalData13" />
 		<property name="hacker" ref="hacker13" />
@@ -941,7 +1064,7 @@
 	<bean id="hacker13" class="domain.Hacker">
 		<property name="name" value="Jacob" />
 		<property name="surnames" value="Pearson" />
-		<property name="vat" value="445931" />
+		<property name="vat" value="22" />
 		<property name="photo"
 			value="https://placeimg.com/500/500/any" />
 		<property name="email" value="douglas89@example.net" />
@@ -972,7 +1095,7 @@
 		<property name="cvv" value="181" />
 	</bean>
 	<bean id="curriculum14" class="domain.Curriculum">
-		<property name="ticker" value="170842-562DFG" />
+		<property name="ticker" value="190101-562DFG" />
 		<property name="noCopy" value="true" />
 		<property name="personalData" ref="personalData14" />
 		<property name="positionDatas">
@@ -1001,7 +1124,22 @@
 		<property name="linkLinkedInProfile"
 			value="http://www.linkedin.com/" />
 	</bean>
+	<bean id="personalData14Copy" class="domain.PersonalData">
+		<property name="fullName" value="Kelly Gutierrez" />
+		<property name="statement" value="lorem ipsum" />
+		<property name="phone" value="+34179378266" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
+	</bean>
 	<bean id="positionData14" class="domain.PositionData">
+		<property name="title" value="title1" />
+		<property name="description" value="description1" />
+		<property name="startDate" value="1998/06/29" />
+		<property name="endDate" value="2000/06/29" />
+	</bean>
+	<bean id="positionData14Copy" class="domain.PositionData">
 		<property name="title" value="title1" />
 		<property name="description" value="description1" />
 		<property name="startDate" value="1998/06/29" />
@@ -1015,14 +1153,24 @@
 		<property name="startDate" value="1996/06/29" />
 		<property name="endDate" value="1998/06/29" />
 	</bean>
+	<bean id="educationData14Copy" class="domain.EducationData">
+		<property name="degree" value="degree1" />
+		<property name="institution" value="institution1" />
+		<property name="mark" value="7.1" />
+		<property name="startDate" value="1996/06/29" />
+		<property name="endDate" value="1998/06/29" />
+	</bean>
 
 	<bean id="miscellaneousData14" class="domain.MiscellaneousData">
+		<property name="text" value="text1" />
+	</bean>
+	<bean id="miscellaneousData14Copy" class="domain.MiscellaneousData">
 		<property name="text" value="text1" />
 	</bean>
 	<bean id="hacker14" class="domain.Hacker">
 		<property name="name" value="Kelly" />
 		<property name="surnames" value="Gutierrez" />
-		<property name="vat" value="455812" />
+		<property name="vat" value="23" />
 		<property name="photo"
 			value="https://placekitten.com/500/500" />
 		<property name="email" value="kfarmer@example.net" />
@@ -1517,19 +1665,55 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="problem11" class="domain.Problem">
+		<property name="title" value="Error 404" />
+		<property name="statement"
+			value="not found request" />
+		<property name="hint" value="i dont know" />
+		<property name="attachments">
+			<list>
+				<value>http://www.erros-sharp.info/home.htm/</value>
+			</list>
+		</property>
+		<property name="positions">
+			<list>
+			</list>
+		</property>
+		<property name="company" ref="company1" />
+		<property name="finalMode" value="false" />
+	</bean>
+	
+	<bean id="problem12" class="domain.Problem">
+		<property name="title" value="Error 500" />
+		<property name="statement"
+			value="not found request" />
+		<property name="hint" value="i dont know" />
+		<property name="attachments">
+			<list>
+				<value>http://www.erros-sharp.info/home.htm/</value>
+			</list>
+		</property>
+		<property name="positions">
+			<list>
+			</list>
+		</property>
+		<property name="company" ref="company1" />
+		<property name="finalMode" value="false" />
+	</bean>
 
 	<!-- Applications -->
 	<bean id="application1" class="domain.Application">
-		<property name="moment" value="10/01/2019" />
+		<property name="moment" value="2019/01/10" />
 		<property name="status" value="SUBMITTED" />
 		<property name="answer" value="www.github.com/Acme-hackerRank" />
 		<property name="position" ref="position1" />
-		<property name="submitMoment" value="30/03/2019" />
+		<property name="submitMoment" value="2019/03/30" />
 		<property name="curriculum" ref="curriculumCopy1" />
 		<property name="hacker" ref="hacker1" />
 	</bean>
 	<bean id="application2" class="domain.Application">
-		<property name="moment" value="02/02/2019" />
+		<property name="moment" value="2019/02/02" />
 		<property name="status" value="PENDING" />
 		<property name="answer" value="" />
 		<property name="position" ref="position1" />
@@ -1537,26 +1721,26 @@
 		<property name="hacker" ref="hacker3" />
 	</bean>
 	<bean id="application3" class="domain.Application">
-		<property name="moment" value="23/02/2019" />
+		<property name="moment" value="2019/02/02" />
 		<property name="status" value="ACCEPTED" />
 		<property name="answer"
 			value="Form consumer trade small thank lead child ten us those drop agree." />
-		<property name="submitMoment" value="30/03/2019" />
+		<property name="submitMoment" value="2019/03/30" />
 		<property name="position" ref="position1" />
 		<property name="curriculum" ref="curriculumCopy5" />
 		<property name="hacker" ref="hacker5" />
 	</bean>
 	<bean id="application4" class="domain.Application">
-		<property name="moment" value="08/03/2019" />
+		<property name="moment" value="2019/03/08" />
 		<property name="status" value="SUBMITTED" />
 		<property name="answer" value="Quite various make Republican statement store college range sport stay indicate use hand boy drop senior exactly difference south." />
-		<property name="submitMoment" value="18/03/2019" />
+		<property name="submitMoment" value="2019/03/18" />
 		<property name="position" ref="position1" />
 		<property name="curriculum" ref="curriculumCopy7" />
 		<property name="hacker" ref="hacker7" />
 	</bean>
 	<bean id="application5" class="domain.Application">
-		<property name="moment" value="08/02/2019" />
+		<property name="moment" value="2019/02/08" />
 		<property name="status" value="PENDING" />
 		<property name="answer" value="" />
 		<property name="position" ref="position1" />
@@ -1564,7 +1748,7 @@
 		<property name="hacker" ref="hacker9" />
 	</bean>
 	<bean id="application6" class="domain.Application">
-		<property name="moment" value="24/03/2019" />
+		<property name="moment" value="2019/03/24" />
 		<property name="status" value="PENDING" />
 		<property name="answer" value="" />
 		<property name="position" ref="position1" />
@@ -1572,17 +1756,17 @@
 		<property name="hacker" ref="hacker13" />
 	</bean>
 	<bean id="application7" class="domain.Application">
-		<property name="moment" value="17/02/2019" />
+		<property name="moment" value="2019/02/17" />
 		<property name="status" value="ACCEPTED" />
 		<property name="answer"
 			value="Tax within themselves time much blood recognize trouble I include wall piece win open easy start." />
-		<property name="submitMoment" value="23/04/2019" />
+		<property name="submitMoment" value="2019/04/22" />
 		<property name="position" ref="position2" />
 		<property name="curriculum" ref="curriculumCopy2" />
 		<property name="hacker" ref="hacker2" />
 	</bean>
 	<bean id="application8" class="domain.Application">
-		<property name="moment" value="08/02/2019" />
+		<property name="moment" value="2019/02/08" />
 		<property name="status" value="PENDING" />
 		<property name="answer" value="" />
 		<property name="position" ref="position2" />
@@ -1590,7 +1774,7 @@
 		<property name="hacker" ref="hacker8" />
 	</bean>
 	<bean id="application9" class="domain.Application">
-		<property name="moment" value="26/02/2019" />
+		<property name="moment" value="2019/02/26" />
 		<property name="status" value="PENDING" />
 		<property name="answer" value="" />
 		<property name="position" ref="position2" />
@@ -1598,17 +1782,17 @@
 		<property name="hacker" ref="hacker4" />
 	</bean>
 	<bean id="application10" class="domain.Application">
-		<property name="moment" value="03/03/2019" />
+		<property name="moment" value="2019/03/03" />
 		<property name="status" value="ACCEPTED" />
 		<property name="answer"
 			value="Message pass weight set threat direction throw drive gun president." />
-		<property name="submitMoment" value="04/04/2019" />
+		<property name="submitMoment" value="2019/04/04" />
 		<property name="position" ref="position3" />
 		<property name="curriculum" ref="curriculumCopy6" />
 		<property name="hacker" ref="hacker6" />
 	</bean>
 	<bean id="application11" class="domain.Application">
-		<property name="moment" value="13/02/2019" />
+		<property name="moment" value="2019/02/13" />
 		<property name="status" value="PENDING" />
 		<property name="answer" value="" />
 		<property name="position" ref="position3" />
@@ -1616,7 +1800,7 @@
 		<property name="hacker" ref="hacker10" />
 	</bean>
 	<bean id="application12" class="domain.Application">
-		<property name="moment" value="01/03/2019" />
+		<property name="moment" value="2019/03/01" />
 		<property name="status" value="PENDING" />
 		<property name="answer" value="" />
 		<property name="position" ref="position3" />
@@ -1624,17 +1808,17 @@
 		<property name="hacker" ref="hacker11" />
 	</bean>
 	<bean id="application13" class="domain.Application">
-		<property name="moment" value="08/02/2019" />
+		<property name="moment" value="2019/02/08" />
 		<property name="status" value="ACCEPTED" />
 		<property name="answer"
 			value="He clear approach almost huge begin difference describe how." />
-		<property name="submitMoment" value="20/04/2019" />
+		<property name="submitMoment" value="2019/04/20" />
 		<property name="position" ref="position4" />
 		<property name="curriculum" ref="curriculumCopy12" />
 		<property name="hacker" ref="hacker12" />
 	</bean>
 	<bean id="application14" class="domain.Application">
-		<property name="moment" value="09/02/2019" />
+		<property name="moment" value="2019/02/09" />
 		<property name="status" value="PENDING" />
 		<property name="answer" value="" />
 		<property name="position" ref="position4" />
@@ -1894,13 +2078,35 @@
 		<property name="sender" ref="company3" />
 		<property name="recipient" ref="company9" />
 	</bean>
+	
+	<bean id="message9" class="domain.Message">
+		<property name="moment" value="2018/09/17 12:59" />
+		<property name="subject" value="Viagra" />
+		<property name="body"
+			value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
+		<property name="tags" value="Collab" />
+		<property name="spam" value="False" />
+		<property name="sender" ref="company1" />
+		<property name="recipient" ref="company9" />
+	</bean>
+	
+	<bean id="message10" class="domain.Message">
+		<property name="moment" value="2018/09/17 12:59" />
+		<property name="subject" value="Collaboration" />
+		<property name="body"
+			value="Hello, we are looking forward to make one million with a collaboration with you. We would like to push forward technology." />
+		<property name="tags" value="Collab" />
+		<property name="spam" value="False" />
+		<property name="sender" ref="company3" />
+		<property name="recipient" ref="company9" />
+	</bean>
 
 	<!-- Administrators -->
 
 	<bean id="administrator1" class="domain.Administrator">
 		<property name="name" value="Sara" />
 		<property name="surnames" value="Guillena" />
-		<property name="vat" value="100000" />
+		<property name="vat" value="24" />
 		<property name="photo" value="http://www.dropbox.com/admin1/" />
 		<property name="email" value="sguille@mail.com" />
 		<property name="phone" value="+34 676925236" />
@@ -1913,7 +2119,7 @@
 	<bean id="administrator2" class="domain.Administrator">
 		<property name="name" value="Luis" />
 		<property name="surnames" value="Toranzo" />
-		<property name="vat" value="100001" />
+		<property name="vat" value="25" />
 		<property name="photo" value="http://www.dropbox.com/admin2/" />
 		<property name="email" value="luistrz@mail.com" />
 		<property name="phone" value="+34 676925236" />
@@ -1971,98 +2177,98 @@
 	<bean id="curriculumCopy1" class="domain.Curriculum">
 		<property name="ticker" value="C-190101-227DFG" />
 		<property name="noCopy" value="false" />
-		<property name="personalData" ref="personalData1" />
+		<property name="personalData" ref="personalData1Copy" />
 		<property name="hacker" ref="hacker1" />
 	</bean>
 	<bean id="curriculumCopy2" class="domain.Curriculum">
 		<property name="ticker" value="C-190102-934DFG" />
 		<property name="noCopy" value="false" />
-		<property name="personalData" ref="personalData2" />
+		<property name="personalData" ref="personalData2Copy" />
 		<property name="hacker" ref="hacker2" />
 	</bean>
 	<bean id="curriculumCopy3" class="domain.Curriculum">
 		<property name="ticker" value="C-190103-203DFG" />
 		<property name="noCopy" value="false" />
-		<property name="personalData" ref="personalData3" />
+		<property name="personalData" ref="personalData3Copy" />
 		<property name="hacker" ref="hacker3" />
 	</bean>
 	<bean id="curriculumCopy4" class="domain.Curriculum">
 		<property name="ticker" value="C-190104-566DFG" />
 		<property name="noCopy" value="false" />
-		<property name="personalData" ref="personalData4" />
+		<property name="personalData" ref="personalData4Copy" />
 		<property name="hacker" ref="hacker4" />
 	</bean>
 	<bean id="curriculumCopy5" class="domain.Curriculum">
 		<property name="ticker" value="C-190105-699DFG" />
 		<property name="noCopy" value="false" />
-		<property name="personalData" ref="personalData5" />
+		<property name="personalData" ref="personalData5Copy" />
 		<property name="hacker" ref="hacker5" />
 	</bean>
 	<bean id="curriculumCopy6" class="domain.Curriculum">
 		<property name="ticker" value="C-190106-714DFG" />
 		<property name="noCopy" value="false" />
-		<property name="personalData" ref="personalData6" />
+		<property name="personalData" ref="personalData6Copy" />
 		<property name="hacker" ref="hacker6" />
 	</bean>
 	<bean id="curriculumCopy7" class="domain.Curriculum">
 		<property name="ticker" value="C-190107-772DFG" />
 		<property name="noCopy" value="false" />
-		<property name="personalData" ref="personalData7" />
+		<property name="personalData" ref="personalData7Copy" />
 		<property name="hacker" ref="hacker7" />
 	</bean>
 	<bean id="curriculumCopy8" class="domain.Curriculum">
 		<property name="ticker" value="C-190108-598DFG" />
 		<property name="noCopy" value="false" />
-		<property name="personalData" ref="personalData8" />
+		<property name="personalData" ref="personalData8Copy" />
 		<property name="hacker" ref="hacker8" />
 	</bean>
 	<bean id="curriculumCopy9" class="domain.Curriculum">
 		<property name="ticker" value="C-190109-503DFG" />
 		<property name="noCopy" value="false" />
-		<property name="personalData" ref="personalData9" />
+		<property name="personalData" ref="personalData9Copy" />
 		<property name="hacker" ref="hacker9" />
 	</bean>
 	<bean id="curriculumCopy10" class="domain.Curriculum">
 		<property name="ticker" value="C-190110-136DFG" />
 		<property name="noCopy" value="false" />
-		<property name="personalData" ref="personalData10" />
+		<property name="personalData" ref="personalData10Copy" />
 		<property name="hacker" ref="hacker10" />
 	</bean>
 	<bean id="curriculumCopy11" class="domain.Curriculum">
 		<property name="ticker" value="C-190111-803DFG" />
 		<property name="noCopy" value="false" />
-		<property name="personalData" ref="personalData11" />
+		<property name="personalData" ref="personalData11Copy" />
 		<property name="hacker" ref="hacker11" />
 	</bean>
 	<bean id="curriculumCopy12" class="domain.Curriculum">
 		<property name="ticker" value="C-190112-439DFG" />
 		<property name="noCopy" value="false" />
-		<property name="personalData" ref="personalData12" />
+		<property name="personalData" ref="personalData12Copy" />
 		<property name="hacker" ref="hacker12" />
 	</bean>
 	<bean id="curriculumCopy13" class="domain.Curriculum">
 		<property name="ticker" value="C-190113-591DFG" />
 		<property name="noCopy" value="false" />
-		<property name="personalData" ref="personalData13" />
+		<property name="personalData" ref="personalData13Copy" />
 		<property name="hacker" ref="hacker13" />
 	</bean>
 	<bean id="curriculumCopy14" class="domain.Curriculum">
 		<property name="ticker" value="C-190114-562DFG" />
 		<property name="noCopy" value="false" />
-		<property name="personalData" ref="personalData14" />
+		<property name="personalData" ref="personalData14Copy" />
 		<property name="positionDatas">
 			<list>
-				<ref bean="positionData14" />
+				<ref bean="positionData14Copy" />
 			</list>
 		</property>
 		<property name="educationDatas">
 			<list>
-				<ref bean="educationData14" />
+				<ref bean="educationData14Copy" />
 			</list>
 		</property>
 		<property name="miscellaneousDatas">
 			<list>
-				<ref bean="miscellaneousData14" />
+				<ref bean="miscellaneousData14Copy" />
 			</list>
 		</property>
 		<property name="hacker" ref="hacker14" />
