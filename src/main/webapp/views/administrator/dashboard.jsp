@@ -51,8 +51,15 @@
 <br/>
 <fieldset>
 <legend><spring:message code="dashboard.positions" /></legend>
-<p><spring:message code="dashboard.positions.best" />: ${bP.title} </p>
-<p><spring:message code="dashboard.positions.worst" />: ${wP.title} </p>
+<p><spring:message code="dashboard.positions.best" />:<c:if test="${empty bP}">
+    -
+</c:if><c:if test="${not empty bP}">
+    ${bP.title}</c:if></p>
+<p><spring:message code="dashboard.positions.worst" />: <c:if test="${empty wP}">
+    -
+</c:if><c:if test="${not empty wP}">
+    ${wP.title}
+</c:if></p>
 <br/>
 </fieldset>
 
