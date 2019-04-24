@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- 
- * PopulateDatabase.xml
- *
- * Copyright (C) 2019 Universidad de Sevilla
- * 
- * The use of this project is hereby constrained to the conditions of the 
- * TDG Licence, a copy of which you may download from 
- * http://www.tdg-seville.info/License.html
- -->
+<!-- * PopulateDatabase.xml * * Copyright (C) 2019 Universidad de Sevilla 
+	* * The use of this project is hereby constrained to the conditions of the 
+	* TDG Licence, a copy of which you may download from * http://www.tdg-seville.info/License.html -->
 
-<beans xmlns="http://www.springframework.org/schema/beans" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	">
 	<!-- Companies -->
 	<bean id="userAccountCompany1" class="security.UserAccount">
 		<property name="username" value="company1" />
-		<property name="password" value="df655f976f7c9d3263815bd981225cd9" />
+		<property name="password"
+			value="df655f976f7c9d3263815bd981225cd9" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -28,19 +24,21 @@
 		<property name="isNotBanned" value="true" />
 	</bean>
 	<bean id="creditCardCompany1" class="domain.CreditCard">
-		<property name="holderName" value="company1"/>
-		<property name="make" value="JCB 15 digit"/>
+		<property name="holderName" value="company1" />
+		<property name="make" value="JCB 15 digit" />
 		<property name="number" value="30044247363742" />
 		<property name="expMonth" value="07" />
 		<property name="expYear" value="2027" />
-		<property name="cvv" value="830"/>
+		<property name="cvv" value="830" />
 	</bean>
 	<bean id="company1" class="domain.Company">
 		<property name="name" value="Russell, Skinner and Wilson" />
 		<property name="surnames" value="monetize enterprise systems" />
-		<property name="commercialName" value="Russell, Skinner and Wilson PLC" />
+		<property name="commercialName"
+			value="Russell, Skinner and Wilson PLC" />
 		<property name="vat" value="319034" />
-		<property name="photo" value="https://www.lorempixel.com/500/500" />
+		<property name="photo"
+			value="https://www.lorempixel.com/500/500" />
 		<property name="email" value="mariahhernandez@example.net" />
 		<property name="phone" value="+34518533047" />
 		<property name="address" value="Glorieta de Ignacio Álvarez" />
@@ -49,7 +47,8 @@
 	</bean>
 	<bean id="userAccountCompany2" class="security.UserAccount">
 		<property name="username" value="company2" />
-		<property name="password" value="d196a28097115067fefd73d25b0c0be8" />
+		<property name="password"
+			value="d196a28097115067fefd73d25b0c0be8" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -60,19 +59,20 @@
 		<property name="isNotBanned" value="true" />
 	</bean>
 	<bean id="creditCardCompany2" class="domain.CreditCard">
-		<property name="holderName" value="company2"/>
-		<property name="make" value="JCB 16 digit"/>
+		<property name="holderName" value="company2" />
+		<property name="make" value="JCB 16 digit" />
 		<property name="number" value="3511514561898244" />
 		<property name="expMonth" value="12" />
 		<property name="expYear" value="2025" />
-		<property name="cvv" value="944"/>
+		<property name="cvv" value="944" />
 	</bean>
 	<bean id="company2" class="domain.Company">
 		<property name="name" value="Wilkins-Brown" />
 		<property name="surnames" value="brand dynamic architectures" />
 		<property name="commercialName" value="Wilkins-Brown Group" />
 		<property name="vat" value="811539" />
-		<property name="photo" value="https://placeholdit.imgix.net/~text?txtsize=55&amp;txt=500x500&amp;w=500&amp;h=500" />
+		<property name="photo"
+			value="https://placeholdit.imgix.net/~text?txtsize=55&amp;txt=500x500&amp;w=500&amp;h=500" />
 		<property name="email" value="zphillips@example.org" />
 		<property name="phone" value="+34074791661" />
 		<property name="address" value="C. de Jose Angel Ríos" />
@@ -81,7 +81,8 @@
 	</bean>
 	<bean id="userAccountCompany3" class="security.UserAccount">
 		<property name="username" value="company3" />
-		<property name="password" value="e828ae3339b8d80b3902c1564578804e" />
+		<property name="password"
+			value="e828ae3339b8d80b3902c1564578804e" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -92,19 +93,21 @@
 		<property name="isNotBanned" value="true" />
 	</bean>
 	<bean id="creditCardCompany3" class="domain.CreditCard">
-		<property name="holderName" value="company3"/>
-		<property name="make" value="VISA 16 digit"/>
+		<property name="holderName" value="company3" />
+		<property name="make" value="VISA 16 digit" />
 		<property name="number" value="30293665269499" />
 		<property name="expMonth" value="01" />
 		<property name="expYear" value="2024" />
-		<property name="cvv" value="495"/>
+		<property name="cvv" value="495" />
 	</bean>
 	<bean id="company3" class="domain.Company">
 		<property name="name" value="Wallace Inc" />
-		<property name="surnames" value="redefine out-of-the-box models" />
+		<property name="surnames"
+			value="redefine out-of-the-box models" />
 		<property name="commercialName" value="Wallace Inc Ltd" />
 		<property name="vat" value="252258" />
-		<property name="photo" value="https://placeimg.com/500/500/any" />
+		<property name="photo"
+			value="https://placeimg.com/500/500/any" />
 		<property name="email" value="andrew39@example.org" />
 		<property name="phone" value="+34562469055" />
 		<property name="address" value="Acceso Asunción Sancho" />
@@ -113,7 +116,8 @@
 	</bean>
 	<bean id="userAccountCompany4" class="security.UserAccount">
 		<property name="username" value="company4" />
-		<property name="password" value="856dfd9045541fa727ef6ad392835eb0" />
+		<property name="password"
+			value="856dfd9045541fa727ef6ad392835eb0" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -124,19 +128,22 @@
 		<property name="isNotBanned" value="true" />
 	</bean>
 	<bean id="creditCardCompany4" class="domain.CreditCard">
-		<property name="holderName" value="company4"/>
-		<property name="make" value="VISA 19 digit"/>
+		<property name="holderName" value="company4" />
+		<property name="make" value="VISA 19 digit" />
 		<property name="number" value="4355690925404916" />
 		<property name="expMonth" value="12" />
 		<property name="expYear" value="2025" />
-		<property name="cvv" value="138"/>
+		<property name="cvv" value="138" />
 	</bean>
 	<bean id="company4" class="domain.Company">
 		<property name="name" value="Trevino, Snyder and Blankenship" />
-		<property name="surnames" value="architect scalable info-mediaries" />
-		<property name="commercialName" value="Trevino, Snyder and Blankenship Inc" />
+		<property name="surnames"
+			value="architect scalable info-mediaries" />
+		<property name="commercialName"
+			value="Trevino, Snyder and Blankenship Inc" />
 		<property name="vat" value="75817" />
-		<property name="photo" value="https://placeholdit.imgix.net/~text?txtsize=55&amp;txt=500x500&amp;w=500&amp;h=500" />
+		<property name="photo"
+			value="https://placeholdit.imgix.net/~text?txtsize=55&amp;txt=500x500&amp;w=500&amp;h=500" />
 		<property name="email" value="sandralewis@example.net" />
 		<property name="phone" value="+34125622892" />
 		<property name="address" value="Avenida de Gema Oller" />
@@ -145,7 +152,8 @@
 	</bean>
 	<bean id="userAccountCompany5" class="security.UserAccount">
 		<property name="username" value="company5" />
-		<property name="password" value="efa5a30f11d85b93518ba6cc3f229b14" />
+		<property name="password"
+			value="efa5a30f11d85b93518ba6cc3f229b14" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -156,19 +164,20 @@
 		<property name="isNotBanned" value="true" />
 	</bean>
 	<bean id="creditCardCompany5" class="domain.CreditCard">
-		<property name="holderName" value="company5"/>
-		<property name="make" value="Maestro"/>
+		<property name="holderName" value="company5" />
+		<property name="make" value="Maestro" />
 		<property name="number" value="6561568470924360" />
 		<property name="expMonth" value="01" />
 		<property name="expYear" value="2025" />
-		<property name="cvv" value="915"/>
+		<property name="cvv" value="915" />
 	</bean>
 	<bean id="company5" class="domain.Company">
 		<property name="name" value="Ross Group" />
 		<property name="surnames" value="generate seamless e-tailers" />
 		<property name="commercialName" value="Ross Group PLC" />
 		<property name="vat" value="126300" />
-		<property name="photo" value="https://placeimg.com/500/500/any" />
+		<property name="photo"
+			value="https://placeimg.com/500/500/any" />
 		<property name="email" value="whitneyyoung@example.net" />
 		<property name="phone" value="+34951987974" />
 		<property name="address" value="Callejón Hector Ochoa" />
@@ -177,7 +186,8 @@
 	</bean>
 	<bean id="userAccountCompany6" class="security.UserAccount">
 		<property name="username" value="company6" />
-		<property name="password" value="65ea58759487b11278c234e510c34817" />
+		<property name="password"
+			value="65ea58759487b11278c234e510c34817" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -188,12 +198,12 @@
 		<property name="isNotBanned" value="true" />
 	</bean>
 	<bean id="creditCardCompany6" class="domain.CreditCard">
-		<property name="holderName" value="company6"/>
-		<property name="make" value="JCB 16 digit"/>
+		<property name="holderName" value="company6" />
+		<property name="make" value="JCB 16 digit" />
 		<property name="number" value="4093220822358" />
 		<property name="expMonth" value="10" />
 		<property name="expYear" value="2025" />
-		<property name="cvv" value="947"/>
+		<property name="cvv" value="947" />
 	</bean>
 	<bean id="company6" class="domain.Company">
 		<property name="name" value="Davenport Inc" />
@@ -209,7 +219,8 @@
 	</bean>
 	<bean id="userAccountCompany7" class="security.UserAccount">
 		<property name="username" value="company7" />
-		<property name="password" value="31f0cb8ec36a9dd5ea0c8a476c847897" />
+		<property name="password"
+			value="31f0cb8ec36a9dd5ea0c8a476c847897" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -220,17 +231,18 @@
 		<property name="isNotBanned" value="true" />
 	</bean>
 	<bean id="creditCardCompany7" class="domain.CreditCard">
-		<property name="holderName" value="company7"/>
-		<property name="make" value="American Express"/>
+		<property name="holderName" value="company7" />
+		<property name="make" value="American Express" />
 		<property name="number" value="6011051900588119" />
 		<property name="expMonth" value="05" />
 		<property name="expYear" value="2027" />
-		<property name="cvv" value="710"/>
+		<property name="cvv" value="710" />
 	</bean>
 	<bean id="company7" class="domain.Company">
 		<property name="name" value="Montes, Delacruz and Moore" />
 		<property name="surnames" value="monetize rich networks" />
-		<property name="commercialName" value="Montes, Delacruz and Moore and Sons" />
+		<property name="commercialName"
+			value="Montes, Delacruz and Moore and Sons" />
 		<property name="vat" value="168340" />
 		<property name="photo" value="https://dummyimage.com/500x500" />
 		<property name="email" value="cmullins@example.com" />
@@ -241,7 +253,8 @@
 	</bean>
 	<bean id="userAccountCompany8" class="security.UserAccount">
 		<property name="username" value="company8" />
-		<property name="password" value="665cda0d9335940646e9a5c973295fbf" />
+		<property name="password"
+			value="665cda0d9335940646e9a5c973295fbf" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -252,19 +265,22 @@
 		<property name="isNotBanned" value="true" />
 	</bean>
 	<bean id="creditCardCompany8" class="domain.CreditCard">
-		<property name="holderName" value="company8"/>
-		<property name="make" value="JCB 16 digit"/>
+		<property name="holderName" value="company8" />
+		<property name="make" value="JCB 16 digit" />
 		<property name="number" value="3530994934828432" />
 		<property name="expMonth" value="04" />
 		<property name="expYear" value="2027" />
-		<property name="cvv" value="731"/>
+		<property name="cvv" value="731" />
 	</bean>
 	<bean id="company8" class="domain.Company">
 		<property name="name" value="Edwards, Tyler and Jones" />
-		<property name="surnames" value="strategize mission-critical bandwidth" />
-		<property name="commercialName" value="Edwards, Tyler and Jones and Sons" />
+		<property name="surnames"
+			value="strategize mission-critical bandwidth" />
+		<property name="commercialName"
+			value="Edwards, Tyler and Jones and Sons" />
 		<property name="vat" value="278695" />
-		<property name="photo" value="https://www.lorempixel.com/500/500" />
+		<property name="photo"
+			value="https://www.lorempixel.com/500/500" />
 		<property name="email" value="david42@example.net" />
 		<property name="phone" value="+34951145087" />
 		<property name="address" value="Ronda Jose Maria Ramis" />
@@ -273,7 +289,8 @@
 	</bean>
 	<bean id="userAccountCompany9" class="security.UserAccount">
 		<property name="username" value="company9" />
-		<property name="password" value="baa141dffb1abd335608732af5ed289e" />
+		<property name="password"
+			value="baa141dffb1abd335608732af5ed289e" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -284,19 +301,22 @@
 		<property name="isNotBanned" value="true" />
 	</bean>
 	<bean id="creditCardCompany9" class="domain.CreditCard">
-		<property name="holderName" value="company9"/>
-		<property name="make" value="VISA 13 digit"/>
+		<property name="holderName" value="company9" />
+		<property name="make" value="VISA 13 digit" />
 		<property name="number" value="4913167331868872" />
 		<property name="expMonth" value="05" />
 		<property name="expYear" value="2027" />
-		<property name="cvv" value="394"/>
+		<property name="cvv" value="394" />
 	</bean>
 	<bean id="company9" class="domain.Company">
 		<property name="name" value="Petty, Sanchez and Davis" />
-		<property name="surnames" value="visualize e-business e-markets" />
-		<property name="commercialName" value="Petty, Sanchez and Davis and Sons" />
+		<property name="surnames"
+			value="visualize e-business e-markets" />
+		<property name="commercialName"
+			value="Petty, Sanchez and Davis and Sons" />
 		<property name="vat" value="24372" />
-		<property name="photo" value="https://placekitten.com/500/500" />
+		<property name="photo"
+			value="https://placekitten.com/500/500" />
 		<property name="email" value="qholmes@example.org" />
 		<property name="phone" value="+34608689022" />
 		<property name="address" value="Calle Montserrat Alemán" />
@@ -308,7 +328,8 @@
 
 	<bean id="userAccountHacker1" class="security.UserAccount">
 		<property name="username" value="hacker1" />
-		<property name="password" value="2ba2a8ac968a7a2b0a7baa7f2fef18d2" />
+		<property name="password"
+			value="2ba2a8ac968a7a2b0a7baa7f2fef18d2" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -319,19 +340,21 @@
 		<property name="isNotBanned" value="true" />
 	</bean>
 	<bean id="creditCardHacker1" class="domain.CreditCard">
-		<property name="holderName" value="hacker1"/>
-		<property name="make" value="Diners Club / Carte Blanche"/>
+		<property name="holderName" value="hacker1" />
+		<property name="make" value="Diners Club / Carte Blanche" />
 		<property name="number" value="213187095934442" />
 		<property name="expMonth" value="11" />
 		<property name="expYear" value="2025" />
-		<property name="cvv" value="533"/>
+		<property name="cvv" value="533" />
 	</bean>
 	<bean id="personalData1" class="domain.PersonalData">
 		<property name="fullName" value="Michael Yu" />
 		<property name="statement" value="lorem ipsum" />
 		<property name="phone" value="+34762915970" />
-		<property name="linkGitHubProfile" value="http://www.github.com/" />
-		<property name="linkLinkedInProfile" value="http://www.linkedin.com/" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
 	</bean>
 	<bean id="curriculum1" class="domain.Curriculum">
 		<property name="ticker" value="170989-27DFG" />
@@ -343,7 +366,8 @@
 		<property name="name" value="Michael" />
 		<property name="surnames" value="Yu" />
 		<property name="vat" value="502709" />
-		<property name="photo" value="https://placeimg.com/500/500/any" />
+		<property name="photo"
+			value="https://placeimg.com/500/500/any" />
 		<property name="email" value="qallison@example.net" />
 		<property name="phone" value="+34862761239" />
 		<property name="address" value="C. Jesús Verdú" />
@@ -352,7 +376,8 @@
 	</bean>
 	<bean id="userAccountHacker2" class="security.UserAccount">
 		<property name="username" value="hacker2" />
-		<property name="password" value="91af68b69a50a98dbc0800942540342c" />
+		<property name="password"
+			value="91af68b69a50a98dbc0800942540342c" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -363,19 +388,21 @@
 		<property name="isNotBanned" value="true" />
 	</bean>
 	<bean id="creditCardHacker2" class="domain.CreditCard">
-		<property name="holderName" value="hacker2"/>
-		<property name="make" value="Diners Club / Carte Blanche"/>
+		<property name="holderName" value="hacker2" />
+		<property name="make" value="Diners Club / Carte Blanche" />
 		<property name="number" value="3544794313489317" />
 		<property name="expMonth" value="07" />
 		<property name="expYear" value="2029" />
-		<property name="cvv" value="596"/>
+		<property name="cvv" value="596" />
 	</bean>
 	<bean id="personalData2" class="domain.PersonalData">
 		<property name="fullName" value="Melissa Burns" />
 		<property name="statement" value="lorem ipsum" />
 		<property name="phone" value="+34209368164" />
-		<property name="linkGitHubProfile" value="http://www.github.com/" />
-		<property name="linkLinkedInProfile" value="http://www.linkedin.com/" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
 	</bean>
 	<bean id="curriculum2" class="domain.Curriculum">
 		<property name="ticker" value="170702-93DFG" />
@@ -387,7 +414,8 @@
 		<property name="name" value="Melissa" />
 		<property name="surnames" value="Burns" />
 		<property name="vat" value="104962" />
-		<property name="photo" value="https://placeholdit.imgix.net/~text?txtsize=55&amp;txt=500x500&amp;w=500&amp;h=500" />
+		<property name="photo"
+			value="https://placeholdit.imgix.net/~text?txtsize=55&amp;txt=500x500&amp;w=500&amp;h=500" />
 		<property name="email" value="cynthiacastro@example.com" />
 		<property name="phone" value="+34747097065" />
 		<property name="address" value="Paseo de Luis Miguel Zurita" />
@@ -396,7 +424,8 @@
 	</bean>
 	<bean id="userAccountHacker3" class="security.UserAccount">
 		<property name="username" value="hacker3" />
-		<property name="password" value="c6ae6edca1ad45f42e619ec91a32b636" />
+		<property name="password"
+			value="c6ae6edca1ad45f42e619ec91a32b636" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -407,19 +436,21 @@
 		<property name="isNotBanned" value="true" />
 	</bean>
 	<bean id="creditCardHacker3" class="domain.CreditCard">
-		<property name="holderName" value="hacker3"/>
-		<property name="make" value="VISA 13 digit"/>
+		<property name="holderName" value="hacker3" />
+		<property name="make" value="VISA 13 digit" />
 		<property name="number" value="6011113075754502" />
 		<property name="expMonth" value="10" />
 		<property name="expYear" value="2027" />
-		<property name="cvv" value="112"/>
+		<property name="cvv" value="112" />
 	</bean>
 	<bean id="personalData3" class="domain.PersonalData">
 		<property name="fullName" value="Thomas Martin" />
 		<property name="statement" value="lorem ipsum" />
 		<property name="phone" value="+34848421574" />
-		<property name="linkGitHubProfile" value="http://www.github.com/" />
-		<property name="linkLinkedInProfile" value="http://www.linkedin.com/" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
 	</bean>
 	<bean id="curriculum3" class="domain.Curriculum">
 		<property name="ticker" value="170572-20DFG" />
@@ -431,7 +462,8 @@
 		<property name="name" value="Thomas" />
 		<property name="surnames" value="Martin" />
 		<property name="vat" value="739178" />
-		<property name="photo" value="https://placekitten.com/500/500" />
+		<property name="photo"
+			value="https://placekitten.com/500/500" />
 		<property name="email" value="nreid@example.com" />
 		<property name="phone" value="+34610331245" />
 		<property name="address" value="Calle Nerea Martin" />
@@ -440,7 +472,8 @@
 	</bean>
 	<bean id="userAccountHacker4" class="security.UserAccount">
 		<property name="username" value="hacker4" />
-		<property name="password" value="a0ba178a7585a3b3575613351aa76ef7" />
+		<property name="password"
+			value="a0ba178a7585a3b3575613351aa76ef7" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -451,19 +484,21 @@
 		<property name="isNotBanned" value="true" />
 	</bean>
 	<bean id="creditCardHacker4" class="domain.CreditCard">
-		<property name="holderName" value="hacker4"/>
-		<property name="make" value="Diners Club / Carte Blanche"/>
+		<property name="holderName" value="hacker4" />
+		<property name="make" value="Diners Club / Carte Blanche" />
 		<property name="number" value="5471212508468089" />
 		<property name="expMonth" value="03" />
 		<property name="expYear" value="2025" />
-		<property name="cvv" value="753"/>
+		<property name="cvv" value="753" />
 	</bean>
 	<bean id="personalData4" class="domain.PersonalData">
 		<property name="fullName" value="Robert Ferguson" />
 		<property name="statement" value="lorem ipsum" />
 		<property name="phone" value="+34893120013" />
-		<property name="linkGitHubProfile" value="http://www.github.com/" />
-		<property name="linkLinkedInProfile" value="http://www.linkedin.com/" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
 	</bean>
 	<bean id="curriculum4" class="domain.Curriculum">
 		<property name="ticker" value="170220-566DFG" />
@@ -475,7 +510,8 @@
 		<property name="name" value="Robert" />
 		<property name="surnames" value="Ferguson" />
 		<property name="vat" value="656707" />
-		<property name="photo" value="https://www.lorempixel.com/500/500" />
+		<property name="photo"
+			value="https://www.lorempixel.com/500/500" />
 		<property name="email" value="michael83@example.org" />
 		<property name="phone" value="+34971140654" />
 		<property name="address" value="Avenida de Pedro Alberto" />
@@ -484,7 +520,8 @@
 	</bean>
 	<bean id="userAccountHacker5" class="security.UserAccount">
 		<property name="username" value="hacker5" />
-		<property name="password" value="c788cf2e81a407a2d33ee178ed79de3e" />
+		<property name="password"
+			value="c788cf2e81a407a2d33ee178ed79de3e" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -495,19 +532,21 @@
 		<property name="isNotBanned" value="true" />
 	</bean>
 	<bean id="creditCardHacker5" class="domain.CreditCard">
-		<property name="holderName" value="hacker5"/>
-		<property name="make" value="JCB 16 digit"/>
+		<property name="holderName" value="hacker5" />
+		<property name="make" value="JCB 16 digit" />
 		<property name="number" value="4783163951564240285" />
 		<property name="expMonth" value="07" />
 		<property name="expYear" value="2024" />
-		<property name="cvv" value="142"/>
+		<property name="cvv" value="142" />
 	</bean>
 	<bean id="personalData5" class="domain.PersonalData">
 		<property name="fullName" value="Brenda Green" />
 		<property name="statement" value="lorem ipsum" />
 		<property name="phone" value="+34045271509" />
-		<property name="linkGitHubProfile" value="http://www.github.com/" />
-		<property name="linkLinkedInProfile" value="http://www.linkedin.com/" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
 	</bean>
 	<bean id="curriculum5" class="domain.Curriculum">
 		<property name="ticker" value="170799-699DFG" />
@@ -519,7 +558,8 @@
 		<property name="name" value="Brenda" />
 		<property name="surnames" value="Green" />
 		<property name="vat" value="995625" />
-		<property name="photo" value="https://placekitten.com/500/500" />
+		<property name="photo"
+			value="https://placekitten.com/500/500" />
 		<property name="email" value="tinaschwartz@example.com" />
 		<property name="phone" value="+34465533582" />
 		<property name="address" value="Glorieta de Ismael Riera" />
@@ -528,7 +568,8 @@
 	</bean>
 	<bean id="userAccountHacker6" class="security.UserAccount">
 		<property name="username" value="hacker6" />
-		<property name="password" value="b8f9087a445d02d19b5154dbadbc7efd" />
+		<property name="password"
+			value="b8f9087a445d02d19b5154dbadbc7efd" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -539,19 +580,21 @@
 		<property name="isNotBanned" value="true" />
 	</bean>
 	<bean id="creditCardHacker6" class="domain.CreditCard">
-		<property name="holderName" value="hacker6"/>
-		<property name="make" value="Discover"/>
+		<property name="holderName" value="hacker6" />
+		<property name="make" value="Discover" />
 		<property name="number" value="4801541587108477935" />
 		<property name="expMonth" value="06" />
 		<property name="expYear" value="2023" />
-		<property name="cvv" value="329"/>
+		<property name="cvv" value="329" />
 	</bean>
 	<bean id="personalData6" class="domain.PersonalData">
 		<property name="fullName" value="Seth Anthony" />
 		<property name="statement" value="lorem ipsum" />
 		<property name="phone" value="+34366370707" />
-		<property name="linkGitHubProfile" value="http://www.github.com/" />
-		<property name="linkLinkedInProfile" value="http://www.linkedin.com/" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
 	</bean>
 	<bean id="curriculum6" class="domain.Curriculum">
 		<property name="ticker" value="170434-714DFG" />
@@ -563,7 +606,8 @@
 		<property name="name" value="Seth" />
 		<property name="surnames" value="Anthony" />
 		<property name="vat" value="406689" />
-		<property name="photo" value="https://placeimg.com/500/500/any" />
+		<property name="photo"
+			value="https://placeimg.com/500/500/any" />
 		<property name="email" value="fwoods@example.com" />
 		<property name="phone" value="+34607545061" />
 		<property name="address" value="Rambla de Xavier Peláez" />
@@ -572,7 +616,8 @@
 	</bean>
 	<bean id="userAccountHacker7" class="security.UserAccount">
 		<property name="username" value="hacker7" />
-		<property name="password" value="dc072385108964493854966465072c77" />
+		<property name="password"
+			value="dc072385108964493854966465072c77" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -583,19 +628,21 @@
 		<property name="isNotBanned" value="true" />
 	</bean>
 	<bean id="creditCardHacker7" class="domain.CreditCard">
-		<property name="holderName" value="hacker7"/>
-		<property name="make" value="VISA 16 digit"/>
+		<property name="holderName" value="hacker7" />
+		<property name="make" value="VISA 16 digit" />
 		<property name="number" value="5599161662174594" />
 		<property name="expMonth" value="07" />
 		<property name="expYear" value="2025" />
-		<property name="cvv" value="628"/>
+		<property name="cvv" value="628" />
 	</bean>
 	<bean id="personalData7" class="domain.PersonalData">
 		<property name="fullName" value="Adam Kelly" />
 		<property name="statement" value="lorem ipsum" />
 		<property name="phone" value="+34405656059" />
-		<property name="linkGitHubProfile" value="http://www.github.com/" />
-		<property name="linkLinkedInProfile" value="http://www.linkedin.com/" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
 	</bean>
 	<bean id="curriculum7" class="domain.Curriculum">
 		<property name="ticker" value="170900-772DFG" />
@@ -607,7 +654,8 @@
 		<property name="name" value="Adam" />
 		<property name="surnames" value="Kelly" />
 		<property name="vat" value="123142" />
-		<property name="photo" value="https://placeimg.com/500/500/any" />
+		<property name="photo"
+			value="https://placeimg.com/500/500/any" />
 		<property name="email" value="tracy45@example.com" />
 		<property name="phone" value="+34222066820" />
 		<property name="address" value="Alameda de Miguel Baena" />
@@ -616,7 +664,8 @@
 	</bean>
 	<bean id="userAccountHacker8" class="security.UserAccount">
 		<property name="username" value="hacker8" />
-		<property name="password" value="917a85f5524799a575bc06e45f7f5e1b" />
+		<property name="password"
+			value="917a85f5524799a575bc06e45f7f5e1b" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -627,19 +676,21 @@
 		<property name="isNotBanned" value="true" />
 	</bean>
 	<bean id="creditCardHacker8" class="domain.CreditCard">
-		<property name="holderName" value="hacker8"/>
-		<property name="make" value="VISA 16 digit"/>
+		<property name="holderName" value="hacker8" />
+		<property name="make" value="VISA 16 digit" />
 		<property name="number" value="4128022391285296705" />
 		<property name="expMonth" value="04" />
 		<property name="expYear" value="2022" />
-		<property name="cvv" value="862"/>
+		<property name="cvv" value="862" />
 	</bean>
 	<bean id="personalData8" class="domain.PersonalData">
 		<property name="fullName" value="Craig Jones" />
 		<property name="statement" value="lorem ipsum" />
 		<property name="phone" value="+34922650902" />
-		<property name="linkGitHubProfile" value="http://www.github.com/" />
-		<property name="linkLinkedInProfile" value="http://www.linkedin.com/" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
 	</bean>
 	<bean id="curriculum8" class="domain.Curriculum">
 		<property name="ticker" value="170633-598DFG" />
@@ -651,7 +702,8 @@
 		<property name="name" value="Craig" />
 		<property name="surnames" value="Jones" />
 		<property name="vat" value="376889" />
-		<property name="photo" value="https://www.lorempixel.com/500/500" />
+		<property name="photo"
+			value="https://www.lorempixel.com/500/500" />
 		<property name="email" value="xjoyce@example.org" />
 		<property name="phone" value="+34368137470" />
 		<property name="address" value="Alameda de Mohamed Sevilla" />
@@ -660,7 +712,8 @@
 	</bean>
 	<bean id="userAccountHacker9" class="security.UserAccount">
 		<property name="username" value="hacker9" />
-		<property name="password" value="8d9faf0956e7eb5f9dc7583a803ec4d2" />
+		<property name="password"
+			value="8d9faf0956e7eb5f9dc7583a803ec4d2" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -671,19 +724,21 @@
 		<property name="isNotBanned" value="true" />
 	</bean>
 	<bean id="creditCardHacker9" class="domain.CreditCard">
-		<property name="holderName" value="hacker9"/>
-		<property name="make" value="VISA 13 digit"/>
+		<property name="holderName" value="hacker9" />
+		<property name="make" value="VISA 13 digit" />
 		<property name="number" value="30333685004060" />
 		<property name="expMonth" value="01" />
 		<property name="expYear" value="2026" />
-		<property name="cvv" value="221"/>
+		<property name="cvv" value="221" />
 	</bean>
 	<bean id="personalData9" class="domain.PersonalData">
 		<property name="fullName" value="Angela Barry" />
 		<property name="statement" value="lorem ipsum" />
 		<property name="phone" value="+34760708817" />
-		<property name="linkGitHubProfile" value="http://www.github.com/" />
-		<property name="linkLinkedInProfile" value="http://www.linkedin.com/" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
 	</bean>
 	<bean id="curriculum9" class="domain.Curriculum">
 		<property name="ticker" value="170346-503DFG" />
@@ -695,7 +750,8 @@
 		<property name="name" value="Angela" />
 		<property name="surnames" value="Barry" />
 		<property name="vat" value="649340" />
-		<property name="photo" value="https://placeimg.com/500/500/any" />
+		<property name="photo"
+			value="https://placeimg.com/500/500/any" />
 		<property name="email" value="michael26@example.net" />
 		<property name="phone" value="+34053273331" />
 		<property name="address" value="Cuesta de Anna Pallarès" />
@@ -704,7 +760,8 @@
 	</bean>
 	<bean id="userAccountHacker10" class="security.UserAccount">
 		<property name="username" value="hacker10" />
-		<property name="password" value="967fcdb90794ee615be9fe0224123156" />
+		<property name="password"
+			value="967fcdb90794ee615be9fe0224123156" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -715,19 +772,21 @@
 		<property name="isNotBanned" value="true" />
 	</bean>
 	<bean id="creditCardHacker10" class="domain.CreditCard">
-		<property name="holderName" value="hacker10"/>
-		<property name="make" value="VISA 16 digit"/>
+		<property name="holderName" value="hacker10" />
+		<property name="make" value="VISA 16 digit" />
 		<property name="number" value="630482406638" />
 		<property name="expMonth" value="12" />
 		<property name="expYear" value="2022" />
-		<property name="cvv" value="533"/>
+		<property name="cvv" value="533" />
 	</bean>
 	<bean id="personalData10" class="domain.PersonalData">
 		<property name="fullName" value="Steven Bowers" />
 		<property name="statement" value="lorem ipsum" />
 		<property name="phone" value="+34337211409" />
-		<property name="linkGitHubProfile" value="http://www.github.com/" />
-		<property name="linkLinkedInProfile" value="http://www.linkedin.com/" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
 	</bean>
 	<bean id="curriculum10" class="domain.Curriculum">
 		<property name="ticker" value="170700-136DFG" />
@@ -739,7 +798,8 @@
 		<property name="name" value="Steven" />
 		<property name="surnames" value="Bowers" />
 		<property name="vat" value="978586" />
-		<property name="photo" value="https://www.lorempixel.com/500/500" />
+		<property name="photo"
+			value="https://www.lorempixel.com/500/500" />
 		<property name="email" value="floresjamie@example.com" />
 		<property name="phone" value="+34919077743" />
 		<property name="address" value="Glorieta Anna Hervás" />
@@ -748,7 +808,8 @@
 	</bean>
 	<bean id="userAccountHacker11" class="security.UserAccount">
 		<property name="username" value="hacker11" />
-		<property name="password" value="c70deb327fbd673601441874ed3fa3db" />
+		<property name="password"
+			value="c70deb327fbd673601441874ed3fa3db" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -759,19 +820,21 @@
 		<property name="isNotBanned" value="true" />
 	</bean>
 	<bean id="creditCardHacker11" class="domain.CreditCard">
-		<property name="holderName" value="hacker11"/>
-		<property name="make" value="Diners Club / Carte Blanche"/>
+		<property name="holderName" value="hacker11" />
+		<property name="make" value="Diners Club / Carte Blanche" />
 		<property name="number" value="501824086893" />
 		<property name="expMonth" value="04" />
 		<property name="expYear" value="2025" />
-		<property name="cvv" value="775"/>
+		<property name="cvv" value="775" />
 	</bean>
 	<bean id="personalData11" class="domain.PersonalData">
 		<property name="fullName" value="Kimberly Rice" />
 		<property name="statement" value="lorem ipsum" />
 		<property name="phone" value="+34728058350" />
-		<property name="linkGitHubProfile" value="http://www.github.com/" />
-		<property name="linkLinkedInProfile" value="http://www.linkedin.com/" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
 	</bean>
 	<bean id="curriculum11" class="domain.Curriculum">
 		<property name="ticker" value="170800-803DFG" />
@@ -783,7 +846,8 @@
 		<property name="name" value="Kimberly" />
 		<property name="surnames" value="Rice" />
 		<property name="vat" value="581438" />
-		<property name="photo" value="https://placekitten.com/500/500" />
+		<property name="photo"
+			value="https://placekitten.com/500/500" />
 		<property name="email" value="randolphemily@example.org" />
 		<property name="phone" value="+34188556737" />
 		<property name="address" value="Ronda de Victor Molina" />
@@ -792,7 +856,8 @@
 	</bean>
 	<bean id="userAccountHacker12" class="security.UserAccount">
 		<property name="username" value="hacker12" />
-		<property name="password" value="d708b293099ff0f78701ab2ae3389cf7" />
+		<property name="password"
+			value="d708b293099ff0f78701ab2ae3389cf7" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -803,19 +868,21 @@
 		<property name="isNotBanned" value="true" />
 	</bean>
 	<bean id="creditCardHacker12" class="domain.CreditCard">
-		<property name="holderName" value="hacker12"/>
-		<property name="make" value="Mastercard"/>
+		<property name="holderName" value="hacker12" />
+		<property name="make" value="Mastercard" />
 		<property name="number" value="3531149334465348" />
 		<property name="expMonth" value="05" />
 		<property name="expYear" value="2024" />
-		<property name="cvv" value="834"/>
+		<property name="cvv" value="834" />
 	</bean>
 	<bean id="personalData12" class="domain.PersonalData">
 		<property name="fullName" value="Ryan Davis" />
 		<property name="statement" value="lorem ipsum" />
 		<property name="phone" value="+34001441837" />
-		<property name="linkGitHubProfile" value="http://www.github.com/" />
-		<property name="linkLinkedInProfile" value="http://www.linkedin.com/" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
 	</bean>
 	<bean id="curriculum12" class="domain.Curriculum">
 		<property name="ticker" value="170263-439DFG" />
@@ -827,7 +894,8 @@
 		<property name="name" value="Ryan" />
 		<property name="surnames" value="Davis" />
 		<property name="vat" value="519929" />
-		<property name="photo" value="https://placekitten.com/500/500" />
+		<property name="photo"
+			value="https://placekitten.com/500/500" />
 		<property name="email" value="amy53@example.net" />
 		<property name="phone" value="+34583547263" />
 		<property name="address" value="Vial de Isabel Soler" />
@@ -836,7 +904,8 @@
 	</bean>
 	<bean id="userAccountHacker13" class="security.UserAccount">
 		<property name="username" value="hacker13" />
-		<property name="password" value="13e985d645d771c0408dbbd4db2980a8" />
+		<property name="password"
+			value="13e985d645d771c0408dbbd4db2980a8" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -847,19 +916,21 @@
 		<property name="isNotBanned" value="true" />
 	</bean>
 	<bean id="creditCardHacker13" class="domain.CreditCard">
-		<property name="holderName" value="hacker13"/>
-		<property name="make" value="VISA 16 digit"/>
+		<property name="holderName" value="hacker13" />
+		<property name="make" value="VISA 16 digit" />
 		<property name="number" value="5415199798719801" />
 		<property name="expMonth" value="05" />
 		<property name="expYear" value="2024" />
-		<property name="cvv" value="179"/>
+		<property name="cvv" value="179" />
 	</bean>
 	<bean id="personalData13" class="domain.PersonalData">
 		<property name="fullName" value="Jacob Pearson" />
 		<property name="statement" value="lorem ipsum" />
 		<property name="phone" value="+34230511300" />
-		<property name="linkGitHubProfile" value="http://www.github.com/" />
-		<property name="linkLinkedInProfile" value="http://www.linkedin.com/" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
 	</bean>
 	<bean id="curriculum13" class="domain.Curriculum">
 		<property name="ticker" value="170552-591DFG" />
@@ -871,7 +942,8 @@
 		<property name="name" value="Jacob" />
 		<property name="surnames" value="Pearson" />
 		<property name="vat" value="445931" />
-		<property name="photo" value="https://placeimg.com/500/500/any" />
+		<property name="photo"
+			value="https://placeimg.com/500/500/any" />
 		<property name="email" value="douglas89@example.net" />
 		<property name="phone" value="+34241069432" />
 		<property name="address" value="Rambla de Ivan Huerta" />
@@ -880,7 +952,8 @@
 	</bean>
 	<bean id="userAccountHacker14" class="security.UserAccount">
 		<property name="username" value="hacker14" />
-		<property name="password" value="0d2a0aca9e28b001c412d08a7a216803" />
+		<property name="password"
+			value="0d2a0aca9e28b001c412d08a7a216803" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -891,12 +964,12 @@
 		<property name="isNotBanned" value="true" />
 	</bean>
 	<bean id="creditCardHacker14" class="domain.CreditCard">
-		<property name="holderName" value="hacker14"/>
-		<property name="make" value="Maestro"/>
+		<property name="holderName" value="hacker14" />
+		<property name="make" value="Maestro" />
 		<property name="number" value="30536509220619" />
 		<property name="expMonth" value="10" />
 		<property name="expYear" value="2024" />
-		<property name="cvv" value="181"/>
+		<property name="cvv" value="181" />
 	</bean>
 	<bean id="curriculum14" class="domain.Curriculum">
 		<property name="ticker" value="170842-562DFG" />
@@ -923,8 +996,10 @@
 		<property name="fullName" value="Kelly Gutierrez" />
 		<property name="statement" value="lorem ipsum" />
 		<property name="phone" value="+34179378266" />
-		<property name="linkGitHubProfile" value="http://www.github.com/" />
-		<property name="linkLinkedInProfile" value="http://www.linkedin.com/" />
+		<property name="linkGitHubProfile"
+			value="http://www.github.com/" />
+		<property name="linkLinkedInProfile"
+			value="http://www.linkedin.com/" />
 	</bean>
 	<bean id="positionData14" class="domain.PositionData">
 		<property name="title" value="title1" />
@@ -948,7 +1023,8 @@
 		<property name="name" value="Kelly" />
 		<property name="surnames" value="Gutierrez" />
 		<property name="vat" value="455812" />
-		<property name="photo" value="https://placekitten.com/500/500" />
+		<property name="photo"
+			value="https://placekitten.com/500/500" />
 		<property name="email" value="kfarmer@example.net" />
 		<property name="phone" value="+34093103753" />
 		<property name="address" value="Vial Verónica Fonseca" />
@@ -1058,7 +1134,8 @@
 	<bean id="position1" class="domain.Position">
 		<property name="ticker" value="Russ-1629" />
 		<property name="title" value="position1" />
-		<property name="description" value="Moment might thank history contain listen artist." />
+		<property name="description"
+			value="Moment might thank history contain listen artist." />
 		<property name="deadline" value="25/12/2019" />
 		<property name="profile" value="Scrum-master" />
 		<property name="skills" value="Web Development,Databases" />
@@ -1069,7 +1146,8 @@
 	</bean>
 	<bean id="problem1" class="domain.Problem">
 		<property name="title" value="Fix web problems" />
-		<property name="statement" value="Window contain rather teach back necessary become position key future receive science." />
+		<property name="statement"
+			value="Window contain rather teach back necessary become position key future receive science." />
 		<property name="hint" value="Yes ready." />
 		<property name="attachments">
 			<list>
@@ -1087,7 +1165,8 @@
 	</bean>
 	<bean id="problem2" class="domain.Problem">
 		<property name="title" value="Mobile app" />
-		<property name="statement" value="My back make protect become car student quality list chair draw role remember boy how over try history decision yes." />
+		<property name="statement"
+			value="My back make protect become car student quality list chair draw role remember boy how over try history decision yes." />
 		<property name="hint" value="Seem young." />
 		<property name="attachments">
 			<list>
@@ -1105,7 +1184,8 @@
 	<bean id="position2" class="domain.Position">
 		<property name="ticker" value="Russ-8985" />
 		<property name="title" value="position2" />
-		<property name="description" value="Because realize fly whom argue expert member my scientist." />
+		<property name="description"
+			value="Because realize fly whom argue expert member my scientist." />
 		<property name="deadline" value="27/02/2020" />
 		<property name="profile" value="Developer" />
 		<property name="skills" value="Artificial Intelligence" />
@@ -1117,7 +1197,8 @@
 	<bean id="position3" class="domain.Position">
 		<property name="ticker" value="Wilk-7446" />
 		<property name="title" value="position3" />
-		<property name="description" value="Wrong investment population decade sometimes itself education positive everyone large red include above husband avoid." />
+		<property name="description"
+			value="Wrong investment population decade sometimes itself education positive everyone large red include above husband avoid." />
 		<property name="deadline" value="26/01/2020" />
 		<property name="profile" value="Scientist" />
 		<property name="skills" value="UI/UX,Web Development" />
@@ -1128,7 +1209,8 @@
 	</bean>
 	<bean id="problem3" class="domain.Problem">
 		<property name="title" value="Fix Database" />
-		<property name="statement" value="Test cup born section black cell add everything finish maintain adult baby laugh my tree toward dream accept player few travel." />
+		<property name="statement"
+			value="Test cup born section black cell add everything finish maintain adult baby laugh my tree toward dream accept player few travel." />
 		<property name="hint" value="Baby off sit boy who." />
 		<property name="attachments">
 			<list>
@@ -1147,7 +1229,8 @@
 	</bean>
 	<bean id="problem4" class="domain.Problem">
 		<property name="title" value="Problem with payment system" />
-		<property name="statement" value="Wish new lead note score total truth check way visit phone leg defense least public attorney protect forget inside once." />
+		<property name="statement"
+			value="Wish new lead note score total truth check way visit phone leg defense least public attorney protect forget inside once." />
 		<property name="hint" value="Stop discover close." />
 		<property name="attachments">
 			<list>
@@ -1167,7 +1250,8 @@
 	<bean id="position4" class="domain.Position">
 		<property name="ticker" value="Wall-9821" />
 		<property name="title" value="position4" />
-		<property name="description" value="Close answer together security size want economic unit particularly single must film oil boy two." />
+		<property name="description"
+			value="Close answer together security size want economic unit particularly single must film oil boy two." />
 		<property name="deadline" value="26/02/2020" />
 		<property name="profile" value="Senior-Developer" />
 		<property name="skills" value="Web Development,Databases" />
@@ -1179,7 +1263,8 @@
 	<bean id="position5" class="domain.Position">
 		<property name="ticker" value="Wall-8398" />
 		<property name="title" value="position5" />
-		<property name="description" value="Weight close together apply arrive someone thousand artist professor." />
+		<property name="description"
+			value="Weight close together apply arrive someone thousand artist professor." />
 		<property name="deadline" value="18/12/2019" />
 		<property name="profile" value="Scientist" />
 		<property name="skills" value="Artificial Intelligence" />
@@ -1191,7 +1276,8 @@
 	<bean id="position6" class="domain.Position">
 		<property name="ticker" value="Wall-5081" />
 		<property name="title" value="position6" />
-		<property name="description" value="Space here public society pretty test term at go relationship physical example huge." />
+		<property name="description"
+			value="Space here public society pretty test term at go relationship physical example huge." />
 		<property name="deadline" value="02/09/2019" />
 		<property name="profile" value="Developer" />
 		<property name="skills" value="Databases" />
@@ -1203,7 +1289,8 @@
 	<bean id="position7" class="domain.Position">
 		<property name="ticker" value="Wall-9170" />
 		<property name="title" value="position7" />
-		<property name="description" value="Food big society second sense wind institution risk yes serve region style amount yeah fine take." />
+		<property name="description"
+			value="Food big society second sense wind institution risk yes serve region style amount yeah fine take." />
 		<property name="deadline" value="06/11/2019" />
 		<property name="profile" value="Engineer" />
 		<property name="skills" value="Security" />
@@ -1215,7 +1302,8 @@
 	<bean id="position8" class="domain.Position">
 		<property name="ticker" value="Trev-8907" />
 		<property name="title" value="position8" />
-		<property name="description" value="Hand player easy man much us chance personal however." />
+		<property name="description"
+			value="Hand player easy man much us chance personal however." />
 		<property name="deadline" value="30/09/2019" />
 		<property name="profile" value="Developer" />
 		<property name="skills" value="Databases" />
@@ -1227,7 +1315,8 @@
 	<bean id="position9" class="domain.Position">
 		<property name="ticker" value="Ross-1400" />
 		<property name="title" value="position9" />
-		<property name="description" value="Democratic candidate may security finally site message off." />
+		<property name="description"
+			value="Democratic candidate may security finally site message off." />
 		<property name="deadline" value="12/01/2020" />
 		<property name="profile" value="Senior-Developer" />
 		<property name="skills" value="UI/UX,Web Development" />
@@ -1239,7 +1328,8 @@
 	<bean id="position10" class="domain.Position">
 		<property name="ticker" value="Monte-4034" />
 		<property name="title" value="position10" />
-		<property name="description" value="Research traditional away Mr exactly born sign maybe employee." />
+		<property name="description"
+			value="Research traditional away Mr exactly born sign maybe employee." />
 		<property name="deadline" value="16/04/2020" />
 		<property name="profile" value="Senior-Developer" />
 		<property name="skills" value="Web Development,Databases" />
@@ -1250,7 +1340,8 @@
 	</bean>
 	<bean id="problem5" class="domain.Problem">
 		<property name="title" value="Problem with payment system" />
-		<property name="statement" value="Popular listen happy short response save painting however treatment pick toward bank specific tonight and place pay remember design consumer." />
+		<property name="statement"
+			value="Popular listen happy short response save painting however treatment pick toward bank specific tonight and place pay remember design consumer." />
 		<property name="hint" value="Decision produce." />
 		<property name="attachments">
 			<list>
@@ -1267,12 +1358,15 @@
 	</bean>
 	<bean id="problem6" class="domain.Problem">
 		<property name="title" value="Mobile app" />
-		<property name="statement" value="Growth system service risk economic understand scientist clearly how tell money." />
-		<property name="hint" value="World information certain manage." />
+		<property name="statement"
+			value="Growth system service risk economic understand scientist clearly how tell money." />
+		<property name="hint"
+			value="World information certain manage." />
 		<property name="attachments">
 			<list>
 				<value>https://harper-glover.com/author.jsp/</value>
-				<value>https://www.cooke.com/categories/wp-content/category//</value>
+				<value>https://www.cooke.com/categories/wp-content/category//
+				</value>
 			</list>
 		</property>
 		<property name="finalMode" value="true" />
@@ -1286,7 +1380,8 @@
 	<bean id="position11" class="domain.Position">
 		<property name="ticker" value="Edwa-1576" />
 		<property name="title" value="position11" />
-		<property name="description" value="Trial game worker anyone agency would raise court house beat." />
+		<property name="description"
+			value="Trial game worker anyone agency would raise court house beat." />
 		<property name="deadline" value="21/04/2020" />
 		<property name="profile" value="Senior-Developer" />
 		<property name="skills" value="Databases" />
@@ -1297,7 +1392,8 @@
 	</bean>
 	<bean id="problem7" class="domain.Problem">
 		<property name="title" value="Fix Database" />
-		<property name="statement" value="Season record office car return hit glass while culture hope help why lawyer summer loss spring war spend." />
+		<property name="statement"
+			value="Season record office car return hit glass while culture hope help why lawyer summer loss spring war spend." />
 		<property name="hint" value="Particularly military ever." />
 		<property name="attachments">
 			<list>
@@ -1314,7 +1410,8 @@
 	</bean>
 	<bean id="problem8" class="domain.Problem">
 		<property name="title" value="Mobile app" />
-		<property name="statement" value="For end house argue fight program agent rather summer find write condition go class treat choose she window without industry." />
+		<property name="statement"
+			value="For end house argue fight program agent rather summer find write condition go class treat choose she window without industry." />
 		<property name="hint" value="Call citizen." />
 		<property name="attachments">
 			<list>
@@ -1334,7 +1431,8 @@
 	<bean id="position12" class="domain.Position">
 		<property name="ticker" value="Edwa-1679" />
 		<property name="title" value="position12" />
-		<property name="description" value="Current become different few think check one who these indeed west onto person." />
+		<property name="description"
+			value="Current become different few think check one who these indeed west onto person." />
 		<property name="deadline" value="08/01/2020" />
 		<property name="profile" value="Senior-Developer" />
 		<property name="skills" value="Web Development,Databases" />
@@ -1346,7 +1444,8 @@
 	<bean id="position13" class="domain.Position">
 		<property name="ticker" value="Pett-6684" />
 		<property name="title" value="position13" />
-		<property name="description" value="Plant ten place protect sound reveal enough nature someone really." />
+		<property name="description"
+			value="Plant ten place protect sound reveal enough nature someone really." />
 		<property name="deadline" value="05/09/2019" />
 		<property name="profile" value="Ethical Hacker" />
 		<property name="skills" value="Security" />
@@ -1358,7 +1457,8 @@
 	<bean id="position14" class="domain.Position">
 		<property name="ticker" value="Pett-6867" />
 		<property name="title" value="position14" />
-		<property name="description" value="Part throw ahead development it one manage benefit yard believe third." />
+		<property name="description"
+			value="Part throw ahead development it one manage benefit yard believe third." />
 		<property name="deadline" value="18/11/2019" />
 		<property name="profile" value="Developer" />
 		<property name="skills" value="Security" />
@@ -1370,7 +1470,8 @@
 	<bean id="position15" class="domain.Position">
 		<property name="ticker" value="Pett-7534" />
 		<property name="title" value="position15" />
-		<property name="description" value="Decade I cold region rock wait weight light partner relationship one statement." />
+		<property name="description"
+			value="Decade I cold region rock wait weight light partner relationship one statement." />
 		<property name="deadline" value="11/09/2019" />
 		<property name="profile" value="Scrum-master" />
 		<property name="skills" value="Artificial Intelligence" />
@@ -1381,7 +1482,8 @@
 	</bean>
 	<bean id="problem9" class="domain.Problem">
 		<property name="title" value="Web app" />
-		<property name="statement" value="Expert dog chance admit positive sure threat part ability ahead." />
+		<property name="statement"
+			value="Expert dog chance admit positive sure threat part ability ahead." />
 		<property name="hint" value="White what official." />
 		<property name="attachments">
 			<list>
@@ -1398,8 +1500,10 @@
 	</bean>
 	<bean id="problem10" class="domain.Problem">
 		<property name="title" value="Problem with payment system" />
-		<property name="statement" value="Himself sister design traditional again poor make study throughout explain prepare." />
-		<property name="hint" value="Three against environmental interest." />
+		<property name="statement"
+			value="Himself sister design traditional again poor make study throughout explain prepare." />
+		<property name="hint"
+			value="Three against environmental interest." />
 		<property name="attachments">
 			<list>
 				<value>http://james.net/explore/search.html/</value>
@@ -1412,6 +1516,560 @@
 				<ref bean="position15" />
 			</list>
 		</property>
+	</bean>
+
+	<!-- Applications -->
+	<bean id="application1" class="domain.Application">
+		<property name="moment" value="10/02/2019" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="" />
+		<property name="position" ref="position1" />
+		<property name="curriculum" ref="curriculumCopy1" />
+		<property name="hacker" ref="hacker1" />
+	</bean>
+	<bean id="application2" class="domain.Application">
+		<property name="moment" value="02/03/2019" />
+		<property name="status" value="PENDING" />
+		<property name="answer"
+			value="Site along senior recognize weight read environment responsibility morning cut front reduce need will difficult political partner worry line pattern." />
+		<property name="submitMoment" value="12/04/2019" />
+		<property name="position" ref="position1" />
+		<property name="curriculum" ref="curriculumCopy1" />
+		<property name="hacker" ref="hacker3" />
+	</bean>
+	<bean id="application3" class="domain.Application">
+		<property name="moment" value="23/02/2019" />
+		<property name="status" value="ACCEPTED" />
+		<property name="answer"
+			value="Form consumer trade small thank lead child ten us those drop agree." />
+		<property name="submitMoment" value="30/03/2019" />
+		<property name="position" ref="position1" />
+		<property name="curriculum" ref="curriculumCopy1" />
+		<property name="hacker" ref="hacker5" />
+	</bean>
+	<bean id="application4" class="domain.Application">
+		<property name="moment" value="08/03/2019" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="" />
+		<property name="position" ref="position1" />
+		<property name="curriculum" ref="curriculumCopy1" />
+		<property name="hacker" ref="hacker7" />
+	</bean>
+	<bean id="application5" class="domain.Application">
+		<property name="moment" value="08/03/2019" />
+		<property name="status" value="PENDING" />
+		<property name="answer"
+			value="Worker law though share rock cell hundred likely economy people give structure reach image successful future American activity." />
+		<property name="submitMoment" value="18/04/2019" />
+		<property name="position" ref="position1" />
+		<property name="curriculum" ref="curriculumCopy1" />
+		<property name="hacker" ref="hacker9" />
+	</bean>
+	<bean id="application6" class="domain.Application">
+		<property name="moment" value="24/03/2019" />
+		<property name="status" value="PENDING" />
+		<property name="answer"
+			value="Quite various make Republican statement store college range sport stay indicate use hand boy drop senior exactly difference south." />
+		<property name="submitMoment" value="31/03/2019" />
+		<property name="position" ref="position1" />
+		<property name="curriculum" ref="curriculumCopy1" />
+		<property name="hacker" ref="hacker13" />
+	</bean>
+	<bean id="application7" class="domain.Application">
+		<property name="moment" value="17/02/2019" />
+		<property name="status" value="ACCEPTED" />
+		<property name="answer"
+			value="Tax within themselves time much blood recognize trouble I include wall piece win open easy start." />
+		<property name="submitMoment" value="23/04/2019" />
+		<property name="position" ref="position2" />
+		<property name="curriculum" ref="curriculumCopy2" />
+		<property name="hacker" ref="hacker2" />
+	</bean>
+	<bean id="application8" class="domain.Application">
+		<property name="moment" value="08/02/2019" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="" />
+		<property name="position" ref="position2" />
+		<property name="curriculum" ref="curriculumCopy2" />
+		<property name="hacker" ref="hacker3" />
+	</bean>
+	<bean id="application9" class="domain.Application">
+		<property name="moment" value="26/02/2019" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="" />
+		<property name="position" ref="position2" />
+		<property name="curriculum" ref="curriculumCopy2" />
+		<property name="hacker" ref="hacker7" />
+	</bean>
+	<bean id="application10" class="domain.Application">
+		<property name="moment" value="03/03/2019" />
+		<property name="status" value="ACCEPTED" />
+		<property name="answer"
+			value="Message pass weight set threat direction throw drive gun president." />
+		<property name="submitMoment" value="04/04/2019" />
+		<property name="position" ref="position3" />
+		<property name="curriculum" ref="curriculumCopy3" />
+		<property name="hacker" ref="hacker1" />
+	</bean>
+	<bean id="application11" class="domain.Application">
+		<property name="moment" value="13/02/2019" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="" />
+		<property name="position" ref="position3" />
+		<property name="curriculum" ref="curriculumCopy3" />
+		<property name="hacker" ref="hacker3" />
+	</bean>
+	<bean id="application12" class="domain.Application">
+		<property name="moment" value="01/03/2019" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="" />
+		<property name="position" ref="position3" />
+		<property name="curriculum" ref="curriculumCopy3" />
+		<property name="hacker" ref="hacker13" />
+	</bean>
+	<bean id="application13" class="domain.Application">
+		<property name="moment" value="08/02/2019" />
+		<property name="status" value="ACCEPTED" />
+		<property name="answer"
+			value="He clear approach almost huge begin difference describe how." />
+		<property name="submitMoment" value="20/04/2019" />
+		<property name="position" ref="position4" />
+		<property name="curriculum" ref="curriculumCopy4" />
+		<property name="hacker" ref="hacker2" />
+	</bean>
+	<bean id="application14" class="domain.Application">
+		<property name="moment" value="09/02/2019" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="" />
+		<property name="position" ref="position4" />
+		<property name="curriculum" ref="curriculumCopy4" />
+		<property name="hacker" ref="hacker3" />
+	</bean>
+	<bean id="application15" class="domain.Application">
+		<property name="moment" value="08/03/2019" />
+		<property name="status" value="PENDING" />
+		<property name="answer"
+			value="At notice think market standard should apply article share help which." />
+		<property name="submitMoment" value="30/03/2019" />
+		<property name="position" ref="position4" />
+		<property name="curriculum" ref="curriculumCopy4" />
+		<property name="hacker" ref="hacker4" />
+	</bean>
+	<bean id="application16" class="domain.Application">
+		<property name="moment" value="25/03/2019" />
+		<property name="status" value="PENDING" />
+		<property name="answer"
+			value="Fact wife certainly throw true recently season particularly field rest office direction." />
+		<property name="submitMoment" value="21/04/2019" />
+		<property name="position" ref="position4" />
+		<property name="curriculum" ref="curriculumCopy4" />
+		<property name="hacker" ref="hacker8" />
+	</bean>
+	<bean id="application17" class="domain.Application">
+		<property name="moment" value="05/03/2019" />
+		<property name="status" value="PENDING" />
+		<property name="answer"
+			value="Manager single station religious large threat toward continue more so keep consumer." />
+		<property name="submitMoment" value="01/04/2019" />
+		<property name="position" ref="position4" />
+		<property name="curriculum" ref="curriculumCopy4" />
+		<property name="hacker" ref="hacker11" />
+	</bean>
+	<bean id="application18" class="domain.Application">
+		<property name="moment" value="02/03/2019" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="" />
+		<property name="position" ref="position4" />
+		<property name="curriculum" ref="curriculumCopy4" />
+		<property name="hacker" ref="hacker13" />
+	</bean>
+	<bean id="application19" class="domain.Application">
+		<property name="moment" value="16/02/2019" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="" />
+		<property name="position" ref="position5" />
+		<property name="curriculum" ref="curriculumCopy5" />
+		<property name="hacker" ref="hacker1" />
+	</bean>
+	<bean id="application20" class="domain.Application">
+		<property name="moment" value="09/03/2019" />
+		<property name="status" value="PENDING" />
+		<property name="answer"
+			value="Daughter front rich ability south difficult life front force whatever minute." />
+		<property name="submitMoment" value="31/03/2019" />
+		<property name="position" ref="position5" />
+		<property name="curriculum" ref="curriculumCopy5" />
+		<property name="hacker" ref="hacker3" />
+	</bean>
+	<bean id="application21" class="domain.Application">
+		<property name="moment" value="18/03/2019" />
+		<property name="status" value="ACCEPTED" />
+		<property name="answer"
+			value="Market democratic responsibility strategy loss film interest its fund once series trip despite action help law although today interest." />
+		<property name="submitMoment" value="05/04/2019" />
+		<property name="position" ref="position5" />
+		<property name="curriculum" ref="curriculumCopy5" />
+		<property name="hacker" ref="hacker8" />
+	</bean>
+	<bean id="application22" class="domain.Application">
+		<property name="moment" value="24/03/2019" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="" />
+		<property name="position" ref="position5" />
+		<property name="curriculum" ref="curriculumCopy5" />
+		<property name="hacker" ref="hacker11" />
+	</bean>
+	<bean id="application23" class="domain.Application">
+		<property name="moment" value="07/02/2019" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="" />
+		<property name="position" ref="position6" />
+		<property name="curriculum" ref="curriculumCopy6" />
+		<property name="hacker" ref="hacker2" />
+	</bean>
+	<bean id="application24" class="domain.Application">
+		<property name="moment" value="07/03/2019" />
+		<property name="status" value="PENDING" />
+		<property name="answer"
+			value="Party try hot so individual small travel pick traditional summer technology minute foreign set miss down time soldier." />
+		<property name="submitMoment" value="17/04/2019" />
+		<property name="position" ref="position6" />
+		<property name="curriculum" ref="curriculumCopy6" />
+		<property name="hacker" ref="hacker3" />
+	</bean>
+	<bean id="application25" class="domain.Application">
+		<property name="moment" value="09/02/2019" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="" />
+		<property name="position" ref="position6" />
+		<property name="curriculum" ref="curriculumCopy6" />
+		<property name="hacker" ref="hacker8" />
+	</bean>
+	<bean id="application26" class="domain.Application">
+		<property name="moment" value="22/02/2019" />
+		<property name="status" value="PENDING" />
+		<property name="answer"
+			value="Stand similar serious into magazine always reality final picture street air sense cold." />
+		<property name="submitMoment" value="08/04/2019" />
+		<property name="position" ref="position6" />
+		<property name="curriculum" ref="curriculumCopy6" />
+		<property name="hacker" ref="hacker11" />
+	</bean>
+	<bean id="application27" class="domain.Application">
+		<property name="moment" value="17/02/2019" />
+		<property name="status" value="ACCEPTED" />
+		<property name="answer"
+			value="Note run never score Democrat single piece fear probably." />
+		<property name="submitMoment" value="23/04/2019" />
+		<property name="position" ref="position7" />
+		<property name="curriculum" ref="curriculumCopy7" />
+		<property name="hacker" ref="hacker1" />
+	</bean>
+	<bean id="application28" class="domain.Application">
+		<property name="moment" value="14/02/2019" />
+		<property name="status" value="PENDING" />
+		<property name="answer"
+			value="Owner one technology performance human after keep us risk community certain fly commercial talk message conference fish entire purpose child." />
+		<property name="submitMoment" value="27/03/2019" />
+		<property name="position" ref="position7" />
+		<property name="curriculum" ref="curriculumCopy7" />
+		<property name="hacker" ref="hacker3" />
+	</bean>
+	<bean id="application29" class="domain.Application">
+		<property name="moment" value="28/02/2019" />
+		<property name="status" value="PENDING" />
+		<property name="answer"
+			value="Mind environment fire size meet Mrs country it family summer yes several." />
+		<property name="submitMoment" value="20/04/2019" />
+		<property name="position" ref="position7" />
+		<property name="curriculum" ref="curriculumCopy7" />
+		<property name="hacker" ref="hacker8" />
+	</bean>
+	<bean id="application30" class="domain.Application">
+		<property name="moment" value="02/03/2019" />
+		<property name="status" value="ACCEPTED" />
+		<property name="answer"
+			value="Kind card treat reduce huge back resource I happen rule call moment under each left race house ground popular." />
+		<property name="submitMoment" value="21/04/2019" />
+		<property name="position" ref="position8" />
+		<property name="curriculum" ref="curriculumCopy8" />
+		<property name="hacker" ref="hacker2" />
+	</bean>
+	<bean id="application31" class="domain.Application">
+		<property name="moment" value="27/02/2019" />
+		<property name="status" value="PENDING" />
+		<property name="answer"
+			value="Season realize process friend four environment enough building country per describe act anyone." />
+		<property name="submitMoment" value="11/04/2019" />
+		<property name="position" ref="position8" />
+		<property name="curriculum" ref="curriculumCopy8" />
+		<property name="hacker" ref="hacker3" />
+	</bean>
+	<bean id="application32" class="domain.Application">
+		<property name="moment" value="09/02/2019" />
+		<property name="status" value="ACCEPTED" />
+		<property name="answer"
+			value="Reality practice less pass cost three city fast once bar." />
+		<property name="submitMoment" value="18/04/2019" />
+		<property name="position" ref="position8" />
+		<property name="curriculum" ref="curriculumCopy8" />
+		<property name="hacker" ref="hacker12" />
+	</bean>
+	<bean id="application33" class="domain.Application">
+		<property name="moment" value="15/03/2019" />
+		<property name="status" value="ACCEPTED" />
+		<property name="answer"
+			value="Of exist study health program necessary purpose boy side direction ball call north blood follow." />
+		<property name="submitMoment" value="08/04/2019" />
+		<property name="position" ref="position8" />
+		<property name="curriculum" ref="curriculumCopy8" />
+		<property name="hacker" ref="hacker14" />
+	</bean>
+	<bean id="application34" class="domain.Application">
+		<property name="moment" value="11/02/2019" />
+		<property name="status" value="PENDING" />
+		<property name="answer"
+			value="Painting discussion card effort back his above natural either guess score north chance seven." />
+		<property name="submitMoment" value="28/03/2019" />
+		<property name="position" ref="position9" />
+		<property name="curriculum" ref="curriculumCopy9" />
+		<property name="hacker" ref="hacker1" />
+	</bean>
+	<bean id="application35" class="domain.Application">
+		<property name="moment" value="15/02/2019" />
+		<property name="status" value="ACCEPTED" />
+		<property name="answer"
+			value="Begin perhaps country by follow and tonight could up something test business simply source answer ball recent station try." />
+		<property name="submitMoment" value="18/04/2019" />
+		<property name="position" ref="position9" />
+		<property name="curriculum" ref="curriculumCopy9" />
+		<property name="hacker" ref="hacker3" />
+	</bean>
+	<bean id="application36" class="domain.Application">
+		<property name="moment" value="04/03/2019" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="" />
+		<property name="position" ref="position9" />
+		<property name="curriculum" ref="curriculumCopy9" />
+		<property name="hacker" ref="hacker14" />
+	</bean>
+	<bean id="application37" class="domain.Application">
+		<property name="moment" value="08/03/2019" />
+		<property name="status" value="ACCEPTED" />
+		<property name="answer"
+			value="News truth detail help body expert edge its security activity wonder performance woman artist call son identify mind best specific." />
+		<property name="submitMoment" value="29/03/2019" />
+		<property name="position" ref="position10" />
+		<property name="curriculum" ref="curriculumCopy10" />
+		<property name="hacker" ref="hacker2" />
+	</bean>
+	<bean id="application38" class="domain.Application">
+		<property name="moment" value="21/03/2019" />
+		<property name="status" value="ACCEPTED" />
+		<property name="answer"
+			value="Year hold tree ability less suggest large could focus charge structure rise type phone both might article people specific student." />
+		<property name="submitMoment" value="24/04/2019" />
+		<property name="position" ref="position10" />
+		<property name="curriculum" ref="curriculumCopy10" />
+		<property name="hacker" ref="hacker3" />
+	</bean>
+	<bean id="application39" class="domain.Application">
+		<property name="moment" value="13/03/2019" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="" />
+		<property name="position" ref="position10" />
+		<property name="curriculum" ref="curriculumCopy10" />
+		<property name="hacker" ref="hacker11" />
+	</bean>
+	<bean id="application40" class="domain.Application">
+		<property name="moment" value="24/02/2019" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="" />
+		<property name="position" ref="position10" />
+		<property name="curriculum" ref="curriculumCopy10" />
+		<property name="hacker" ref="hacker14" />
+	</bean>
+	<bean id="application41" class="domain.Application">
+		<property name="moment" value="23/03/2019" />
+		<property name="status" value="ACCEPTED" />
+		<property name="answer"
+			value="Ability degree student culture focus nation just whatever maintain southern wait scene something car deal out bad success create much." />
+		<property name="submitMoment" value="13/04/2019" />
+		<property name="position" ref="position11" />
+		<property name="curriculum" ref="curriculumCopy11" />
+		<property name="hacker" ref="hacker2" />
+	</bean>
+	<bean id="application42" class="domain.Application">
+		<property name="moment" value="15/03/2019" />
+		<property name="status" value="PENDING" />
+		<property name="answer"
+			value="Participant I who great type until trouble address visit." />
+		<property name="submitMoment" value="09/04/2019" />
+		<property name="position" ref="position11" />
+		<property name="curriculum" ref="curriculumCopy11" />
+		<property name="hacker" ref="hacker3" />
+	</bean>
+	<bean id="application43" class="domain.Application">
+		<property name="moment" value="21/03/2019" />
+		<property name="status" value="ACCEPTED" />
+		<property name="answer"
+			value="Fund day record appear check be perhaps industry vote theory forget someone." />
+		<property name="submitMoment" value="06/04/2019" />
+		<property name="position" ref="position11" />
+		<property name="curriculum" ref="curriculumCopy11" />
+		<property name="hacker" ref="hacker11" />
+	</bean>
+	<bean id="application44" class="domain.Application">
+		<property name="moment" value="25/02/2019" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="" />
+		<property name="position" ref="position11" />
+		<property name="curriculum" ref="curriculumCopy11" />
+		<property name="hacker" ref="hacker14" />
+	</bean>
+	<bean id="application45" class="domain.Application">
+		<property name="moment" value="08/02/2019" />
+		<property name="status" value="PENDING" />
+		<property name="answer"
+			value="Call painting mean provide approach power morning eat technology another lead by act sense financial foot resource kid knowledge." />
+		<property name="submitMoment" value="15/04/2019" />
+		<property name="position" ref="position12" />
+		<property name="curriculum" ref="curriculumCopy12" />
+		<property name="hacker" ref="hacker1" />
+	</bean>
+	<bean id="application46" class="domain.Application">
+		<property name="moment" value="16/03/2019" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="" />
+		<property name="position" ref="position12" />
+		<property name="curriculum" ref="curriculumCopy12" />
+		<property name="hacker" ref="hacker3" />
+	</bean>
+	<bean id="application47" class="domain.Application">
+		<property name="moment" value="12/02/2019" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="" />
+		<property name="position" ref="position12" />
+		<property name="curriculum" ref="curriculumCopy12" />
+		<property name="hacker" ref="hacker13" />
+	</bean>
+	<bean id="application48" class="domain.Application">
+		<property name="moment" value="28/02/2019" />
+		<property name="status" value="PENDING" />
+		<property name="answer"
+			value="Including both learn use upon assume property apply agent fight herself computer administration role new." />
+		<property name="submitMoment" value="06/04/2019" />
+		<property name="position" ref="position12" />
+		<property name="curriculum" ref="curriculumCopy12" />
+		<property name="hacker" ref="hacker14" />
+	</bean>
+	<bean id="application49" class="domain.Application">
+		<property name="moment" value="07/02/2019" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="" />
+		<property name="position" ref="position13" />
+		<property name="curriculum" ref="curriculumCopy13" />
+		<property name="hacker" ref="hacker2" />
+	</bean>
+	<bean id="application50" class="domain.Application">
+		<property name="moment" value="19/03/2019" />
+		<property name="status" value="ACCEPTED" />
+		<property name="answer"
+			value="Rise huge despite result whose center rock herself speech debate positive rich have quality until game road car." />
+		<property name="submitMoment" value="08/04/2019" />
+		<property name="position" ref="position13" />
+		<property name="curriculum" ref="curriculumCopy13" />
+		<property name="hacker" ref="hacker3" />
+	</bean>
+	<bean id="application51" class="domain.Application">
+		<property name="moment" value="06/02/2019" />
+		<property name="status" value="PENDING" />
+		<property name="answer"
+			value="Somebody none reflect movement really his short cultural too parent." />
+		<property name="submitMoment" value="11/04/2019" />
+		<property name="position" ref="position13" />
+		<property name="curriculum" ref="curriculumCopy13" />
+		<property name="hacker" ref="hacker13" />
+	</bean>
+	<bean id="application52" class="domain.Application">
+		<property name="moment" value="20/02/2019" />
+		<property name="status" value="ACCEPTED" />
+		<property name="answer"
+			value="Talk man capital recognize structure relationship think us all staff cover some." />
+		<property name="submitMoment" value="18/04/2019" />
+		<property name="position" ref="position14" />
+		<property name="curriculum" ref="curriculumCopy14" />
+		<property name="hacker" ref="hacker1" />
+	</bean>
+	<bean id="application53" class="domain.Application">
+		<property name="moment" value="19/02/2019" />
+		<property name="status" value="ACCEPTED" />
+		<property name="answer"
+			value="Once relationship give result admit technology debate base window upon far section across ask join." />
+		<property name="submitMoment" value="27/03/2019" />
+		<property name="position" ref="position14" />
+		<property name="curriculum" ref="curriculumCopy14" />
+		<property name="hacker" ref="hacker3" />
+	</bean>
+	<bean id="application54" class="domain.Application">
+		<property name="moment" value="05/03/2019" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="" />
+		<property name="position" ref="position14" />
+		<property name="curriculum" ref="curriculumCopy14" />
+		<property name="hacker" ref="hacker9" />
+	</bean>
+	<bean id="application55" class="domain.Application">
+		<property name="moment" value="27/02/2019" />
+		<property name="status" value="ACCEPTED" />
+		<property name="answer"
+			value="Would live arrive space should star understand into this strategy plant southern realize prove." />
+		<property name="submitMoment" value="29/03/2019" />
+		<property name="position" ref="position15" />
+		<property name="curriculum" ref="curriculumCopy15" />
+		<property name="hacker" ref="hacker2" />
+	</bean>
+	<bean id="application56" class="domain.Application">
+		<property name="moment" value="02/03/2019" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="" />
+		<property name="position" ref="position15" />
+		<property name="curriculum" ref="curriculumCopy15" />
+		<property name="hacker" ref="hacker3" />
+	</bean>
+	<bean id="application57" class="domain.Application">
+		<property name="moment" value="20/02/2019" />
+		<property name="status" value="PENDING" />
+		<property name="answer"
+			value="Stock pay fill it voice base loss nor yard hit establish his." />
+		<property name="submitMoment" value="18/04/2019" />
+		<property name="position" ref="position15" />
+		<property name="curriculum" ref="curriculumCopy15" />
+		<property name="hacker" ref="hacker9" />
+	</bean>
+	<bean id="application58" class="domain.Application">
+		<property name="moment" value="05/03/2019" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="" />
+		<property name="position" ref="position16" />
+		<property name="curriculum" ref="curriculumCopy16" />
+		<property name="hacker" ref="hacker1" />
+	</bean>
+	<bean id="application59" class="domain.Application">
+		<property name="moment" value="13/02/2019" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="" />
+		<property name="position" ref="position16" />
+		<property name="curriculum" ref="curriculumCopy16" />
+		<property name="hacker" ref="hacker3" />
+	</bean>
+	<bean id="application60" class="domain.Application">
+		<property name="moment" value="25/03/2019" />
+		<property name="status" value="SUBMITTED" />
+		<property name="answer" value="" />
+		<property name="position" ref="position16" />
+		<property name="curriculum" ref="curriculumCopy16" />
+		<property name="hacker" ref="hacker9" />
 	</bean>
 
 	<!-- Finders -->
@@ -1583,12 +2241,13 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<!-- Messages -->
 	<bean id="message1" class="domain.Message">
 		<property name="moment" value="2018/09/17 12:52" />
 		<property name="subject" value="Collaboration" />
-		<property name="body" value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
+		<property name="body"
+			value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
 		<property name="tags" value="Collab" />
 		<property name="spam" value="False" />
 		<property name="sender" ref="company3" />
@@ -1597,7 +2256,8 @@
 	<bean id="message2" class="domain.Message">
 		<property name="moment" value="2018/09/17 12:53" />
 		<property name="subject" value="Collaboration" />
-		<property name="body" value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
+		<property name="body"
+			value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
 		<property name="tags" value="Collab" />
 		<property name="spam" value="False" />
 		<property name="sender" ref="company3" />
@@ -1606,7 +2266,8 @@
 	<bean id="message3" class="domain.Message">
 		<property name="moment" value="2018/09/17 12:54" />
 		<property name="subject" value="Collaboration" />
-		<property name="body" value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
+		<property name="body"
+			value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
 		<property name="tags" value="Collab" />
 		<property name="spam" value="False" />
 		<property name="sender" ref="company3" />
@@ -1615,7 +2276,8 @@
 	<bean id="message4" class="domain.Message">
 		<property name="moment" value="2018/09/17 12:55" />
 		<property name="subject" value="Collaboration" />
-		<property name="body" value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
+		<property name="body"
+			value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
 		<property name="tags" value="Collab" />
 		<property name="spam" value="False" />
 		<property name="sender" ref="company3" />
@@ -1624,7 +2286,8 @@
 	<bean id="message5" class="domain.Message">
 		<property name="moment" value="2018/09/17 12:56" />
 		<property name="subject" value="Collaboration" />
-		<property name="body" value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
+		<property name="body"
+			value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
 		<property name="tags" value="Collab" />
 		<property name="spam" value="False" />
 		<property name="sender" ref="company3" />
@@ -1633,7 +2296,8 @@
 	<bean id="message6" class="domain.Message">
 		<property name="moment" value="2018/09/17 12:57" />
 		<property name="subject" value="Collaboration" />
-		<property name="body" value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
+		<property name="body"
+			value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
 		<property name="tags" value="Collab" />
 		<property name="spam" value="False" />
 		<property name="sender" ref="company3" />
@@ -1642,7 +2306,8 @@
 	<bean id="message7" class="domain.Message">
 		<property name="moment" value="2018/09/17 12:58" />
 		<property name="subject" value="Collaboration" />
-		<property name="body" value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
+		<property name="body"
+			value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
 		<property name="tags" value="Collab" />
 		<property name="spam" value="False" />
 		<property name="sender" ref="company3" />
@@ -1651,13 +2316,14 @@
 	<bean id="message8" class="domain.Message">
 		<property name="moment" value="2018/09/17 12:59" />
 		<property name="subject" value="Collaboration" />
-		<property name="body" value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
+		<property name="body"
+			value="Hello, we are looking forward to make a collaboration with you. We would like to push forward technology." />
 		<property name="tags" value="Collab" />
 		<property name="spam" value="False" />
 		<property name="sender" ref="company3" />
 		<property name="recipient" ref="company9" />
 	</bean>
-	
+
 	<!-- Administrators -->
 
 	<bean id="administrator1" class="domain.Administrator">
@@ -1684,10 +2350,11 @@
 		<property name="userAccount" ref="userAccountAdmin2" />
 		<property name="creditCard" ref="creditCardAdmin2" />
 	</bean>
-	
+
 	<bean id="userAccountAdmin1" class="security.UserAccount">
 		<property name="username" value="admin" />
-		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="password"
+			value="21232f297a57a5a743894a0e4a801fc3" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -1700,7 +2367,8 @@
 
 	<bean id="userAccountAdmin2" class="security.UserAccount">
 		<property name="username" value="admin2" />
-		<property name="password" value="c84258e9c39059a89ab77d846ddab909" />
+		<property name="password"
+			value="c84258e9c39059a89ab77d846ddab909" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -1746,8 +2414,11 @@
 		<property name="countryCode" value="+34" />
 		<property name="finderTime" value="1" />
 		<property name="finderResult" value="10" />
-		<property name="welcomeMessageEs" value="¡Bienvenidos a Acme Hacker Rank! ¡Somos el mercado de trabajo favorito de los profesionales de las TICs!" />
-		<property name="banner" value="https://i.imgur.com/7b8lu4b.png" />
-		<property name="welcomeMessage" value="Welcome to Acme Hacker Rank! We're IT hacker's favourite job marketplace!" />
+		<property name="welcomeMessageEs"
+			value="¡Bienvenidos a Acme Hacker Rank! ¡Somos el mercado de trabajo favorito de los profesionales de las TICs!" />
+		<property name="banner"
+			value="https://i.imgur.com/7b8lu4b.png" />
+		<property name="welcomeMessage"
+			value="Welcome to Acme Hacker Rank! We're IT hacker's favourite job marketplace!" />
 	</bean>
 </beans>
