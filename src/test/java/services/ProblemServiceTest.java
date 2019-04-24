@@ -57,10 +57,10 @@ public class ProblemServiceTest extends AbstractTest {
 	public void driverCreateProblem() {
 		final Object testingData[][] = {
 			{
-				"title1", "statement1", "hint1", "attachment1", true, "Company1", null
+				"title1", "statement1", "hint1", "https://google.com", true, "company1", null
 			},//1. All fine
 			{
-				"title1", "statement1", "hint1", "attachment1", true, "Hacker1", IllegalArgumentException.class
+				"title1", "statement1", "hint1", "https://google.com", true, "hacker1", IllegalArgumentException.class
 			},//2. Hacker is trying to create a problem
 
 		};
@@ -221,7 +221,7 @@ public class ProblemServiceTest extends AbstractTest {
 	public void driverListProblem() {
 		final Object testingData[][] = {
 			{
-				"company1", 3, null
+				"company1", 2, null
 			},//1. All fine
 			{
 				"company1", 0, IllegalArgumentException.class
@@ -269,7 +269,7 @@ public class ProblemServiceTest extends AbstractTest {
 	public void driverAddPositionToProblem() {
 		final Object testingData[][] = {
 			{
-				"company1", "problem3", "position1", null
+				"company1", "problem2", "position2", null
 			},//1. All fine
 			{
 				"hacker1", "problem3", "position1", IllegalArgumentException.class
