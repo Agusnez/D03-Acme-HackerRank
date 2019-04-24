@@ -48,6 +48,9 @@
 		<security:intercept-url pattern="/termsAndConditions/show.do" access="permitAll" />
 
 
+		<!-- Obtener datos usuarios -->
+		<security:intercept-url pattern="/data/company/get.do" access="hasRole('COMPANY')" />
+		<security:intercept-url pattern="/data/hacker/get.do" access="hasRole('HACKER')" />
 
 		<!-- Todo el mundo -->
 		<security:intercept-url pattern="/company/list.do" access="permitAll" />
