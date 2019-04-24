@@ -122,13 +122,13 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 	public void driverEditMiscellanousData() {
 		final Object testingData[][] = {
 			{
-				"miscellaneousData1", "test", null
+				"miscellaneousData14", "test", null
 			},//1. All fine
 			{
-				"miscellaneousData1", "		", ConstraintViolationException.class
+				"miscellaneousData14", "		", ConstraintViolationException.class
 			},//1. All fine
 			{
-				"miscellaneousData1", null, ConstraintViolationException.class
+				"miscellaneousData14", null, ConstraintViolationException.class
 			},//1. All fine
 		};
 
@@ -182,7 +182,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 
 			{
-				"miscellaneousData1", null
+				"miscellaneousData14", null
 			},//1. All fine
 			{
 				"hacker1", IllegalArgumentException.class

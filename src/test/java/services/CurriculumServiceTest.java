@@ -133,7 +133,7 @@ public class CurriculumServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 
 			{
-				"hacker1", 1, null
+				"hacker1", 2, null
 			},//1. All fine
 			{
 				"hacker1", 1651, IllegalArgumentException.class
@@ -186,7 +186,7 @@ public class CurriculumServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 
 			{
-				"curriculum1", 1, 1, 1, null
+				"curriculum14", 1, 1, 1, null
 			},//1. All fine
 			{
 				"curriculum1", 10000, 1, 1, IllegalArgumentException.class

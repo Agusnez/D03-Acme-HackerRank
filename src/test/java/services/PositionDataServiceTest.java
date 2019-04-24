@@ -125,13 +125,13 @@ public class PositionDataServiceTest extends AbstractTest {
 	public void driverEditPositionData() {
 		final Object testingData[][] = {
 			{
-				"positionData1", "test", "description1", "1998/06/29", "2000/06/29", null
+				"positionData14", "test", "description1", "1998/06/29", "2000/06/29", null
 			},//1. All fine
 			{
-				"positionData1", null, "description1", "1998/06/29", "2000/06/29", ConstraintViolationException.class
+				"positionData14", null, "description1", "1998/06/29", "2000/06/29", ConstraintViolationException.class
 			},//2. Title = null
 			{
-				"positionData1", "		", "description1", "1998/06/29", "2000/06/29", ConstraintViolationException.class
+				"positionData14", "		", "description1", "1998/06/29", "2000/06/29", ConstraintViolationException.class
 			},//3. Title = blank
 		};
 
@@ -189,7 +189,7 @@ public class PositionDataServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 
 			{
-				"positionData1", null
+				"positionData14", null
 			},//1. All fine
 			{
 				"hacker1", IllegalArgumentException.class

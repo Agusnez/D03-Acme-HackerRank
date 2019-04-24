@@ -55,10 +55,10 @@ public class FinderServiceTest extends AbstractTest {
 	public void driverFinder() {
 		final Object testingData[][] = {
 			{
-				"PC", "hacker1", 1, null
+				"PC", "hacker1", 0, null
 			},//1. All fine filter
 			{
-				"PC", "hacker1", 0, IllegalArgumentException.class
+				"PC", "hacker1", 1, IllegalArgumentException.class
 			},//2. The number of the positions finded is wrong
 
 		};

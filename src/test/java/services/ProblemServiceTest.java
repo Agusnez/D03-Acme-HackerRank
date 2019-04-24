@@ -118,7 +118,7 @@ public class ProblemServiceTest extends AbstractTest {
 	public void driverEditProblem() {
 		final Object testingData[][] = {
 			{
-				"title1", "company1", "problem3", null
+				"title1", "company1", "problem12", null
 			},//1. All fine
 			{
 				"title1", "company1", "problem1", IllegalArgumentException.class
@@ -172,7 +172,7 @@ public class ProblemServiceTest extends AbstractTest {
 	public void driverDeleteProblem() {
 		final Object testingData[][] = {
 			{
-				"company1", "problem3", null
+				"company1", "problem11", null
 			},//1. All fine
 			{
 				"company1", "problem1", IllegalArgumentException.class
@@ -221,7 +221,7 @@ public class ProblemServiceTest extends AbstractTest {
 	public void driverListProblem() {
 		final Object testingData[][] = {
 			{
-				"company1", 2, null
+				"company1", 4, null
 			},//1. All fine
 			{
 				"company1", 0, IllegalArgumentException.class
