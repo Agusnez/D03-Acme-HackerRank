@@ -2396,6 +2396,107 @@
 		<property name="cvv" value="123" />
 	</bean>
 
+	<!-- Curriculum copies -->
+	<bean id="curriculumCopy1" class="domain.Curriculum">
+		<property name="ticker" value="170989-27DFG" />
+		<property name="noCopy" value="false" />
+		<property name="personalData" ref="personalData1" />
+		<property name="hacker" ref="hacker1" />
+	</bean>
+	<bean id="curriculumCopy2" class="domain.Curriculum">
+		<property name="ticker" value="170702-93DFG" />
+		<property name="noCopy" value="false" />
+		<property name="personalData" ref="personalData2" />
+		<property name="hacker" ref="hacker2" />
+	</bean>
+	<bean id="curriculumCopy3" class="domain.Curriculum">
+		<property name="ticker" value="170572-20DFG" />
+		<property name="noCopy" value="false" />
+		<property name="personalData" ref="personalData3" />
+		<property name="hacker" ref="hacker3" />
+	</bean>
+	<bean id="curriculumCopy4" class="domain.Curriculum">
+		<property name="ticker" value="170220-566DFG" />
+		<property name="noCopy" value="false" />
+		<property name="personalData" ref="personalData4" />
+		<property name="hacker" ref="hacker4" />
+	</bean>
+	<bean id="curriculumCopy5" class="domain.Curriculum">
+		<property name="ticker" value="170799-699DFG" />
+		<property name="noCopy" value="false" />
+		<property name="personalData" ref="personalData5" />
+		<property name="hacker" ref="hacker5" />
+	</bean>
+	<bean id="curriculumCopy6" class="domain.Curriculum">
+		<property name="ticker" value="170434-714DFG" />
+		<property name="noCopy" value="false" />
+		<property name="personalData" ref="personalData6" />
+		<property name="hacker" ref="hacker6" />
+	</bean>
+	<bean id="curriculumCopy7" class="domain.Curriculum">
+		<property name="ticker" value="170900-772DFG" />
+		<property name="noCopy" value="false" />
+		<property name="personalData" ref="personalData7" />
+		<property name="hacker" ref="hacker7" />
+	</bean>
+	<bean id="curriculumCopy8" class="domain.Curriculum">
+		<property name="ticker" value="170633-598DFG" />
+		<property name="noCopy" value="false" />
+		<property name="personalData" ref="personalData8" />
+		<property name="hacker" ref="hacker8" />
+	</bean>
+	<bean id="curriculumCopy9" class="domain.Curriculum">
+		<property name="ticker" value="170346-503DFG" />
+		<property name="noCopy" value="false" />
+		<property name="personalData" ref="personalData9" />
+		<property name="hacker" ref="hacker9" />
+	</bean>
+	<bean id="curriculumCopy10" class="domain.Curriculum">
+		<property name="ticker" value="170700-136DFG" />
+		<property name="noCopy" value="false" />
+		<property name="personalData" ref="personalData10" />
+		<property name="hacker" ref="hacker10" />
+	</bean>
+	<bean id="curriculumCopy11" class="domain.Curriculum">
+		<property name="ticker" value="170800-803DFG" />
+		<property name="noCopy" value="false" />
+		<property name="personalData" ref="personalData11" />
+		<property name="hacker" ref="hacker11" />
+	</bean>
+	<bean id="curriculumCopy12" class="domain.Curriculum">
+		<property name="ticker" value="170263-439DFG" />
+		<property name="noCopy" value="false" />
+		<property name="personalData" ref="personalData12" />
+		<property name="hacker" ref="hacker12" />
+	</bean>
+	<bean id="curriculumCopy13" class="domain.Curriculum">
+		<property name="ticker" value="170552-591DFG" />
+		<property name="noCopy" value="false" />
+		<property name="personalData" ref="personalData13" />
+		<property name="hacker" ref="hacker13" />
+	</bean>
+	<bean id="curriculumCopy14" class="domain.Curriculum">
+		<property name="ticker" value="170842-562DFG" />
+		<property name="noCopy" value="false" />
+		<property name="personalData" ref="personalData14" />
+		<property name="positionDatas">
+			<list>
+				<ref bean="positionData14" />
+			</list>
+		</property>
+		<property name="educationDatas">
+			<list>
+				<ref bean="educationData14" />
+			</list>
+		</property>
+		<property name="miscellaneousDatas">
+			<list>
+				<ref bean="miscellaneousData14" />
+			</list>
+		</property>
+		<property name="hacker" ref="hacker14" />
+	</bean>
+
 	<!-- Configuration -->
 	<bean id="configuration" class="domain.Configuration">
 		<property name="spamWords">
