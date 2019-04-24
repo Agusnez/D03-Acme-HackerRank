@@ -301,12 +301,21 @@ public class AdministratorService {
 
 	public List<String> topCompaniesWithMorePositions() {
 		final List<String> result = this.administratorRepository.topCompaniesWithMorePositions();
+		
+		if (result.size() == 0) {
+			result.add(" N/A ");
+		}
 
 		return result;
 	}
 
 	public List<String> topHackersWithMoreApplications() {
 		final List<String> result = this.administratorRepository.topHackerWithMoreApplications();
+		
+		if (result.size() == 0) {
+			result.add(" N/A ");
+		}
+		
 		return result;
 	}
 
@@ -328,15 +337,27 @@ public class AdministratorService {
 
 	public Position findBestPosition() {
 
+		Position result = null;
+		
+		try {
 		final int id = this.administratorRepository.findBestPosition();
-
-		return this.positionService.findOne(id);
+		 result = this.positionService.findOne(id);
+		} catch (Exception e) {
+			return null;
+		}
+		
+		return result;
 	}
 
 	public Position findWorstPosition() {
+		Position result = null;
+		try {
 		final int id = this.administratorRepository.findWorstPosition();
-
-		return this.positionService.findOne(id);
+		result = this.positionService.findOne(id);
+		} catch (Exception e) {
+			return null;
+		}
+		return result;
 	}
 	
 	public Integer minNumberOfCurriculaPerHacker() {
