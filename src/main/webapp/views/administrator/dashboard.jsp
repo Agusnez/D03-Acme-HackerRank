@@ -27,6 +27,7 @@
 <br/>
 </fieldset>
 <br/>
+
 <p><spring:message code="dashboard.topcompanies" /></p>
 
 <display:table name="topC" id="row">
