@@ -260,7 +260,7 @@ public class PositionServiceTest extends AbstractTest {
 	public void driverListPosition() {
 		final Object testingData[][] = {
 			{
-				"company1", 3, null
+				"company1", 2, null
 			},//1. All fine
 			{
 				"company1", 0, IllegalArgumentException.class
@@ -308,13 +308,13 @@ public class PositionServiceTest extends AbstractTest {
 	public void driverListPositionAvailable() {
 		final Object testingData[][] = {
 			{
-				"company1", 2, null
+				"company1", 5, null
 			},//1. Company lists the positions available (All fine)
 			{
-				null, 2, null
+				null, 5, null
 			},//2. Not registered actor lists the positions available (All fine) 
 			{
-				"company1", 1, IllegalArgumentException.class
+				"company1", 0, IllegalArgumentException.class
 			},//3. Company lists the positions available, but the number of positions is incorrect
 		};
 
@@ -362,10 +362,10 @@ public class PositionServiceTest extends AbstractTest {
 	public void driverListPositionAvailableByCompany() {
 		final Object testingData[][] = {
 			{
-				"company1", 2, "company1", null
+				"company1", 1, "company1", null
 			},//1. Company lists the positions available by a company (All fine)
 			{
-				null, 2, "company1", null
+				null, 1, "company1", null
 			},//2. Not registered actor lists the positions available by a company (All fine) 
 			{
 				"company1", 28, "company1", IllegalArgumentException.class
@@ -417,10 +417,10 @@ public class PositionServiceTest extends AbstractTest {
 	public void driverFilter() {
 		final Object testingData[][] = {
 			{
-				"PC", 1, null
+				"PC", 0, null
 			},//1. All fine filter
 			{
-				"PC", 0, IllegalArgumentException.class
+				"PC", 1, IllegalArgumentException.class
 			},//2. The number of the positions finded is wrong
 
 		};

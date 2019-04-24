@@ -126,16 +126,16 @@ public class EducationDataServiceTest extends AbstractTest {
 	public void driverEditEducationData() {
 		final Object testingData[][] = {
 			{
-				"educationData1", "degree1", "institution1", 5.0, "1996/06/29", "1998/06/29", null
+				"educationData14", "degree1", "institution1", 5.0, "1996/06/29", "1998/06/29", null
 			},//1. All fine
 			{
-				"educationData1", "degree1", "institution1", -9.1, "1996/06/29", "1998/06/29", ConstraintViolationException.class
+				"educationData14", "degree1", "institution1", -9.1, "1996/06/29", "1998/06/29", ConstraintViolationException.class
 			},//2. Mark < 0 
 			{
-				"educationData1", "degree1", "institution1", 12.5, "1996/06/29", "1998/06/29", ConstraintViolationException.class
+				"educationData14", "degree1", "institution1", 12.5, "1996/06/29", "1998/06/29", ConstraintViolationException.class
 			},//3. Mark > 10
 			{
-				"educationData1", "degree1", "institution1", null, "1996/06/29", "1998/06/29", ConstraintViolationException.class
+				"educationData14", "degree1", "institution1", null, "1996/06/29", "1998/06/29", ConstraintViolationException.class
 			},//4. Mark = null
 
 		};
@@ -195,7 +195,7 @@ public class EducationDataServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 
 			{
-				"educationData1", null
+				"educationData14", null
 			},//1. All fine
 			{
 				"hacker1", IllegalArgumentException.class

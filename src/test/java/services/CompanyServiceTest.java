@@ -204,10 +204,10 @@ public class CompanyServiceTest extends AbstractTest {
 	public void driverListCompaniesAvailable() {
 		final Object testingData[][] = {
 			{
-				"company1", 10, null
+				"company1", 9, null
 			},//1. Company lists the companies available (All fine)
 			{
-				null, 10, null
+				null, 9, null
 			},//2. Not registered actor lists the companies available (All fine) 
 			{
 				"company1", 4, IllegalArgumentException.class

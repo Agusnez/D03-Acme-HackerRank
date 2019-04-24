@@ -58,7 +58,7 @@ public class ApplicationServiceTest extends AbstractTest {
 	public void driverListApplicationCompany() {
 		final Object testingData[][] = {
 			{
-				"company1", 2, null
+				"company1", 9, null
 			},//1. All fine
 			{
 				"company1", 0, IllegalArgumentException.class
@@ -280,7 +280,7 @@ public class ApplicationServiceTest extends AbstractTest {
 	public void driverListApplicationHacker() {
 		final Object testingData[][] = {
 			{
-				"hacker1", 2, null
+				"hacker1", 1, null
 			},//1. All fine
 			{
 				"hacker1", 0, IllegalArgumentException.class
@@ -473,7 +473,7 @@ public class ApplicationServiceTest extends AbstractTest {
 
 			app.setAnswer(answer);
 
-			final Application saved = this.applicationService.save(app);
+			this.applicationService.save(app);
 
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
