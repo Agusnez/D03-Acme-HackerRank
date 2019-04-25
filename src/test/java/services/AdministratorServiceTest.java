@@ -227,7 +227,10 @@ public class AdministratorServiceTest extends AbstractTest {
 		final Object testingData[][] = {
 			{
 				1.875, 1, 4, 1.0533, 1.0, 1, 1, 0.0, "[Wallace Inc, Petty, Sanchez and Davis, Russell, Skinner and Wilson]" , "[Angela, Steven, Kimberly]", 2354.6666666666665, 1110.9637057778061, 755, 4471, 2721, 2712, 2, 2, 2.0, 0.0, 0.0, 0, 0, 0.0, 0.0, null
-			}//1. All fine
+			},//1. All fine
+			{
+				1.20, 2, 5, 1.5, 1.0, 1, 1, 0.0, "[Wallace Inc, Petty, Sanchez and Davis, Russell, Skinner and Wilson]" , "[Angela, Steven, Kimberly]", 2354.6666666666665, 1110.9637057778061, 755, 4471, 2721, 2712, 2, 2, 2.0, 0.0, 0.0, 0, 0, 0.0, 0.0, IllegalArgumentException.class
+			}//1. Wrong
 		};
 
 		for (int i = 0; i < testingData.length; i++)
@@ -251,10 +254,7 @@ public class AdministratorServiceTest extends AbstractTest {
 			final Integer maxAH = this.adminService.maxOfApplicationsPerHacker();
 			final Double stdAH = this.adminService.stdOfApplicationsPerHacker();
 			
-			final List<String> topC = this.adminService.topCompaniesWithMorePositions();
-			
-			final List<String> topH = this.adminService.topHackersWithMoreApplications();
-			
+			final List<String> topC = this.adminService.topCompaniesWithMorePositions();	
 			
 			final Double avgS = this.adminService.avgSalaries();
 			final Integer minS = this.adminService.minSalary();
