@@ -253,6 +253,6 @@ public class SocialProfileServiceTest extends AbstractTest {
 	 * SocialProfileService = 52,9%
 	 * 
 	 * ----TOTAL DATA COVERAGE:
-	 * SocialProfile = 100%
+	 * SocialProfile = 0%
 	 */
 }

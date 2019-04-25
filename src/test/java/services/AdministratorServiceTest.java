@@ -18,7 +18,6 @@ import domain.Administrator;
 import domain.CreditCard;
 import domain.Position;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
 	"classpath:spring/junit.xml"
@@ -221,23 +220,32 @@ public class AdministratorServiceTest extends AbstractTest {
 		this.unauthenticate();
 		this.checkExceptions(expected, caught);
 	}
-	
+
 	@Test
 	public void DashboardTest() {
 		final Object testingData[][] = {
 			{
-				1.875, 1, 4, 1.0533, 1.0, 1, 1, 0.0, "[Wallace Inc, Petty, Sanchez and Davis, Russell, Skinner and Wilson]" , "[Angela, Steven, Kimberly]", 2354.6666666666665, 1110.9637057778061, 755, 4471, 2721, 2712, 2, 2, 2.0, 0.0, 0.0, 0, 0, 0.0, 0.0, null
+				1.875, 1, 4, 1.0533, 1.0, 1, 1, 0.0, "[Wallace Inc, Petty, Sanchez and Davis, Russell, Skinner and Wilson]", "[Angela, Steven, Kimberly]", 2354.6666666666665, 1110.9637057778061, 755, 4471, 2721, 2712, 2, 2, 2.0, 0.0, 0.0, 0, 0, 0.0, 0.0,
+				null
 			},//1. All fine
 			{
-				1.20, 2, 5, 1.5, 1.0, 1, 1, 0.0, "[Wallace Inc, Petty, Sanchez and Davis, Russell, Skinner and Wilson]" , "[Angela, Steven, Kimberly]", 2354.6666666666665, 1110.9637057778061, 755, 4471, 2721, 2712, 2, 2, 2.0, 0.0, 0.0, 0, 0, 0.0, 0.0, IllegalArgumentException.class
-			}//1. Wrong
+				1.20, 2, 5, 1.5, 1.0, 1, 1, 0.0, "[Wallace Inc, Petty, Sanchez and Davis, Russell, Skinner and Wilson]", "[Angela, Steven, Kimberly]", 2354.6666666666665, 1110.9637057778061, 755, 4471, 2721, 2712, 2, 2, 2.0, 0.0, 0.0, 0, 0, 0.0, 0.0,
+				IllegalArgumentException.class
+			}
+		//1. Wrong
 		};
 
 		for (int i = 0; i < testingData.length; i++)
-			this.DashboardTemplate((Double) testingData[i][0], (Integer) testingData[i][1], (Integer) testingData[i][2], (Double) testingData[i][3], (Double) testingData[i][4], (Integer) testingData[i][5], (Integer) testingData[i][6], (Double) testingData[i][7], (String) testingData[i][8], (String) testingData[i][9], (Double) testingData[i][10], (Double) testingData[i][11], (Integer) testingData[i][12], (Integer) testingData[i][13], (Integer) testingData[i][14], (Integer) testingData[i][15], (Integer) testingData[i][16], (Integer) testingData[i][17], (Double) testingData[i][18], (Double) testingData[i][19],(Double) testingData[i][20], (Integer) testingData[i][21], (Integer) testingData[i][22], (Double) testingData[i][23],(Double) testingData[i][24], (Class<?>) testingData[i][25]);
+			this.DashboardTemplate((Double) testingData[i][0], (Integer) testingData[i][1], (Integer) testingData[i][2], (Double) testingData[i][3], (Double) testingData[i][4], (Integer) testingData[i][5], (Integer) testingData[i][6],
+				(Double) testingData[i][7], (String) testingData[i][8], (String) testingData[i][9], (Double) testingData[i][10], (Double) testingData[i][11], (Integer) testingData[i][12], (Integer) testingData[i][13], (Integer) testingData[i][14],
+				(Integer) testingData[i][15], (Integer) testingData[i][16], (Integer) testingData[i][17], (Double) testingData[i][18], (Double) testingData[i][19], (Double) testingData[i][20], (Integer) testingData[i][21], (Integer) testingData[i][22],
+				(Double) testingData[i][23], (Double) testingData[i][24], (Class<?>) testingData[i][25]);
 	}
 
-	protected void DashboardTemplate(final Double expectedResult, final Integer expectedResult2, final Integer expectedResult3, final Double expectedResult4, final Double expectedResult5, final Integer expectedResult6, final Integer expectedResult7, final Double expectedResult8, final String expectedResult9, final String expectedResult10, final Double expectedResult11, final Double expectedResult12, final Integer expectedResult13, final Integer expectedResult14, final Integer expectedResult15, final Integer expectedResult16, final Integer expectedResult17, final Integer expectedResult18, final Double expectedResult19, final Double expectedResult20, final Double expectedResult21, final Integer expectedResult22, final Integer expectedResult23, final Double expectedResult24, final Double expectedResult25, final Class<?> expected) {
+	protected void DashboardTemplate(final Double expectedResult, final Integer expectedResult2, final Integer expectedResult3, final Double expectedResult4, final Double expectedResult5, final Integer expectedResult6, final Integer expectedResult7,
+		final Double expectedResult8, final String expectedResult9, final String expectedResult10, final Double expectedResult11, final Double expectedResult12, final Integer expectedResult13, final Integer expectedResult14,
+		final Integer expectedResult15, final Integer expectedResult16, final Integer expectedResult17, final Integer expectedResult18, final Double expectedResult19, final Double expectedResult20, final Double expectedResult21,
+		final Integer expectedResult22, final Integer expectedResult23, final Double expectedResult24, final Double expectedResult25, final Class<?> expected) {
 		Class<?> caught;
 
 		caught = null;
@@ -248,34 +256,34 @@ public class AdministratorServiceTest extends AbstractTest {
 			final Integer minPC = this.adminService.minOfPositionsPerCompany();
 			final Integer maxPC = this.adminService.maxOfPositionsPerCompany();
 			final Double stdPC = this.adminService.stdOfPositionsPerCompany();
-			
+
 			final Double avgAH = this.adminService.avgOfApplicationsPerHacker();
 			final Integer minAH = this.adminService.minOfApplicationsPerHacker();
 			final Integer maxAH = this.adminService.maxOfApplicationsPerHacker();
 			final Double stdAH = this.adminService.stdOfApplicationsPerHacker();
-			
-			final List<String> topC = this.adminService.topCompaniesWithMorePositions();	
-			
+
+			final List<String> topC = this.adminService.topCompaniesWithMorePositions();
+
 			final Double avgS = this.adminService.avgSalaries();
 			final Integer minS = this.adminService.minSalary();
 			final Integer maxS = this.adminService.maxSalary();
 			final Double stdS = this.adminService.stdSalaries();
-			
+
 			final Position bP = this.adminService.findBestPosition();
 			final Position wP = this.adminService.findWorstPosition();
-			
+
 			final Integer minCH = this.adminService.minNumberOfCurriculaPerHacker();
 			final Integer maxCH = this.adminService.maxNumberOfCurriculaPerHacker();
 			final Double avgCH = this.adminService.avgNumberOfCurriculaPerHacker();
 			final Double stdCH = this.adminService.stdNumberOfCurriculaPerHacker();
-			
+
 			final Double stdRF = this.adminService.stdNumberOfResultsInFinders();
 			final Integer minRF = this.adminService.minNumberOfResultsInFinders();
 			final Integer maxRF = this.adminService.maxNumberOfResultsInFinders();
 			final Double avgRF = this.adminService.avgNumberOfResultsInFinders();
-			
+
 			final Double ratioEF = this.adminService.ratioEmptyNotEmptyFinders();
-			
+
 			Assert.isTrue(avgPC.equals(expectedResult));
 			Assert.isTrue(minPC.equals(expectedResult2));
 			Assert.isTrue(maxPC.equals(expectedResult3));
@@ -297,7 +305,7 @@ public class AdministratorServiceTest extends AbstractTest {
 			Assert.isTrue(maxRF.equals(expectedResult23));
 			Assert.isTrue(stdRF.equals(expectedResult24));
 			Assert.isTrue(ratioEF.equals(expectedResult25));
-	
+
 		} catch (final Throwable oops) {
 			caught = oops.getClass();
 		}
@@ -312,7 +320,7 @@ public class AdministratorServiceTest extends AbstractTest {
 	 * AdministratorService = 58%
 	 * 
 	 * ----TOTAL DATA COVERAGE:
-	 * Administrator = 100%
+	 * Administrator = 12,5%%
 	 */
 
 }

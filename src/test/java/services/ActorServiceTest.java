@@ -156,6 +156,6 @@ public class ActorServiceTest extends AbstractTest {
 	 * ActorService = 25,8%
 	 * 
 	 * ----TOTAL DATA COVERAGE:
-	 * Actor = 100%
+	 * Actor = 0%
 	 */
 }

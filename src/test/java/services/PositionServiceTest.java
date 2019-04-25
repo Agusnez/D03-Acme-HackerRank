@@ -452,6 +452,6 @@ public class PositionServiceTest extends AbstractTest {
 	 * PositionService = 54%
 	 * 
 	 * ----TOTAL DATA COVERAGE:
-	 * Position = 100%
+	 * Position = 0%
 	 */
 }

@@ -115,7 +115,7 @@ public class PersonalDataServiceTest extends AbstractTest {
 	 * -save(): 100%
 	 * 
 	 * d) Data coverage
-	 * -Personal Data: 20%
+	 * -Personal Data: 0%
 	 */
 
 	@Test
@@ -176,7 +176,7 @@ public class PersonalDataServiceTest extends AbstractTest {
 	 * PersonalDataService = 21,1%
 	 * 
 	 * ----TOTAL DATA COVERAGE:
-	 * PersonalData = 100%
+	 * PersonalData = 20%
 	 */
 
 }

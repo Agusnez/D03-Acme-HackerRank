@@ -287,6 +287,6 @@ public class CurriculumServiceTest extends AbstractTest {
 	 * CurriculumService = 12,7%
 	 * 
 	 * ----TOTAL DATA COVERAGE:
-	 * Curriculum = 100%
+	 * Curriculum = 0%
 	 */
 }

@@ -118,7 +118,7 @@ public class PositionDataServiceTest extends AbstractTest {
 	 * -save(): 100%
 	 * 
 	 * d) Data coverage
-	 * -Position Data: 25%
+	 * -Position Data: 0%
 	 */
 
 	@Test
@@ -246,6 +246,6 @@ public class PositionDataServiceTest extends AbstractTest {
 	 * PositionDataService = 31%
 	 * 
 	 * ----TOTAL DATA COVERAGE:
-	 * PositionData = 100%
+	 * PositionData = 25%
 	 */
 }

@@ -492,6 +492,6 @@ public class ApplicationServiceTest extends AbstractTest {
 	 * ApplicationService = 37,9%
 	 * 
 	 * ----TOTAL DATA COVERAGE:
-	 * Application = 100%
+	 * Application = 0%
 	 */
 }

@@ -100,7 +100,7 @@ public class FinderServiceTest extends AbstractTest {
 	 * FinderService = 42,6%
 	 * 
 	 * ----TOTAL DATA COVERAGE:
-	 * Finder = 100%
+	 * Finder = 0%
 	 */
 
 }

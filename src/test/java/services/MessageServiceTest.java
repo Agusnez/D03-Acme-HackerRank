@@ -106,7 +106,7 @@ public class MessageServiceTest extends AbstractTest {
 	 * MessageService = 14.1%
 	 * 
 	 * ----TOTAL DATA COVERAGE:
-	 * Message = 100%
+	 * Message = 0%
 	 */
 
 }

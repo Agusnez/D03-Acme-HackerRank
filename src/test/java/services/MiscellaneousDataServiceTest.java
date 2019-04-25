@@ -115,7 +115,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 	 * -save(): 100%
 	 * 
 	 * d) Data coverage
-	 * -Miscellaneous Data: 50%
+	 * -Miscellaneous Data: 0%
 	 */
 
 	@Test
@@ -223,6 +223,6 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 	 * MiscellaneousDataService = 34,4%
 	 * 
 	 * ----TOTAL DATA COVERAGE:
-	 * MiscellaneousData = 100%
+	 * MiscellaneousData = 50%
 	 */
 }

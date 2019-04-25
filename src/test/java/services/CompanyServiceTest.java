@@ -248,7 +248,7 @@ public class CompanyServiceTest extends AbstractTest {
 	 * CompanyService = 60,9%
 	 * 
 	 * ----TOTAL DATA COVERAGE:
-	 * Company = 100%
+	 * Company = 0%
 	 */
 
 }

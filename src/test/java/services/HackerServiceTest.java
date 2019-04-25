@@ -45,7 +45,7 @@ public class HackerServiceTest extends AbstractTest {
 	 * -create(): 100%
 	 * -save(): 50%
 	 * d) Data coverage
-	 * -Company: 0%
+	 * -Hacker: 0%
 	 */
 	@Test
 	public void driverRegisterCompany() {
@@ -120,7 +120,7 @@ public class HackerServiceTest extends AbstractTest {
 	 * c) Sentence coverage
 	 * -save():49,1%
 	 * d) Data coverage
-	 * -Company: 0%
+	 * -Hacker: 0%
 	 */
 	@Test
 	public void driverEditCompany() {
@@ -188,7 +188,7 @@ public class HackerServiceTest extends AbstractTest {
 	 * HackerService = 60,7%
 	 * 
 	 * ----TOTAL DATA COVERAGE:
-	 * Hacker = 100%
+	 * Hacker = 0%
 	 */
 
 }

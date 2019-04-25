@@ -310,6 +310,6 @@ public class ProblemServiceTest extends AbstractTest {
 	 * ProblemService = 62,1%
 	 * 
 	 * ----TOTAL DATA COVERAGE:
-	 * Problem = 100%
+	 * Problem = 0%
 	 */
 }

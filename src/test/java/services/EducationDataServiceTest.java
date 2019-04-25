@@ -252,6 +252,6 @@ public class EducationDataServiceTest extends AbstractTest {
 	 * EducationDataService = 29,6%
 	 * 
 	 * ----TOTAL DATA COVERAGE:
-	 * EducationData = 100%
+	 * EducationData = 40%
 	 */
 }

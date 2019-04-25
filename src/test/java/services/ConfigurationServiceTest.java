@@ -33,6 +33,19 @@ public class ConfigurationServiceTest extends AbstractTest {
 	 * Each of the test have their result just before them, and the coverage of the complete test is shown at the end of the document.
 	 */
 
+	/*
+	 * ACME.HACKERRANK
+	 * a)Manage system's configuration
+	 * b) Negative cases:
+	 * 2. Finder time < 1
+	 * 3. Finder time > 100
+	 * 
+	 * c) Sentence coverage
+	 * -findConfiguration(): 100%
+	 * -save(): 100%
+	 * d) Data coverage
+	 * -Company: 0%
+	 */
 	@Test
 	public void EditConfigurationTest() {
 		final Object testingData[][] = {
@@ -93,6 +106,6 @@ public class ConfigurationServiceTest extends AbstractTest {
 	 * ConfigurationService = 22,6%
 	 * 
 	 * ----TOTAL DATA COVERAGE:
-	 * Configuration = 100%
+	 * Configuration = 0%
 	 */
 }
