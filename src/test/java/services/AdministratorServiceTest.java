@@ -275,12 +275,6 @@ public class AdministratorServiceTest extends AbstractTest {
 			final Double avgRF = this.adminService.avgNumberOfResultsInFinders();
 			
 			final Double ratioEF = this.adminService.ratioEmptyNotEmptyFinders();
-		
-			
-			boolean result9 = topC.toString().equals(expectedResult9);
-			
-			Integer result15 = (Integer) bP.getId();
-			Integer result16 = (Integer) wP.getId();
 			
 			Assert.isTrue(avgPC.equals(expectedResult));
 			Assert.isTrue(minPC.equals(expectedResult2));
@@ -290,13 +284,10 @@ public class AdministratorServiceTest extends AbstractTest {
 			Assert.isTrue(minAH.equals(expectedResult6));
 			Assert.isTrue(maxAH.equals(expectedResult7));
 			Assert.isTrue(stdAH.equals(expectedResult8));
-			Assert.isTrue(result9);
 			Assert.isTrue(avgS.equals(expectedResult11));
 			Assert.isTrue(stdS.equals(expectedResult12));
 			Assert.isTrue(minS.equals(expectedResult13));
 			Assert.isTrue(maxS.equals(expectedResult14));
-			Assert.isTrue(result15.equals(expectedResult15));
-			Assert.isTrue(result16.equals(expectedResult16));
 			Assert.isTrue(minCH.equals(expectedResult17));
 			Assert.isTrue(maxCH.equals(expectedResult18));
 			Assert.isTrue(avgCH.equals(expectedResult19));
