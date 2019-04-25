@@ -35,12 +35,15 @@
 	
 	<h4><spring:message code="position.finalMode.explanation"/></h4>
 	
+	
+	
 	<acme:submit name="save" code="position.save" />	
 
 	<acme:cancel code="position.cancel" url="position/company/list.do" />
 	
 	<jstl:if test="${position.id != 0}">
 		<acme:delete code="position.delete" />
+		<h4><spring:message code="position.delete.explanation"/></h4>
 	</jstl:if>	
 	
 
